@@ -1,0 +1,21 @@
+{
+  "name": "myhero-platform",
+  "version": "1.0.0",
+  "description": "Plataforma que conecta personas que necesitan acompañamiento físico con héroes",
+  "main": "index.js",
+  "scripts": {
+    "start": "lite-server --baseDir=\"public\""
+  },
+  "keywords": [
+    "accompaniment",
+    "heroes",
+    "platform",
+    "ux",
+    "ui"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "lite-server": "^2.6.1"
+  }
+}
