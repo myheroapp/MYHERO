@@ -4,8 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MyHero - Compañía de confianza</title>
+    <!-- Tailwind CSS (CDN para desarrollo) -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Estilos Personalizados -->
+    <link rel="stylesheet" href="./assets/css/style.css">
+    
     <script>
         tailwind.config = {
             theme: {
@@ -50,61 +55,56 @@
             }
         }
     </script>
-    <style>
-        body { background-color: #050B14; color: #f8fafc; }
-        .glass-nav {
-            background: rgba(10, 21, 38, 0.7);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        }
-        .glass-card {
-            background: rgba(17, 34, 64, 0.6);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        .hidden-step { display: none !important; }
-        .fade-in-step { animation: fadeInScale 0.4s ease-out forwards; }
-        @keyframes fadeInScale {
-            from { opacity: 0; transform: scale(0.95) translateY(10px); }
-            to { opacity: 1; transform: scale(1) translateY(0); }
-        }
-        .option-card input:checked + div {
-            border-color: #06b6d4;
-            background-color: rgba(6, 182, 212, 0.1);
-            box-shadow: 0 0 15px rgba(6, 182, 212, 0.2);
-        }
-        .option-card input:checked + div .icon-container { color: #06b6d4; }
-        .bg-tech-grid {
-            background-image: 
-                linear-gradient(to right, rgba(34, 211, 238, 0.03) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(34, 211, 238, 0.03) 1px, transparent 1px);
-            background-size: 40px 40px;
-        }
-    </style>
 </head>
 <body class="antialiased selection:bg-cyan-500 selection:text-white overflow-x-hidden">
 
+    <!-- NAVEGACIÓN -->
     <nav class="glass-nav fixed w-full top-0 z-50 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
                 <div class="flex items-center gap-3 cursor-pointer group">
                     <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-400 to-blue-600 flex items-center justify-center shadow-[0_0_15px_rgba(6,182,212,0.4)] group-hover:shadow-[0_0_25px_rgba(6,182,212,0.6)] transition-all">
                         <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
                     </div>
                     <span class="text-2xl font-extrabold tracking-tight text-white">MyHero</span>
                 </div>
+                
+                <!-- Desktop Menu -->
                 <div class="hidden md:flex items-center space-x-8">
                     <a href="#como-funciona" class="text-sm font-semibold text-gray-300 hover:text-cyan-400 transition-colors">Cómo funciona</a>
                     <a href="#niveles" class="text-sm font-semibold text-gray-300 hover:text-cyan-400 transition-colors">Niveles</a>
+                    <a href="#testimonios" class="text-sm font-semibold text-gray-300 hover:text-cyan-400 transition-colors">Testimonios</a>
                     <a href="#unete" class="text-sm font-semibold text-gray-300 hover:text-cyan-400 transition-colors">Únete a la red</a>
                     <div class="h-5 w-px bg-obsidian-800"></div>
                     <button class="text-sm font-semibold text-white hover:text-cyan-400 transition-colors">Iniciar Sesión</button>
                 </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-gray-300 hover:text-white focus:outline-none p-2">
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Panel -->
+        <div id="mobile-menu" class="md:hidden hidden bg-obsidian-900/95 backdrop-blur-xl border-b border-white/5 absolute w-full transition-all duration-300 opacity-0 transform -translate-y-4">
+            <div class="px-4 pt-2 pb-6 space-y-2">
+                <a href="#como-funciona" class="mobile-link block px-4 py-3 rounded-xl text-base font-medium text-gray-300 hover:text-cyan-400 hover:bg-white/5 transition-colors">Cómo funciona</a>
+                <a href="#niveles" class="mobile-link block px-4 py-3 rounded-xl text-base font-medium text-gray-300 hover:text-cyan-400 hover:bg-white/5 transition-colors">Niveles</a>
+                <a href="#testimonios" class="mobile-link block px-4 py-3 rounded-xl text-base font-medium text-gray-300 hover:text-cyan-400 hover:bg-white/5 transition-colors">Testimonios</a>
+                <a href="#unete" class="mobile-link block px-4 py-3 rounded-xl text-base font-medium text-gray-300 hover:text-cyan-400 hover:bg-white/5 transition-colors">Únete a la red</a>
+                <div class="h-px w-full bg-white/10 my-4"></div>
+                <button class="w-full text-center block px-4 py-3 rounded-xl text-base font-bold bg-cyan-500/10 text-cyan-400 hover:bg-cyan-500/20 border border-cyan-500/20 transition-all">Iniciar Sesión</button>
             </div>
         </div>
     </nav>
 
+    <!-- HERO SECTION -->
     <div class="relative pt-32 pb-20 lg:pt-40 lg:pb-28 overflow-hidden min-h-screen flex items-center bg-tech-grid">
         <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-cyan-600/20 rounded-full blur-[120px] pointer-events-none"></div>
         <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-600/20 rounded-full blur-[120px] pointer-events-none"></div>
@@ -112,8 +112,8 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
                 
-                <div class="lg:col-span-6 space-y-8">
-                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card border-cyan-500/30">
+                <div class="lg:col-span-6 space-y-8 reveal">
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card border-cyan-500/30 shadow-[0_0_15px_rgba(6,182,212,0.1)]">
                         <span class="relative flex h-2.5 w-2.5">
                             <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
                             <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-cyan-500"></span>
@@ -144,11 +144,12 @@
                 </div>
 
                 <!-- Dispatch Terminal -->
-                <div class="lg:col-span-6 relative w-full max-w-lg mx-auto lg:ml-auto">
+                <div class="lg:col-span-6 relative w-full max-w-lg mx-auto lg:ml-auto reveal delay-200">
                     <div class="absolute -inset-1 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-3xl blur opacity-30 animate-pulse-glow"></div>
                     
                     <div class="relative glass-card rounded-3xl p-6 sm:p-8 shadow-2xl overflow-hidden min-h-[550px] flex flex-col relative">
                         
+                        <!-- Header Terminal -->
                         <div class="mb-6 pb-4 border-b border-white/10 flex justify-between items-center">
                             <div>
                                 <h2 class="text-xl sm:text-2xl font-bold text-white">Solicitar Acompañamiento</h2>
@@ -156,7 +157,8 @@
                             </div>
                         </div>
 
-                        <div id="step-form" class="fade-in-step flex-1 flex flex-col">
+                        <!-- Step 1: Formulario -->
+                        <div id="step-form" class="step-container fade-in-step flex-1 flex flex-col">
                             <div class="space-y-6 flex-1 overflow-y-auto pr-2 pb-4">
                                 
                                 <div>
@@ -227,7 +229,8 @@
                             </button>
                         </div>
 
-                        <div id="step-scan" class="hidden-step flex-1 flex flex-col items-center justify-center text-center py-10">
+                        <!-- Step 2: Escaneo -->
+                        <div id="step-scan" class="step-container hidden-step flex-1 flex flex-col items-center justify-center text-center py-10">
                             <div class="relative w-24 h-24 mb-6">
                                 <div class="absolute inset-0 border-2 border-cyan-500/20 rounded-full"></div>
                                 <div class="absolute inset-0 border-t-2 border-cyan-500 rounded-full animate-radar-spin"></div>
@@ -237,7 +240,8 @@
                             <p class="text-sm text-cyan-400 font-mono" id="scan-text">Buscando disponibilidad en Elche</p>
                         </div>
 
-                        <div id="step-login" class="hidden-step flex-1 flex flex-col items-center justify-center py-6">
+                        <!-- Step 3: Login (Resultado) -->
+                        <div id="step-login" class="step-container hidden-step flex-1 flex flex-col items-center justify-center py-6">
                             <div class="w-16 h-16 bg-cyan-500/10 rounded-2xl flex items-center justify-center mb-6 border border-cyan-500/20">
                                 <svg class="w-8 h-8 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
                             </div>
@@ -264,11 +268,12 @@
         </div>
     </div>
 
+    <!-- CÓMO FUNCIONA -->
     <section id="como-funciona" class="py-24 bg-obsidian-950 relative overflow-hidden border-t border-white/5">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                 
-                <div class="space-y-8">
+                <div class="space-y-8 reveal">
                     <h2 class="text-3xl md:text-5xl font-extrabold text-white tracking-tight">Compañía <span class="text-cyan-400">a tu medida.</span></h2>
                     <p class="text-gray-400 text-lg">MyHero es la plataforma que conecta a personas que necesitan acompañamiento con perfiles estrictamente validados. Pide compañía para un trámite o asegura el regreso a casa de un familiar.</p>
 
@@ -290,7 +295,7 @@
                     </div>
                 </div>
 
-                <div class="flex justify-center lg:justify-end perspective-1000">
+                <div class="flex justify-center lg:justify-end perspective-1000 reveal delay-200">
                     <div class="relative w-[300px] h-[600px] bg-obsidian-900 rounded-[3rem] border-[8px] border-obsidian-800 shadow-2xl overflow-hidden transform rotate-y-[-5deg] rotate-x-[5deg] hover:rotate-0 transition-transform duration-500">
                         <div class="absolute top-0 inset-x-0 h-7 bg-obsidian-800 rounded-b-3xl w-40 mx-auto z-30"></div>
 
@@ -349,16 +354,17 @@
         </div>
     </section>
 
+    <!-- NIVELES -->
     <section id="niveles" class="py-24 bg-[#0A1526] border-t border-white/5">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-16">
+            <div class="text-center max-w-3xl mx-auto mb-16 reveal">
                 <h2 class="text-3xl font-extrabold text-white mb-4">Niveles de Compañía Estratégica</h2>
                 <p class="text-gray-400">Todos nuestros perfiles pasan por estrictas validaciones. Elige el perfil que mejor se adapte a tus necesidades del momento.</p>
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <!-- Nivel 1 -->
-                <div class="glass-card rounded-2xl p-8 hover:border-cyan-500/50 transition-colors group relative overflow-hidden">
+                <div class="glass-card rounded-2xl p-8 hover:border-cyan-500/50 transition-colors group relative overflow-hidden reveal delay-100">
                     <div class="absolute top-0 right-0 bg-obsidian-800 text-xs font-bold px-3 py-1 text-gray-400 rounded-bl-lg">Nivel 1</div>
                     <h3 class="text-xl font-bold text-white mb-2 mt-4">Acompañante Estándar</h3>
                     <p class="text-cyan-400 text-sm font-semibold mb-4">Compañía general y empatía.</p>
@@ -370,7 +376,7 @@
                 </div>
                 
                 <!-- Nivel 2 -->
-                <div class="glass-card rounded-2xl p-8 hover:border-blue-500/50 transition-colors group relative border-blue-500/30">
+                <div class="glass-card rounded-2xl p-8 hover:border-blue-500/50 transition-colors group relative border-blue-500/30 reveal delay-200">
                     <div class="absolute top-0 right-0 bg-blue-500/20 text-xs font-bold px-3 py-1 text-blue-400 rounded-bl-lg">Nivel 2</div>
                     <h3 class="text-xl font-bold text-white mb-2 mt-4">Presencia Asistencial</h3>
                     <p class="text-blue-400 text-sm font-semibold mb-4">Respaldo visual y físico.</p>
@@ -382,7 +388,7 @@
                 </div>
 
                 <!-- Nivel 3 -->
-                <div class="glass-card rounded-2xl p-8 hover:border-amber-500/50 transition-colors group relative border-amber-500/30">
+                <div class="glass-card rounded-2xl p-8 hover:border-amber-500/50 transition-colors group relative border-amber-500/30 reveal delay-300">
                     <div class="absolute top-0 right-0 bg-amber-500/20 text-xs font-bold px-3 py-1 text-amber-500 rounded-bl-lg">Nivel 3</div>
                     <h3 class="text-xl font-bold text-white mb-2 mt-4">Especialista</h3>
                     <p class="text-amber-500 text-sm font-semibold mb-4">Experiencia certificada.</p>
@@ -396,34 +402,104 @@
         </div>
     </section>
 
+    <!-- TESTIMONIOS (SOCIAL PROOF) -->
+    <section id="testimonios" class="py-24 bg-obsidian-950 relative overflow-hidden border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center max-w-3xl mx-auto mb-16 reveal">
+                <span class="text-cyan-400 font-bold tracking-wider uppercase text-sm mb-4 block">Confianza Total</span>
+                <h2 class="text-3xl font-extrabold text-white mb-4">Historias Reales</h2>
+                <p class="text-gray-400">Nuestros usuarios ya han recuperado su tranquilidad gracias a la red de Heroes. Lee sus experiencias.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Testimonial 1 -->
+                <div class="glass-card rounded-2xl p-8 reveal delay-100">
+                    <div class="flex gap-1 text-amber-500 mb-4">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                    </div>
+                    <p class="text-gray-300 text-sm mb-6 italic leading-relaxed">"Contraté un perfil de nivel 2 para acompañar a mi madre al banco a hacer una gestión de firma. Poder ver por GPS dónde estaban me dio una paz mental increíble. El trato fue impecable."</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-cyan-900 flex items-center justify-center text-cyan-400 font-bold">L</div>
+                        <div>
+                            <div class="text-white font-bold text-sm">Laura G.</div>
+                            <div class="text-cyan-500 text-xs font-semibold">Sponsor Familiar</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="glass-card rounded-2xl p-8 reveal delay-200">
+                    <div class="flex gap-1 text-amber-500 mb-4">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                    </div>
+                    <p class="text-gray-300 text-sm mb-6 italic leading-relaxed">"Salgo tarde de trabajar los fines de semana. Desde que uso MyHero para que un Nivel 2 me acompañe hasta mi coche en el parking, mi vida ha cambiado. Totalmente recomendado."</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-blue-900 flex items-center justify-center text-blue-400 font-bold">M</div>
+                        <div>
+                            <div class="text-white font-bold text-sm">María P.</div>
+                            <div class="text-blue-500 text-xs font-semibold">Cliente Frecuente</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="glass-card rounded-2xl p-8 reveal delay-300">
+                    <div class="flex gap-1 text-amber-500 mb-4">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                    </div>
+                    <p class="text-gray-300 text-sm mb-6 italic leading-relaxed">"Soy Hero Nivel 1 desde hace meses. Es increíble poder ayudar a personas mayores en sus recados y además monetizar mi tiempo libre. La app es súper segura y fácil de usar."</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-amber-900 flex items-center justify-center text-amber-500 font-bold">R</div>
+                        <div>
+                            <div class="text-white font-bold text-sm">Roberto S.</div>
+                            <div class="text-amber-500 text-xs font-semibold">Hero Verificado</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ÚNETE A LA RED -->
     <section id="unete" class="py-20 relative overflow-hidden">
-        <!-- Background Pattern -->
         <div class="absolute inset-0 bg-obsidian-950">
             <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-cyan-900/20 via-obsidian-950 to-obsidian-950"></div>
         </div>
         
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 reveal">
             <div class="border border-cyan-500/20 bg-obsidian-900/80 backdrop-blur-md rounded-3xl p-8 md:p-12 text-center shadow-[0_0_50px_rgba(6,182,212,0.1)]">
                 <span class="text-cyan-400 font-bold tracking-wider uppercase text-sm mb-4 block">Únete a la Red</span>
                 <h2 class="text-3xl md:text-5xl font-extrabold text-white mb-6">Conviértete en un Hero.</h2>
                 <p class="text-gray-400 text-lg max-w-2xl mx-auto mb-10">Monetiza tu presencia, empatía o habilidades deportivas. Únete a la primera red de acompañamiento estratégico y genera ingresos en tu tiempo libre.</p>
                 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10 text-left">
-                    <div class="bg-obsidian-950/50 p-6 rounded-2xl border border-white/5">
+                    <div class="bg-obsidian-950/50 p-6 rounded-2xl border border-white/5 transition-transform hover:-translate-y-2 duration-300">
                         <div class="w-10 h-10 bg-cyan-500/10 rounded-lg flex items-center justify-center mb-4">
                             <svg class="w-5 h-5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                         </div>
                         <h4 class="text-white font-bold mb-2">Tú eliges tus horarios</h4>
                         <p class="text-gray-500 text-sm">Conéctate cuando quieras. Acepta solo las misiones que se ajusten a tu disponibilidad.</p>
                     </div>
-                    <div class="bg-obsidian-950/50 p-6 rounded-2xl border border-white/5">
+                    <div class="bg-obsidian-950/50 p-6 rounded-2xl border border-white/5 transition-transform hover:-translate-y-2 duration-300 delay-100">
                         <div class="w-10 h-10 bg-cyan-500/10 rounded-lg flex items-center justify-center mb-4">
                             <svg class="w-5 h-5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                         </div>
                         <h4 class="text-white font-bold mb-2">Ingresos Directos</h4>
                         <p class="text-gray-500 text-sm">El cliente te paga directamente a ti al momento del encuentro. Solo cobramos una pequeña comisión por conexión.</p>
                     </div>
-                    <div class="bg-obsidian-950/50 p-6 rounded-2xl border border-white/5">
+                    <div class="bg-obsidian-950/50 p-6 rounded-2xl border border-white/5 transition-transform hover:-translate-y-2 duration-300 delay-200">
                         <div class="w-10 h-10 bg-cyan-500/10 rounded-lg flex items-center justify-center mb-4">
                             <svg class="w-5 h-5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
                         </div>
@@ -439,9 +515,60 @@
         </div>
     </section>
 
+    <!-- FAQ (PREGUNTAS FRECUENTES) -->
+    <section id="faq" class="py-24 bg-[#0A1526] border-t border-white/5">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-3xl font-extrabold text-white mb-4">Preguntas Frecuentes</h2>
+                <p class="text-gray-400">Resolvemos todas tus dudas sobre nuestro servicio de acompañamiento.</p>
+            </div>
+            
+            <div class="space-y-4 reveal delay-100">
+                <!-- FAQ Item 1 -->
+                <div class="glass-card rounded-2xl overflow-hidden faq-item">
+                    <button class="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none faq-btn">
+                        <span class="text-white font-semibold">¿Cómo es el proceso de verificación de los Heroes?</span>
+                        <svg class="w-5 h-5 text-cyan-500 transform transition-transform duration-300 faq-icon rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <!-- Agregamos 'open' por defecto a la primera para mostrar cómo funciona -->
+                    <div class="faq-content open">
+                        <div class="px-6 pb-5 text-gray-400 text-sm leading-relaxed">
+                            Todos nuestros perfiles pasan por un filtro de 4 fases: verificación de identidad oficial (DNI/Pasaporte), revisión de antecedentes, entrevista psicológica y validación de certificaciones en los niveles 2 y 3. Solo aceptamos al 12% de los solicitantes para garantizar máxima seguridad.
+                        </div>
+                    </div>
+                </div>
+                <!-- FAQ Item 2 -->
+                <div class="glass-card rounded-2xl overflow-hidden faq-item">
+                    <button class="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none faq-btn">
+                        <span class="text-white font-semibold">¿Qué pasa si ocurre una emergencia?</span>
+                        <svg class="w-5 h-5 text-cyan-500 transform transition-transform duration-300 faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="faq-content">
+                        <div class="px-6 pb-5 text-gray-400 text-sm leading-relaxed">
+                            Durante el servicio activo, la app cuenta con un "Botón de Pánico" tanto para el cliente como para el Hero. Esto envía una alerta inmediata a nuestra central 24/7 y comparte la ubicación en tiempo real con los servicios de emergencia si es necesario.
+                        </div>
+                    </div>
+                </div>
+                <!-- FAQ Item 3 -->
+                <div class="glass-card rounded-2xl overflow-hidden faq-item">
+                    <button class="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none faq-btn">
+                        <span class="text-white font-semibold">¿Cómo funciona el proceso de pago?</span>
+                        <svg class="w-5 h-5 text-cyan-500 transform transition-transform duration-300 faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="faq-content">
+                        <div class="px-6 pb-5 text-gray-400 text-sm leading-relaxed">
+                            Los pagos se realizan de forma segura a través de la plataforma utilizando tarjeta de crédito/débito o Apple/Google Pay al momento de solicitar. El pago se retiene y solo se transfiere al Hero cuando finaliza el servicio satisfactoriamente.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
     <footer class="bg-obsidian-950 py-12 border-t border-obsidian-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8 reveal">
                 <div class="col-span-1 md:col-span-2">
                     <div class="flex items-center gap-2 mb-4">
                         <svg class="w-6 h-6 text-cyan-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
@@ -466,7 +593,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="pt-8 border-t border-obsidian-800 flex justify-between items-center text-xs text-gray-600">
+            <div class="pt-8 border-t border-obsidian-800 flex justify-between items-center text-xs text-gray-600 reveal delay-100">
                 <p>&copy; 2026 MyHero Tech. Todos los derechos reservados.</p>
                 <div class="flex items-center gap-2">
                     <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
@@ -476,31 +603,7 @@
         </div>
     </footer>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const btnScan = document.getElementById('btn-scan');
-            const stepForm = document.getElementById('step-form');
-            const stepScan = document.getElementById('step-scan');
-            const stepLogin = document.getElementById('step-login');
-            const scanText = document.getElementById('scan-text');
-
-            btnScan.addEventListener('click', () => {
-                stepForm.classList.remove('fade-in-step');
-                stepForm.classList.add('hidden-step');
-                
-                stepScan.classList.remove('hidden-step');
-                stepScan.classList.add('fade-in-step');
-
-                setTimeout(() => { scanText.innerText = "Filtrando Nivel y Misión seleccionada..."; }, 800);
-                setTimeout(() => { scanText.innerText = "Verificando disponibilidad de agenda..."; }, 1600);
-
-                setTimeout(() => {
-                    stepScan.classList.add('hidden-step');
-                    stepLogin.classList.remove('hidden-step');
-                    stepLogin.classList.add('fade-in-step');
-                }, 2500);
-            });
-        });
-    </script>
+    <!-- Scripts Personalizados -->
+    <script src="./assets/js/main.js"></script>
 </body>
 </html>
