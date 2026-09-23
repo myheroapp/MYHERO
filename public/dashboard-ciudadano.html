@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyHero - Panel del Ciudadano</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/css/dashboard.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['"Plus Jakarta Sans"', 'sans-serif'] },
+                    colors: {
+                        obsidian: { 950: '#050B14', 900: '#0A1526', 800: '#112240' },
+                        cyan: { 400: '#22d3ee', 500: '#06b6d4' }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="antialiased selection:bg-cyan-500 selection:text-white">
+
+    <div class="dashboard-layout">
+        
+        <!-- SIDEBAR -->
+        <aside id="sidebar" class="sidebar">
+            <div class="p-6 flex items-center justify-between border-b border-white/5">
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-cyan-400 to-blue-600 flex items-center justify-center">
+                        <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                    </div>
+                    <span class="text-xl font-bold text-white tracking-tight">Ciudadano</span>
+                </div>
+                <button id="sidebar-close" class="lg:hidden text-gray-400 hover:text-white">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+            </div>
+
+            <!-- Profile snippet -->
+            <div class="p-6 flex items-center gap-4">
+                <img src="https://i.pravatar.cc/150?img=12" class="w-12 h-12 rounded-full border-2 border-obsidian-800">
+                <div>
+                    <p class="text-sm font-bold text-white">Alejandro V.</p>
+                    <p class="text-xs text-cyan-400">Cuenta Premium</p>
+                </div>
+            </div>
+
+            <nav class="flex-1 px-3 py-4 space-y-1">
+                <a href="#" data-tab="tab-radar" class="nav-link active rounded-xl">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"></path></svg>
+                    Radar de Heroes
+                </a>
+                <a href="#" data-tab="tab-historial" class="nav-link rounded-xl">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    Mis Misiones
+                </a>
+                <a href="#" data-tab="tab-familia" class="nav-link rounded-xl">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                    Red Familiar
+                </a>
+                <a href="#" data-tab="tab-pagos" class="nav-link rounded-xl">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path></svg>
+                    Billetera y Pagos
+                </a>
+            </nav>
+
+            <div class="p-6 border-t border-white/5">
+                <a href="#" class="nav-link text-red-400 hover:bg-red-500/10 hover:text-red-300 rounded-xl">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+                    Centro de Seguridad SOS
+                </a>
+                <a href="index.html" class="nav-link mt-2 rounded-xl">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path></svg>
+                    Cerrar Sesión
+                </a>
+            </div>
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <main class="main-content">
+            
+            <!-- Mobile Topbar -->
+            <div class="mobile-topbar">
+                <div class="flex items-center gap-2">
+                    <div class="w-8 h-8 rounded-lg bg-cyan-500 flex items-center justify-center">
+                        <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                    </div>
+                    <span class="font-bold text-white">Ciudadano</span>
+                </div>
+                <button id="mobile-toggle" class="text-white p-2">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                </button>
+            </div>
+
+            <!-- Scrollable content area -->
+            <div class="content-scroll">
+                
+                <!-- TAB: RADAR -->
+                <div id="tab-radar" class="tab-content active max-w-5xl mx-auto space-y-6">
+                    <header class="mb-8">
+                        <h1 class="text-3xl font-extrabold text-white">Radar de Heroes</h1>
+                        <p class="text-gray-400 mt-1">Solicita acompañamiento inmediato o prográmalo para más tarde.</p>
+                    </header>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                        <!-- Mapa Simulado -->
+                        <div class="dash-card h-[400px] relative overflow-hidden p-0 border-obsidian-800 flex flex-col">
+                            <div class="p-4 border-b border-obsidian-800 bg-obsidian-900/50 flex justify-between items-center z-10">
+                                <span class="text-sm font-bold text-white flex items-center gap-2">
+                                    <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+                                    Zona de cobertura: Elche Central
+                                </span>
+                            </div>
+                            <div class="flex-1 relative bg-obsidian-900 flex items-center justify-center">
+                                <div class="absolute inset-0 opacity-20" style="background-image: linear-gradient(#22d3ee 1px, transparent 1px), linear-gradient(90deg, #22d3ee 1px, transparent 1px); background-size: 20px 20px;"></div>
+                                <!-- Hero Markers -->
+                                <div class="absolute top-1/4 left-1/3">
+                                    <img src="https://i.pravatar.cc/150?img=11" class="w-10 h-10 rounded-full border-2 border-cyan-500 relative z-10 shadow-[0_0_15px_rgba(6,182,212,0.5)]">
+                                    <div class="absolute -bottom-1 -right-1 bg-obsidian-800 text-[10px] text-white px-1 rounded border border-white/10 z-20">2 min</div>
+                                </div>
+                                <div class="absolute bottom-1/3 right-1/4">
+                                    <img src="https://i.pravatar.cc/150?img=33" class="w-10 h-10 rounded-full border-2 border-blue-500 relative z-10 shadow-[0_0_15px_rgba(59,130,246,0.5)]">
+                                    <div class="absolute -bottom-1 -right-1 bg-obsidian-800 text-[10px] text-white px-1 rounded border border-white/10 z-20">5 min</div>
+                                </div>
+                                <!-- You marker -->
+                                <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                                    <div class="w-4 h-4 bg-white rounded-full relative z-10 shadow-[0_0_15px_rgba(255,255,255,0.8)]"></div>
+                                    <div class="absolute inset-0 bg-white rounded-full animate-ping opacity-50 scale-150"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Formulario Rápido -->
+                        <div class="dash-card flex flex-col">
+                            <h3 class="text-xl font-bold text-white mb-6">Nueva Solicitud</h3>
+                            
+                            <div class="space-y-5">
+                                <div>
+                                    <label class="block text-xs font-semibold text-gray-400 uppercase mb-2">Para quién</label>
+                                    <select class="w-full bg-obsidian-950 border border-obsidian-800 text-white text-sm rounded-xl p-3 focus:border-cyan-500 outline-none">
+                                        <option>Para mí</option>
+                                        <option>Madre (Carmen V.)</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-semibold text-gray-400 uppercase mb-2">Misión</label>
+                                    <select class="w-full bg-obsidian-950 border border-obsidian-800 text-white text-sm rounded-xl p-3 focus:border-cyan-500 outline-none">
+                                        <option>Citas Médicas (Hospital Vinalopó)</option>
+                                        <option>Gestión Bancaria</option>
+                                        <option>Ocio Nocturno</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-semibold text-gray-400 uppercase mb-2">Nivel de Hero</label>
+                                    <select class="w-full bg-obsidian-950 border border-obsidian-800 text-white text-sm rounded-xl p-3 focus:border-cyan-500 outline-none">
+                                        <option>Nivel 1 (Acompañante)</option>
+                                        <option>Nivel 2 (Presencia Visual)</option>
+                                        <option>Nivel 3 (Especialista)</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <button class="mt-auto pt-6 w-full">
+                                <div class="w-full bg-cyan-500 hover:bg-cyan-400 text-obsidian-950 font-extrabold rounded-xl p-4 text-sm uppercase tracking-wide transition-all text-center">
+                                    Solicitar Ahora (Est. 15€)
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB: HISTORIAL -->
+                <div id="tab-historial" class="tab-content max-w-5xl mx-auto space-y-6">
+                    <header class="mb-8">
+                        <h1 class="text-3xl font-extrabold text-white">Mis Misiones</h1>
+                        <p class="text-gray-400 mt-1">Historial de servicios y misiones en curso.</p>
+                    </header>
+
+                    <div class="dash-card p-0 overflow-hidden">
+                        <div class="p-6 border-b border-obsidian-800 flex justify-between items-center">
+                            <h3 class="font-bold text-white">Misiones Activas</h3>
+                            <span class="bg-obsidian-800 text-gray-400 text-xs px-2 py-1 rounded">No hay misiones activas</span>
+                        </div>
+                    </div>
+
+                    <h3 class="font-bold text-white mt-8 mb-4">Misiones Pasadas</h3>
+                    <div class="space-y-4">
+                        <!-- Misión Item -->
+                        <div class="dash-card p-4 flex items-center justify-between hover:border-cyan-500/50 transition-colors cursor-pointer">
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 bg-obsidian-950 rounded-xl flex items-center justify-center text-cyan-500">
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-white">Gestión Notaría - Carmen V.</h4>
+                                    <p class="text-xs text-gray-400">12 Sep 2026 • Hero Nivel 1 (Carlos M.)</p>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <div class="font-bold text-white">25.00 €</div>
+                                <div class="text-xs text-amber-500">Valoraste: ★ 5.0</div>
+                            </div>
+                        </div>
+                        <!-- Misión Item -->
+                        <div class="dash-card p-4 flex items-center justify-between hover:border-cyan-500/50 transition-colors cursor-pointer">
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 bg-obsidian-950 rounded-xl flex items-center justify-center text-cyan-500">
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-white">Ocio Nocturno - Regreso a casa</h4>
+                                    <p class="text-xs text-gray-400">01 Sep 2026 • Hero Nivel 2 (Marcos P.)</p>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <div class="font-bold text-white">40.00 €</div>
+                                <div class="text-xs text-amber-500">Valoraste: ★ 5.0</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB: FAMILIA -->
+                <div id="tab-familia" class="tab-content max-w-5xl mx-auto space-y-6">
+                    <header class="mb-8 flex justify-between items-end">
+                        <div>
+                            <h1 class="text-3xl font-extrabold text-white">Red Familiar</h1>
+                            <p class="text-gray-400 mt-1">Gestiona los perfiles de terceros para los que solicitas misiones.</p>
+                        </div>
+                        <button class="bg-obsidian-800 hover:bg-obsidian-700 text-white font-bold py-2 px-4 rounded-xl text-sm transition-colors border border-white/5">
+                            + Añadir Familiar
+                        </button>
+                    </header>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div class="dash-card relative overflow-hidden">
+                            <div class="absolute top-0 right-0 p-4">
+                                <button class="text-gray-500 hover:text-white"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path></svg></button>
+                            </div>
+                            <div class="flex items-center gap-4 mb-4">
+                                <div class="w-16 h-16 rounded-full bg-cyan-900 flex items-center justify-center text-cyan-400 font-bold text-2xl">C</div>
+                                <div>
+                                    <h3 class="font-bold text-xl text-white">Carmen V.</h3>
+                                    <p class="text-sm text-gray-400">Madre • 72 años</p>
+                                </div>
+                            </div>
+                            <div class="bg-obsidian-950 p-3 rounded-xl border border-white/5">
+                                <p class="text-xs text-gray-400 mb-1">Observaciones médicas:</p>
+                                <p class="text-sm text-white">Movilidad reducida leve (usa bastón).</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB: PAGOS -->
+                <div id="tab-pagos" class="tab-content max-w-5xl mx-auto space-y-6">
+                    <header class="mb-8">
+                        <h1 class="text-3xl font-extrabold text-white">Billetera y Pagos</h1>
+                        <p class="text-gray-400 mt-1">Gestiona tus métodos de pago mediante Stripe.</p>
+                    </header>
+                    
+                    <div class="dash-card">
+                        <h3 class="font-bold text-white mb-6">Métodos de pago guardados</h3>
+                        <div class="bg-obsidian-950 p-4 rounded-xl border border-obsidian-800 flex justify-between items-center mb-4">
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-8 bg-white rounded flex items-center justify-center">
+                                    <span class="text-blue-900 font-extrabold text-xs italic">VISA</span>
+                                </div>
+                                <div>
+                                    <p class="text-white font-bold">•••• •••• •••• 4242</p>
+                                    <p class="text-xs text-gray-400">Expira 12/28</p>
+                                </div>
+                            </div>
+                            <span class="text-xs bg-cyan-500/20 text-cyan-400 px-2 py-1 rounded">Principal</span>
+                        </div>
+                        <button class="text-cyan-400 text-sm font-bold hover:text-cyan-300 transition-colors">+ Añadir tarjeta</button>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <script src="./assets/js/dashboard.js"></script>
+</body>
+</html>

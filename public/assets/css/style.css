@@ -45,8 +45,8 @@ body {
 /* Estilos para inputs seleccionados en el formulario */
 .option-card input:checked + div {
     border-color: #06b6d4;
-    background-color: rgba(6, 182, 212, 0.1);
-    box-shadow: 0 0 15px rgba(6, 182, 212, 0.2);
+    background-color: rgba(6, 182, 212, 0.15);
+    box-shadow: 0 0 20px rgba(6, 182, 212, 0.25), inset 0 0 10px rgba(6, 182, 212, 0.1);
 }
 .option-card input:checked + div .icon-container { 
     color: #06b6d4; 

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyHero - Panel del Hero</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/css/dashboard.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['"Plus Jakarta Sans"', 'sans-serif'] },
+                    colors: {
+                        obsidian: { 950: '#050B14', 900: '#0A1526', 800: '#112240' },
+                        cyan: { 400: '#22d3ee', 500: '#06b6d4' }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="antialiased selection:bg-cyan-500 selection:text-white">
+
+    <div class="dashboard-layout">
+        
+        <!-- SIDEBAR -->
+        <aside id="sidebar" class="sidebar">
+            <div class="p-6 flex items-center justify-between border-b border-white/5">
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-cyan-400 to-blue-600 flex items-center justify-center">
+                        <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                    </div>
+                    <span class="text-xl font-bold text-white tracking-tight">Hero App</span>
+                </div>
+                <button id="sidebar-close" class="lg:hidden text-gray-400 hover:text-white">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+            </div>
+
+            <!-- Profile snippet -->
+            <div class="p-6 flex items-center gap-4">
+                <img src="https://i.pravatar.cc/150?img=11" class="w-12 h-12 rounded-full border-2 border-cyan-500">
+                <div>
+                    <p class="text-sm font-bold text-white">Carlos M.</p>
+                    <p class="text-xs text-amber-500 font-bold">Nivel 2 (Presencia)</p>
+                </div>
+            </div>
+
+            <nav class="flex-1 px-3 py-4 space-y-1">
+                <a href="#" data-tab="tab-control" class="nav-link active rounded-xl">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path></svg>
+                    Panel de Control
+                </a>
+                <a href="#" data-tab="tab-disponibles" class="nav-link rounded-xl">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path></svg>
+                    Misiones Entrantes
+                </a>
+                <a href="#" data-tab="tab-servicios" class="nav-link rounded-xl">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    Mis Servicios
+                </a>
+                <a href="#" data-tab="tab-ganancias" class="nav-link rounded-xl">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    Ganancias
+                </a>
+            </nav>
+
+            <div class="p-6 border-t border-white/5">
+                <a href="index.html" class="nav-link mt-2 rounded-xl">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path></svg>
+                    Cerrar Sesión
+                </a>
+            </div>
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <main class="main-content">
+            
+            <div class="mobile-topbar">
+                <div class="flex items-center gap-2">
+                    <div class="w-8 h-8 rounded-lg bg-cyan-500 flex items-center justify-center">
+                        <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                    </div>
+                    <span class="font-bold text-white">Hero App</span>
+                </div>
+                <button id="mobile-toggle" class="text-white p-2">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                </button>
+            </div>
+
+            <div class="content-scroll">
+                
+                <!-- TAB: PANEL DE CONTROL -->
+                <div id="tab-control" class="tab-content active max-w-5xl mx-auto space-y-6">
+                    <header class="mb-8 flex flex-col md:flex-row justify-between items-start md:items-end gap-4">
+                        <div>
+                            <h1 class="text-3xl font-extrabold text-white">Panel de Control</h1>
+                            <p class="text-gray-400 mt-1">Conéctate para recibir solicitudes en tu zona.</p>
+                        </div>
+                        
+                        <!-- Toggle Conexión -->
+                        <div class="bg-obsidian-900 border border-obsidian-800 p-2 rounded-2xl flex items-center gap-4">
+                            <span class="text-sm font-bold text-gray-400 px-2">Desconectado</span>
+                            <button class="relative inline-flex h-8 w-16 items-center rounded-full bg-cyan-500 transition-colors">
+                                <span class="inline-block h-6 w-6 transform rounded-full bg-white transition-transform translate-x-9 shadow-sm"></span>
+                            </button>
+                        </div>
+                    </header>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div class="dash-card bg-gradient-to-br from-obsidian-900 to-obsidian-950 border-cyan-500/20">
+                            <p class="text-gray-400 text-sm font-bold uppercase mb-2">Ingresos Hoy</p>
+                            <h2 class="text-4xl font-extrabold text-white">0.00 €</h2>
+                        </div>
+                        <div class="dash-card">
+                            <p class="text-gray-400 text-sm font-bold uppercase mb-2">Misiones Hoy</p>
+                            <h2 class="text-4xl font-extrabold text-white">0</h2>
+                        </div>
+                        <div class="dash-card">
+                            <p class="text-gray-400 text-sm font-bold uppercase mb-2">Valoración Media</p>
+                            <h2 class="text-4xl font-extrabold text-amber-500">4.9 ★</h2>
+                        </div>
+                    </div>
+
+                    <div class="dash-card h-[400px] mt-6 p-0 relative overflow-hidden flex flex-col justify-center items-center text-center">
+                        <div class="absolute inset-0 bg-obsidian-900 opacity-50" style="background-image: radial-gradient(#22d3ee 1px, transparent 1px); background-size: 20px 20px;"></div>
+                        <div class="relative z-10 w-24 h-24 rounded-full bg-obsidian-800 flex items-center justify-center border-4 border-cyan-500 animate-pulse mb-6">
+                            <svg class="w-10 h-10 text-cyan-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-white relative z-10">Buscando misiones cercanas...</h3>
+                        <p class="text-gray-400 mt-2 relative z-10">Estás en línea. Mantén la app abierta.</p>
+                    </div>
+                </div>
+
+                <!-- TAB: ENTRANTES (MISIONES) -->
+                <div id="tab-disponibles" class="tab-content max-w-5xl mx-auto space-y-6">
+                    <header class="mb-8">
+                        <h1 class="text-3xl font-extrabold text-white">Misiones Entrantes</h1>
+                    </header>
+                    
+                    <div class="space-y-4">
+                        <!-- Card Misión -->
+                        <div class="dash-card border-cyan-500 relative overflow-hidden">
+                            <div class="absolute top-0 right-0 bg-cyan-500 text-obsidian-950 font-extrabold px-3 py-1 text-xs rounded-bl-xl">NUEVA - 2.5km</div>
+                            
+                            <div class="flex flex-col md:flex-row justify-between gap-6 pt-4">
+                                <div>
+                                    <h3 class="text-xl font-bold text-white mb-1">Gestión Bancaria (Retiro efectivo)</h3>
+                                    <p class="text-sm text-gray-400 mb-4">Ciudadano: Alejandro V. • Familiar: Carmen V. (Usa bastón)</p>
+                                    
+                                    <div class="flex items-center gap-4 text-sm font-semibold">
+                                        <div class="bg-obsidian-950 px-3 py-1.5 rounded text-white flex items-center gap-2 border border-obsidian-800">
+                                            <svg class="w-4 h-4 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                            Hoy, 18:30 (1h aprox)
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex flex-col justify-end items-end gap-3 min-w-[200px]">
+                                    <div class="text-2xl font-extrabold text-white">25.00 €</div>
+                                    <div class="flex gap-2 w-full">
+                                        <button class="flex-1 bg-obsidian-800 hover:bg-obsidian-700 text-white font-bold py-3 rounded-xl transition-colors">Ignorar</button>
+                                        <button class="flex-1 bg-cyan-500 hover:bg-cyan-400 text-obsidian-950 font-extrabold py-3 rounded-xl transition-colors">Aceptar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB: SERVICIOS (HISTORIAL) -->
+                <div id="tab-servicios" class="tab-content max-w-5xl mx-auto space-y-6">
+                    <header class="mb-8">
+                        <h1 class="text-3xl font-extrabold text-white">Mis Servicios</h1>
+                    </header>
+                    <div class="dash-card text-center py-12 text-gray-400">
+                        Aún no has completado ninguna misión.
+                    </div>
+                </div>
+
+                <!-- TAB: GANANCIAS -->
+                <div id="tab-ganancias" class="tab-content max-w-5xl mx-auto space-y-6">
+                    <header class="mb-8">
+                        <h1 class="text-3xl font-extrabold text-white">Ganancias</h1>
+                    </header>
+                    <div class="dash-card bg-gradient-to-r from-obsidian-900 to-obsidian-950">
+                        <p class="text-gray-400 text-sm font-bold uppercase mb-2">Saldo Disponible</p>
+                        <h2 class="text-5xl font-extrabold text-white mb-6">120.50 €</h2>
+                        <button class="bg-white text-obsidian-950 font-extrabold px-6 py-3 rounded-xl hover:bg-gray-200 transition-colors">Transferir a mi banco (IBAN ...4567)</button>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <script src="./assets/js/dashboard.js"></script>
+</body>
+</html>
