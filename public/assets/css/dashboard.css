@@ -70,12 +70,34 @@
     border-left-color: #22d3ee;
 }
 
-/* Tarjetas de Dashboard */
+/* Tarjetas de Dashboard - Premium Glassmorphism */
 .dash-card {
-    background-color: #0A1526;
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    background: rgba(17, 34, 64, 0.4);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 1.5rem;
     padding: 1.5rem;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.dash-card:hover {
+    border-color: rgba(6, 182, 212, 0.3);
+    box-shadow: 0 10px 40px rgba(6, 182, 212, 0.1);
+    transform: translateY(-2px);
+}
+
+/* Tablas Premium */
+.premium-table th {
+    letter-spacing: 0.05em;
+    font-weight: 800;
+}
+.premium-table tr {
+    transition: background-color 0.2s;
+}
+.premium-table tr:hover {
+    background-color: rgba(6, 182, 212, 0.05) !important;
 }
 
 /* Responsive */
