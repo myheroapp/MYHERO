@@ -7,6 +7,8 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./assets/css/dashboard.css">
+    <!-- Firebase Logic -->
+    <script type="module" src="./assets/js/citizen-logic.js"></script>
     <script>
         tailwind.config = {
             theme: {
@@ -43,7 +45,7 @@
             <div class="p-6 flex items-center gap-4">
                 <img src="https://i.pravatar.cc/150?img=12" class="w-12 h-12 rounded-full border-2 border-obsidian-800">
                 <div>
-                    <p class="text-sm font-bold text-white">Alejandro V.</p>
+                    <p id="userNameDisplay" class="text-sm font-bold text-white">Cargando...</p>
                     <p class="text-xs text-cyan-400">Cuenta Premium</p>
                 </div>
             </div>
@@ -52,6 +54,10 @@
                 <a href="#" data-tab="tab-radar" class="nav-link active rounded-xl">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"></path></svg>
                     Radar de Heroes
+                </a>
+                <a href="#" data-tab="tab-catalogo" class="nav-link rounded-xl">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path></svg>
+                    Explorar Catálogo
                 </a>
                 <a href="#" data-tab="tab-historial" class="nav-link rounded-xl">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
@@ -72,7 +78,7 @@
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
                     Centro de Seguridad SOS
                 </a>
-                <a href="index.html" class="nav-link mt-2 rounded-xl">
+                <a href="#" id="btnLogout" class="nav-link mt-2 rounded-xl">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path></svg>
                     Cerrar Sesión
                 </a>
@@ -134,40 +140,72 @@
                         </div>
 
                         <!-- Formulario Rápido -->
-                        <div class="dash-card flex flex-col">
-                            <h3 class="text-xl font-bold text-white mb-6">Nueva Solicitud</h3>
+                        <div class="dash-card flex flex-col border-cyan-500/30 shadow-[0_0_20px_rgba(6,182,212,0.1)] relative">
+                            <h3 class="text-xl font-bold text-white mb-6 flex items-center gap-2">
+                                <svg class="w-5 h-5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+                                Nueva Solicitud
+                            </h3>
                             
                             <div class="space-y-5">
                                 <div>
-                                    <label class="block text-xs font-semibold text-gray-400 uppercase mb-2">Para quién</label>
-                                    <select class="w-full bg-obsidian-950 border border-obsidian-800 text-white text-sm rounded-xl p-3 focus:border-cyan-500 outline-none">
-                                        <option>Para mí</option>
-                                        <option>Madre (Carmen V.)</option>
+                                    <label class="block text-xs font-semibold text-cyan-400 uppercase tracking-wider mb-2">Para quién</label>
+                                    <select id="reqBeneficiary" class="w-full bg-obsidian-950/80 border border-obsidian-800 text-white text-sm rounded-xl p-3 focus:border-cyan-500 outline-none shadow-inner">
+                                        <option value="Yo">Para mí</option>
+                                        <option value="Carmen V.">Madre (Carmen V.)</option>
                                     </select>
                                 </div>
                                 <div>
-                                    <label class="block text-xs font-semibold text-gray-400 uppercase mb-2">Misión</label>
-                                    <select class="w-full bg-obsidian-950 border border-obsidian-800 text-white text-sm rounded-xl p-3 focus:border-cyan-500 outline-none">
-                                        <option>Citas Médicas (Hospital Vinalopó)</option>
-                                        <option>Gestión Bancaria</option>
-                                        <option>Ocio Nocturno</option>
+                                    <label class="block text-xs font-semibold text-cyan-400 uppercase tracking-wider mb-2">Tipo de Misión</label>
+                                    <select id="reqType" class="w-full bg-obsidian-950/80 border border-obsidian-800 text-white text-sm rounded-xl p-3 focus:border-cyan-500 outline-none shadow-inner">
+                                        <option value="Citas Médicas">Citas Médicas (Hospital Vinalopó)</option>
+                                        <option value="Gestión Bancaria">Gestión Bancaria</option>
+                                        <option value="Ocio Nocturno">Ocio Nocturno</option>
                                     </select>
                                 </div>
                                 <div>
-                                    <label class="block text-xs font-semibold text-gray-400 uppercase mb-2">Nivel de Hero</label>
-                                    <select class="w-full bg-obsidian-950 border border-obsidian-800 text-white text-sm rounded-xl p-3 focus:border-cyan-500 outline-none">
-                                        <option>Nivel 1 (Acompañante)</option>
-                                        <option>Nivel 2 (Presencia Visual)</option>
-                                        <option>Nivel 3 (Especialista)</option>
+                                    <label class="block text-xs font-semibold text-cyan-400 uppercase tracking-wider mb-2">Nivel de Hero requerido</label>
+                                    <select id="reqLevel" class="w-full bg-obsidian-950/80 border border-obsidian-800 text-white text-sm rounded-xl p-3 focus:border-cyan-500 outline-none shadow-inner">
+                                        <option value="1">Nivel 1 (Acompañante)</option>
+                                        <option value="2">Nivel 2 (Presencia Visual)</option>
+                                        <option value="3">Nivel 3 (Especialista)</option>
                                     </select>
                                 </div>
                             </div>
 
-                            <button class="mt-auto pt-6 w-full">
-                                <div class="w-full bg-cyan-500 hover:bg-cyan-400 text-obsidian-950 font-extrabold rounded-xl p-4 text-sm uppercase tracking-wide transition-all text-center">
+                            <button id="btnSolicitarMision" class="mt-8 w-full group relative overflow-hidden rounded-xl">
+                                <div class="absolute inset-0 w-full h-full bg-cyan-500 group-hover:scale-105 transition-transform duration-300"></div>
+                                <div class="relative flex items-center justify-center p-4 text-obsidian-950 font-extrabold text-sm uppercase tracking-wider">
+                                    <svg class="w-5 h-5 mr-2 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
                                     Solicitar Ahora (Est. 15€)
                                 </div>
                             </button>
+                            
+                            <!-- Indicador de Buscando (Oculto por defecto) -->
+                            <div id="searchingState" class="hidden mt-4 text-center">
+                                <p class="text-cyan-400 font-bold animate-pulse text-sm">Buscando Hero cercano...</p>
+                                <button id="btnCancelarMision" class="mt-2 text-xs text-red-400 hover:text-red-300 underline">Cancelar solicitud</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB: CATALOGO (NUEVO) -->
+                <div id="tab-catalogo" class="tab-content max-w-5xl mx-auto space-y-6">
+                    <header class="mb-8 flex flex-col md:flex-row justify-between items-start md:items-end gap-4">
+                        <div>
+                            <h1 class="text-3xl font-extrabold text-white">Catálogo de Heroes</h1>
+                            <p class="text-gray-400 mt-1">Explora los perfiles registrados y contrata directamente al que más te guste.</p>
+                        </div>
+                        <div class="relative w-full md:w-64">
+                            <input type="text" id="searchHeroInput" placeholder="Buscar por nombre..." class="w-full bg-obsidian-950 border border-obsidian-800 text-white rounded-xl pl-10 pr-4 py-2 focus:border-cyan-500 outline-none">
+                            <svg class="w-5 h-5 text-gray-500 absolute left-3 top-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                        </div>
+                    </header>
+                    
+                    <!-- Grid de Heroes Inyectados desde JS -->
+                    <div id="heroCatalogGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <div class="text-center text-gray-400 py-12 col-span-full">
+                            Cargando perfiles de Firebase...
                         </div>
                     </div>
                 </div>

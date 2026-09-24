@@ -30,41 +30,205 @@
             <p class="text-gray-400">Selecciona con qué perfil deseas entrar para probar el dashboard.</p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <!-- Ciudadano -->
-            <a href="dashboard-ciudadano.html" class="bg-obsidian-900 border border-obsidian-800 p-8 rounded-3xl hover:border-cyan-500 transition-colors group">
-                <div class="w-12 h-12 bg-obsidian-950 rounded-xl flex items-center justify-center text-cyan-400 mb-6 group-hover:bg-cyan-500/10">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 bg-obsidian-900 border border-obsidian-800 rounded-3xl p-8 relative overflow-hidden shadow-[0_0_50px_rgba(0,0,0,0.5)]">
+            <!-- Columna Izquierda: Mensaje -->
+            <div class="flex flex-col justify-center border-b md:border-b-0 md:border-r border-obsidian-800 pb-8 md:pb-0 md:pr-8">
+                <h2 class="text-3xl font-extrabold mb-4">Bienvenido a la red de protección.</h2>
+                <p class="text-gray-400 mb-8">Únete como Ciudadano para solicitar acompañamiento o regístrate como Hero para proteger tu comunidad.</p>
+                <div class="space-y-4">
+                    <div class="flex items-center gap-4 text-sm font-bold text-gray-300">
+                        <div class="w-8 h-8 rounded-full bg-cyan-500/10 flex items-center justify-center text-cyan-400 border border-cyan-500/30">✓</div>
+                        Verificación de identidad
+                    </div>
+                    <div class="flex items-center gap-4 text-sm font-bold text-gray-300">
+                        <div class="w-8 h-8 rounded-full bg-green-500/10 flex items-center justify-center text-green-400 border border-green-500/30">✓</div>
+                        Conexión encriptada
+                    </div>
                 </div>
-                <h2 class="text-2xl font-bold mb-2">Ciudadano</h2>
-                <p class="text-sm text-gray-400 mb-6">Pedir acompañamiento, gestionar pagos y red familiar.</p>
-                <span class="text-cyan-400 font-bold text-sm flex items-center gap-2">Entrar <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg></span>
-            </a>
+            </div>
 
-            <!-- Hero -->
-            <a href="dashboard-hero.html" class="bg-obsidian-900 border border-obsidian-800 p-8 rounded-3xl hover:border-cyan-500 transition-colors group">
-                <div class="w-12 h-12 bg-obsidian-950 rounded-xl flex items-center justify-center text-cyan-400 mb-6 group-hover:bg-cyan-500/10">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+            <!-- Columna Derecha: Formulario Auth -->
+            <div class="flex flex-col justify-center">
+                
+                <!-- Opciones de Tab -->
+                <div class="flex bg-obsidian-950 p-1 rounded-xl mb-6">
+                    <button id="tabLogin" class="flex-1 py-2 text-sm font-bold bg-obsidian-800 text-white rounded-lg transition-all" onclick="switchAuthTab('login')">Iniciar Sesión</button>
+                    <button id="tabRegister" class="flex-1 py-2 text-sm font-bold text-gray-400 hover:text-white rounded-lg transition-all" onclick="switchAuthTab('register')">Crear Cuenta</button>
                 </div>
-                <h2 class="text-2xl font-bold mb-2">Hero</h2>
-                <p class="text-sm text-gray-400 mb-6">Recibir misiones, consultar historial y retirar ganancias.</p>
-                <span class="text-cyan-400 font-bold text-sm flex items-center gap-2">Entrar <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg></span>
-            </a>
 
-            <!-- Admin -->
-            <a href="dashboard-admin.html" class="bg-obsidian-900 border border-obsidian-800 p-8 rounded-3xl hover:border-red-500 transition-colors group">
-                <div class="w-12 h-12 bg-obsidian-950 rounded-xl flex items-center justify-center text-red-500 mb-6 group-hover:bg-red-500/10">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+                <!-- Selector de Rol (Solo visible en Registro) -->
+                <div id="roleSelector" class="hidden space-y-2 mb-6 p-3 bg-obsidian-950 rounded-xl border border-cyan-500/30">
+                    <label class="block text-xs font-bold text-cyan-400 mb-1 uppercase tracking-wider text-center">Paso 1: Elige tu Perfil</label>
+                    <div class="grid grid-cols-2 gap-2">
+                        <button type="button" id="btnRoleCiudadano" onclick="selectRole('ciudadano')" class="bg-cyan-500/20 border-2 border-cyan-500 text-cyan-400 py-3 rounded-xl text-sm font-bold transition-all">Ciudadano</button>
+                        <button type="button" id="btnRoleHero" onclick="selectRole('hero')" class="bg-obsidian-900 border border-obsidian-800 text-gray-400 py-3 rounded-xl text-sm font-bold transition-all hover:bg-obsidian-800">Hero</button>
+                    </div>
                 </div>
-                <h2 class="text-2xl font-bold mb-2">Admin Ops</h2>
-                <p class="text-sm text-gray-400 mb-6">Mapa en vivo, validación de aspirantes y métricas.</p>
-                <span class="text-red-500 font-bold text-sm flex items-center gap-2">Entrar <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg></span>
-            </a>
+
+                <!-- Botón Google -->
+                <button id="btnGoogle" class="w-full bg-white text-obsidian-950 hover:bg-gray-200 font-extrabold py-3 px-4 rounded-xl flex items-center justify-center gap-3 transition-colors mb-6 shadow-lg">
+                    <svg class="w-5 h-5" viewBox="0 0 24 24"><path fill="currentColor" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+                    Continuar con Google
+                </button>
+
+                <div class="relative flex items-center justify-center mb-6">
+                    <div class="border-t border-obsidian-800 w-full"></div>
+                    <span class="bg-obsidian-900 px-3 text-xs text-gray-500 font-bold uppercase absolute">O usa tu email</span>
+                </div>
+
+                <!-- Formulario -->
+                <form id="authForm" class="space-y-4">
+
+                    <div>
+                        <label class="block text-xs font-bold text-gray-400 mb-1">Correo Electrónico</label>
+                        <input type="email" id="emailInput" class="w-full bg-obsidian-950 border border-obsidian-800 text-white rounded-xl px-4 py-3 focus:outline-none focus:border-cyan-500 transition-colors" placeholder="tu@correo.com">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-gray-400 mb-1">Contraseña</label>
+                        <input type="password" id="passwordInput" class="w-full bg-obsidian-950 border border-obsidian-800 text-white rounded-xl px-4 py-3 focus:outline-none focus:border-cyan-500 transition-colors" placeholder="••••••••">
+                    </div>
+                    
+                    <button type="submit" id="btnSubmit" class="w-full bg-cyan-500 hover:bg-cyan-400 text-obsidian-950 font-extrabold py-3 px-4 rounded-xl transition-all shadow-[0_0_15px_rgba(6,182,212,0.4)] mt-2">
+                        Iniciar Sesión
+                    </button>
+                </form>
+
+                <!-- Mensajes de Error -->
+                <div id="errorMsg" class="mt-4 text-red-500 text-xs font-bold hidden text-center bg-red-500/10 py-3 px-2 rounded-lg border border-red-500/20"></div>
+
+            </div>
         </div>
         
-        <div class="text-center mt-12">
-            <a href="index.html" class="text-gray-500 hover:text-white transition-colors text-sm underline">← Volver a la Landing Page</a>
+        <div class="text-center mt-8">
+            <a href="index.html" class="text-gray-500 hover:text-white transition-colors text-sm font-bold">← Volver a la página principal</a>
         </div>
+    </div>
+
+    <!-- Script de Autenticación -->
+    <script type="module">
+        import { auth, googleProvider, signInWithPopup, createUserWithEmailAndPassword, signInWithEmailAndPassword, db, doc, getDoc, setDoc } from './assets/js/firebase.js';
+
+        let currentMode = 'login';
+        let selectedRole = 'ciudadano'; // Por defecto
+        
+        // Manejar selección de rol visualmente
+        window.selectRole = function(role) {
+            selectedRole = role;
+            const btnC = document.getElementById('btnRoleCiudadano');
+            const btnH = document.getElementById('btnRoleHero');
+            if (role === 'ciudadano') {
+                btnC.className = 'bg-cyan-500/20 border-2 border-cyan-500 text-cyan-400 py-2 rounded-xl text-sm font-bold transition-all';
+                btnH.className = 'bg-obsidian-950 border border-obsidian-800 text-gray-400 py-2 rounded-xl text-sm font-bold transition-all hover:bg-obsidian-800';
+            } else {
+                btnH.className = 'bg-cyan-500/20 border-2 border-cyan-500 text-cyan-400 py-2 rounded-xl text-sm font-bold transition-all';
+                btnC.className = 'bg-obsidian-950 border border-obsidian-800 text-gray-400 py-2 rounded-xl text-sm font-bold transition-all hover:bg-obsidian-800';
+            }
+        };
+
+        // Manejo visual de Tabs
+        window.switchAuthTab = function(mode) {
+            currentMode = mode;
+            const tabLogin = document.getElementById('tabLogin');
+            const tabRegister = document.getElementById('tabRegister');
+            const btnSubmit = document.getElementById('btnSubmit');
+            const roleSelector = document.getElementById('roleSelector');
+
+            if (mode === 'login') {
+                tabLogin.className = 'flex-1 py-2 text-sm font-bold bg-obsidian-800 text-white rounded-lg transition-all';
+                tabRegister.className = 'flex-1 py-2 text-sm font-bold text-gray-400 hover:text-white rounded-lg transition-all';
+                btnSubmit.textContent = 'Iniciar Sesión';
+                roleSelector.classList.add('hidden');
+            } else {
+                tabRegister.className = 'flex-1 py-2 text-sm font-bold bg-obsidian-800 text-white rounded-lg transition-all';
+                tabLogin.className = 'flex-1 py-2 text-sm font-bold text-gray-400 hover:text-white rounded-lg transition-all';
+                btnSubmit.textContent = 'Crear Cuenta Segura';
+                roleSelector.classList.remove('hidden');
+            }
+        };
+
+        const showError = (msg) => {
+            const el = document.getElementById('errorMsg');
+            el.innerHTML = msg;
+            el.classList.remove('hidden');
+        };
+
+        // Redirigir según el rol del usuario
+        const routeUser = async (user) => {
+            try {
+                const userDocRef = doc(db, 'users', user.uid);
+                const userDoc = await getDoc(userDocRef);
+                
+                if (userDoc.exists()) {
+                    // Si ya existe, entramos a su panel
+                    const role = userDoc.data().role;
+                    if (role === 'admin') window.location.href = 'dashboard-admin.html';
+                    else if (role === 'hero') window.location.href = 'dashboard-hero.html';
+                    else window.location.href = 'dashboard-ciudadano.html';
+                } else {
+                    // Si no existe, lo registramos con el rol seleccionado
+                    await setDoc(userDocRef, {
+                        uid: user.uid,
+                        email: user.email,
+                        name: user.displayName || 'Nuevo Usuario',
+                        role: selectedRole,
+                        createdAt: new Date().toISOString()
+                    });
+                    
+                    if (selectedRole === 'hero') window.location.href = 'dashboard-hero.html';
+                    else window.location.href = 'dashboard-ciudadano.html';
+                }
+            } catch (error) {
+                console.error("Error routing:", error);
+                if (error.code === 'permission-denied') {
+                    showError("¡Atención! Firebase bloqueó el acceso. Recuerda ir a Firestore -> Reglas y cambiar 'false' por 'request.auth != null'");
+                } else {
+                    showError("Error al conectar con la base de datos de Firebase.");
+                }
+            }
+        };
+
+        // Login con Google
+        document.getElementById('btnGoogle').addEventListener('click', async () => {
+            try {
+                document.getElementById('errorMsg').classList.add('hidden');
+                // Si estamos en modo registro, la variable selectedRole ya tendrá el rol que hayan tocado
+                const result = await signInWithPopup(auth, googleProvider);
+                await routeUser(result.user);
+            } catch (error) {
+                console.error(error);
+                if (error.code !== 'auth/popup-closed-by-user') {
+                    showError("No se pudo iniciar sesión con Google.");
+                }
+            }
+        });
+
+        // Login / Registro con Email
+        document.getElementById('authForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('emailInput').value;
+            const password = document.getElementById('passwordInput').value;
+            
+            if(!email || !password) return showError("Llena los campos por favor.");
+
+            try {
+                document.getElementById('errorMsg').classList.add('hidden');
+                
+                if (currentMode === 'register') {
+                    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+                    await routeUser(userCredential.user);
+                } else {
+                    const userCredential = await signInWithEmailAndPassword(auth, email, password);
+                    await routeUser(userCredential.user);
+                }
+            } catch (error) {
+                console.error(error);
+                if (error.code === 'auth/email-already-in-use') showError("Este correo ya está registrado.");
+                else if (error.code === 'auth/invalid-credential' || error.code === 'auth/wrong-password') showError("Credenciales incorrectas.");
+                else if (error.code === 'auth/weak-password') showError("La contraseña debe tener al menos 6 caracteres.");
+                else showError("Error de autenticación. Intenta de nuevo.");
+            }
+        });
+    </script>
     </div>
 </body>
 </html>
