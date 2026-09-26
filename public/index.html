@@ -64,10 +64,7 @@
             <div class="flex justify-between items-center h-20">
                 <!-- Logo -->
                 <div class="flex items-center gap-3 cursor-pointer group">
-                    <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-400 to-blue-600 flex items-center justify-center shadow-[0_0_15px_rgba(6,182,212,0.4)] group-hover:shadow-[0_0_25px_rgba(6,182,212,0.6)] transition-all">
-                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
-                    </div>
-                    <span class="text-2xl font-extrabold tracking-tight text-white">MyHero</span>
+                    <img src="./assets/img/logo.png" alt="MyHero Logo" class="h-12 md:h-14 w-auto transition-transform group-hover:scale-105">
                 </div>
                 
                 <!-- Desktop Menu -->
@@ -118,7 +115,7 @@
                             <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
                             <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-cyan-500"></span>
                         </span>
-                        <span class="text-xs font-bold tracking-wider text-cyan-500 uppercase">Operativo en Elche / Alicante</span>
+                        <span class="text-xs font-bold tracking-wider text-cyan-500 uppercase">Operativo en España</span>
                     </div>
                     
                     <h1 class="text-5xl sm:text-6xl lg:text-7xl font-extrabold leading-[1.1] tracking-tight text-white">
@@ -132,9 +129,9 @@
 
                     <div class="flex items-center gap-6 pt-2 border-t border-white/5 mt-8">
                         <div class="flex -space-x-3">
-                            <img class="w-12 h-12 rounded-full border-2 border-obsidian-950 object-cover" src="https://i.pravatar.cc/150?img=11" alt="Hero">
-                            <img class="w-12 h-12 rounded-full border-2 border-obsidian-950 object-cover" src="https://i.pravatar.cc/150?img=33" alt="Hero">
-                            <img class="w-12 h-12 rounded-full border-2 border-obsidian-950 object-cover" src="https://i.pravatar.cc/150?img=68" alt="Hero">
+                            <img class="w-12 h-12 rounded-full border-2 border-obsidian-950 object-cover" src="https://images.unsplash.com/photo-1555597673-b21d5c935865?auto=format&fit=crop&w=150&q=80" alt="Karateka en kimono">
+                            <img class="w-12 h-12 rounded-full border-2 border-obsidian-950 object-cover" src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=150&q=80" alt="Fisicoculturista">
+                            <img class="w-12 h-12 rounded-full border-2 border-obsidian-950 object-cover" src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&crop=faces&w=150&h=150&q=80&v=5" alt="Atleta Robusto">
                         </div>
                         <div class="text-sm text-gray-400">
                             <span class="text-white font-bold block">Red de Héroes Verificados</span>
@@ -163,17 +160,17 @@
                                 
                                 <div>
                                     <label class="block text-xs font-bold text-cyan-400 uppercase tracking-widest mb-3">1. ¿Para quién es la compañía?</label>
-                                    <div class="grid grid-cols-2 gap-4">
+                                    <div class="grid grid-cols-2 gap-2 sm:gap-4">
                                         <label class="option-card cursor-pointer">
                                             <input type="radio" name="target" class="sr-only" value="me" checked>
-                                            <div class="border border-white/10 bg-obsidian-800/80 rounded-2xl p-4 flex items-center justify-center gap-2 transition-all hover:border-cyan-500/50 hover:bg-obsidian-800 h-full shadow-lg">
-                                                <span class="text-sm font-bold text-white">Para mí</span>
+                                            <div class="border border-white/10 bg-obsidian-800/80 rounded-2xl p-3 sm:p-4 flex items-center justify-center gap-2 transition-all hover:border-cyan-500/50 hover:bg-obsidian-800 h-full shadow-lg">
+                                                <span class="text-xs sm:text-sm font-bold text-white text-center">Para mí</span>
                                             </div>
                                         </label>
                                         <label class="option-card cursor-pointer">
                                             <input type="radio" name="target" class="sr-only" value="family">
-                                            <div class="border border-white/10 bg-obsidian-800/80 rounded-2xl p-4 flex items-center justify-center gap-2 transition-all hover:border-cyan-500/50 hover:bg-obsidian-800 h-full shadow-lg">
-                                                <span class="text-sm font-bold text-white text-center">Familiar / Tercero</span>
+                                            <div class="border border-white/10 bg-obsidian-800/80 rounded-2xl p-3 sm:p-4 flex items-center justify-center gap-2 transition-all hover:border-cyan-500/50 hover:bg-obsidian-800 h-full shadow-lg">
+                                                <span class="text-xs sm:text-sm font-bold text-white text-center">Familiar / Tercero</span>
                                             </div>
                                         </label>
                                     </div>
@@ -215,11 +212,49 @@
                                 
                                 <div>
                                      <label class="block text-xs font-bold text-cyan-400 uppercase tracking-widest mb-3">3. Nivel de Hero requerido</label>
-                                     <select class="w-full bg-obsidian-800/80 border border-white/10 text-white font-semibold text-sm rounded-2xl focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 block p-4 shadow-lg cursor-pointer outline-none">
-                                        <option value="1">Nivel 1: Acompañante Estándar</option>
-                                        <option value="2">Nivel 2: Presencia Asistencial (Deportistas)</option>
-                                        <option value="3">Nivel 3: Especialista (Primeros Auxilios/Crisis)</option>
-                                      </select>
+                                     <div class="relative" id="custom-select-wrapper">
+                                        <div id="custom-select-btn" class="w-full bg-obsidian-800/80 border border-white/10 text-white font-semibold text-sm rounded-xl py-3 px-4 shadow-lg cursor-pointer flex justify-between items-center hover:border-cyan-500/50 transition-all">
+                                            <span id="custom-select-text">Nivel 1: Acompañante Estándar</span>
+                                            <svg class="w-4 h-4 text-cyan-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                                        </div>
+                                        <div id="custom-select-menu" class="hidden absolute top-full mt-1 left-0 right-0 bg-obsidian-800 border border-white/10 rounded-xl shadow-[0_10px_40px_rgba(0,0,0,0.8)] overflow-hidden z-50">
+                                            <div class="custom-opt py-3 px-4 hover:bg-cyan-500/20 cursor-pointer text-white text-sm font-semibold border-b border-white/5 transition-colors flex items-center gap-3" data-value="1">
+                                                <div class="w-6 h-6 rounded-full bg-cyan-500/10 text-cyan-400 flex items-center justify-center font-bold text-[10px] shrink-0">1</div>
+                                                Nivel 1: Acompañante Estándar
+                                            </div>
+                                            <div class="custom-opt py-3 px-4 hover:bg-cyan-500/20 cursor-pointer text-white text-sm font-semibold border-b border-white/5 transition-colors flex items-center gap-3" data-value="2">
+                                                <div class="w-6 h-6 rounded-full bg-cyan-500/10 text-cyan-400 flex items-center justify-center font-bold text-[10px] shrink-0">2</div>
+                                                Nivel 2: Presencia Asistencial <span class="text-gray-400 font-normal ml-1 hidden sm:inline">(Deportistas)</span>
+                                            </div>
+                                            <div class="custom-opt py-3 px-4 hover:bg-cyan-500/20 cursor-pointer text-white text-sm font-semibold transition-colors flex items-center gap-3" data-value="3">
+                                                <div class="w-6 h-6 rounded-full bg-cyan-500/10 text-cyan-400 flex items-center justify-center font-bold text-[10px] shrink-0">3</div>
+                                                Nivel 3: Especialista <span class="text-gray-400 font-normal ml-1 hidden sm:inline">(Crisis/VIP)</span>
+                                            </div>
+                                        </div>
+                                        <input type="hidden" name="level" id="hidden-level" value="1">
+                                     </div>
+
+                                     <script>
+                                         document.getElementById('custom-select-btn').addEventListener('click', function(e) {
+                                             e.stopPropagation();
+                                             document.getElementById('custom-select-menu').classList.toggle('hidden');
+                                         });
+                                         document.querySelectorAll('.custom-opt').forEach(opt => {
+                                             opt.addEventListener('click', function(e) {
+                                                 e.stopPropagation();
+                                                 // Remove the "1", "2", "3" from the text context
+                                                 let rawText = this.innerText.trim();
+                                                 let textParts = rawText.split('\n');
+                                                 let finalStr = textParts.length > 1 ? textParts[1].trim() : rawText;
+                                                 document.getElementById('custom-select-text').innerText = finalStr;
+                                                 document.getElementById('hidden-level').value = this.getAttribute('data-value');
+                                                 document.getElementById('custom-select-menu').classList.add('hidden');
+                                             });
+                                         });
+                                         document.addEventListener('click', function() {
+                                             document.getElementById('custom-select-menu').classList.add('hidden');
+                                         });
+                                     </script>
                                 </div>
                             </div>
 
@@ -245,17 +280,11 @@
                             <div class="w-16 h-16 bg-cyan-500/10 rounded-2xl flex items-center justify-center mb-6 border border-cyan-500/20">
                                 <svg class="w-8 h-8 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
                             </div>
-                            <h3 class="text-2xl font-bold text-white text-center mb-2">Heroes Encontrados</h3>
+                            <h3 class="text-2xl font-bold text-white text-center mb-2">15 Heroes Encontrados</h3>
                             <p class="text-sm text-gray-400 text-center mb-8 px-4">Inicia sesión para ver perfiles detallados, fotos reales y asegurar tu reserva.</p>
                             
-                            <button class="w-full flex items-center justify-center gap-3 bg-white text-gray-900 font-bold rounded-xl p-4 hover:bg-gray-100 transition-all mb-4">
-                                <svg class="w-5 h-5" viewBox="0 0 24 24">
-                                    <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
-                                    <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
-                                    <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
-                                    <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
-                                </svg>
-                                Acceder con Google
+                            <button onclick="window.location.href='portal.html'" class="w-full flex items-center justify-center gap-3 bg-cyan-500 hover:bg-cyan-400 text-obsidian-950 font-extrabold rounded-xl p-4 uppercase tracking-wide transition-all shadow-[0_0_20px_rgba(6,182,212,0.3)] mb-4">
+                                Inicia Sesión
                             </button>
                             
                             <button class="text-sm font-medium text-gray-500 hover:text-white transition mt-2" onclick="location.reload()">
@@ -295,9 +324,9 @@
                     </div>
                 </div>
 
-                <div class="flex justify-center lg:justify-end perspective-1000 reveal delay-200">
-                    <div class="relative w-[300px] h-[600px] bg-obsidian-900 rounded-[3rem] border-[8px] border-obsidian-800 shadow-2xl overflow-hidden transform rotate-y-[-5deg] rotate-x-[5deg] hover:rotate-0 transition-transform duration-500">
-                        <div class="absolute top-0 inset-x-0 h-7 bg-obsidian-800 rounded-b-3xl w-40 mx-auto z-30"></div>
+                <div class="flex justify-center lg:justify-end perspective-1000 reveal delay-200 w-full overflow-hidden">
+                    <div class="relative w-[280px] sm:w-[300px] h-[560px] sm:h-[600px] bg-obsidian-900 rounded-[2.5rem] sm:rounded-[3rem] border-[6px] sm:border-[8px] border-obsidian-800 shadow-2xl overflow-hidden transform rotate-y-[-5deg] rotate-x-[5deg] hover:rotate-0 transition-transform duration-500">
+                        <div class="absolute top-0 inset-x-0 h-6 sm:h-7 bg-obsidian-800 rounded-b-2xl sm:rounded-b-3xl w-32 sm:w-40 mx-auto z-30"></div>
 
                         <div class="absolute inset-0 flex flex-col bg-obsidian-950">
                             <!-- Elche Map Simulation -->
@@ -571,8 +600,7 @@
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8 reveal">
                 <div class="col-span-1 md:col-span-2">
                     <div class="flex items-center gap-2 mb-4">
-                        <svg class="w-6 h-6 text-cyan-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
-                        <span class="text-xl font-extrabold text-white tracking-tight">MyHero</span>
+                        <img src="./assets/img/logo.png" alt="MyHero Logo" class="h-10 w-auto">
                     </div>
                     <p class="text-sm text-gray-500 max-w-sm">Conectamos a personas con perfiles validados para brindar compañía estratégica y tranquilidad en cualquier gestión o traslado.</p>
                 </div>

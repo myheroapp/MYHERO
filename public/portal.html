@@ -23,8 +23,8 @@
 <body class="bg-obsidian-950 text-white min-h-screen flex items-center justify-center p-4">
     <div class="max-w-4xl w-full">
         <div class="text-center mb-12">
-            <div class="w-16 h-16 mx-auto rounded-2xl bg-gradient-to-br from-cyan-400 to-blue-600 flex items-center justify-center mb-6 shadow-[0_0_30px_rgba(6,182,212,0.5)]">
-                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+            <div class="mb-6 flex justify-center">
+                <img src="./assets/img/logo.png" alt="MyHero Logo" class="h-20 w-auto">
             </div>
             <h1 class="text-4xl font-extrabold mb-4">Simulador de Perfiles</h1>
             <p class="text-gray-400">Selecciona con qué perfil deseas entrar para probar el dashboard.</p>
@@ -153,7 +153,7 @@
         };
 
         // Redirigir según el rol del usuario
-        const routeUser = async (user) => {
+        const routeUser = async (user, mode) => {
             try {
                 const userDocRef = doc(db, 'users', user.uid);
                 const userDoc = await getDoc(userDocRef);
@@ -165,7 +165,16 @@
                     else if (role === 'hero') window.location.href = 'dashboard-hero.html';
                     else window.location.href = 'dashboard-ciudadano.html';
                 } else {
-                    // Si no existe, lo registramos con el rol seleccionado
+                    // Si no existe, comprobamos si estamos en Iniciar Sesión o Crear Cuenta
+                    if (mode === 'login') {
+                        // El usuario intentó INICIAR SESIÓN pero no tiene documento de usuario creado
+                        const { signOut } = await import('./assets/js/firebase.js');
+                        await signOut(auth);
+                        showError("No existe ninguna cuenta registrada con este correo. Por favor, ve a 'Crear Cuenta'.");
+                        return;
+                    }
+                    
+                    // Si estamos en modo Registro ('register'), creamos la cuenta
                     await setDoc(userDocRef, {
                         uid: user.uid,
                         email: user.email,
@@ -193,7 +202,7 @@
                 document.getElementById('errorMsg').classList.add('hidden');
                 // Si estamos en modo registro, la variable selectedRole ya tendrá el rol que hayan tocado
                 const result = await signInWithPopup(auth, googleProvider);
-                await routeUser(result.user);
+                await routeUser(result.user, currentMode);
             } catch (error) {
                 console.error(error);
                 if (error.code !== 'auth/popup-closed-by-user') {
@@ -215,10 +224,10 @@
                 
                 if (currentMode === 'register') {
                     const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-                    await routeUser(userCredential.user);
+                    await routeUser(userCredential.user, currentMode);
                 } else {
                     const userCredential = await signInWithEmailAndPassword(auth, email, password);
-                    await routeUser(userCredential.user);
+                    await routeUser(userCredential.user, currentMode);
                 }
             } catch (error) {
                 console.error(error);

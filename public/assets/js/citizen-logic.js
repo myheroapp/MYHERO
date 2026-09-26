@@ -121,12 +121,15 @@ function listenToMission(missionId) {
                 searchingState.innerHTML = `
                     <div class="bg-green-500/20 border border-green-500 p-4 rounded-xl mt-4">
                         <p class="text-green-400 font-extrabold mb-1">¡HERO ASIGNADO!</p>
-                        <p class="text-white text-sm">Tu Hero está en camino.</p>
+                        <p class="text-white text-sm mb-4">Tu Hero <strong>${data.heroName}</strong> ha aceptado.</p>
+                        <button onclick="window.openChat('${data.citizenId}_${data.heroId}', '${data.heroName}')" class="w-full bg-green-500 hover:bg-green-400 text-obsidian-950 font-extrabold py-2 rounded-xl transition-all shadow-[0_0_15px_rgba(34,197,94,0.3)]">
+                            Abrir Chat
+                        </button>
+                        <button onclick="deleteDoc(doc(db, 'misiones', '${missionId}')).then(() => resetUI())" class="mt-4 text-xs text-red-400 hover:text-red-300 underline block text-center w-full">Finalizar / Borrar</button>
                     </div>
                 `;
             }
         } else {
-            // El documento fue borrado
             resetUI();
         }
     });
@@ -136,13 +139,15 @@ function listenToMission(missionId) {
 function checkActiveMissions() {
     const q = query(collection(db, "misiones"), where("citizenId", "==", currentUser.uid));
     onSnapshot(q, (snapshot) => {
-        // Filtrar localmente para evitar error de índice compuesto en Firebase
-        const doc = snapshot.docs.find(d => d.data().status === 'buscando');
-        if (doc) {
-            currentMissionId = doc.id;
+        // Find if there is any active mission (buscando or asignada)
+        const docSnap = snapshot.docs.find(d => d.data().status === 'buscando' || d.data().status === 'asignada');
+        if (docSnap) {
+            currentMissionId = docSnap.id;
             btnSolicitarMision.classList.add('hidden');
             searchingState.classList.remove('hidden');
             listenToMission(currentMissionId);
+        } else {
+            resetUI();
         }
     }, (error) => {
         console.error("Error en checkActiveMissions:", error);
@@ -249,17 +254,168 @@ function renderCatalog(heroes) {
     heroCatalogGrid.innerHTML = html;
 }
 
-// Búsqueda en tiempo real
-if (searchHeroInput) {
-    searchHeroInput.addEventListener('input', (e) => {
-        const term = e.target.value.toLowerCase();
-        const filtered = allHeroes.filter(h => h.name.toLowerCase().includes(term));
-        renderCatalog(filtered);
+// Filtros combinados
+const searchLocationInput = document.getElementById('searchLocationInput');
+const btnSortGPS = document.getElementById('btnSortGPS');
+
+function applyFilters() {
+    let filtered = [...allHeroes];
+    
+    const nameTerm = searchHeroInput ? searchHeroInput.value.toLowerCase() : '';
+    if(nameTerm) {
+        filtered = filtered.filter(h => (h.name || '').toLowerCase().includes(nameTerm));
+    }
+    
+    const locTerm = searchLocationInput ? searchLocationInput.value.toLowerCase() : '';
+    if(locTerm) {
+        filtered = filtered.filter(h => (h.locationString || '').toLowerCase().includes(locTerm));
+    }
+    
+    renderCatalog(filtered);
+}
+
+if (searchHeroInput) searchHeroInput.addEventListener('input', applyFilters);
+if (searchLocationInput) searchLocationInput.addEventListener('input', applyFilters);
+
+function getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2) {
+  const R = 6371; 
+  const dLat = (lat2-lat1) * (Math.PI/180);
+  const dLon = (lon2-lon1) * (Math.PI/180); 
+  const a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+            Math.cos(lat1 * (Math.PI/180)) * Math.cos(lat2 * (Math.PI/180)) * 
+            Math.sin(dLon/2) * Math.sin(dLon/2); 
+  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+  return R * c; 
+}
+
+if (btnSortGPS) {
+    btnSortGPS.addEventListener('click', () => {
+        if ("geolocation" in navigator) {
+            btnSortGPS.textContent = "Ubicando...";
+            navigator.geolocation.getCurrentPosition(
+                (position) => {
+                    const myLat = position.coords.latitude;
+                    const myLng = position.coords.longitude;
+                    
+                    let filtered = [...allHeroes];
+                    filtered.forEach(h => {
+                        if(h.lat && h.lng) h.distance = getDistanceFromLatLonInKm(myLat, myLng, h.lat, h.lng);
+                        else h.distance = 999999;
+                    });
+                    
+                    filtered.sort((a,b) => a.distance - b.distance);
+                    renderCatalog(filtered);
+                    
+                    btnSortGPS.textContent = "Ordenado por cercanía";
+                    btnSortGPS.classList.add('text-green-400');
+                    btnSortGPS.classList.remove('text-cyan-400');
+                },
+                (error) => {
+                    alert("No se pudo obtener la ubicación GPS.");
+                    btnSortGPS.innerHTML = `<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path></svg> Cerca de mí`;
+                }
+            );
+        }
     });
 }
 
-// Función para solicitar un hero específico
+// Lógica del Chat Directo
+const chatModal = document.getElementById('chatModal');
+const chatTitle = document.getElementById('chatTitle');
+const btnColapseChat = document.getElementById('btnColapseChat');
+const chatMessages = document.getElementById('chatMessages');
+const chatInput = document.getElementById('chatInput');
+const btnSendMsg = document.getElementById('btnSendMsg');
+
+let currentChatId = null;
+let unsubscribeChat = null;
+
 window.requestSpecificHero = async (heroId, heroName) => {
-    alert(`¡Solicitud directa enviada a ${heroName}!\n\n(Pronto esto abrirá un chat directo con el Hero).`);
-    // Aquí a futuro crearemos un documento en una colección de "chats" o "misiones_directas"
+    if(!currentUser) return;
+    
+    const confirmacion = confirm(`¿Quieres enviar una solicitud directa a ${heroName}?`);
+    if(!confirmacion) return;
+
+    try {
+        // Creamos una misión directa
+        const newMisionRef = await addDoc(collection(db, "misiones"), {
+            citizenId: currentUser.uid,
+            citizenName: userNameDisplay ? userNameDisplay.textContent : 'Ciudadano',
+            beneficiary: 'Familiar / Propio', // Hardcoded por ahora
+            type: 'Acompañamiento (Solicitud Directa)',
+            level: 'Nivel 1 (Básico)', // O podríamos leerlo del perfil
+            status: 'buscando',
+            targetHeroId: heroId, // ESTO ES CLAVE: Indica que es directa para él
+            createdAt: new Date().toISOString()
+        });
+        
+        currentMissionId = newMisionRef.id;
+        alert(`¡Solicitud enviada a ${heroName}! Esperando a que acepte...`);
+        
+    } catch(e) {
+        console.error(e);
+        alert("Error al enviar la solicitud.");
+    }
 };
+
+// Global function to open chat (will be called when a mission is accepted)
+window.openChat = async (chatId, otherName) => {
+    currentChatId = chatId;
+    chatTitle.textContent = `Chat con ${otherName}`;
+    chatModal.classList.remove('hidden');
+    chatModal.classList.add('flex');
+    listenToChat(currentChatId);
+};
+
+if(btnColapseChat) {
+    btnColapseChat.addEventListener('click', () => {
+        chatModal.classList.add('hidden');
+        chatModal.classList.remove('flex');
+        if(unsubscribeChat) unsubscribeChat();
+    });
+}
+
+function listenToChat(chatId) {
+    if(unsubscribeChat) unsubscribeChat();
+    
+    const q = query(collection(db, "chats", chatId, "messages"));
+    unsubscribeChat = onSnapshot(q, (snapshot) => {
+        const msgs = [];
+        snapshot.forEach(doc => msgs.push(doc.data()));
+        
+        // Sort por fecha localmente
+        msgs.sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
+        
+        chatMessages.innerHTML = '';
+        msgs.forEach(m => {
+            const isMe = m.senderId === currentUser.uid;
+            const bubble = document.createElement('div');
+            bubble.className = `max-w-[80%] rounded-xl p-3 text-sm flex flex-col ${isMe ? 'bg-cyan-500 text-obsidian-950 self-end ml-auto rounded-tr-sm' : 'bg-obsidian-800 text-white self-start mr-auto rounded-tl-sm'}`;
+            
+            const txt = document.createElement('span');
+            txt.textContent = m.text;
+            bubble.appendChild(txt);
+            
+            chatMessages.appendChild(bubble);
+        });
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    });
+}
+
+if(btnSendMsg && chatInput) {
+    const sendFn = async () => {
+        const text = chatInput.value.trim();
+        if(!text || !currentChatId) return;
+        
+        chatInput.value = '';
+        await addDoc(collection(db, "chats", currentChatId, "messages"), {
+            senderId: currentUser.uid,
+            text: text,
+            timestamp: new Date().toISOString()
+        });
+    };
+    btnSendMsg.addEventListener('click', sendFn);
+    chatInput.addEventListener('keypress', (e) => {
+        if(e.key === 'Enter') sendFn();
+    });
+}
