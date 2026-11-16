@@ -1,42 +1,46 @@
-/* ===== ESTILOS BASE Y VARIABLES CORPORATIVAS (UNICORN SECURITY EDITION) ===== */
+/* ===== ESTILOS BASE: OPCIÓN 1 - CLARIDAD INSTITUCIONAL EUROPEA (ESTILO OURBOND / BBVA) ===== */
 body { 
-    background-color: #070C16; 
-    color: #F8FAFC; 
+    background-color: #FFFFFF; 
+    color: #0F172A; 
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
 }
 
-/* ===== UTILIDADES COMPONENTES EJECUTIVOS ===== */
+/* ===== NAVEGACIÓN Y CABECERA INSTITUCIONAL ===== */
 .glass-nav {
-    background: rgba(7, 12, 22, 0.88);
+    background: rgba(11, 21, 40, 0.95);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    border-bottom: 1px solid rgba(212, 168, 83, 0.14);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.glass-card {
-    background: linear-gradient(145deg, rgba(17, 27, 46, 0.88) 0%, rgba(11, 18, 32, 0.94) 100%);
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
-    border: 1px solid rgba(255, 255, 255, 0.09);
+/* Tarjeta del Terminal en el Hero */
+.hero-terminal-card {
+    background: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    box-shadow: 0 25px 60px -15px rgba(11, 21, 40, 0.5);
 }
 
-.executive-card {
-    background: linear-gradient(180deg, rgba(20, 31, 53, 0.75) 0%, rgba(12, 20, 36, 0.92) 100%);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
-}
-
-.executive-card:hover {
-    border-color: rgba(212, 168, 83, 0.35);
-}
-
-.bg-tech-grid {
+/* Fondo Hero Azul Marino Real (Menos oscuro, más institucional como OurBond) */
+.bg-bond-hero {
+    background-color: #0B1528;
     background-image: 
-        radial-gradient(circle at 20% 20%, rgba(37, 99, 235, 0.12) 0%, transparent 45%),
-        radial-gradient(circle at 80% 75%, rgba(212, 168, 83, 0.08) 0%, transparent 45%),
-        linear-gradient(to right, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
-    background-size: 100% 100%, 100% 100%, 56px 56px, 56px 56px;
+        radial-gradient(circle at 15% 25%, rgba(37, 99, 235, 0.28) 0%, transparent 45%),
+        radial-gradient(circle at 85% 70%, rgba(16, 185, 129, 0.12) 0%, transparent 45%),
+        linear-gradient(180deg, #0B1528 0%, #10203D 100%);
+}
+
+/* Tarjetas luminosas para secciones blancas/grises */
+.light-card {
+    background: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05);
+    transition: all 0.3s ease;
+}
+
+.light-card:hover {
+    border-color: #93C5FD;
+    box-shadow: 0 16px 35px -5px rgba(37, 99, 235, 0.1);
+    transform: translateY(-3px);
 }
 
 /* ===== ANIMACIONES DEL FORMULARIO ===== */
@@ -56,14 +60,14 @@ body {
     to { opacity: 1; transform: scale(1) translateY(0); }
 }
 
-/* Estilos para inputs seleccionados en el terminal ejecutivo */
+/* Estilos para inputs seleccionados en el terminal ejecutivo luminoso */
 .option-card input:checked + div {
-    border-color: #D4A853;
-    background: linear-gradient(135deg, rgba(212, 168, 83, 0.16) 0%, rgba(37, 99, 235, 0.12) 100%);
-    box-shadow: 0 8px 24px rgba(212, 168, 83, 0.18), inset 0 0 0 1px rgba(212, 168, 83, 0.4);
+    border-color: #1D4ED8;
+    background-color: #EFF6FF;
+    box-shadow: 0 4px 14px rgba(29, 78, 216, 0.14), inset 0 0 0 1px #1D4ED8;
 }
-.option-card input:checked + div .icon-container { 
-    color: #D4A853; 
+.option-card input:checked + div .opt-title {
+    color: #1E3A8A;
 }
 
 /* ===== ANIMACIONES SCROLL (REVEAL) ===== */
