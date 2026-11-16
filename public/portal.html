@@ -13,7 +13,7 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MyHero España | Portal de Acceso Seguro</title>
+    <title>MyHero España | Acceso y Registro Gratuito</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
     <script>
@@ -23,48 +23,45 @@
                     fontFamily: {
                         sans: ['"Inter"', '"Plus Jakarta Sans"', 'sans-serif'],
                         display: ['"Plus Jakarta Sans"', 'sans-serif'],
-                    },
-                    colors: {
-                        obsidian: { 950: '#070C16', 900: '#0E1729', 800: '#18243D' },
-                        sovereign: { 300: '#F3DC9B', 400: '#E4BE6A', 500: '#D4A853', 600: '#B68934' },
-                        royal: { 400: '#60A5FA', 500: '#3B82F6', 600: '#2563EB' }
                     }
                 }
             }
         }
     </script>
 </head>
-<body class="bg-obsidian-950 text-white min-h-screen flex items-center justify-center p-4">
-    <div class="max-w-4xl w-full">
-        <div class="text-center mb-10">
-            <div class="mb-5 flex justify-center">
-                <a href="index.html">
-                    <img src="./assets/img/logo.png" alt="MyHero Logo" class="h-16 sm:h-20 w-auto">
+<body class="bg-[#FAFAF9] text-slate-900 min-h-screen flex items-center justify-center p-4">
+    <div class="max-w-4xl w-full py-6">
+        <div class="text-center mb-8">
+            <div class="mb-4 flex justify-center">
+                <a href="index.html" class="inline-flex items-center gap-3">
+                    <div class="bg-slate-900 p-2.5 rounded-2xl shadow">
+                        <img src="./assets/img/logo.png" alt="MyHero Logo" class="h-11 w-auto">
+                    </div>
                 </a>
             </div>
-            <span class="inline-block text-xs font-bold uppercase tracking-widest text-sovereign-400 mb-2">Área Privada Encriptada</span>
-            <h1 class="font-display text-3xl sm:text-4xl font-extrabold mb-3">Portal de Acceso · MyHero España</h1>
-            <p class="text-slate-300 text-base">Accede como cliente titular o gestiona tus servicios como profesional acreditado.</p>
+            <span class="inline-block px-3.5 py-1 rounded-full bg-teal-50 border border-teal-200 text-teal-800 text-xs font-extrabold uppercase tracking-wider mb-2">Comunidad Verificada en España</span>
+            <h1 class="font-display text-3xl sm:text-4xl font-extrabold text-slate-900 mb-2">Bienvenido a MyHero</h1>
+            <p class="text-slate-600 text-base">Contacta con acompañantes verificados o postúlate a misiones en tu ciudad.</p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 bg-obsidian-900 border border-white/15 rounded-3xl p-8 sm:p-10 relative overflow-hidden shadow-[0_25px_60px_rgba(0,0,0,0.65)]">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 bg-white border border-stone-200 rounded-3xl p-8 sm:p-10 relative overflow-hidden shadow-xl">
             <!-- Columna Izquierda: Mensaje -->
-            <div class="flex flex-col justify-center border-b md:border-b-0 md:border-r border-white/10 pb-8 md:pb-0 md:pr-8">
-                <span class="text-xs font-bold uppercase tracking-wider text-sovereign-400 mb-2">Seguridad Preventiva</span>
-                <h2 class="font-display text-2xl sm:text-3xl font-extrabold mb-4 leading-tight">Tu tranquilidad y la de tu familia, en manos expertas.</h2>
-                <p class="text-slate-300 text-sm sm:text-base mb-8 leading-relaxed">Accede al catálogo nacional de profesionales verificados con antecedentes penales auditados o inscríbete para superar las 4 fases de admisión.</p>
+            <div class="flex flex-col justify-center border-b md:border-b-0 md:border-r border-stone-200 pb-8 md:pb-0 md:pr-8">
+                <span class="text-xs font-extrabold uppercase tracking-wider text-teal-700 mb-2">Confianza Familiar</span>
+                <h2 class="font-display text-2xl sm:text-3xl font-extrabold text-slate-900 mb-4 leading-tight">Tu tranquilidad y la de los tuyos, siempre primero.</h2>
+                <p class="text-slate-600 text-sm sm:text-base mb-8 leading-relaxed">Al crear tu cuenta gratuita podrás ver la ubicación exacta de los perfiles, enviar mensajes directos para acordar horarios o inscribirte como Hero.</p>
                 <div class="space-y-4">
-                    <div class="flex items-center gap-3.5 text-sm font-semibold text-slate-200">
-                        <div class="w-8 h-8 rounded-full bg-sovereign-500/15 flex items-center justify-center text-sovereign-400 border border-sovereign-500/30">✓</div>
+                    <div class="flex items-center gap-3.5 text-sm font-semibold text-slate-800">
+                        <div class="w-8 h-8 rounded-full bg-teal-50 flex items-center justify-center text-teal-700 border border-teal-200 font-bold">✓</div>
                         Perfiles con Certificado Oficial de Penales
                     </div>
-                    <div class="flex items-center gap-3.5 text-sm font-semibold text-slate-200">
-                        <div class="w-8 h-8 rounded-full bg-emerald-500/15 flex items-center justify-center text-emerald-400 border border-emerald-500/30">✓</div>
-                        Trazabilidad GPS Red Familiar™ en tiempo real
+                    <div class="flex items-center gap-3.5 text-sm font-semibold text-slate-800">
+                        <div class="w-8 h-8 rounded-full bg-emerald-50 flex items-center justify-center text-emerald-700 border border-emerald-200 font-bold">✓</div>
+                        Trazabilidad GPS Red Familiar™ en vivo
                     </div>
-                    <div class="flex items-center gap-3.5 text-sm font-semibold text-slate-200">
-                        <div class="w-8 h-8 rounded-full bg-royal-500/15 flex items-center justify-center text-royal-400 border border-royal-500/30">✓</div>
-                        Sin pagos por adelantado · Abono por Bizum o efectivo
+                    <div class="flex items-center gap-3.5 text-sm font-semibold text-slate-800">
+                        <div class="w-8 h-8 rounded-full bg-blue-50 flex items-center justify-center text-blue-700 border border-blue-200 font-bold">✓</div>
+                        Pago directo por Bizum o efectivo al terminar
                     </div>
                 </div>
             </div>
@@ -73,56 +70,56 @@
             <div class="flex flex-col justify-center">
                 
                 <!-- Opciones de Tab -->
-                <div class="flex bg-obsidian-950 p-1.5 rounded-xl mb-6 border border-white/10">
-                    <button id="tabLogin" class="flex-1 py-2.5 text-sm font-bold bg-obsidian-800 text-white rounded-lg transition-all" onclick="switchAuthTab('login')">Iniciar Sesión</button>
-                    <button id="tabRegister" class="flex-1 py-2.5 text-sm font-bold text-slate-400 hover:text-white rounded-lg transition-all" onclick="switchAuthTab('register')">Crear Cuenta</button>
+                <div class="flex bg-stone-100 p-1.5 rounded-full mb-6 border border-stone-200">
+                    <button id="tabLogin" class="flex-1 py-2.5 text-sm font-extrabold bg-teal-700 text-white rounded-full shadow-sm transition-all" onclick="switchAuthTab('login')">Iniciar Sesión</button>
+                    <button id="tabRegister" class="flex-1 py-2.5 text-sm font-bold text-slate-600 hover:text-slate-900 rounded-full transition-all" onclick="switchAuthTab('register')">Regístrate Gratis</button>
                 </div>
 
                 <!-- Selector de Rol (Solo visible en Registro) -->
-                <div id="roleSelector" class="hidden space-y-2 mb-6 p-3.5 bg-obsidian-950 rounded-xl border border-sovereign-500/35">
-                    <label class="block text-xs font-bold text-sovereign-300 mb-1.5 uppercase tracking-wider text-center">Paso 1: Selecciona tu modalidad</label>
+                <div id="roleSelector" class="hidden space-y-2 mb-6 p-4 bg-[#E6F4F1]/60 rounded-2xl border border-teal-200">
+                    <label class="block text-xs font-extrabold text-teal-900 mb-2 uppercase tracking-wider text-center">Paso 1: ¿Qué deseas hacer en MyHero?</label>
                     <div class="grid grid-cols-2 gap-2.5">
-                        <button type="button" id="btnRoleCiudadano" onclick="selectRole('ciudadano')" class="bg-sovereign-500/20 border-2 border-sovereign-500 text-sovereign-300 py-3 rounded-xl text-sm font-bold transition-all">Cliente / Familia</button>
-                        <button type="button" id="btnRoleHero" onclick="selectRole('hero')" class="bg-obsidian-900 border border-obsidian-800 text-slate-400 py-3 rounded-xl text-sm font-bold transition-all hover:bg-obsidian-800">Profesional Hero</button>
+                        <button type="button" id="btnRoleCiudadano" onclick="selectRole('ciudadano')" class="bg-teal-700 border-2 border-teal-700 text-white py-3 rounded-xl text-sm font-extrabold transition-all shadow-sm">Buscar un Hero</button>
+                        <button type="button" id="btnRoleHero" onclick="selectRole('hero')" class="bg-white border border-stone-300 text-slate-700 py-3 rounded-xl text-sm font-bold transition-all hover:bg-stone-50">Trabajar como Hero</button>
                     </div>
                 </div>
 
                 <!-- Botón Google -->
-                <button id="btnGoogle" class="w-full bg-white text-obsidian-950 hover:bg-slate-100 font-extrabold py-3.5 px-4 rounded-xl flex items-center justify-center gap-3 transition-colors mb-6 shadow-lg text-sm">
-                    <svg class="w-5 h-5" viewBox="0 0 24 24"><path fill="currentColor" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
-                    Acceder con cuenta de Google
+                <button id="btnGoogle" class="w-full bg-white text-slate-900 hover:bg-stone-50 border-2 border-stone-300 font-extrabold py-3.5 px-4 rounded-full flex items-center justify-center gap-3 transition-colors mb-6 shadow-sm text-sm">
+                    <svg class="w-5 h-5" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+                    Continuar con Google
                 </button>
 
                 <div class="relative flex items-center justify-center mb-6">
-                    <div class="border-t border-white/10 w-full"></div>
-                    <span class="bg-obsidian-900 px-3 text-xs text-slate-400 font-bold uppercase absolute">O con tu correo</span>
+                    <div class="border-t border-stone-200 w-full"></div>
+                    <span class="bg-white px-3 text-xs text-slate-400 font-bold uppercase absolute">O con tu email</span>
                 </div>
 
                 <!-- Formulario -->
                 <form id="authForm" class="space-y-4">
 
                     <div>
-                        <label class="block text-xs font-bold text-slate-300 mb-1.5">Correo Electrónico</label>
-                        <input type="email" id="emailInput" class="w-full bg-obsidian-950 border border-white/15 text-white rounded-xl px-4 py-3.5 focus:outline-none focus:border-sovereign-400 transition-colors text-sm" placeholder="nombre@correo.es">
+                        <label class="block text-xs font-bold text-slate-700 mb-1.5">Correo Electrónico</label>
+                        <input type="email" id="emailInput" class="w-full bg-stone-50 border border-stone-300 text-slate-900 rounded-xl px-4 py-3.5 focus:outline-none focus:border-teal-700 transition-colors text-sm" placeholder="nombre@correo.es">
                     </div>
                     <div>
-                        <label class="block text-xs font-bold text-slate-300 mb-1.5">Contraseña</label>
-                        <input type="password" id="passwordInput" class="w-full bg-obsidian-950 border border-white/15 text-white rounded-xl px-4 py-3.5 focus:outline-none focus:border-sovereign-400 transition-colors text-sm" placeholder="••••••••">
+                        <label class="block text-xs font-bold text-slate-700 mb-1.5">Contraseña</label>
+                        <input type="password" id="passwordInput" class="w-full bg-stone-50 border border-stone-300 text-slate-900 rounded-xl px-4 py-3.5 focus:outline-none focus:border-teal-700 transition-colors text-sm" placeholder="••••••••">
                     </div>
                     
-                    <button type="submit" id="btnSubmit" class="w-full bg-gradient-to-r from-sovereign-500 to-sovereign-600 hover:from-sovereign-400 hover:to-sovereign-500 text-obsidian-950 font-extrabold py-3.5 px-4 rounded-xl transition-all shadow-lg shadow-sovereign-500/20 mt-2 text-sm uppercase tracking-wider">
+                    <button type="submit" id="btnSubmit" class="w-full bg-teal-700 hover:bg-teal-800 text-white font-extrabold py-4 px-4 rounded-full transition-all shadow-lg shadow-teal-700/20 mt-2 text-sm uppercase tracking-wider">
                         Iniciar Sesión
                     </button>
                 </form>
 
                 <!-- Mensajes de Error -->
-                <div id="errorMsg" class="mt-4 text-red-400 text-xs font-bold hidden text-center bg-red-500/10 py-3 px-2 rounded-lg border border-red-500/20"></div>
+                <div id="errorMsg" class="mt-4 text-red-700 text-xs font-bold hidden text-center bg-red-50 py-3 px-3 rounded-xl border border-red-200"></div>
 
             </div>
         </div>
         
         <div class="text-center mt-8">
-            <a href="index.html" class="text-slate-400 hover:text-sovereign-400 transition-colors text-sm font-bold">← Volver a la página principal de MyHero</a>
+            <a href="index.html" class="text-slate-600 hover:text-teal-700 transition-colors text-sm font-bold">← Volver al buscador público de MyHero</a>
         </div>
     </div>
 
@@ -139,11 +136,11 @@
             const btnC = document.getElementById('btnRoleCiudadano');
             const btnH = document.getElementById('btnRoleHero');
             if (role === 'ciudadano') {
-                btnC.className = 'bg-sovereign-500/20 border-2 border-sovereign-500 text-sovereign-300 py-3 rounded-xl text-sm font-bold transition-all';
-                btnH.className = 'bg-obsidian-900 border border-obsidian-800 text-slate-400 py-3 rounded-xl text-sm font-bold transition-all hover:bg-obsidian-800';
+                btnC.className = 'bg-teal-700 border-2 border-teal-700 text-white py-3 rounded-xl text-sm font-extrabold transition-all shadow-sm';
+                btnH.className = 'bg-white border border-stone-300 text-slate-700 py-3 rounded-xl text-sm font-bold transition-all hover:bg-stone-50';
             } else {
-                btnH.className = 'bg-sovereign-500/20 border-2 border-sovereign-500 text-sovereign-300 py-3 rounded-xl text-sm font-bold transition-all';
-                btnC.className = 'bg-obsidian-900 border border-obsidian-800 text-slate-400 py-3 rounded-xl text-sm font-bold transition-all hover:bg-obsidian-800';
+                btnH.className = 'bg-teal-700 border-2 border-teal-700 text-white py-3 rounded-xl text-sm font-extrabold transition-all shadow-sm';
+                btnC.className = 'bg-white border border-stone-300 text-slate-700 py-3 rounded-xl text-sm font-bold transition-all hover:bg-stone-50';
             }
         };
 
@@ -156,14 +153,14 @@
             const roleSelector = document.getElementById('roleSelector');
 
             if (mode === 'login') {
-                tabLogin.className = 'flex-1 py-2.5 text-sm font-bold bg-obsidian-800 text-white rounded-lg transition-all';
-                tabRegister.className = 'flex-1 py-2.5 text-sm font-bold text-slate-400 hover:text-white rounded-lg transition-all';
+                tabLogin.className = 'flex-1 py-2.5 text-sm font-extrabold bg-teal-700 text-white rounded-full shadow-sm transition-all';
+                tabRegister.className = 'flex-1 py-2.5 text-sm font-bold text-slate-600 hover:text-slate-900 rounded-full transition-all';
                 btnSubmit.textContent = 'Iniciar Sesión';
                 roleSelector.classList.add('hidden');
             } else {
-                tabRegister.className = 'flex-1 py-2.5 text-sm font-bold bg-obsidian-800 text-white rounded-lg transition-all';
-                tabLogin.className = 'flex-1 py-2.5 text-sm font-bold text-slate-400 hover:text-white rounded-lg transition-all';
-                btnSubmit.textContent = 'Crear Cuenta Segura';
+                tabRegister.className = 'flex-1 py-2.5 text-sm font-extrabold bg-teal-700 text-white rounded-full shadow-sm transition-all';
+                tabLogin.className = 'flex-1 py-2.5 text-sm font-bold text-slate-600 hover:text-slate-900 rounded-full transition-all';
+                btnSubmit.textContent = 'Crear Cuenta Gratis';
                 roleSelector.classList.remove('hidden');
             }
         };
@@ -189,7 +186,7 @@
                     if (mode === 'login') {
                         const { signOut } = await import('./assets/js/firebase.js');
                         await signOut(auth);
-                        showError("No existe ninguna cuenta registrada con este correo. Por favor, selecciona 'Crear Cuenta'.");
+                        showError("No existe ninguna cuenta registrada con este correo. Por favor, pulsa en 'Regístrate Gratis'.");
                         return;
                     }
                     

@@ -14,10 +14,10 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MyHero España | Red Nacional de Acompañamiento Preventivo y Seguridad</title>
+    <title>MyHero España | Encuentra Acompañantes y Heroes Verificados en tu Ciudad</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts: Plus Jakarta Sans + Inter para máxima legibilidad ejecutiva (+30 años) -->
+    <!-- Google Fonts: Plus Jakarta Sans + Inter -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap"
         rel="stylesheet">
     <!-- Estilos Personalizados -->
@@ -32,42 +32,15 @@
                         display: ['"Plus Jakarta Sans"', 'sans-serif'],
                     },
                     colors: {
-                        obsidian: {
-                            950: '#070C16',
-                            900: '#0E1729',
-                            800: '#18243D',
-                            700: '#243454',
+                        ivory: {
+                            50: '#FAFAF9',
+                            100: '#F5F5F4',
+                            200: '#E7E5E4',
                         },
-                        sovereign: {
-                            300: '#F3DC9B',
-                            400: '#E4BE6A',
-                            500: '#D4A853',
-                            600: '#B68934',
-                        },
-                        royal: {
-                            400: '#60A5FA',
-                            500: '#3B82F6',
-                            600: '#2563EB',
-                            700: '#1D4ED8',
-                        }
-                    },
-                    animation: {
-                        'pulse-glow': 'pulseGlow 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                        'radar-spin': 'radarSpin 3.5s linear infinite',
-                        'float': 'float 6s ease-in-out infinite',
-                    },
-                    keyframes: {
-                        pulseGlow: {
-                            '0%, 100%': { opacity: 0.25, transform: 'scale(1)' },
-                            '50%': { opacity: 0.5, transform: 'scale(1.02)' },
-                        },
-                        radarSpin: {
-                            'from': { transform: 'rotate(0deg)' },
-                            'to': { transform: 'rotate(360deg)' },
-                        },
-                        float: {
-                            '0%, 100%': { transform: 'translateY(0)' },
-                            '50%': { transform: 'translateY(-8px)' },
+                        petrol: {
+                            800: '#1E3A8A',
+                            900: '#172554',
+                            950: '#0F172A',
                         }
                     }
                 }
@@ -76,70 +49,62 @@
     </script>
 </head>
 
-<body class="antialiased selection:bg-sovereign-500 selection:text-obsidian-950 overflow-x-hidden">
+<body class="antialiased selection:bg-teal-700 selection:text-white overflow-x-hidden bg-[#FAFAF9] text-slate-900">
 
-    <!-- BARRA INSTITUCIONAL SUPERIOR (UNICORN TRUST BAR) -->
-    <div class="bg-[#040810] border-b border-white/10 text-xs text-slate-300 py-2.5 px-4 relative z-50">
-        <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-2">
-            <div class="flex items-center gap-2.5">
-                <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 font-semibold text-[11px] uppercase tracking-wider">
-                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-                    Red Activa 24/7
-                </span>
-                <span class="font-medium text-slate-200">Protección cívica y acompañamiento presencial certificado en España</span>
-            </div>
-            <div class="hidden lg:flex items-center gap-6 text-slate-400 font-medium">
-                <span class="flex items-center gap-1.5">
-                    <svg class="w-3.5 h-3.5 text-sovereign-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
-                    Certificado Oficial de Penales Verificado
-                </span>
-                <span class="flex items-center gap-1.5">
-                    <svg class="w-3.5 h-3.5 text-sovereign-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"></path></svg>
-                    Trazabilidad GPS Red Familiar™
-                </span>
-                <span class="text-slate-300 font-semibold">Admisión estricta: solo el 12% supera las 4 fases</span>
-            </div>
-        </div>
-    </div>
-
-    <!-- NAVEGACIÓN CORPORATIVA -->
-    <nav class="glass-nav sticky w-full top-0 z-50 transition-all duration-300">
+    <!-- ===================================================================== -->
+    <!-- CABECERA BLANCA LIMPIA ESTILO SITLY CON INTERRUPTOR DUAL DE ROL       -->
+    <!-- ===================================================================== -->
+    <nav class="sitly-nav sticky w-full top-0 z-50 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20">
-                <!-- Logo + Descriptor -->
-                <a href="#" class="flex items-center gap-3.5 cursor-pointer group">
-                    <img src="./assets/img/logo.png" alt="MyHero Logo"
-                        class="h-12 md:h-14 w-auto transition-transform group-hover:scale-105">
-                    <div class="hidden sm:block border-l border-white/15 pl-3.5">
-                        <span class="block text-xs font-bold uppercase tracking-widest text-sovereign-400">MyHero España</span>
-                        <span class="block text-[11px] text-slate-400 font-medium">Seguridad Preventiva &amp; Compañía</span>
-                    </div>
-                </a>
+            <div class="flex justify-between items-center h-20 gap-4">
 
-                <!-- Desktop Menu -->
-                <div class="hidden lg:flex items-center space-x-7">
-                    <a href="#contexto"
-                        class="text-sm font-semibold text-slate-200 hover:text-sovereign-400 transition-colors">Seguridad en España</a>
-                    <a href="#como-funciona"
-                        class="text-sm font-semibold text-slate-200 hover:text-sovereign-400 transition-colors">Cómo Funciona</a>
-                    <a href="#niveles"
-                        class="text-sm font-semibold text-slate-200 hover:text-sovereign-400 transition-colors">Niveles de Protección</a>
-                    <a href="#testimonios"
-                        class="text-sm font-semibold text-slate-200 hover:text-sovereign-400 transition-colors">Casos Reales</a>
-                    <a href="#faq"
-                        class="text-sm font-semibold text-slate-200 hover:text-sovereign-400 transition-colors">Preguntas Frecuentes</a>
-                    <div class="h-5 w-px bg-white/15"></div>
+                <!-- Logo + Interruptor Simétrico ("Buscar:") -->
+                <div class="flex items-center gap-6">
+                    <a href="#" onclick="closeProfileDetail(false)" class="flex items-center gap-3 cursor-pointer group shrink-0">
+                        <div class="bg-slate-900 p-2 rounded-2xl shadow-sm">
+                            <img src="./assets/img/logo.png" alt="MyHero Logo" class="h-9 sm:h-10 w-auto">
+                        </div>
+                        <div class="hidden sm:block">
+                            <span class="font-display font-extrabold text-xl tracking-tight text-slate-900 block leading-none">MyHero</span>
+                            <span class="text-[11px] font-bold text-teal-700 uppercase tracking-wider">España</span>
+                        </div>
+                    </a>
+
+                    <!-- Interruptor estilo Sitly: Buscar un Hero vs Trabajo como Hero -->
+                    <div class="hidden md:flex items-center bg-stone-100 p-1 rounded-full border border-stone-200">
+                        <span class="text-xs font-bold text-slate-500 pl-3 pr-2">Buscar:</span>
+                        <button id="nav-tab-citizen" type="button" onclick="switchAppMode('citizen')"
+                            class="px-4 py-2 rounded-full text-sm font-extrabold bg-teal-700 text-white shadow-sm transition-all">
+                            Un Hero (Acompañante)
+                        </button>
+                        <button id="nav-tab-worker" type="button" onclick="switchAppMode('worker')"
+                            class="px-4 py-2 rounded-full text-sm font-bold text-slate-600 hover:text-slate-900 transition-all">
+                            Trabajo como Hero
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Enlaces + Botones de Acceso -->
+                <div class="hidden lg:flex items-center gap-6">
+                    <a href="#catalogo-publico" onclick="closeProfileDetail(false)" class="text-sm font-semibold text-slate-600 hover:text-teal-700 transition">Perfiles</a>
+                    <a href="#niveles" onclick="closeProfileDetail(false)" class="text-sm font-semibold text-slate-600 hover:text-teal-700 transition">Niveles</a>
+                    <a href="#ciudades" onclick="closeProfileDetail(false)" class="text-sm font-semibold text-slate-600 hover:text-teal-700 transition">Ciudades</a>
+                    <a href="#faq" onclick="closeProfileDetail(false)" class="text-sm font-semibold text-slate-600 hover:text-teal-700 transition">Preguntas frecuentes</a>
+                    <div class="h-5 w-px bg-stone-200"></div>
                     <a href="portal.html"
-                        class="text-sm font-semibold text-white hover:text-sovereign-400 transition-colors">Área Clientes</a>
+                        class="px-5 py-2.5 rounded-full border-2 border-slate-300 hover:border-slate-900 text-slate-800 font-bold text-sm transition-all">
+                        Acceder
+                    </a>
                     <a href="portal.html"
-                        class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-sovereign-500 to-sovereign-600 hover:from-sovereign-400 hover:to-sovereign-500 text-obsidian-950 font-bold text-sm shadow-lg shadow-sovereign-500/20 transition-all">
-                        Solicitar Acompañante
+                        class="px-5 py-2.5 rounded-full bg-teal-700 hover:bg-teal-800 text-white font-extrabold text-sm shadow-md shadow-teal-700/20 transition-all">
+                        Regístrate gratis
                     </a>
                 </div>
 
-                <!-- Mobile Menu Button -->
-                <div class="lg:hidden flex items-center">
-                    <button id="mobile-menu-btn" class="text-slate-200 hover:text-white focus:outline-none p-2" aria-label="Abrir menú">
+                <!-- Botón Menú Móvil -->
+                <div class="lg:hidden flex items-center gap-2">
+                    <a href="portal.html" class="px-3.5 py-2 rounded-full bg-teal-700 text-white font-bold text-xs">Acceder</a>
+                    <button id="mobile-menu-btn" class="text-slate-700 hover:text-slate-900 focus:outline-none p-2" aria-label="Menú">
                         <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M4 6h16M4 12h16M4 18h16"></path>
@@ -149,1123 +114,801 @@
             </div>
         </div>
 
-        <!-- Mobile Menu Panel -->
+        <!-- Panel Móvil -->
         <div id="mobile-menu"
-            class="lg:hidden hidden bg-obsidian-900/98 backdrop-blur-2xl border-b border-white/10 absolute w-full transition-all duration-300 opacity-0 transform -translate-y-4">
-            <div class="px-4 pt-3 pb-6 space-y-2">
-                <a href="#contexto"
-                    class="mobile-link block px-4 py-3 rounded-xl text-base font-medium text-slate-200 hover:text-sovereign-400 hover:bg-white/5 transition-colors">Seguridad en España</a>
-                <a href="#como-funciona"
-                    class="mobile-link block px-4 py-3 rounded-xl text-base font-medium text-slate-200 hover:text-sovereign-400 hover:bg-white/5 transition-colors">Cómo Funciona</a>
-                <a href="#niveles"
-                    class="mobile-link block px-4 py-3 rounded-xl text-base font-medium text-slate-200 hover:text-sovereign-400 hover:bg-white/5 transition-colors">Niveles de Protección</a>
-                <a href="#testimonios"
-                    class="mobile-link block px-4 py-3 rounded-xl text-base font-medium text-slate-200 hover:text-sovereign-400 hover:bg-white/5 transition-colors">Casos Reales</a>
-                <a href="#unete"
-                    class="mobile-link block px-4 py-3 rounded-xl text-base font-medium text-slate-200 hover:text-sovereign-400 hover:bg-white/5 transition-colors">Trabaja como Hero</a>
-                <div class="h-px w-full bg-white/10 my-4"></div>
-                <a href="portal.html"
-                    class="w-full text-center block px-4 py-3.5 rounded-xl text-base font-bold bg-gradient-to-r from-sovereign-500 to-sovereign-600 text-obsidian-950 transition-all">
-                    Acceder / Solicitar Hero
-                </a>
+            class="lg:hidden hidden bg-white border-b border-stone-200 absolute w-full transition-all duration-300 opacity-0 transform -translate-y-4 shadow-xl">
+            <div class="px-4 pt-3 pb-6 space-y-3">
+                <div class="grid grid-cols-2 gap-2 bg-stone-100 p-1.5 rounded-2xl">
+                    <button type="button" onclick="switchAppMode('citizen')" class="mobile-link py-2.5 rounded-xl text-xs font-extrabold bg-teal-700 text-white">
+                        Buscar un Hero
+                    </button>
+                    <button type="button" onclick="switchAppMode('worker')" class="mobile-link py-2.5 rounded-xl text-xs font-extrabold bg-white text-slate-700">
+                        Trabajo como Hero
+                    </button>
+                </div>
+                <a href="#catalogo-publico" onclick="closeProfileDetail(false)" class="mobile-link block px-4 py-2.5 rounded-xl text-base font-semibold text-slate-700 hover:bg-stone-100">Ver Perfiles Disponibles</a>
+                <a href="#niveles" onclick="closeProfileDetail(false)" class="mobile-link block px-4 py-2.5 rounded-xl text-base font-semibold text-slate-700 hover:bg-stone-100">Los 3 Niveles de Hero</a>
+                <a href="#ciudades" onclick="closeProfileDetail(false)" class="mobile-link block px-4 py-2.5 rounded-xl text-base font-semibold text-slate-700 hover:bg-stone-100">MyHero en tu Ciudad</a>
+                <a href="#faq" onclick="closeProfileDetail(false)" class="mobile-link block px-4 py-2.5 rounded-xl text-base font-semibold text-slate-700 hover:bg-stone-100">Preguntas Frecuentes</a>
+                <div class="pt-2 flex gap-3">
+                    <a href="portal.html" class="flex-1 text-center py-3 rounded-full border-2 border-slate-300 font-bold text-sm text-slate-800">Acceder</a>
+                    <a href="portal.html" class="flex-1 text-center py-3 rounded-full bg-teal-700 font-bold text-sm text-white">Regístrate gratis</a>
+                </div>
             </div>
         </div>
     </nav>
 
-    <!-- HERO SECTION: POSICIONAMIENTO UNICORNIO Y CONFIANZA (+30 AÑOS) -->
-    <div class="relative pt-14 pb-20 lg:pt-20 lg:pb-28 overflow-hidden bg-tech-grid">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-center">
-
-                <!-- Columna Izquierda: Propuesta de Valor Institucional -->
-                <div class="lg:col-span-7 space-y-7 reveal">
-                    <div class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-obsidian-900/90 border border-sovereign-500/35 shadow-sm">
-                        <svg class="w-4 h-4 text-sovereign-400" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
-                        </svg>
-                        <span class="text-xs font-bold tracking-wider text-sovereign-300 uppercase">La Respuesta Ciudadana ante la Inseguridad Urbana</span>
-                    </div>
-
-                    <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.12] tracking-tight text-white">
-                        Vuelve a caminar con <br class="hidden sm:inline">
-                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-sovereign-300 via-sovereign-400 to-amber-500">absoluta tranquilidad</span>
-                        por tu ciudad.
-                    </h1>
-
-                    <p class="text-lg sm:text-xl text-slate-200 max-w-2xl leading-relaxed font-normal">
-                        Ante el creciente aumento de la delincuencia e inseguridad en las calles de España, <strong>MyHero</strong> pone a tu disposición profesionales de acompañamiento presencial rigurosamente acreditados. Protege tu regreso a casa del trabajo, tus gestiones bancarias o el bienestar diario de tus padres mayores.
-                    </p>
-
-                    <!-- Indicadores Ejecutivos de Confianza -->
-                    <div class="grid grid-cols-3 gap-4 pt-4 border-t border-white/10 max-w-2xl">
-                        <div class="bg-obsidian-900/70 border border-white/10 rounded-2xl p-4">
-                            <div class="font-display text-2xl sm:text-3xl font-extrabold text-sovereign-400">99,8%</div>
-                            <div class="text-xs sm:text-sm text-slate-300 font-medium mt-1">Incidencias disuadidas con éxito</div>
-                        </div>
-                        <div class="bg-obsidian-900/70 border border-white/10 rounded-2xl p-4">
-                            <div class="font-display text-2xl sm:text-3xl font-extrabold text-white">Solo 12%</div>
-                            <div class="text-xs sm:text-sm text-slate-300 font-medium mt-1">Supera las 4 fases y filtro de penales</div>
-                        </div>
-                        <div class="bg-obsidian-900/70 border border-white/10 rounded-2xl p-4">
-                            <div class="font-display text-2xl sm:text-3xl font-extrabold text-emerald-400">&lt; 15 min</div>
-                            <div class="text-xs sm:text-sm text-slate-300 font-medium mt-1">Respuesta media con GPS en vivo</div>
-                        </div>
-                    </div>
-
-                    <!-- Respaldo Social de Perfiles -->
-                    <div class="flex flex-wrap items-center gap-5 pt-2">
-                        <div class="flex -space-x-3">
-                            <img class="w-12 h-12 rounded-full border-2 border-obsidian-950 object-cover shadow-md"
-                                src="./assets/img/normal.jpg"
-                                alt="Acompañante Nivel 1">
-                            <img class="w-12 h-12 rounded-full border-2 border-obsidian-950 object-cover shadow-md"
-                                src="./assets/img/musculoso.jpg"
-                                alt="Acompañante Nivel 2">
-                            <img class="w-12 h-12 rounded-full border-2 border-obsidian-950 object-cover shadow-md"
-                                src="./assets/img/karateka.jpg"
-                                alt="Especialista Nivel 3">
-                        </div>
-                        <div class="text-sm text-slate-300">
-                            <span class="text-white font-bold block text-base">Perfiles 100% Auditados en España</span>
-                            DNI/NIE compulsado, Certificado de Antecedentes Penales y Psicotécnico.
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Columna Derecha: Terminal Ejecutivo de Reserva -->
-                <div class="lg:col-span-5 relative w-full max-w-lg mx-auto lg:ml-auto reveal delay-200">
-                    <div
-                        class="absolute -inset-1 bg-gradient-to-b from-sovereign-500/30 via-royal-600/20 to-transparent rounded-3xl blur-xl pointer-events-none">
-                    </div>
-
-                    <div
-                        class="relative glass-card rounded-3xl p-6 sm:p-8 shadow-2xl overflow-hidden min-h-[560px] flex flex-col border border-sovereign-500/25">
-
-                        <!-- Header Terminal -->
-                        <div class="mb-6 pb-4 border-b border-white/10 flex justify-between items-start">
-                            <div>
-                                <span class="text-[11px] font-bold uppercase tracking-widest text-sovereign-400 block mb-1">Central de Asignación Inmediata</span>
-                                <h2 class="font-display text-2xl font-extrabold text-white">Configurar Acompañamiento</h2>
-                                <p class="text-sm text-slate-300 mt-0.5">Selecciona las características de tu servicio</p>
-                            </div>
-                            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 text-xs font-bold">
-                                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
-                                En línea
-                            </span>
-                        </div>
-
-                        <!-- Step 1: Formulario -->
-                        <div id="step-form" class="step-container fade-in-step flex-1 flex flex-col">
-                            <div class="space-y-6 flex-1 pr-1 pb-4">
-
-                                <div>
-                                    <label
-                                        class="block text-xs font-bold text-sovereign-300 uppercase tracking-wider mb-2.5">1.
-                                        ¿A quién vamos a proteger hoy?</label>
-                                    <div class="grid grid-cols-2 gap-3">
-                                        <label class="option-card cursor-pointer">
-                                            <input type="radio" name="target" class="sr-only" value="me" checked>
-                                            <div
-                                                class="border border-white/15 bg-obsidian-800/90 rounded-xl p-3.5 flex items-center justify-center gap-2 transition-all hover:border-sovereign-400/60 h-full shadow">
-                                                <span class="text-sm font-bold text-white text-center">Para mí</span>
-                                            </div>
-                                        </label>
-                                        <label class="option-card cursor-pointer">
-                                            <input type="radio" name="target" class="sr-only" value="family">
-                                            <div
-                                                class="border border-white/15 bg-obsidian-800/90 rounded-xl p-3.5 flex items-center justify-center gap-2 transition-all hover:border-sovereign-400/60 h-full shadow">
-                                                <span class="text-sm font-bold text-white text-center">Para un Familiar / Mayor</span>
-                                            </div>
-                                        </label>
-                                    </div>
-                                </div>
-
-                                <div>
-                                    <label
-                                        class="block text-xs font-bold text-sovereign-300 uppercase tracking-wider mb-2.5">2.
-                                        Modalidad de Servicio</label>
-                                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                                        <label class="option-card cursor-pointer">
-                                            <input type="radio" name="mission" class="sr-only" value="value" checked>
-                                            <div
-                                                class="border border-white/15 bg-obsidian-800/90 rounded-xl p-3.5 transition-all h-full flex flex-col justify-center shadow hover:border-sovereign-400/50">
-                                                <div class="text-sm font-bold text-white mb-1">Bancos y Gestiones</div>
-                                                <div class="text-xs text-slate-300 leading-snug">Cajeros, sucursales bancarias, notarías y firmas.</div>
-                                            </div>
-                                        </label>
-                                        <label class="option-card cursor-pointer">
-                                            <input type="radio" name="mission" class="sr-only" value="night">
-                                            <div
-                                                class="border border-white/15 bg-obsidian-800/90 rounded-xl p-3.5 transition-all h-full flex flex-col justify-center shadow hover:border-sovereign-400/50">
-                                                <div class="text-sm font-bold text-white mb-1">Retorno Nocturno</div>
-                                                <div class="text-xs text-slate-300 leading-snug">Salida del trabajo, aparcamientos o vuelta a casa.</div>
-                                            </div>
-                                        </label>
-                                        <label class="option-card cursor-pointer">
-                                            <input type="radio" name="mission" class="sr-only" value="errands">
-                                            <div
-                                                class="border border-white/15 bg-obsidian-800/90 rounded-xl p-3.5 transition-all h-full flex flex-col justify-center shadow hover:border-sovereign-400/50">
-                                                <div class="text-sm font-bold text-white mb-1">Padres y Mayores</div>
-                                                <div class="text-xs text-slate-300 leading-snug">Citas médicas, paseos seguros y recados diarios.</div>
-                                            </div>
-                                        </label>
-                                        <label class="option-card cursor-pointer">
-                                            <input type="radio" name="mission" class="sr-only" value="simple">
-                                            <div
-                                                class="border border-white/15 bg-obsidian-800/90 rounded-xl p-3.5 transition-all h-full flex flex-col justify-center shadow hover:border-sovereign-400/50">
-                                                <div class="text-sm font-bold text-white mb-1">Trayecto Urbano A-B</div>
-                                                <div class="text-xs text-slate-300 leading-snug">Estaciones, aeropuertos, compras o visitas.</div>
-                                            </div>
-                                        </label>
-                                    </div>
-                                </div>
-
-                                <div>
-                                    <label
-                                        class="block text-xs font-bold text-sovereign-300 uppercase tracking-wider mb-2.5">3.
-                                        Nivel de Acompañante Requerido</label>
-                                    <div class="relative" id="custom-select-wrapper">
-                                        <div id="custom-select-btn"
-                                            class="w-full bg-obsidian-800/95 border border-white/15 text-white font-semibold text-sm rounded-xl py-3.5 px-4 shadow cursor-pointer flex justify-between items-center hover:border-sovereign-400/60 transition-all">
-                                            <span id="custom-select-text">Nivel 2: Presencia Disuasoria (Recomendado)</span>
-                                            <svg class="w-4 h-4 text-sovereign-400" fill="none" stroke="currentColor"
-                                                viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                    d="M19 9l-7 7-7-7"></path>
-                                            </svg>
-                                        </div>
-                                        <div id="custom-select-menu"
-                                            class="hidden absolute top-full mt-1 left-0 right-0 bg-obsidian-800 border border-white/20 rounded-xl shadow-[0_15px_45px_rgba(0,0,0,0.85)] overflow-hidden z-50">
-                                            <div class="custom-opt py-3.5 px-4 hover:bg-sovereign-500/20 cursor-pointer text-white text-sm font-semibold border-b border-white/10 transition-colors flex items-center gap-3"
-                                                data-value="1">
-                                                <div
-                                                    class="w-6 h-6 rounded-full bg-sovereign-500/20 text-sovereign-300 flex items-center justify-center font-bold text-xs shrink-0">
-                                                    1</div>
-                                                Nivel 1: Acompañamiento Cívico y Mayores
-                                            </div>
-                                            <div class="custom-opt py-3.5 px-4 hover:bg-sovereign-500/20 cursor-pointer text-white text-sm font-semibold border-b border-white/10 transition-colors flex items-center gap-3"
-                                                data-value="2">
-                                                <div
-                                                    class="w-6 h-6 rounded-full bg-sovereign-500/20 text-sovereign-300 flex items-center justify-center font-bold text-xs shrink-0">
-                                                    2</div>
-                                                Nivel 2: Presencia Disuasoria Activa (Atléticos)
-                                            </div>
-                                            <div class="custom-opt py-3.5 px-4 hover:bg-sovereign-500/20 cursor-pointer text-white text-sm font-semibold transition-colors flex items-center gap-3"
-                                                data-value="3">
-                                                <div
-                                                    class="w-6 h-6 rounded-full bg-sovereign-500/20 text-sovereign-300 flex items-center justify-center font-bold text-xs shrink-0">
-                                                    3</div>
-                                                Nivel 3: Especialista Certificado (Artes Marciales / Élite)
-                                            </div>
-                                        </div>
-                                        <input type="hidden" name="level" id="hidden-level" value="2">
-                                    </div>
-
-                                    <script>
-                                        document.getElementById('custom-select-btn').addEventListener('click', function (e) {
-                                            e.stopPropagation();
-                                            document.getElementById('custom-select-menu').classList.toggle('hidden');
-                                        });
-                                        document.querySelectorAll('.custom-opt').forEach(opt => {
-                                            opt.addEventListener('click', function (e) {
-                                                e.stopPropagation();
-                                                let rawText = this.innerText.trim();
-                                                let textParts = rawText.split('\n');
-                                                let finalStr = textParts.length > 1 ? textParts[1].trim() : rawText;
-                                                document.getElementById('custom-select-text').innerText = finalStr;
-                                                document.getElementById('hidden-level').value = this.getAttribute('data-value');
-                                                document.getElementById('custom-select-menu').classList.add('hidden');
-                                            });
-                                        });
-                                        document.addEventListener('click', function () {
-                                            document.getElementById('custom-select-menu').classList.add('hidden');
-                                        });
-                                    </script>
-                                </div>
-                            </div>
-
-                            <button id="btn-scan" type="button"
-                                class="mt-2 w-full bg-gradient-to-r from-sovereign-500 to-sovereign-600 hover:from-sovereign-400 hover:to-sovereign-500 text-obsidian-950 font-extrabold rounded-xl p-4 text-sm uppercase tracking-wider shadow-lg shadow-sovereign-500/25 transition-all flex justify-center items-center gap-2.5">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
-                                </svg>
-                                Ver Disponibilidad en mi Zona
-                            </button>
-                            <p class="text-[12px] text-slate-400 text-center mt-3">
-                                Sin cargos por adelantado en la web · Pago directo por Bizum o efectivo
-                            </p>
-                        </div>
-
-                        <!-- Step 2: Escaneo -->
-                        <div id="step-scan"
-                            class="step-container hidden-step flex-1 flex flex-col items-center justify-center text-center py-10">
-                            <div class="relative w-24 h-24 mb-6">
-                                <div class="absolute inset-0 border-2 border-sovereign-500/25 rounded-full"></div>
-                                <div
-                                    class="absolute inset-0 border-t-2 border-sovereign-400 rounded-full animate-radar-spin">
-                                </div>
-                                <svg class="w-8 h-8 text-sovereign-400 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-                                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z">
-                                    </path>
-                                </svg>
-                            </div>
-                            <h3 class="text-xl font-bold text-white mb-2">Localizando efectivos verificados...</h3>
-                            <p class="text-sm text-sovereign-300 font-medium" id="scan-text">Comprobando cobertura activa en tu zona
-                            </p>
-                        </div>
-
-                        <!-- Step 3: Login (Resultado) -->
-                        <div id="step-login"
-                            class="step-container hidden-step flex-1 flex flex-col items-center justify-center py-6">
-                            <div
-                                class="w-16 h-16 bg-emerald-500/15 rounded-2xl flex items-center justify-center mb-6 border border-emerald-500/30">
-                                <svg class="w-8 h-8 text-emerald-400" fill="none" stroke="currentColor"
-                                    viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z">
-                                    </path>
-                                </svg>
-                            </div>
-                            <h3 class="text-2xl font-bold text-white text-center mb-2">15 Profesionales Disponibles</h3>
-                            <p class="text-base text-slate-300 text-center mb-8 px-4 leading-relaxed">Accede a tu área privada para consultar fichas completas, certificaciones, tarifas por hora y confirmar tu solicitud.</p>
-
-                            <button onclick="window.location.href='portal.html'"
-                                class="w-full flex items-center justify-center gap-3 bg-gradient-to-r from-sovereign-500 to-sovereign-600 hover:from-sovereign-400 hover:to-sovereign-500 text-obsidian-950 font-extrabold rounded-xl p-4 uppercase tracking-wide transition-all shadow-lg mb-4">
-                                Acceder al Catálogo Verificado
-                            </button>
-
-                            <button class="text-sm font-medium text-slate-400 hover:text-white transition mt-2"
-                                onclick="location.reload()">
-                                Modificar parámetros de búsqueda
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <!-- ===================================================================== -->
+    <!-- VISTA DETALLADA DE PERFIL EN 2 COLUMNAS (SE ABRE AL CLICAR UN PERFIL) -->
+    <!-- ===================================================================== -->
+    <main id="profile-detail-view" class="hidden py-10 sm:py-14 bg-[#FAFAF9] min-h-screen">
+        <div id="profile-detail-content" class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Rellenado dinámicamente por main.js -->
         </div>
-    </div>
+    </main>
 
-    <!-- SECCIÓN DE AUTORIDAD INSTITUCIONAL: EL CONTEXTO EN ESPAÑA Y PROTOCOLO DE SEGURIDAD -->
-    <section id="contexto" class="py-20 bg-obsidian-900 border-t border-b border-white/10 relative">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-16 reveal">
-                <span class="text-sovereign-400 font-bold tracking-widest uppercase text-xs mb-3 block">Estándar Corporativo de Protección</span>
-                <h2 class="font-display text-3xl md:text-4xl font-extrabold text-white mb-4">Por qué miles de familias y profesionales en España eligen MyHero</h2>
-                <p class="text-slate-300 text-lg leading-relaxed">
-                    La prevención es la herramienta más eficaz frente al delito urbano. Hemos creado una infraestructura tecnológica y humana con rigor multinacional para que nadie tenga que desplazarse con miedo.
-                </p>
-            </div>
+    <!-- ===================================================================== -->
+    <!-- VISTA PRINCIPAL DE LA PLATAFORMA (ESTRUCTURA LIMPIA ESTILO SITLY)     -->
+    <!-- ===================================================================== -->
+    <div id="main-landing-view">
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 reveal delay-100">
-                <!-- Pilar 1 -->
-                <div class="executive-card rounded-2xl p-7 transition-all duration-300">
-                    <div class="w-12 h-12 rounded-xl bg-sovereign-500/15 border border-sovereign-500/30 flex items-center justify-center text-sovereign-400 mb-5">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
-                        </svg>
-                    </div>
-                    <h3 class="text-lg font-bold text-white mb-2">Disuasión Preventiva Real</h3>
-                    <p class="text-slate-300 text-sm leading-relaxed">
-                        Más del 94% de los hurtos, intimidaciones en cajeros y situaciones de acoso callejero se evitan por completo al ir acompañado por un perfil de presencia firme.
-                    </p>
-                </div>
+        <!-- 1. HERO BANNER CURVO CÁLIDO (ESTILO SITLY + LIFE360 / CUIDEO) -->
+        <section class="pt-6 pb-10 sm:pt-8 sm:pb-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+            <div id="hero-banner-box" class="hero-banner-citizen rounded-[2rem] p-8 sm:p-12 lg:p-14 transition-colors duration-500">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
 
-                <!-- Pilar 2 -->
-                <div class="executive-card rounded-2xl p-7 transition-all duration-300">
-                    <div class="w-12 h-12 rounded-xl bg-royal-500/15 border border-royal-500/30 flex items-center justify-center text-royal-400 mb-5">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0m-5 8a2 2 0 100-4 2 2 0 000 4zm0 0c1.306 0 2.417.835 2.83 2M9 14a3.001 3.001 0 00-2.83 2M15 11h3m-3 4h2"></path>
-                        </svg>
-                    </div>
-                    <h3 class="text-lg font-bold text-white mb-2">Auditoría en 4 Fases (12%)</h3>
-                    <p class="text-slate-300 text-sm leading-relaxed">
-                        Exigimos DNI/NIE en vigor, Certificado Oficial de Antecedentes Penales limpio, test psicotécnico y entrevista personal. Rechazamos al 88% de candidatos.
-                    </p>
-                </div>
+                    <!-- Texto y Propuesta de Valor Directa -->
+                    <div class="lg:col-span-7 space-y-6">
+                        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/85 border border-teal-200 text-teal-900 text-xs font-extrabold uppercase tracking-wider shadow-sm">
+                            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                            <span id="hero-badge-text">Red Nacional de Acompañamiento Preventivo (+30 años y Familias)</span>
+                        </div>
 
-                <!-- Pilar 3 -->
-                <div class="executive-card rounded-2xl p-7 transition-all duration-300">
-                    <div class="w-12 h-12 rounded-xl bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center text-emerald-400 mb-5">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                        </svg>
-                    </div>
-                    <h3 class="text-lg font-bold text-white mb-2">Sistema Red Familiar™</h3>
-                    <p class="text-slate-300 text-sm leading-relaxed">
-                        Solicita un Hero para tus padres mayores o tu pareja y supervisa todo el trayecto por GPS en tiempo real desde tu propio teléfono móvil.
-                    </p>
-                </div>
+                        <h1 id="hero-title" class="font-display text-3xl sm:text-5xl font-extrabold text-slate-900 leading-[1.15] tracking-tight">
+                            CONOCE A LOS MEJORES ACOMPAÑANTES Y HEROES <span class="highlight-marker">EN TU CIUDAD</span>
+                        </h1>
 
-                <!-- Pilar 4 -->
-                <div class="executive-card rounded-2xl p-7 transition-all duration-300">
-                    <div class="w-12 h-12 rounded-xl bg-amber-500/15 border border-amber-500/30 flex items-center justify-center text-amber-400 mb-5">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
-                        </svg>
-                    </div>
-                    <h3 class="text-lg font-bold text-white mb-2">Transparencia y Bizum Directo</h3>
-                    <p class="text-slate-300 text-sm leading-relaxed">
-                        Conoces la tarifa cerrada antes de confirmar. No introducimos tu tarjeta en la web: abonas directamente al profesional por Bizum o efectivo al terminar.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
+                        <!-- 3 Puntos Clave estilo Sitly -->
+                        <ul class="space-y-3.5 pt-1">
+                            <li class="flex items-start gap-3 text-base sm:text-lg text-slate-800 font-medium">
+                                <span class="mt-1 w-6 h-6 rounded-full bg-teal-700 text-white flex items-center justify-center text-xs font-bold shrink-0">✓</span>
+                                <span id="hero-bullet-1">Busca acompañantes verificados con Certificado de Penales al instante</span>
+                            </li>
+                            <li class="flex items-start gap-3 text-base sm:text-lg text-slate-800 font-medium">
+                                <span class="mt-1 w-6 h-6 rounded-full bg-teal-700 text-white flex items-center justify-center text-xs font-bold shrink-0">✓</span>
+                                <span id="hero-bullet-2">Revisa perfiles, horarios y tarifas cerradas antes de decidir</span>
+                            </li>
+                            <li class="flex items-start gap-3 text-base sm:text-lg text-slate-800 font-medium">
+                                <span class="mt-1 w-6 h-6 rounded-full bg-teal-700 text-white flex items-center justify-center text-xs font-bold shrink-0">✓</span>
+                                <span id="hero-bullet-3">Seguimiento GPS en vivo con Red Familiar™ y pago directo por Bizum</span>
+                            </li>
+                        </ul>
 
-    <!-- CÓMO FUNCIONA + MOCKUP TELEFÓNICO DE ELCHE -->
-    <section id="como-funciona" class="py-24 bg-obsidian-950 relative overflow-hidden">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-
-                <div class="space-y-8 reveal">
-                    <div>
-                        <span class="text-sovereign-400 font-bold tracking-widest uppercase text-xs mb-3 block">Operativa Transparente y Sencilla</span>
-                        <h2 class="font-display text-3xl md:text-5xl font-extrabold text-white tracking-tight">Seguridad presencial <span
-                                class="text-sovereign-400">en tres pasos.</span></h2>
-                    </div>
-                    <p class="text-slate-300 text-lg leading-relaxed">
-                        Diseñado específicamente para ser intuitivo, claro y accesible. Tanto si reservas para ti al salir de la oficina como si programas el acompañamiento de un familiar mayor al banco o al médico.
-                    </p>
-
-                    <div class="space-y-7 mt-8">
-                        <div class="flex gap-5">
-                            <div
-                                class="flex-shrink-0 w-12 h-12 rounded-xl bg-sovereign-500/15 text-sovereign-400 border border-sovereign-500/35 flex items-center justify-center font-extrabold text-lg">
-                                01</div>
+                        <!-- CTA Principal + Enlace puente de rol -->
+                        <div class="pt-3 space-y-3">
+                            <div class="flex flex-wrap items-center gap-4">
+                                <a id="hero-primary-btn" href="portal.html"
+                                    class="inline-block px-8 py-4 rounded-full bg-teal-700 hover:bg-teal-800 text-white font-extrabold text-base shadow-lg shadow-teal-700/20 transition-all">
+                                    Regístrate gratis
+                                </a>
+                                <a href="#catalogo-publico"
+                                    class="inline-block px-6 py-4 rounded-full bg-white hover:bg-stone-50 text-slate-800 font-bold text-sm border border-stone-300 shadow-sm transition-all">
+                                    Explorar perfiles sin registrarse ↓
+                                </a>
+                            </div>
                             <div>
-                                <h4 class="text-xl font-bold text-white mb-1.5">Selecciona el Perfil Acreditado</h4>
-                                <p class="text-slate-300 text-base leading-relaxed">Consulta fotografías reales, edad, estatura, formación certificada, valoraciones de otros clientes y tarifa por hora antes de elegir.</p>
-                            </div>
-                        </div>
-                        <div class="flex gap-5">
-                            <div
-                                class="flex-shrink-0 w-12 h-12 rounded-xl bg-royal-500/15 text-royal-400 border border-royal-500/35 flex items-center justify-center font-extrabold text-lg">
-                                02</div>
-                            <div>
-                                <h4 class="text-xl font-bold text-white mb-1.5">Seguimiento GPS y Botón SOS Activo</h4>
-                                <p class="text-slate-300 text-base leading-relaxed">Desde el encuentro hasta llegar a la puerta de destino, el recorrido queda registrado por GPS en directo con enlace para tu Red Familiar.</p>
-                            </div>
-                        </div>
-                        <div class="flex gap-5">
-                            <div
-                                class="flex-shrink-0 w-12 h-12 rounded-xl bg-emerald-500/15 text-emerald-400 border border-emerald-500/35 flex items-center justify-center font-extrabold text-lg">
-                                03</div>
-                            <div>
-                                <h4 class="text-xl font-bold text-white mb-1.5">Pago en Mano o Bizum al Finalizar</h4>
-                                <p class="text-slate-300 text-base leading-relaxed">Sin suscripciones ni cobros ocultos. Una vez completado el servicio con total satisfacción, abonas el importe directamente a tu Hero.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Mockup Teléfono con Mapa de Elche -->
-                <div
-                    class="flex justify-center lg:justify-end perspective-1000 reveal delay-200 w-full overflow-hidden">
-                    <div
-                        class="relative w-[290px] sm:w-[320px] h-[580px] sm:h-[620px] bg-obsidian-900 rounded-[2.75rem] border-[7px] border-obsidian-800 shadow-[0_25px_70px_rgba(0,0,0,0.75)] overflow-hidden transition-transform duration-500">
-                        <div
-                            class="absolute top-0 inset-x-0 h-6 bg-obsidian-800 rounded-b-2xl w-36 mx-auto z-30">
-                        </div>
-
-                        <div class="absolute inset-0 flex flex-col bg-obsidian-950">
-                            <!-- Elche Map Simulation -->
-                            <div class="h-[55%] relative overflow-hidden bg-obsidian-950">
-                                <!-- Mapa de Fondo Claro y Legible -->
-                                <div class="absolute inset-0 bg-cover bg-center"
-                                    style="background-image: url('./assets/img/mapa-elche.jpg');"></div>
-                                <div class="absolute inset-0 bg-obsidian-950/20"></div>
-
-                                <svg class="absolute inset-0 w-full h-full text-royal-500 opacity-85"
-                                    preserveAspectRatio="none">
-                                    <path d="M 65 260 Q 150 210 235 120" stroke="#2563EB" stroke-width="4"
-                                        stroke-dasharray="6,6" fill="none" />
-                                </svg>
-
-                                <!-- Punto Destino -->
-                                <div class="absolute" style="top: 25%; left: 75%; transform: translate(-50%, -50%);">
-                                    <div
-                                        class="absolute inset-0 bg-emerald-500 rounded-full animate-ping opacity-60 w-8 h-8 -ml-2 -mt-2">
-                                    </div>
-                                    <div
-                                        class="w-4 h-4 bg-emerald-400 rounded-full border-2 border-obsidian-950 relative z-10 shadow-[0_0_12px_#10b981]">
-                                    </div>
-                                </div>
-
-                                <!-- Avatar Hero en Ruta -->
-                                <div class="absolute flex flex-col items-center animate-float"
-                                    style="top: 72%; left: 24%; transform: translate(-50%, -50%); z-index: 10;">
-                                    <div
-                                        class="bg-obsidian-900/95 text-white border border-sovereign-500/50 text-[11px] font-bold px-2.5 py-1 rounded-md mb-1 shadow-lg">
-                                        A 2 min de ti</div>
-                                    <img src="https://i.pravatar.cc/150?img=11"
-                                        class="w-11 h-11 rounded-full border-2 border-sovereign-400 shadow-lg">
-                                </div>
-                            </div>
-
-                            <div
-                                class="h-[45%] bg-obsidian-900 rounded-t-3xl -mt-5 relative z-20 shadow-[0_-10px_25px_rgba(0,0,0,0.6)] border-t border-white/15 p-5 flex flex-col">
-                                <div class="w-12 h-1 bg-obsidian-700 rounded-full mx-auto mb-4"></div>
-
-                                <div class="flex justify-between items-start mb-4">
-                                    <div>
-                                        <span class="text-[10px] font-bold uppercase tracking-wider text-emerald-400 block">GPS Red Familiar Activo</span>
-                                        <h3 class="font-bold text-white text-lg leading-tight">Acompañante en camino</h3>
-                                        <p class="text-xs text-slate-300 mt-0.5">Gestión Bancaria · Nivel 2</p>
-                                    </div>
-                                    <div class="bg-obsidian-800 rounded-xl px-3 py-2 text-center border border-sovereign-500/30">
-                                        <div class="text-[10px] text-slate-300 uppercase font-semibold">Tarifa/h</div>
-                                        <div class="font-extrabold text-sovereign-400 text-sm">25,00 €</div>
-                                    </div>
-                                </div>
-
-                                <div
-                                    class="bg-obsidian-950 rounded-2xl p-3 border border-white/10 flex items-center gap-3 mb-4">
-                                    <img src="https://i.pravatar.cc/150?img=11"
-                                        class="w-12 h-12 rounded-xl object-cover border border-white/10">
-                                    <div class="flex-1">
-                                        <h4 class="font-bold text-white text-sm">Carlos M. (39 años)</h4>
-                                        <div class="text-xs text-sovereign-400 font-semibold mt-0.5">★ 4.98 · 120 servicios</div>
-                                    </div>
-                                    <div
-                                        class="w-10 h-10 rounded-full bg-royal-600/20 text-royal-400 border border-royal-500/30 flex items-center justify-center cursor-pointer">
-                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z">
-                                            </path>
-                                        </svg>
-                                    </div>
-                                </div>
-
-                                <button
-                                    class="w-full mt-auto bg-gradient-to-r from-sovereign-500 to-sovereign-600 text-obsidian-950 font-extrabold rounded-xl py-3 text-sm shadow-lg flex justify-center items-center gap-2">
-                                    Compartir Ruta con Familia
+                                <button id="hero-switch-link" type="button" onclick="switchAppMode('worker')" class="text-sm text-slate-700 font-medium hover:text-teal-900 transition">
+                                    ¿Prefieres ganar dinero trabajando como Hero? <span class="underline font-bold text-teal-800">Ver misiones disponibles →</span>
                                 </button>
                             </div>
                         </div>
                     </div>
-                </div>
 
-            </div>
-        </div>
-    </section>
-
-    <!-- NIVELES DE PROTECCIÓN (CON REVELADO DE FOTO COMPLETA EN HOVER) -->
-    <section id="niveles" class="py-24 bg-obsidian-900 border-t border-white/10 relative overflow-hidden">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="text-center max-w-3xl mx-auto mb-16 reveal">
-                <span class="text-sovereign-400 font-extrabold tracking-widest uppercase text-xs mb-3 block">Categorías Profesionales Auditadas</span>
-                <h2 class="font-display text-3xl md:text-5xl font-extrabold text-white mb-5">Tres Niveles de Acompañamiento</h2>
-                <p class="text-slate-300 text-lg leading-relaxed">
-                    Cada situación requiere un perfil distinto. Pasa el cursor sobre cada tarjeta para conocer al detalle la apariencia y presencia real de nuestros profesionales.
-                </p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
-                <!-- Nivel 1 -->
-                <div
-                    class="bg-obsidian-950/95 backdrop-blur-xl border border-white/15 rounded-3xl p-8 hover:-translate-y-2 hover:border-emerald-500/60 hover:shadow-[0_15px_45px_-10px_rgba(16,185,129,0.25)] transition-all duration-500 group relative overflow-hidden reveal delay-100 flex flex-col min-h-[480px]">
-                    <div
-                        class="absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-emerald-400 to-teal-600 opacity-75 group-hover:opacity-100 transition-opacity z-20">
-                    </div>
-
-                    <!-- Foto difuminada base -->
-                    <div class="absolute inset-0 bg-cover bg-top opacity-30 group-hover:opacity-0 transition-opacity duration-500 mix-blend-luminosity z-0"
-                        style="background-image: url('./assets/img/normal.jpg'); -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 85%);">
-                    </div>
-                    <!-- Foto Full (Aparece en hover) -->
-                    <div class="absolute inset-0 bg-cover bg-top opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0"
-                        style="background-image: url('./assets/img/normal.jpg');"></div>
-                    <!-- Capa oscura extra para legibilidad de texto -->
-                    <div
-                        class="absolute inset-0 bg-obsidian-950/60 group-hover:opacity-0 transition-opacity duration-500 z-0">
-                    </div>
-
-                    <div
-                        class="relative z-10 flex flex-col flex-grow transition-opacity duration-500 group-hover:opacity-0">
-                        <div class="flex justify-between items-start mb-6 mt-2">
-                            <div
-                                class="w-12 h-12 rounded-2xl bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center text-emerald-400">
-                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z">
-                                    </path>
-                                </svg>
+                    <!-- Imagen Humana Cálida a la Derecha -->
+                    <div class="lg:col-span-5 flex justify-center lg:justify-end">
+                        <div class="relative w-full max-w-md">
+                            <div class="rounded-[2rem] overflow-hidden border-4 border-white shadow-2xl h-[360px] sm:h-[400px] bg-stone-200">
+                                <img id="hero-right-image" src="./assets/img/roberto.jpg" alt="Hero Verificado en España" class="w-full h-full object-cover object-top">
                             </div>
-                            <span
-                                class="bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 text-xs font-extrabold uppercase tracking-wider px-3.5 py-1.5 rounded-full">Nivel
-                                1 · Cívico</span>
-                        </div>
-
-                        <h3 class="font-display text-2xl font-bold text-white mb-1">Acompañamiento Familiar</h3>
-                        <p class="text-emerald-400 text-sm font-semibold mb-5">Cercanía, educación y apoyo cotidiano.</p>
-
-                        <p class="text-slate-200 text-base mb-8 leading-relaxed flex-grow">
-                            Perfiles maduros, sumamente educados y resolutivos. Ideales para acompañar a tus padres mayores al médico, realizar trámites administrativos, hacer la compra o caminar con tranquilidad.
-                        </p>
-
-                        <ul class="text-sm text-slate-200 space-y-3.5 border-t border-white/10 pt-5">
-                            <li class="flex items-start gap-3">
-                                <div
-                                    class="mt-0.5 w-5 h-5 rounded-full bg-emerald-500/20 flex items-center justify-center flex-shrink-0">
-                                    <svg class="w-3.5 h-3.5 text-emerald-400" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd"
-                                            d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                                            clip-rule="evenodd"></path>
-                                    </svg>
+                            <!-- Tarjeta flotante de confianza -->
+                            <div class="absolute -bottom-4 left-4 right-4 sm:left-6 sm:right-6 bg-white/95 backdrop-blur-md border border-stone-200 rounded-2xl p-4 shadow-xl flex items-center justify-between gap-3">
+                                <div>
+                                    <div id="hero-floating-title" class="font-bold text-slate-900 text-sm">Roberto (38) · Nivel 2 Acreditado</div>
+                                    <div id="hero-floating-sub" class="text-xs font-semibold text-emerald-700 mt-0.5">★ 5,0 · Certificado de Penales Verificado</div>
                                 </div>
-                                <span class="leading-tight font-medium">Antecedentes penales y entrevista aprobada</span>
-                            </li>
-                            <li class="flex items-start gap-3">
-                                <div
-                                    class="mt-0.5 w-5 h-5 rounded-full bg-emerald-500/20 flex items-center justify-center flex-shrink-0">
-                                    <svg class="w-3.5 h-3.5 text-emerald-400" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd"
-                                            d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                                            clip-rule="evenodd"></path>
-                                    </svg>
-                                </div>
-                                <span class="leading-tight font-medium">Monitorización GPS para familiares en vivo</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Nivel 2 -->
-                <div
-                    class="bg-obsidian-950/95 backdrop-blur-xl border border-royal-500/35 rounded-3xl p-8 hover:-translate-y-2 hover:border-royal-400 hover:shadow-[0_15px_45px_-10px_rgba(59,130,246,0.3)] transition-all duration-500 group relative overflow-hidden reveal delay-200 flex flex-col min-h-[480px]">
-                    <div
-                        class="absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-royal-400 to-royal-600 opacity-80 group-hover:opacity-100 transition-opacity z-20">
-                    </div>
-
-                    <!-- Foto difuminada base -->
-                    <div class="absolute inset-0 bg-cover bg-top opacity-30 group-hover:opacity-0 transition-opacity duration-500 mix-blend-luminosity z-0"
-                        style="background-image: url('./assets/img/musculoso.jpg'); -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 85%);">
-                    </div>
-                    <!-- Foto Full (Aparece en hover) -->
-                    <div class="absolute inset-0 bg-cover bg-top opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0"
-                        style="background-image: url('./assets/img/musculoso.jpg');"></div>
-                    <!-- Capa oscura extra para texto -->
-                    <div
-                        class="absolute inset-0 bg-obsidian-950/60 group-hover:opacity-0 transition-opacity duration-500 z-0">
-                    </div>
-
-                    <div
-                        class="relative z-10 flex flex-col flex-grow transition-opacity duration-500 group-hover:opacity-0">
-                        <div class="flex justify-between items-start mb-6 mt-2">
-                            <div
-                                class="w-12 h-12 rounded-2xl bg-royal-500/15 border border-royal-500/30 flex items-center justify-center text-royal-400">
-                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M20.618 5.984A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016zM12 9v2m0 4h.01">
-                                    </path>
-                                </svg>
+                                <span class="px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 text-xs font-extrabold shrink-0">
+                                    GPS Activo
+                                </span>
                             </div>
-                            <span
-                                class="bg-royal-500/20 border border-royal-400/40 text-royal-300 text-xs font-extrabold uppercase tracking-wider px-3.5 py-1.5 rounded-full">Nivel
-                                2 · Más Solicitado</span>
                         </div>
+                    </div>
 
-                        <h3 class="font-display text-2xl font-bold text-white mb-1">Presencia Disuasoria</h3>
-                        <p class="text-royal-400 text-sm font-semibold mb-5">Respaldo físico, envergadura y prevención.</p>
+                </div>
+            </div>
+        </section>
 
-                        <p class="text-slate-200 text-base mb-8 leading-relaxed flex-grow">
-                            Deportistas y profesionales de complexión atlética e imponente presencia visual. La opción preferida para regresar a casa de noche tras el trabajo, acudir a aparcamientos solitarios o retirar efectivo en cajeros.
-                        </p>
+        <!-- ================================================================= -->
+        <!-- 2. BARRA DE FILTROS + CUADRÍCULA PÚBLICA DE PERFILES (ESTILO SITLY) -->
+        <!-- ================================================================= -->
+        <section id="catalogo-publico" class="py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="mb-6">
+                <h2 id="catalog-heading" class="font-display text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight mb-4">
+                    BUSCA HEROES Y ACOMPAÑANTES DISPONIBLES AHORA
+                </h2>
 
-                        <ul class="text-sm text-slate-200 space-y-3.5 border-t border-white/10 pt-5">
-                            <li class="flex items-start gap-3">
-                                <div
-                                    class="mt-0.5 w-5 h-5 rounded-full bg-royal-500/20 flex items-center justify-center flex-shrink-0">
-                                    <svg class="w-3.5 h-3.5 text-royal-400" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd"
-                                            d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                                            clip-rule="evenodd"></path>
-                                    </svg>
-                                </div>
-                                <span class="leading-tight font-medium">Gran envergadura física y temple sereno</span>
-                            </li>
-                            <li class="flex items-start gap-3">
-                                <div
-                                    class="mt-0.5 w-5 h-5 rounded-full bg-royal-500/20 flex items-center justify-center flex-shrink-0">
-                                    <svg class="w-3.5 h-3.5 text-royal-400" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd"
-                                            d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                                            clip-rule="evenodd"></path>
-                                    </svg>
-                                </div>
-                                <span class="leading-tight font-medium">Máxima capacidad de disuasión pasiva inmediata</span>
-                            </li>
-                        </ul>
+                <!-- Barra Horizontal de Píldoras de Filtro (Estilo Sitly) -->
+                <div class="flex flex-wrap items-center justify-between gap-4 pb-4 border-b border-stone-200">
+                    <div class="flex flex-wrap items-center gap-2.5">
+                        <button type="button" onclick="openFilterModal()" class="filter-pill px-4 py-2.5 rounded-full text-sm font-bold flex items-center gap-2 shadow-sm">
+                            <span>📍</span>
+                            <span id="pill-city-label">Ciudad</span>
+                            <span class="text-xs text-slate-400">▼</span>
+                        </button>
+
+                        <button type="button" onclick="openFilterModal()" class="filter-pill px-4 py-2.5 rounded-full text-sm font-bold flex items-center gap-2 shadow-sm">
+                            <span>🛡️</span>
+                            <span id="pill-level-label">Nivel de Hero</span>
+                            <span class="text-xs text-slate-400">▼</span>
+                        </button>
+
+                        <button type="button" onclick="openFilterModal()" class="filter-pill px-4 py-2.5 rounded-full text-sm font-bold flex items-center gap-2 shadow-sm">
+                            <span>🤝</span>
+                            <span id="pill-mission-label">Tipo de acompañamiento</span>
+                            <span class="text-xs text-slate-400">▼</span>
+                        </button>
+
+                        <button type="button" onclick="openFilterModal()" class="filter-pill px-4 py-2.5 rounded-full text-sm font-bold flex items-center gap-2 shadow-sm">
+                            <span>📅</span>
+                            <span>Disponibilidad</span>
+                            <span class="text-xs text-slate-400">▼</span>
+                        </button>
+
+                        <button type="button" onclick="openFilterModal()" class="filter-pill px-4 py-2.5 rounded-full text-sm font-bold flex items-center gap-2 shadow-sm">
+                            <span>💶</span>
+                            <span>Tarifa por hora</span>
+                            <span class="text-xs text-slate-400">▼</span>
+                        </button>
+
+                        <button type="button" onclick="openFilterModal()" class="filter-pill px-4 py-2.5 rounded-full text-sm font-bold flex items-center gap-2 shadow-sm bg-stone-100">
+                            <span>Más filtros ⁝</span>
+                        </button>
+
+                        <button type="button" onclick="resetPublicFilters()" class="text-xs font-bold text-teal-700 hover:underline px-2 py-1">
+                            Ver todos
+                        </button>
+                    </div>
+
+                    <div id="catalog-counter" class="text-sm font-bold text-slate-600">
+                        Más de 1.480 profesionales verificados en España
                     </div>
                 </div>
 
-                <!-- Nivel 3 -->
-                <div
-                    class="bg-obsidian-950/95 backdrop-blur-xl border border-sovereign-500/35 rounded-3xl p-8 hover:-translate-y-2 hover:border-sovereign-400 hover:shadow-[0_15px_45px_-10px_rgba(212,168,83,0.3)] transition-all duration-500 group relative overflow-hidden reveal delay-300 flex flex-col min-h-[480px]">
-                    <div
-                        class="absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-sovereign-300 via-sovereign-500 to-amber-600 opacity-85 group-hover:opacity-100 transition-opacity z-20">
+                <!-- Filtros rápidos de Ciudad en un clic -->
+                <div class="flex items-center gap-2 overflow-x-auto py-3 text-xs font-bold text-slate-600">
+                    <span class="text-slate-400 shrink-0">Ciudades rápidas:</span>
+                    <button onclick="filterByCity('Todas')" class="px-3 py-1 rounded-full bg-white border border-stone-200 hover:border-teal-600 shrink-0">Todas</button>
+                    <button onclick="filterByCity('Alicante')" class="px-3 py-1 rounded-full bg-white border border-stone-200 hover:border-teal-600 shrink-0">Alicante</button>
+                    <button onclick="filterByCity('Elche')" class="px-3 py-1 rounded-full bg-white border border-stone-200 hover:border-teal-600 shrink-0">Elche</button>
+                    <button onclick="filterByCity('Madrid')" class="px-3 py-1 rounded-full bg-white border border-stone-200 hover:border-teal-600 shrink-0">Madrid</button>
+                    <button onclick="filterByCity('Barcelona')" class="px-3 py-1 rounded-full bg-white border border-stone-200 hover:border-teal-600 shrink-0">Barcelona</button>
+                    <button onclick="filterByCity('Valencia')" class="px-3 py-1 rounded-full bg-white border border-stone-200 hover:border-teal-600 shrink-0">Valencia</button>
+                    <button onclick="filterByCity('Sevilla')" class="px-3 py-1 rounded-full bg-white border border-stone-200 hover:border-teal-600 shrink-0">Sevilla</button>
+                    <button onclick="filterByCity('Málaga')" class="px-3 py-1 rounded-full bg-white border border-stone-200 hover:border-teal-600 shrink-0">Málaga</button>
+                    <button onclick="filterByCity('Zaragoza')" class="px-3 py-1 rounded-full bg-white border border-stone-200 hover:border-teal-600 shrink-0">Zaragoza</button>
+                </div>
+            </div>
+
+            <!-- Cuadrícula de 4 Columnas (Rellenada por main.js) -->
+            <div id="public-catalog-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Tarjetas generadas dinámicamente -->
+            </div>
+
+            <!-- Botón Inferior Ver Todos (Estilo Sitly) -->
+            <div class="mt-10 text-center">
+                <button onclick="openAuthGateModal('')"
+                    class="px-8 py-4 rounded-full bg-white hover:bg-teal-50 text-teal-800 border-2 border-teal-700 font-extrabold text-sm shadow-sm transition-all">
+                    Visualiza todos los perfiles verificados de tu zona →
+                </button>
+            </div>
+        </section>
+
+        <!-- ================================================================= -->
+        <!-- 3. CÓMO TE APOYA MYHERO (LOS 3 PILARES LIMPIOS ESTILO SITLY)      -->
+        <!-- ================================================================= -->
+        <section id="como-funciona" class="py-20 bg-white border-t border-b border-stone-200">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-14 reveal">
+                    <span class="inline-block px-3.5 py-1 rounded-full bg-teal-50 border border-teal-200 text-teal-800 font-bold uppercase tracking-widest text-xs mb-3">
+                        Seguridad Preventiva sin Complicaciones
+                    </span>
+                    <h2 class="font-display text-3xl sm:text-4xl font-extrabold text-slate-900">
+                        MYHERO APOYA TU TRANQUILIDAD Y LA DE TU FAMILIA
+                    </h2>
+                    <p class="text-slate-600 text-lg mt-3">
+                        Explora libremente, revisa las acreditaciones de cada profesional y contacta solo cuando hayas encontrado al acompañante ideal.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 reveal delay-100">
+                    <!-- Pilar 1 -->
+                    <div class="bg-[#FAFAF9] border border-stone-200 rounded-3xl p-8 text-center">
+                        <div class="w-16 h-16 rounded-2xl bg-teal-100 text-teal-800 flex items-center justify-center mx-auto mb-5 text-3xl shadow-sm">
+                            🔎
+                        </div>
+                        <h3 class="font-display text-xl font-extrabold text-slate-900 mb-3">1. Libertad Total de Búsqueda</h3>
+                        <p class="text-slate-600 text-base leading-relaxed">
+                            Consulta perfiles reales en tu ciudad, filtra por nivel de preparación (Nivel 1, 2 o 3), revisa sus horarios de mañana, tarde o noche y lee las referencias de otras familias antes de registrarte.
+                        </p>
                     </div>
 
-                    <!-- Foto difuminada base -->
-                    <div class="absolute inset-0 bg-cover bg-top opacity-30 group-hover:opacity-0 transition-opacity duration-500 mix-blend-luminosity z-0"
-                        style="background-image: url('./assets/img/karateka.jpg'); -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 85%);">
-                    </div>
-                    <!-- Foto Full (Aparece en hover) -->
-                    <div class="absolute inset-0 bg-cover bg-top opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0"
-                        style="background-image: url('./assets/img/karateka.jpg');"></div>
-                    <!-- Capa oscura extra para texto -->
-                    <div
-                        class="absolute inset-0 bg-obsidian-950/60 group-hover:opacity-0 transition-opacity duration-500 z-0">
+                    <!-- Pilar 2 -->
+                    <div class="bg-[#FAFAF9] border border-stone-200 rounded-3xl p-8 text-center">
+                        <div class="w-16 h-16 rounded-2xl bg-blue-100 text-blue-800 flex items-center justify-center mx-auto mb-5 text-3xl shadow-sm">
+                            🛡️
+                        </div>
+                        <h3 class="font-display text-xl font-extrabold text-slate-900 mb-3">2. Filtro Riguroso (Solo el 12%)</h3>
+                        <p class="text-slate-600 text-base leading-relaxed">
+                            Todos los Heroes pasan por 4 fases obligatorias: validación de DNI/NIE, Certificado Oficial de Antecedentes Penales libre de cargos, prueba psicotécnica y entrevista personal.
+                        </p>
                     </div>
 
-                    <div
-                        class="relative z-10 flex flex-col flex-grow transition-opacity duration-500 group-hover:opacity-0">
-                        <div class="flex justify-between items-start mb-6 mt-2">
-                            <div
-                                class="w-12 h-12 rounded-2xl bg-sovereign-500/15 border border-sovereign-500/30 flex items-center justify-center text-sovereign-400">
-                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z">
-                                    </path>
-                                </svg>
+                    <!-- Pilar 3 -->
+                    <div class="bg-[#FAFAF9] border border-stone-200 rounded-3xl p-8 text-center">
+                        <div class="w-16 h-16 rounded-2xl bg-emerald-100 text-emerald-800 flex items-center justify-center mx-auto mb-5 text-3xl shadow-sm">
+                            📍
+                        </div>
+                        <h3 class="font-display text-xl font-extrabold text-slate-900 mb-3">3. GPS Red Familiar™ y Bizum Directo</h3>
+                        <p class="text-slate-600 text-base leading-relaxed">
+                            Durante el acompañamiento, tu familia sigue la ruta por GPS en directo y cuentas con botón SOS. No metes tu tarjeta en la web: pagas en mano o por Bizum al finalizar.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="text-center mt-12">
+                    <a href="portal.html"
+                        class="inline-block px-9 py-4 rounded-full bg-teal-700 hover:bg-teal-800 text-white font-extrabold text-base shadow-lg shadow-teal-700/20 transition">
+                        ¡Pruébalo ahora! Regístrate gratis
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================================================================= -->
+        <!-- 4. LOS 3 NIVELES DE HERO (CON TUS 3 FOTOS Y HOVER QUE REVELA FOTO) -->
+        <!-- ================================================================= -->
+        <section id="niveles" class="py-20 bg-[#FAFAF9] border-b border-stone-200">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-14 reveal">
+                    <span class="inline-block px-3.5 py-1 rounded-full bg-blue-50 border border-blue-200 text-blue-800 font-bold uppercase tracking-widest text-xs mb-3">
+                        Elige según tu necesidad
+                    </span>
+                    <h2 class="font-display text-3xl sm:text-4xl font-extrabold text-slate-900 mb-4">
+                        TRES NIVELES DE ACOMPAÑAMIENTO VERIFICADO
+                    </h2>
+                    <p class="text-slate-600 text-lg">
+                        Pasa el cursor sobre cada tarjeta para ver la presencia real del perfil o haz clic para filtrar el catálogo por ese nivel.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Nivel 1 -->
+                    <div onclick="filterByLevel('1')"
+                        class="cursor-pointer bg-slate-900 border border-stone-200 rounded-3xl p-8 hover:-translate-y-2 hover:shadow-2xl transition-all duration-500 group relative overflow-hidden reveal delay-100 flex flex-col min-h-[450px]">
+                        <div class="absolute inset-x-0 top-0 h-1.5 bg-emerald-500 z-20"></div>
+                        <div class="absolute inset-0 bg-cover bg-top opacity-35 group-hover:opacity-0 transition-opacity duration-500 mix-blend-luminosity z-0"
+                            style="background-image: url('./assets/img/normal.jpg'); -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 85%);"></div>
+                        <div class="absolute inset-0 bg-cover bg-top opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0"
+                            style="background-image: url('./assets/img/normal.jpg');"></div>
+                        <div class="absolute inset-0 bg-slate-950/60 group-hover:opacity-0 transition-opacity duration-500 z-0"></div>
+
+                        <div class="relative z-10 flex flex-col flex-grow transition-opacity duration-500 group-hover:opacity-0">
+                            <div class="flex justify-between items-center mb-6">
+                                <span class="bg-emerald-500 text-white text-xs font-extrabold uppercase tracking-wider px-3.5 py-1.5 rounded-full">Nivel 1 · Cívico</span>
+                                <span class="text-emerald-300 text-xs font-bold">Desde 15 €/h</span>
                             </div>
-                            <span
-                                class="bg-sovereign-500/20 border border-sovereign-400/40 text-sovereign-300 text-xs font-extrabold uppercase tracking-wider px-3.5 py-1.5 rounded-full">Nivel
-                                3 · Élite</span>
+                            <h3 class="font-display text-2xl font-bold text-white mb-2">Acompañamiento Familiar y Mayores</h3>
+                            <p class="text-slate-100 text-base mb-6 leading-relaxed flex-grow">
+                                Perfiles cercanos, pacientes y muy educados. Perfectos para acompañar a tus padres mayores al médico, ir al banco, hacer la compra o salir a caminar con tranquilidad.
+                            </p>
+                            <div class="pt-4 border-t border-white/15 text-emerald-300 text-sm font-bold">
+                                Filtrar Heroes de Nivel 1 →
+                            </div>
                         </div>
+                    </div>
 
-                        <h3 class="font-display text-2xl font-bold text-white mb-1">Especialista Certificado</h3>
-                        <p class="text-sovereign-400 text-sm font-semibold mb-5">Acreditación técnica y gestión de crisis.</p>
+                    <!-- Nivel 2 -->
+                    <div onclick="filterByLevel('2')"
+                        class="cursor-pointer bg-slate-900 border-2 border-teal-600 rounded-3xl p-8 hover:-translate-y-2 hover:shadow-2xl transition-all duration-500 group relative overflow-hidden reveal delay-200 flex flex-col min-h-[450px]">
+                        <div class="absolute inset-x-0 top-0 h-1.5 bg-teal-500 z-20"></div>
+                        <div class="absolute inset-0 bg-cover bg-top opacity-35 group-hover:opacity-0 transition-opacity duration-500 mix-blend-luminosity z-0"
+                            style="background-image: url('./assets/img/musculoso.jpg'); -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 85%);"></div>
+                        <div class="absolute inset-0 bg-cover bg-top opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0"
+                            style="background-image: url('./assets/img/musculoso.jpg');"></div>
+                        <div class="absolute inset-0 bg-slate-950/60 group-hover:opacity-0 transition-opacity duration-500 z-0"></div>
 
-                        <p class="text-slate-200 text-base mb-8 leading-relaxed flex-grow">
-                            El estándar más alto de protección preventiva. Cinturones negros federados, exmiembros de fuerzas de seguridad o rescatistas certificados. Diseñado para notarías, traslados de alto valor o máxima cobertura.
-                        </p>
+                        <div class="relative z-10 flex flex-col flex-grow transition-opacity duration-500 group-hover:opacity-0">
+                            <div class="flex justify-between items-center mb-6">
+                                <span class="bg-teal-600 text-white text-xs font-extrabold uppercase tracking-wider px-3.5 py-1.5 rounded-full">Nivel 2 · Más Solicitado</span>
+                                <span class="text-teal-300 text-xs font-bold">Desde 18 €/h</span>
+                            </div>
+                            <h3 class="font-display text-2xl font-bold text-white mb-2">Presencia Disuasoria Activa</h3>
+                            <p class="text-slate-100 text-base mb-6 leading-relaxed flex-grow">
+                                Deportistas y perfiles atléticos de gran envergadura visual. Ideales para salidas nocturnas del trabajo, aparcamientos solitarios, cajeros automáticos y prevención urbana.
+                            </p>
+                            <div class="pt-4 border-t border-white/15 text-teal-300 text-sm font-bold">
+                                Filtrar Heroes de Nivel 2 →
+                            </div>
+                        </div>
+                    </div>
 
-                        <ul class="text-sm text-slate-200 space-y-3.5 border-t border-white/10 pt-5">
-                            <li class="flex items-start gap-3">
-                                <div
-                                    class="mt-0.5 w-5 h-5 rounded-full bg-sovereign-500/20 flex items-center justify-center flex-shrink-0">
-                                    <svg class="w-3.5 h-3.5 text-sovereign-400" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd"
-                                            d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                                            clip-rule="evenodd"></path>
-                                    </svg>
-                                </div>
-                                <span class="leading-tight font-medium">Diplomas y licencias oficiales compulsadas</span>
-                            </li>
-                            <li class="flex items-start gap-3">
-                                <div
-                                    class="mt-0.5 w-5 h-5 rounded-full bg-sovereign-500/20 flex items-center justify-center flex-shrink-0">
-                                    <svg class="w-3.5 h-3.5 text-sovereign-400" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd"
-                                            d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                                            clip-rule="evenodd"></path>
-                                    </svg>
-                                </div>
-                                <span class="leading-tight font-medium">Protocolos de emergencia y primeros auxilios</span>
-                            </li>
-                        </ul>
+                    <!-- Nivel 3 -->
+                    <div onclick="filterByLevel('3')"
+                        class="cursor-pointer bg-slate-900 border border-stone-200 rounded-3xl p-8 hover:-translate-y-2 hover:shadow-2xl transition-all duration-500 group relative overflow-hidden reveal delay-300 flex flex-col min-h-[450px]">
+                        <div class="absolute inset-x-0 top-0 h-1.5 bg-amber-500 z-20"></div>
+                        <div class="absolute inset-0 bg-cover bg-top opacity-35 group-hover:opacity-0 transition-opacity duration-500 mix-blend-luminosity z-0"
+                            style="background-image: url('./assets/img/karateka.jpg'); -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 85%);"></div>
+                        <div class="absolute inset-0 bg-cover bg-top opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0"
+                            style="background-image: url('./assets/img/karateka.jpg');"></div>
+                        <div class="absolute inset-0 bg-slate-950/60 group-hover:opacity-0 transition-opacity duration-500 z-0"></div>
+
+                        <div class="relative z-10 flex flex-col flex-grow transition-opacity duration-500 group-hover:opacity-0">
+                            <div class="flex justify-between items-center mb-6">
+                                <span class="bg-amber-500 text-slate-950 text-xs font-extrabold uppercase tracking-wider px-3.5 py-1.5 rounded-full">Nivel 3 · Especialista</span>
+                                <span class="text-amber-300 text-xs font-bold">Desde 25 €/h</span>
+                            </div>
+                            <h3 class="font-display text-2xl font-bold text-white mb-2">Especialista Certificado (Élite)</h3>
+                            <p class="text-slate-100 text-base mb-6 leading-relaxed flex-grow">
+                                Cinturones negros federados, exmiembros de cuerpos de seguridad y expertos en primeros auxilios. Pensado para notarías, gestiones de alto valor o máxima protección.
+                            </p>
+                            <div class="pt-4 border-t border-white/15 text-amber-300 text-sm font-bold">
+                                Filtrar Heroes de Nivel 3 →
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- TESTIMONIOS (ENFOCADOS EN PÚBLICO +30 AÑOS Y FAMILIAS EN ESPAÑA) -->
-    <section id="testimonios" class="py-24 bg-obsidian-950 relative overflow-hidden border-t border-white/10">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="text-center max-w-3xl mx-auto mb-16 reveal">
-                <span class="text-sovereign-400 font-bold tracking-widest uppercase text-xs mb-3 block">Confianza Demostrada</span>
-                <h2 class="font-display text-3xl md:text-4xl font-extrabold text-white mb-4">Experiencias de nuestros clientes en España</h2>
-                <p class="text-slate-300 text-lg">Profesionales, directivos y familias que han recuperado la tranquilidad en su día a día.</p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Review 1: Laura -->
-                <div class="executive-card rounded-2xl p-8 reveal delay-100 flex flex-col">
-                    <div class="flex items-center justify-between mb-5">
-                        <div class="flex text-sovereign-400 gap-1">
-                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                        </div>
-                        <span class="text-xs font-semibold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2.5 py-0.5 rounded-full">Servicio Verificado</span>
-                    </div>
-                    <p class="text-slate-200 text-base leading-relaxed mb-6 flex-grow">
-                        "Mi madre tiene 74 años y cada vez que iba sola a la sucursal bancaria a retirar su pensión o hacer gestiones me quedaba intranquila por cómo está la seguridad últimamente. Solicité un perfil de Nivel 2 y pude seguir todo el recorrido por el GPS desde mi despacho. Educación exquisita y una paz mental impagable."
+        <!-- ================================================================= -->
+        <!-- 5. POR QUÉ LAS FAMILIAS RECOMIENDAN MYHERO (TESTIMONIOS SITLY)    -->
+        <!-- ================================================================= -->
+        <section id="testimonios" class="py-20 bg-white border-b border-stone-200">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-14 reveal">
+                    <span class="inline-block px-3.5 py-1 rounded-full bg-amber-50 border border-amber-200 text-amber-800 font-bold uppercase tracking-widest text-xs mb-3">
+                        Historias Reales en España
+                    </span>
+                    <h2 class="font-display text-3xl sm:text-4xl font-extrabold text-slate-900 mb-3">
+                        POR QUÉ LAS FAMILIAS Y PROFESIONALES RECOMIENDAN MYHERO
+                    </h2>
+                    <p class="text-slate-600 text-lg">
+                        ¿Cómo ha cambiado la tranquilidad diaria de estas personas al contar con un Hero de confianza?
                     </p>
-                    <div class="flex items-center gap-3.5 pt-4 border-t border-white/10">
-                        <img src="./assets/img/laura.jpg" alt="Laura G." class="w-12 h-12 rounded-full border-2 border-sovereign-500/40 object-cover">
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Laura -->
+                    <div class="bg-[#FAFAF9] border border-stone-200 rounded-3xl p-8 flex flex-col justify-between reveal delay-100">
                         <div>
-                            <div class="text-white font-bold text-base">Laura G. (42 años)</div>
-                            <div class="text-sovereign-400 text-xs font-semibold uppercase tracking-wider">Titular Red Familiar · Alicante</div>
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="text-amber-500 text-lg font-bold">★★★★★</span>
+                                <span class="text-xs font-bold text-emerald-700 bg-emerald-50 border border-emerald-200 px-3 py-1 rounded-full">Red Familiar™</span>
+                            </div>
+                            <p class="text-slate-700 text-base leading-relaxed mb-6">
+                                "Mi madre tiene 74 años y cada vez que iba sola al banco a sacar su pensión me quedaba intranquila por la inseguridad actual. Contacté con Roberto (Nivel 2) y pude ver su recorrido por el GPS desde mi trabajo. Educación de diez y una paz mental impagable."
+                            </p>
+                        </div>
+                        <div class="flex items-center gap-3.5 pt-4 border-t border-stone-200">
+                            <img src="./assets/img/laura.jpg" alt="Laura G." class="w-12 h-12 rounded-full object-cover border-2 border-teal-600">
+                            <div>
+                                <div class="font-bold text-slate-900 text-base">Laura G. (42 años)</div>
+                                <div class="text-xs font-semibold text-teal-800">Contrató a Roberto en Alicante</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- María -->
+                    <div class="bg-[#FAFAF9] border border-stone-200 rounded-3xl p-8 flex flex-col justify-between reveal delay-200">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="text-amber-500 text-lg font-bold">★★★★★</span>
+                                <span class="text-xs font-bold text-blue-700 bg-blue-50 border border-blue-200 px-3 py-1 rounded-full">Retorno Nocturno</span>
+                            </div>
+                            <p class="text-slate-700 text-base leading-relaxed mb-6">
+                                "Salgo del despacho pasadas las diez de la noche y aparco el coche a varias calles en una zona solitaria. Desde que reservo un Hero de Nivel 2 para ir al parking o volver a casa tras una cena, camino con total tranquilidad."
+                            </p>
+                        </div>
+                        <div class="flex items-center gap-3.5 pt-4 border-t border-stone-200">
+                            <img src="./assets/img/maria.jpg" alt="María P." class="w-12 h-12 rounded-full object-cover border-2 border-teal-600">
+                            <div>
+                                <div class="font-bold text-slate-900 text-base">María P. (36 años)</div>
+                                <div class="text-xs font-semibold text-teal-800">Directora Comercial · Cliente Frecuente</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Roberto -->
+                    <div class="bg-[#FAFAF9] border border-stone-200 rounded-3xl p-8 flex flex-col justify-between reveal delay-300">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="text-amber-500 text-lg font-bold">★★★★★</span>
+                                <span class="text-xs font-bold text-amber-800 bg-amber-50 border border-amber-200 px-3 py-1 rounded-full">Hero Verificado</span>
+                            </div>
+                            <p class="text-slate-700 text-base leading-relaxed mb-6">
+                                "Tras presentar mi certificado oficial de antecedentes penales y superar la entrevista, llevo meses acompañando a mayores y profesionales. Es gratificante aportar seguridad real a mi ciudad y cobrar el 100% al instante por Bizum."
+                            </p>
+                        </div>
+                        <div class="flex items-center gap-3.5 pt-4 border-t border-stone-200">
+                            <img src="./assets/img/roberto.jpg" alt="Roberto S." class="w-12 h-12 rounded-full object-cover border-2 border-teal-600">
+                            <div>
+                                <div class="font-bold text-slate-900 text-base">Roberto S. (38 años)</div>
+                                <div class="text-xs font-semibold text-teal-800">Hero Nivel 2 · Alicante y Elche</div>
+                            </div>
                         </div>
                     </div>
                 </div>
+            </div>
+        </section>
 
-                <!-- Review 2: María -->
-                <div class="executive-card rounded-2xl p-8 reveal delay-200 flex flex-col">
-                    <div class="flex items-center justify-between mb-5">
-                        <div class="flex text-sovereign-400 gap-1">
-                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                        </div>
-                        <span class="text-xs font-semibold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2.5 py-0.5 rounded-full">Servicio Verificado</span>
-                    </div>
-                    <p class="text-slate-200 text-base leading-relaxed mb-6 flex-grow">
-                        "Salgo de trabajar pasadas las diez de la noche y aparco el coche a varias calles en una zona bastante solitaria. Desde que reservo un acompañante de Nivel 2 para llegar hasta el parking o volver a casa tras una cena, camino con total serenidad. Un servicio serio, puntual y absolutamente necesario hoy en España."
+        <!-- ================================================================= -->
+        <!-- 6. DIRECTORIO LOCAL "MYHERO EN TU CIUDAD" (IDÉNTICO A SITLY)      -->
+        <!-- ================================================================= -->
+        <section id="ciudades" class="py-20 bg-[#E6F4F1]/60 border-b border-stone-200">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-12 reveal">
+                    <span class="inline-block px-3.5 py-1 rounded-full bg-white border border-teal-200 text-teal-800 font-bold uppercase tracking-widest text-xs mb-3">
+                        Cobertura Nacional
+                    </span>
+                    <h2 class="font-display text-3xl sm:text-4xl font-extrabold text-slate-900 mb-3">
+                        MYHERO EN TU CIUDAD
+                    </h2>
+                    <p class="text-slate-600 text-lg">
+                        Selecciona tu ciudad para ver de inmediato los acompañantes y misiones disponibles cerca de ti.
                     </p>
-                    <div class="flex items-center gap-3.5 pt-4 border-t border-white/10">
-                        <img src="./assets/img/maria.jpg" alt="María P." class="w-12 h-12 rounded-full border-2 border-royal-500/40 object-cover">
-                        <div>
-                            <div class="text-white font-bold text-base">María P. (36 años)</div>
-                            <div class="text-royal-400 text-xs font-semibold uppercase tracking-wider">Directora Comercial · Cliente Frecuente</div>
-                        </div>
-                    </div>
                 </div>
 
-                <!-- Review 3: Roberto -->
-                <div class="executive-card rounded-2xl p-8 reveal delay-300 flex flex-col">
-                    <div class="flex items-center justify-between mb-5">
-                        <div class="flex text-sovereign-400 gap-1">
-                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                        </div>
-                        <span class="text-xs font-semibold text-sovereign-300 bg-sovereign-500/15 border border-sovereign-500/30 px-2.5 py-0.5 rounded-full">Acreditado</span>
-                    </div>
-                    <p class="text-slate-200 text-base leading-relaxed mb-6 flex-grow">
-                        "Tras superar las cuatro fases de selección y presentar mi certificado oficial de antecedentes penales, llevo varios meses acompañando a personas mayores y profesionales en sus desplazamientos. Es un orgullo aportar seguridad real a mi ciudad y percibir el 100% de mis honorarios al instante por Bizum."
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 reveal delay-100">
+                    <button onclick="filterByCity('Madrid')" class="bg-white hover:bg-teal-50 border border-stone-200 hover:border-teal-600 rounded-2xl p-5 text-left shadow-sm transition group">
+                        <div class="font-display text-lg font-extrabold text-slate-900 group-hover:text-teal-800">Madrid</div>
+                        <div class="text-xs font-semibold text-teal-700 mt-1">&gt; 420 Heroes activos</div>
+                    </button>
+                    <button onclick="filterByCity('Barcelona')" class="bg-white hover:bg-teal-50 border border-stone-200 hover:border-teal-600 rounded-2xl p-5 text-left shadow-sm transition group">
+                        <div class="font-display text-lg font-extrabold text-slate-900 group-hover:text-teal-800">Barcelona</div>
+                        <div class="text-xs font-semibold text-teal-700 mt-1">&gt; 380 Heroes activos</div>
+                    </button>
+                    <button onclick="filterByCity('Valencia')" class="bg-white hover:bg-teal-50 border border-stone-200 hover:border-teal-600 rounded-2xl p-5 text-left shadow-sm transition group">
+                        <div class="font-display text-lg font-extrabold text-slate-900 group-hover:text-teal-800">Valencia</div>
+                        <div class="text-xs font-semibold text-teal-700 mt-1">&gt; 215 Heroes activos</div>
+                    </button>
+                    <button onclick="filterByCity('Alicante')" class="bg-white hover:bg-teal-50 border border-stone-200 hover:border-teal-600 rounded-2xl p-5 text-left shadow-sm transition group">
+                        <div class="font-display text-lg font-extrabold text-slate-900 group-hover:text-teal-800">Alicante</div>
+                        <div class="text-xs font-semibold text-teal-700 mt-1">&gt; 165 Heroes activos</div>
+                    </button>
+                    <button onclick="filterByCity('Elche')" class="bg-white hover:bg-teal-50 border border-stone-200 hover:border-teal-600 rounded-2xl p-5 text-left shadow-sm transition group">
+                        <div class="font-display text-lg font-extrabold text-slate-900 group-hover:text-teal-800">Elche</div>
+                        <div class="text-xs font-semibold text-teal-700 mt-1">&gt; 95 Heroes activos</div>
+                    </button>
+                    <button onclick="filterByCity('Sevilla')" class="bg-white hover:bg-teal-50 border border-stone-200 hover:border-teal-600 rounded-2xl p-5 text-left shadow-sm transition group">
+                        <div class="font-display text-lg font-extrabold text-slate-900 group-hover:text-teal-800">Sevilla</div>
+                        <div class="text-xs font-semibold text-teal-700 mt-1">&gt; 140 Heroes activos</div>
+                    </button>
+                    <button onclick="filterByCity('Málaga')" class="bg-white hover:bg-teal-50 border border-stone-200 hover:border-teal-600 rounded-2xl p-5 text-left shadow-sm transition group">
+                        <div class="font-display text-lg font-extrabold text-slate-900 group-hover:text-teal-800">Málaga</div>
+                        <div class="text-xs font-semibold text-teal-700 mt-1">&gt; 130 Heroes activos</div>
+                    </button>
+                    <button onclick="filterByCity('Zaragoza')" class="bg-white hover:bg-teal-50 border border-stone-200 hover:border-teal-600 rounded-2xl p-5 text-left shadow-sm transition group">
+                        <div class="font-display text-lg font-extrabold text-slate-900 group-hover:text-teal-800">Zaragoza</div>
+                        <div class="text-xs font-semibold text-teal-700 mt-1">&gt; 85 Heroes activos</div>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================================================================= -->
+        <!-- 7. PREGUNTAS FRECUENTES (10 FAQS EN ACORDEÓN LUMINOSO)            -->
+        <!-- ================================================================= -->
+        <section id="faq" class="py-20 bg-[#FAFAF9]">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-14 reveal">
+                    <span class="inline-block px-3.5 py-1 rounded-full bg-teal-50 border border-teal-200 text-teal-800 font-bold uppercase tracking-widest text-xs mb-3">
+                        Centro de Ayuda
+                    </span>
+                    <h2 class="font-display text-3xl sm:text-4xl font-extrabold text-slate-900 mb-3">
+                        RESPUESTAS A TUS PREGUNTAS
+                    </h2>
+                    <p class="text-slate-600 text-lg">
+                        Resolvemos todas tus dudas sobre cómo buscar, contactar y acordar tu acompañamiento en MyHero.
                     </p>
-                    <div class="flex items-center gap-3.5 pt-4 border-t border-white/10">
-                        <img src="./assets/img/roberto.jpg" alt="Roberto S." class="w-12 h-12 rounded-full border-2 border-sovereign-500/40 object-cover">
-                        <div>
-                            <div class="text-white font-bold text-base">Roberto S. (38 años)</div>
-                            <div class="text-sovereign-400 text-xs font-semibold uppercase tracking-wider">Hero Acreditado · Nivel 2</div>
+                </div>
+
+                <div class="space-y-3.5 reveal delay-100">
+                    <!-- FAQ 1 -->
+                    <div class="bg-white border border-stone-200 rounded-2xl overflow-hidden faq-item shadow-sm">
+                        <button class="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none faq-btn">
+                            <span class="text-slate-900 font-bold text-base">¿Qué es exactamente MyHero y para qué sirve?</span>
+                            <svg class="w-5 h-5 text-teal-700 transform transition-transform duration-300 faq-icon rotate-180 shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div class="faq-content open">
+                            <div class="px-6 pb-5 text-slate-600 text-base leading-relaxed">
+                                MyHero es la plataforma que conecta a personas mayores de 30 años y familias con acompañantes verificados ("Heroes") para brindar apoyo presencial y seguridad preventiva en su día a día (ir al banco, acompañar a padres mayores al médico, volver a casa de noche tras el trabajo, etc.).
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 2 -->
+                    <div class="bg-white border border-stone-200 rounded-2xl overflow-hidden faq-item shadow-sm">
+                        <button class="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none faq-btn">
+                            <span class="text-slate-900 font-bold text-base">¿Cómo funciona el pago del acompañamiento?</span>
+                            <svg class="w-5 h-5 text-teal-700 transform transition-transform duration-300 faq-icon shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div class="faq-content">
+                            <div class="px-6 pb-5 text-slate-600 text-base leading-relaxed">
+                                Explorar perfiles y registrarse como ciudadano es gratis. El pago del servicio se realiza <strong>directamente al Hero en mano (efectivo) o por Bizum</strong> al finalizar el acompañamiento. Cada Hero publica su tarifa por hora claramente en su perfil.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 3 -->
+                    <div class="bg-white border border-stone-200 rounded-2xl overflow-hidden faq-item shadow-sm">
+                        <button class="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none faq-btn">
+                            <span class="text-slate-900 font-bold text-base">¿Cómo gana dinero la plataforma si yo pago directamente al Hero?</span>
+                            <svg class="w-5 h-5 text-teal-700 transform transition-transform duration-300 faq-icon shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div class="faq-content">
+                            <div class="px-6 pb-5 text-slate-600 text-base leading-relaxed">
+                                Funcionamos con un modelo transparente estilo inDrive: cobramos únicamente una comisión automática del 20% al Hero cuando acepta una misión, descontándola de su saldo prepago en la app. Así el cliente no tiene que meter su tarjeta bancaria en la web.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 4 -->
+                    <div class="bg-white border border-stone-200 rounded-2xl overflow-hidden faq-item shadow-sm">
+                        <button class="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none faq-btn">
+                            <span class="text-slate-900 font-bold text-base">¿Qué controles de seguridad pasan los Heroes?</span>
+                            <svg class="w-5 h-5 text-teal-700 transform transition-transform duration-300 faq-icon shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div class="faq-content">
+                            <div class="px-6 pb-5 text-slate-600 text-base leading-relaxed">
+                                Todos los candidatos pasan por un filtro estricto de 4 fases: verificación de DNI/NIE, Certificado Oficial de Antecedentes Penales sin delitos, evaluación psicotécnica y entrevista personal. Solo aprobamos al 12% de los solicitantes.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 5 -->
+                    <div class="bg-white border border-stone-200 rounded-2xl overflow-hidden faq-item shadow-sm">
+                        <button class="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none faq-btn">
+                            <span class="text-slate-900 font-bold text-base">¿Puedo pedir un Hero para mis padres mayores u otro familiar?</span>
+                            <svg class="w-5 h-5 text-teal-700 transform transition-transform duration-300 faq-icon shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div class="faq-content">
+                            <div class="px-6 pb-5 text-slate-600 text-base leading-relaxed">
+                                Sí, gracias a nuestra función <strong>Red Familiar™</strong>. Puedes registrar a tus padres, pareja o familiares y solicitar el acompañamiento para ellos mientras sigues todo el recorrido por GPS desde tu propio teléfono móvil.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 6 -->
+                    <div class="bg-white border border-stone-200 rounded-2xl overflow-hidden faq-item shadow-sm">
+                        <button class="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none faq-btn">
+                            <span class="text-slate-900 font-bold text-base">¿Cuáles son los 3 niveles de Heroes?</span>
+                            <svg class="w-5 h-5 text-teal-700 transform transition-transform duration-300 faq-icon shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div class="faq-content">
+                            <div class="px-6 pb-5 text-slate-600 text-base leading-relaxed">
+                                <strong>Nivel 1 (Acompañamiento Cívico):</strong> Compañía cercana para mayores, médicos y recados. <strong>Nivel 2 (Presencia Disuasoria):</strong> Deportistas y perfiles atléticos para salidas nocturnas o bancos. <strong>Nivel 3 (Especialista Élite):</strong> Profesionales con cinturón negro en artes marciales, seguridad o primeros auxilios certificados.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 7 -->
+                    <div class="bg-white border border-stone-200 rounded-2xl overflow-hidden faq-item shadow-sm">
+                        <button class="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none faq-btn">
+                            <span class="text-slate-900 font-bold text-base">¿Existe seguimiento GPS y botón de emergencia SOS?</span>
+                            <svg class="w-5 h-5 text-teal-700 transform transition-transform duration-300 faq-icon shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div class="faq-content">
+                            <div class="px-6 pb-5 text-slate-600 text-base leading-relaxed">
+                                Sí. Cada misión cuenta con geolocalización GPS en tiempo real compartible con tu familia y un botón permanente de "Centro de Seguridad SOS" conectado para alertar de inmediato ante cualquier eventualidad.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 8 -->
+                    <div class="bg-white border border-stone-200 rounded-2xl overflow-hidden faq-item shadow-sm">
+                        <button class="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none faq-btn">
+                            <span class="text-slate-900 font-bold text-base">Quiero trabajar como Hero, ¿cómo funciona mi saldo y mis cobros?</span>
+                            <svg class="w-5 h-5 text-teal-700 transform transition-transform duration-300 faq-icon shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div class="faq-content">
+                            <div class="px-6 pb-5 text-slate-600 text-base leading-relaxed">
+                                En tu panel de Hero cuentas con una billetera "Saldo / Recargas" (recarga mínima de 10 € por tarjeta o Bizum). Al aceptar una misión, se descuenta el 20% de comisión de ese saldo y tú cobras el 100% del servicio directamente en mano o por Bizum del ciudadano.
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- ÚNETE A LA RED (RECLUTAMIENTO CORPORATIVO) -->
-    <section id="unete" class="py-24 relative overflow-hidden bg-obsidian-900 border-t border-white/10">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 reveal">
-            <div
-                class="border border-sovereign-500/30 bg-gradient-to-b from-obsidian-800/90 to-obsidian-950/95 backdrop-blur-md rounded-3xl p-8 md:p-14 text-center shadow-2xl">
-                <span class="inline-block px-3.5 py-1 rounded-full bg-sovereign-500/15 border border-sovereign-500/30 text-sovereign-300 font-bold tracking-wider uppercase text-xs mb-4">Proceso de Admisión Abierto</span>
-                <h2 class="font-display text-3xl md:text-5xl font-extrabold text-white mb-5">Forma parte del Cuerpo de Heroes.</h2>
-                <p class="text-slate-300 text-lg max-w-2xl mx-auto mb-10 leading-relaxed">
-                    Rentabiliza tu presencia, seriedad o preparación deportiva ayudando a tus conciudadanos a desplazarse seguros. Tú defines tus tarifas por hora y tu disponibilidad semanal.
-                </p>
+    </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10 text-left">
-                    <div
-                        class="bg-obsidian-900/90 p-6 rounded-2xl border border-white/10 transition-transform hover:-translate-y-1 duration-300">
-                        <div class="w-10 h-10 bg-sovereign-500/15 border border-sovereign-500/30 rounded-xl flex items-center justify-center mb-4">
-                            <svg class="w-5 h-5 text-sovereign-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                            </svg>
-                        </div>
-                        <h4 class="text-white font-bold text-base mb-2">Autonomía Total de Agenda</h4>
-                        <p class="text-slate-300 text-sm leading-relaxed">Activa tu perfil cuando estés disponible y acepta únicamente los servicios que encajen en tu horario.</p>
-                    </div>
-                    <div
-                        class="bg-obsidian-900/90 p-6 rounded-2xl border border-white/10 transition-transform hover:-translate-y-1 duration-300 delay-100">
-                        <div class="w-10 h-10 bg-emerald-500/15 border border-emerald-500/30 rounded-xl flex items-center justify-center mb-4">
-                            <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z">
-                                </path>
-                            </svg>
-                        </div>
-                        <h4 class="text-white font-bold text-base mb-2">Cobro Íntegro al Instante</h4>
-                        <p class="text-slate-300 text-sm leading-relaxed">El ciudadano te abona el 100% en mano o vía Bizum al concluir el servicio. Sin esperas de liquidación.</p>
-                    </div>
-                    <div
-                        class="bg-obsidian-900/90 p-6 rounded-2xl border border-white/10 transition-transform hover:-translate-y-1 duration-300 delay-200">
-                        <div class="w-10 h-10 bg-royal-500/15 border border-royal-500/30 rounded-xl flex items-center justify-center mb-4">
-                            <svg class="w-5 h-5 text-royal-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z">
-                                </path>
-                            </svg>
-                        </div>
-                        <h4 class="text-white font-bold text-base mb-2">Prestigio y Respaldo</h4>
-                        <p class="text-slate-300 text-sm leading-relaxed">Operas con clientes registrados, geolocalización activa y centro de asistencia SOS durante toda la misión.</p>
-                    </div>
-                </div>
-
-                <a href="portal.html"
-                    class="inline-block bg-gradient-to-r from-sovereign-500 to-sovereign-600 hover:from-sovereign-400 hover:to-sovereign-500 text-obsidian-950 font-extrabold px-9 py-4 rounded-xl transition-all shadow-lg shadow-sovereign-500/20 text-base">
-                    Iniciar Proceso de Acreditación
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- FAQ (PREGUNTAS FRECUENTES) -->
-    <section id="faq" class="py-24 bg-obsidian-950 border-t border-white/10">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16 reveal">
-                <span class="text-sovereign-400 font-bold tracking-widest uppercase text-xs mb-3 block">Centro de Información al Cliente</span>
-                <h2 class="font-display text-3xl md:text-4xl font-extrabold text-white mb-4">Preguntas Frecuentes</h2>
-                <p class="text-slate-300 text-lg">Todo lo que necesitas saber sobre nuestra operativa, garantías y modelo de tarifas.</p>
-            </div>
-
-            <div class="space-y-4 reveal delay-100">
-                <!-- FAQ Item 1 -->
-                <div class="glass-card rounded-2xl overflow-hidden faq-item">
-                    <button
-                        class="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none faq-btn">
-                        <span class="text-white font-bold text-base">¿Qué es exactamente MyHero y para qué sirve?</span>
-                        <svg class="w-5 h-5 text-sovereign-400 transform transition-transform duration-300 faq-icon rotate-180 shrink-0 ml-4"
-                            fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
-                            </path>
-                        </svg>
-                    </button>
-                    <div class="faq-content open">
-                        <div class="px-6 pb-5 text-slate-300 text-base leading-relaxed">
-                            MyHero es la plataforma líder que conecta a ciudadanos y familias con profesionales ("Heroes") rigurosamente verificados para brindar acompañamiento presencial, apoyo cívico y disuasión preventiva en su día a día (gestiones bancarias, acompañamiento de personas mayores al médico, retornos nocturnos a casa, etc.).
-                        </div>
-                    </div>
-                </div>
-
-                <!-- FAQ Item 2 -->
-                <div class="glass-card rounded-2xl overflow-hidden faq-item">
-                    <button
-                        class="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none faq-btn">
-                        <span class="text-white font-bold text-base">¿Cómo funciona el proceso de pago del servicio?</span>
-                        <svg class="w-5 h-5 text-sovereign-400 transform transition-transform duration-300 faq-icon shrink-0 ml-4"
-                            fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
-                            </path>
-                        </svg>
-                    </button>
-                    <div class="faq-content">
-                        <div class="px-6 pb-5 text-slate-300 text-base leading-relaxed">
-                            El uso de la aplicación es gratuito para el ciudadano. El abono del servicio se realiza <strong>de forma directa al Hero</strong> (en efectivo o mediante Bizum) en el momento del encuentro o al finalizar el acompañamiento. Cada profesional muestra sus tarifas por hora con total transparencia antes de contratar.
-                        </div>
-                    </div>
-                </div>
-
-                <!-- FAQ Item 3 -->
-                <div class="glass-card rounded-2xl overflow-hidden faq-item">
-                    <button
-                        class="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none faq-btn">
-                        <span class="text-white font-bold text-base">¿Cómo se sostiene la plataforma si el cliente no paga en la web?</span>
-                        <svg class="w-5 h-5 text-sovereign-400 transform transition-transform duration-300 faq-icon shrink-0 ml-4"
-                            fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
-                            </path>
-                        </svg>
-                    </button>
-                    <div class="faq-content">
-                        <div class="px-6 pb-5 text-slate-300 text-base leading-relaxed">
-                            MyHero opera bajo un modelo de intermediación directa estilo inDrive: aplicamos una comisión automática del 20% únicamente al Hero por cada misión aceptada. El profesional descuenta esta comisión de su billetera virtual prepago dentro de la plataforma.
-                        </div>
-                    </div>
-                </div>
-
-                <!-- FAQ Item 4 -->
-                <div class="glass-card rounded-2xl overflow-hidden faq-item">
-                    <button
-                        class="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none faq-btn">
-                        <span class="text-white font-bold text-base">¿Qué garantías de seguridad tengo al contratar un Hero?</span>
-                        <svg class="w-5 h-5 text-sovereign-400 transform transition-transform duration-300 faq-icon shrink-0 ml-4"
-                            fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
-                            </path>
-                        </svg>
-                    </button>
-                    <div class="faq-content">
-                        <div class="px-6 pb-5 text-slate-300 text-base leading-relaxed">
-                            La seguridad es nuestro pilar innegociable. Todos los aspirantes deben superar un protocolo de 4 fases: validación de DNI/NIE, presentación del Certificado Oficial de Antecedentes Penales sin cargos, evaluación psicotécnica y entrevista personal. Solo admitimos al 12% de los solicitantes.
-                        </div>
-                    </div>
-                </div>
-
-                <!-- FAQ Item 5 -->
-                <div class="glass-card rounded-2xl overflow-hidden faq-item">
-                    <button
-                        class="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none faq-btn">
-                        <span class="text-white font-bold text-base">¿Puedo solicitar un acompañante para mis padres mayores o familiares?</span>
-                        <svg class="w-5 h-5 text-sovereign-400 transform transition-transform duration-300 faq-icon shrink-0 ml-4"
-                            fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
-                            </path>
-                        </svg>
-                    </button>
-                    <div class="faq-content">
-                        <div class="px-6 pb-5 text-slate-300 text-base leading-relaxed">
-                            Sí. En tu panel de cliente dispones del módulo <strong>"Red Familiar"</strong>. Puedes dar de alta a tus padres, hijos o pareja (incluyendo indicaciones médicas o de movilidad) y coordinar servicios de acompañamiento para ellos mientras supervisas todo desde tu propio teléfono.
-                        </div>
-                    </div>
-                </div>
-
-                <!-- FAQ Item 6 -->
-                <div class="glass-card rounded-2xl overflow-hidden faq-item">
-                    <button
-                        class="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none faq-btn">
-                        <span class="text-white font-bold text-base">¿En qué se diferencian los 3 niveles de Heroes?</span>
-                        <svg class="w-5 h-5 text-sovereign-400 transform transition-transform duration-300 faq-icon shrink-0 ml-4"
-                            fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
-                            </path>
-                        </svg>
-                    </button>
-                    <div class="faq-content">
-                        <div class="px-6 pb-5 text-slate-300 text-base leading-relaxed">
-                            <strong>Nivel 1 (Acompañamiento Cívico):</strong> Perfiles empáticos para apoyo a mayores, médicos y recados. <strong>Nivel 2 (Presencia Disuasoria):</strong> Deportistas y perfiles de gran complexión física para disuasión nocturna o cajeros. <strong>Nivel 3 (Especialistas):</strong> Profesionales con titulaciones en artes marciales, manejo de crisis o primeros auxilios.
-                        </div>
-                    </div>
-                </div>
-
-                <!-- FAQ Item 7 -->
-                <div class="glass-card rounded-2xl overflow-hidden faq-item">
-                    <button
-                        class="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none faq-btn">
-                        <span class="text-white font-bold text-base">¿Cómo puedo seguir el trayecto en tiempo real?</span>
-                        <svg class="w-5 h-5 text-sovereign-400 transform transition-transform duration-300 faq-icon shrink-0 ml-4"
-                            fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
-                            </path>
-                        </svg>
-                    </button>
-                    <div class="faq-content">
-                        <div class="px-6 pb-5 text-slate-300 text-base leading-relaxed">
-                            Al comenzar el acompañamiento, el sistema activa automáticamente la <strong>trazabilidad por GPS en tiempo real</strong>. Tanto el usuario como los miembros autorizados de su Red Familiar pueden visualizar la ruta exacta hasta llegar al destino final.
-                        </div>
-                    </div>
-                </div>
-
-                <!-- FAQ Item 8 -->
-                <div class="glass-card rounded-2xl overflow-hidden faq-item">
-                    <button
-                        class="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none faq-btn">
-                        <span class="text-white font-bold text-base">¿Existe un protocolo o botón de emergencia durante el servicio?</span>
-                        <svg class="w-5 h-5 text-sovereign-400 transform transition-transform duration-300 faq-icon shrink-0 ml-4"
-                            fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
-                            </path>
-                        </svg>
-                    </button>
-                    <div class="faq-content">
-                        <div class="px-6 pb-5 text-slate-300 text-base leading-relaxed">
-                            Sí. Tanto el ciudadano como el Hero disponen del botón permanente <strong>"Centro de Seguridad SOS"</strong> en pantalla, que permite contactar de inmediato con el 112 / Fuerzas y Cuerpos de Seguridad y emitir una alerta geolocalizada a los contactos de confianza.
-                        </div>
-                    </div>
-                </div>
-
-                <!-- FAQ Item 9 -->
-                <div class="glass-card rounded-2xl overflow-hidden faq-item">
-                    <button
-                        class="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none faq-btn">
-                        <span class="text-white font-bold text-base">¿Qué modalidades de acompañamiento puedo solicitar?</span>
-                        <svg class="w-5 h-5 text-sovereign-400 transform transition-transform duration-300 faq-icon shrink-0 ml-4"
-                            fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
-                            </path>
-                        </svg>
-                    </button>
-                    <div class="faq-content">
-                        <div class="px-6 pb-5 text-slate-300 text-base leading-relaxed">
-                            Ofrecemos cobertura en 5 áreas principales: <strong>Gestiones de Valor</strong> (bancos, cajeros, notarías), <strong>Retorno Nocturno</strong> (salidas de trabajo, cenas, aparcamientos), <strong>Asistencia a Mayores</strong> (citas médicas, paseos), <strong>Traslados Urbanos A-B</strong> y misiones personalizadas por horas.
-                        </div>
-                    </div>
-                </div>
-
-                <!-- FAQ Item 10 -->
-                <div class="glass-card rounded-2xl overflow-hidden faq-item">
-                    <button
-                        class="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none faq-btn">
-                        <span class="text-white font-bold text-base">Soy Hero acreditado, ¿cómo funciona mi billetera de saldo?</span>
-                        <svg class="w-5 h-5 text-sovereign-400 transform transition-transform duration-300 faq-icon shrink-0 ml-4"
-                            fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
-                            </path>
-                        </svg>
-                    </button>
-                    <div class="faq-content">
-                        <div class="px-6 pb-5 text-slate-300 text-base leading-relaxed">
-                            En tu panel profesional dispones del módulo "Saldo / Recargas". Mantienes un saldo prepago (recargable desde 10 € por tarjeta o Bizum). Al aceptar un servicio, la plataforma descuenta automáticamente el 20% de comisión de dicho saldo, y tú cobras el 100% de la tarifa directamente del cliente.
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FOOTER CORPORATIVO -->
-    <footer class="bg-[#040810] py-16 border-t border-white/10">
+    <!-- ===================================================================== -->
+    <!-- FOOTER ESTRUCTURADO EN 4 COLUMNAS (ESTILO SITLY)                      -->
+    <!-- ===================================================================== -->
+    <footer class="bg-slate-900 text-white py-14 border-t border-slate-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-5 gap-10 mb-12 reveal">
-                <div class="col-span-1 md:col-span-2">
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 mb-10">
+                <div>
                     <div class="flex items-center gap-3 mb-4">
-                        <img src="./assets/img/logo.png" alt="MyHero Logo" class="h-11 w-auto">
-                        <span class="text-sm font-extrabold tracking-widest uppercase text-sovereign-400">MyHero España</span>
+                        <img src="./assets/img/logo.png" alt="MyHero Logo" class="h-10 w-auto">
+                        <span class="font-display font-extrabold text-lg text-white">MyHero España</span>
                     </div>
-                    <p class="text-sm text-slate-400 max-w-sm leading-relaxed mb-6">
-                        Infraestructura tecnológica de acompañamiento presencial y seguridad preventiva ciudadana. Perfiles auditados, trazabilidad GPS y tranquilidad para toda la familia.
+                    <p class="text-sm text-slate-400 leading-relaxed mb-4">
+                        La plataforma de referencia en España para el acompañamiento preventivo, apoyo a personas mayores y tranquilidad familiar.
                     </p>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="text-[11px] font-semibold bg-obsidian-900 border border-white/10 text-slate-300 px-3 py-1 rounded-lg">Cumplimiento RGPD UE</span>
-                        <span class="text-[11px] font-semibold bg-obsidian-900 border border-white/10 text-slate-300 px-3 py-1 rounded-lg">SSL 256-Bit</span>
-                        <span class="text-[11px] font-semibold bg-obsidian-900 border border-white/10 text-slate-300 px-3 py-1 rounded-lg">Filtro Penal Certificado</span>
-                    </div>
+                    <div class="text-xs text-emerald-400 font-bold">● Verificación Oficial de Penales</div>
                 </div>
+
                 <div>
-                    <h4 class="text-white font-bold mb-4 text-sm uppercase tracking-wider">Servicios</h4>
+                    <h4 class="font-bold text-white text-sm uppercase tracking-wider mb-4">Buscar Acompañante</h4>
                     <ul class="space-y-2.5 text-sm text-slate-400">
-                        <li><a href="portal.html" class="hover:text-sovereign-400 transition">Solicitar Acompañante</a></li>
-                        <li><a href="#niveles" class="hover:text-sovereign-400 transition">Niveles de Protección</a></li>
-                        <li><a href="#como-funciona" class="hover:text-sovereign-400 transition">Sistema Red Familiar™</a></li>
-                        <li><a href="#unete" class="hover:text-sovereign-400 transition">Acreditación de Heroes</a></li>
+                        <li><a href="#catalogo-publico" onclick="filterByCity('Madrid')" class="hover:text-white transition">Heroes en Madrid</a></li>
+                        <li><a href="#catalogo-publico" onclick="filterByCity('Barcelona')" class="hover:text-white transition">Heroes en Barcelona</a></li>
+                        <li><a href="#catalogo-publico" onclick="filterByCity('Valencia')" class="hover:text-white transition">Heroes en Valencia</a></li>
+                        <li><a href="#catalogo-publico" onclick="filterByCity('Alicante')" class="hover:text-white transition">Heroes en Alicante y Elche</a></li>
                     </ul>
                 </div>
+
                 <div>
-                    <h4 class="text-white font-bold mb-4 text-sm uppercase tracking-wider">Compañía</h4>
+                    <h4 class="font-bold text-white text-sm uppercase tracking-wider mb-4">Trabajo como Hero</h4>
                     <ul class="space-y-2.5 text-sm text-slate-400">
-                        <li><a href="#contexto" class="hover:text-sovereign-400 transition">Estándar de Seguridad</a></li>
-                        <li><a href="#testimonios" class="hover:text-sovereign-400 transition">Opiniones Verificadas</a></li>
-                        <li><a href="#faq" class="hover:text-sovereign-400 transition">Preguntas Frecuentes</a></li>
-                        <li><a href="portal.html" class="hover:text-sovereign-400 transition">Acceso Área Privada</a></li>
+                        <li><button onclick="switchAppMode('worker')" class="hover:text-white transition">Ver misiones de familias</button></li>
+                        <li><a href="portal.html" class="hover:text-white transition">Inscribirse como Hero</a></li>
+                        <li><a href="#niveles" class="hover:text-white transition">Requisitos de los 3 Niveles</a></li>
+                        <li><a href="#faq" class="hover:text-white transition">Comisiones y cobro por Bizum</a></li>
                     </ul>
                 </div>
+
                 <div>
-                    <h4 class="text-white font-bold mb-4 text-sm uppercase tracking-wider">Marco Legal</h4>
+                    <h4 class="font-bold text-white text-sm uppercase tracking-wider mb-4">Sobre MyHero</h4>
                     <ul class="space-y-2.5 text-sm text-slate-400">
-                        <li><a href="#" class="hover:text-white transition">Condiciones Generales</a></li>
-                        <li><a href="#" class="hover:text-white transition">Política de Privacidad y GPS</a></li>
-                        <li><a href="#" class="hover:text-white transition">Protocolo de Admisión</a></li>
-                        <li><a href="#" class="hover:text-white transition">Aviso Legal</a></li>
+                        <li><a href="#como-funciona" class="hover:text-white transition">Cómo funciona</a></li>
+                        <li><a href="#testimonios" class="hover:text-white transition">Experiencias de familias</a></li>
+                        <li><a href="portal.html" class="hover:text-white transition">Acceso Clientes / Heroes</a></li>
+                        <li><a href="#" class="hover:text-white transition">Privacidad RGPD y Aviso Legal</a></li>
                     </ul>
                 </div>
             </div>
-            <div
-                class="pt-8 border-t border-white/10 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-slate-400 reveal delay-100">
-                <p>&copy; 2026 MyHero Technologies España S.L. Todos los derechos reservados.</p>
-                <div class="flex items-center gap-2.5 bg-obsidian-900 border border-white/10 px-3.5 py-1.5 rounded-full">
+
+            <div class="pt-8 border-t border-slate-800 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-slate-400">
+                <p>&copy; 2026 MyHero España. Todos los derechos reservados.</p>
+                <div class="flex items-center gap-2">
                     <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                    <span class="text-slate-300 font-medium">Central Operativa Activa · España</span>
+                    <span>Servicio activo en España</span>
                 </div>
             </div>
         </div>
     </footer>
+
+    <!-- ===================================================================== -->
+    <!-- MODAL DE FILTROS ESTILO SITLY (CON SECCIÓN ABIERTA + SECCIÓN PREMIUM) -->
+    <!-- ===================================================================== -->
+    <div id="sitly-filter-modal" class="hidden fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl border border-stone-200 max-h-[90vh] overflow-y-auto">
+            <div class="flex justify-between items-center pb-4 border-b border-stone-200 mb-6">
+                <h3 class="font-display text-xl font-extrabold text-slate-900">FILTROS DE BÚSQUEDA</h3>
+                <button onclick="closeFilterModal()" class="w-9 h-9 rounded-full bg-stone-100 hover:bg-stone-200 flex items-center justify-center font-bold text-slate-600">✕</button>
+            </div>
+
+            <div class="space-y-5">
+                <!-- Ciudad -->
+                <div>
+                    <label class="block text-xs font-extrabold uppercase tracking-wider text-slate-700 mb-2">Ciudad</label>
+                    <select id="modal-filter-city" class="w-full rounded-xl border border-stone-300 bg-stone-50 px-4 py-3 text-sm font-semibold text-slate-900 focus:outline-none focus:border-teal-700">
+                        <option value="Todas">Toda España (Todas las ciudades)</option>
+                        <option value="Alicante">Alicante</option>
+                        <option value="Elche">Elche</option>
+                        <option value="Madrid">Madrid</option>
+                        <option value="Barcelona">Barcelona</option>
+                        <option value="Valencia">Valencia</option>
+                        <option value="Sevilla">Sevilla</option>
+                        <option value="Málaga">Málaga</option>
+                        <option value="Zaragoza">Zaragoza</option>
+                    </select>
+                </div>
+
+                <!-- Nivel de Hero -->
+                <div>
+                    <label class="block text-xs font-extrabold uppercase tracking-wider text-slate-700 mb-2">Nivel de Hero</label>
+                    <select id="modal-filter-level" class="w-full rounded-xl border border-stone-300 bg-stone-50 px-4 py-3 text-sm font-semibold text-slate-900 focus:outline-none focus:border-teal-700">
+                        <option value="Todos">Todos los niveles (1, 2 y 3)</option>
+                        <option value="1">Nivel 1 · Acompañamiento Cívico y Mayores</option>
+                        <option value="2">Nivel 2 · Presencia Disuasoria Activa</option>
+                        <option value="3">Nivel 3 · Especialista Certificado (Élite)</option>
+                    </select>
+                </div>
+
+                <!-- Tipo de Misión -->
+                <div>
+                    <label class="block text-xs font-extrabold uppercase tracking-wider text-slate-700 mb-2">Modalidad de acompañamiento</label>
+                    <select id="modal-filter-mission" class="w-full rounded-xl border border-stone-300 bg-stone-50 px-4 py-3 text-sm font-semibold text-slate-900 focus:outline-none focus:border-teal-700">
+                        <option value="Todas">Cualquier modalidad</option>
+                        <option value="Bancos">Bancos, Cajeros y Notarías</option>
+                        <option value="Mayores">Personas Mayores y Citas Médicas</option>
+                        <option value="Nocturno">Retorno Nocturno y Parking</option>
+                        <option value="Trayectos">Trayectos Urbanos A-B</option>
+                    </select>
+                </div>
+
+                <!-- Tarifa Máxima por Hora -->
+                <div>
+                    <div class="flex justify-between text-xs font-extrabold uppercase tracking-wider text-slate-700 mb-2">
+                        <span>Tarifa máxima por hora</span>
+                        <span id="modal-rate-val" class="text-teal-700">Hasta 40 €/h</span>
+                    </div>
+                    <input id="modal-filter-rate" type="range" min="15" max="40" step="1" value="40"
+                        oninput="document.getElementById('modal-rate-val').innerText = 'Hasta ' + this.value + ' €/h'"
+                        class="w-full accent-teal-700 cursor-pointer">
+                </div>
+
+                <!-- Filtros Exclusivos para Usuarios Registrados (Candado estilo Sitly) -->
+                <div class="bg-stone-50 border border-stone-200 rounded-2xl p-4">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-xs font-extrabold uppercase tracking-wider text-slate-800">🔒 Filtros Avanzados</span>
+                        <span class="text-[11px] font-bold bg-amber-100 text-amber-900 px-2.5 py-0.5 rounded-full">Usuarios registrados</span>
+                    </div>
+                    <p class="text-xs text-slate-500 mb-3">Regístrate gratis para filtrar por vehículo propio, idiomas, primeros auxilios o titulación deportiva específica.</p>
+                    <div class="flex flex-wrap gap-2 opacity-60 pointer-events-none">
+                        <span class="px-3 py-1 rounded-full bg-white border border-stone-300 text-xs font-semibold">🚗 Vehículo propio</span>
+                        <span class="px-3 py-1 rounded-full bg-white border border-stone-300 text-xs font-semibold">🩺 Primeros auxilios</span>
+                        <span class="px-3 py-1 rounded-full bg-white border border-stone-300 text-xs font-semibold">🥋 Artes marciales</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-7 flex gap-3">
+                <button onclick="resetPublicFilters(); closeFilterModal();" class="flex-1 py-3.5 rounded-full border border-stone-300 font-bold text-sm text-slate-700 hover:bg-stone-100">
+                    Limpiar
+                </button>
+                <button onclick="applyFilterModal()" class="flex-1 py-3.5 rounded-full bg-teal-700 hover:bg-teal-800 text-white font-extrabold text-sm shadow-lg">
+                    Ver resultados
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================================================================== -->
+    <!-- MODAL DE REGISTRO / CONTACTO ("BIENVENIDO A MYHERO" ESTILO SITLY)     -->
+    <!-- ===================================================================== -->
+    <div id="sitly-auth-modal" class="hidden fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-md w-full p-6 sm:p-8 shadow-2xl border border-stone-200 text-center relative">
+            <button onclick="closeAuthGateModal()" class="absolute top-5 right-5 w-9 h-9 rounded-full bg-stone-100 hover:bg-stone-200 flex items-center justify-center font-bold text-slate-600">✕</button>
+
+            <div class="w-14 h-14 rounded-2xl bg-teal-50 border border-teal-200 text-teal-700 flex items-center justify-center mx-auto mb-4 text-2xl">
+                🛡️
+            </div>
+            <h3 id="auth-modal-title" class="font-display text-2xl font-extrabold text-slate-900 mb-2">
+                Regístrate gratis para contactar
+            </h3>
+            <p class="text-sm text-slate-600 mb-6 leading-relaxed">
+                Por seguridad y privacidad de nuestra comunidad, crea tu cuenta gratuita en menos de 30 segundos para ver ubicaciones exactas y enviar mensajes directos.
+            </p>
+
+            <div class="space-y-3">
+                <a href="portal.html"
+                    class="w-full py-3.5 px-5 rounded-full bg-teal-700 hover:bg-teal-800 text-white font-extrabold text-sm shadow-lg block transition">
+                    Crear cuenta gratis / Iniciar sesión
+                </a>
+                <button onclick="closeAuthGateModal()"
+                    class="w-full py-3 px-5 rounded-full border border-stone-300 text-slate-700 font-bold text-xs hover:bg-stone-50 transition">
+                    Seguir viendo perfiles públicos
+                </button>
+            </div>
+
+            <p class="text-[11px] text-slate-400 mt-5">
+                ✓ Sin pagos por adelantado en la web · ✓ Perfiles verificados con Certificado de Penales
+            </p>
+        </div>
+    </div>
 
     <!-- Scripts Personalizados -->
     <script src="./assets/js/main.js"></script>
