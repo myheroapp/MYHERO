@@ -1,11 +1,111 @@
 // ============================================================================
-// MYHERO ESPAÑA - LÓGICA ESTILO SITLY (CATÁLOGO PÚBLICO, DUAL ROLE, VISTA PERFIL 2 COLUMNAS)
+// HEROLY ESPAÑA (VERSIÓN 1) - LÓGICA ESTILO SITLY (CATÁLOGO PÚBLICO, DUAL ROLE, PERFIL 2 COLUMNAS)
 // ============================================================================
 
 const DAYS = ['Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sa', 'Do'];
 
-// 1. BASE DE DATOS CURADA DE HEROES VERIFICADOS EN ESPAÑA (COMBINABLE CON FIREBASE)
+// 1. BASE DE DATOS CURADA DE HÉROES VERIFICADOS EN ESPAÑA (PRECIOS REALISTAS 8€ - 18€/h)
 const DEFAULT_HEROES = [
+    {
+        id: 'hero-alejandro',
+        name: 'Alejandro',
+        age: 35,
+        city: 'Valencia',
+        zone: 'Eixample / Ruzafa',
+        level: 1,
+        levelLabel: 'Nivel 1 · Acompañamiento Cívico',
+        rate: 8,
+        rating: '5,0',
+        reviewsCount: 19,
+        experience: '3+ años de experiencia',
+        online: 'Online ahora',
+        isOnlineNow: true,
+        photo: './assets/img/normal.jpg',
+        shortBio: 'Graduado en Psicología con amplia experiencia en acompañamiento de personas mayores, visitas médicas, paseos tranquilos y gestiones administrativas.',
+        fullBio: '¡Hola! Soy Alejandro, tengo 35 años y vivo en Valencia. Soy graduado universitario y me apasiona el trato humano, especialmente con nuestros mayores. Si necesitas que un Héroe de total confianza acompañe a tus padres al hospital, al banco, a dar un paseo matutino o a hacer la compra mientras trabajas, puedes contar conmigo.',
+        daysAvailable: ['Lu', 'Ma', 'Mi', 'Ju', 'Vi'],
+        schedule: {
+            manana: ['Lu', 'Ma', 'Mi', 'Ju', 'Vi'],
+            tarde: ['Lu', 'Ma', 'Mi', 'Ju', 'Vi'],
+            noche: []
+        },
+        missions: ['Mayores y Médicos', 'Bancos y Cajeros', 'Trayectos A-B'],
+        experienceCards: [
+            { title: 'Especialista en Mayores', subtitle: 'Paciencia, conversación y empatía', icon: 'elderly' },
+            { title: 'Citas Médicas y Hospitales', subtitle: 'Toma de notas médicas para la familia', icon: 'medical' },
+            { title: 'Gestiones Cotidianas', subtitle: 'Compras, farmacia y ayuntamiento', icon: 'bank' }
+        ],
+        capabilities: ['Reporte detallado a los hijos tras la cita médica', 'Ayuda con bolsas de compra o movilidad', 'Puntualidad máxima', 'Antecedentes penales verificados'],
+        references: [
+            { author: 'Teresa S.', date: 'Hace 4 días', stars: 5, text: 'Alejandro es un encanto. Acompaña a mi padre todos los martes y jueves al centro médico y a pasear por 8 €/h. Mi padre está encantado con él.' }
+        ]
+    },
+    {
+        id: 'hero-patricia',
+        name: 'Patricia',
+        age: 40,
+        city: 'Zaragoza',
+        zone: 'Centro / Romareda',
+        level: 1,
+        levelLabel: 'Nivel 1 · Acompañamiento Cívico',
+        rate: 9,
+        rating: '5,0',
+        reviewsCount: 11,
+        experience: '5+ años de experiencia',
+        online: 'Online ahora',
+        isOnlineNow: true,
+        photo: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&crop=faces&w=500&q=80',
+        shortBio: 'Auxiliar de enfermería. Especializada en acompañar a personas mayores a consultas médicas, rehabilitación, bancos y paseos seguros.',
+        fullBio: 'Soy Patricia, tengo 40 años y vivo en Zaragoza. Por mi vocación sanitaria sé lo importante que es que nuestros mayores vayan bien acompañados al médico o al banco, enterándose de todo lo que les dice el doctor y sin correr riesgos en la calle.',
+        daysAvailable: ['Lu', 'Ma', 'Mi', 'Ju', 'Vi'],
+        schedule: {
+            manana: ['Lu', 'Ma', 'Mi', 'Ju', 'Vi'],
+            tarde: ['Lu', 'Mi', 'Vi'],
+            noche: []
+        },
+        missions: ['Mayores y Médicos', 'Bancos y Cajeros'],
+        experienceCards: [
+            { title: 'Formación Sanitaria', subtitle: 'Trato experto en visitas médicas', icon: 'medical' },
+            { title: 'Apoyo Familiar Integral', subtitle: 'Comunicación constante con los hijos', icon: 'elderly' }
+        ],
+        capabilities: ['Conocimientos médicos y de primeros auxilios', 'Paciencia y cercanía con mayores', 'Vehículo propio disponible'],
+        references: [
+            { author: 'Ignacio T.', date: 'Hace 6 días', stars: 5, text: 'Patricia llevó a mi madre al especialista en el Hospital Miguel Servet y me llamó al salir para explicarme todo. Un 10.' }
+        ]
+    },
+    {
+        id: 'hero-elena',
+        name: 'Elena',
+        age: 37,
+        city: 'Barcelona',
+        zone: 'Sarrià / Gràcia',
+        level: 1,
+        levelLabel: 'Nivel 1 · Acompañamiento Cívico',
+        rate: 10,
+        rating: '4,9',
+        reviewsCount: 22,
+        experience: '5+ años de experiencia',
+        online: 'Online ahora',
+        isOnlineNow: true,
+        photo: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&crop=faces&w=500&q=80',
+        shortBio: 'Técnica sociosanitaria y Héroe cívica en Barcelona. Ideal para mujeres y personas mayores que buscan compañía cálida y segura en sus desplazamientos.',
+        fullBio: 'Soy Elena, tengo 37 años y vivo en Barcelona. Tengo formación sociosanitaria y 5 años de experiencia acompañando a señoras mayores y profesionales en sus desplazamientos por la ciudad, visitas a especialistas médicos, gestiones en bancos o regresos a casa al anochecer.',
+        daysAvailable: ['Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sa'],
+        schedule: {
+            manana: ['Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sa'],
+            tarde: ['Lu', 'Ma', 'Mi', 'Ju', 'Vi'],
+            noche: ['Vi', 'Sa']
+        },
+        missions: ['Mayores y Médicos', 'Trayectos A-B', 'Bancos y Cajeros'],
+        experienceCards: [
+            { title: 'Atención Sociosanitaria', subtitle: 'Trato cálido y profesional con mayores', icon: 'elderly' },
+            { title: 'Acompañamiento Preventivo', subtitle: 'Confianza y tranquilidad en trayectos', icon: 'shield' }
+        ],
+        capabilities: ['Titulación sociosanitaria oficial', 'Idiomas: Castellano, Catalán e Inglés', 'Carnet de conducir B', 'Seguimiento GPS activo'],
+        references: [
+            { author: 'Montserrat P.', date: 'Hace 1 semana', stars: 5, text: 'Elena acompañó a mi tía al oftalmólogo y luego hasta su casa. Nos avisó en todo momento y fue cariñosísima.' }
+        ]
+    },
     {
         id: 'hero-roberto',
         name: 'Roberto',
@@ -14,15 +114,15 @@ const DEFAULT_HEROES = [
         zone: 'Centro / Ensanche Diputación',
         level: 2,
         levelLabel: 'Nivel 2 · Presencia Disuasoria',
-        rate: 18,
+        rate: 11,
         rating: '5,0',
         reviewsCount: 14,
         experience: '4+ años de experiencia',
         online: 'Online ahora',
         isOnlineNow: true,
         photo: './assets/img/roberto.jpg',
-        shortBio: 'Deportista y acompañante profesional acreditado. Especializado en acompañar a personas mayores al banco, citas médicas y retornos nocturnos con total cercanía y respeto.',
-        fullBio: '¡Hola! Me llamo Roberto, tengo 38 años y resido en Alicante. Cuento con el Certificado Oficial de Antecedentes Penales libre de cargos y he superado las 4 fases psicotécnicas de MyHero. Durante los últimos 4 años me he dedicado al acompañamiento preventivo tanto de personas mayores en sus gestiones bancarias y médicas como de profesionales que salen tarde de trabajar. Soy una persona puntual, serena, educada y con gran vocación de servicio.',
+        shortBio: 'Deportista y Héroe acreditado. Especializado en acompañar a personas mayores al banco, citas médicas y retornos nocturnos con total cercanía y respeto.',
+        fullBio: '¡Hola! Me llamo Roberto, tengo 38 años y resido en Alicante. Cuento con el Certificado Oficial de Antecedentes Penales libre de cargos y he superado las 4 fases psicotécnicas de Heroly. Durante los últimos 4 años me he dedicado al acompañamiento preventivo tanto de personas mayores en sus gestiones bancarias y médicas como de profesionales que salen tarde de trabajar.',
         daysAvailable: ['Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sa'],
         schedule: {
             manana: ['Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sa'],
@@ -35,10 +135,43 @@ const DEFAULT_HEROES = [
             { title: 'Disuasión y Retorno Seguro', subtitle: 'Salidas de oficina y aparcamientos', icon: 'shield' },
             { title: 'Primeros Auxilios y Calma', subtitle: 'Formación en soporte vital básico', icon: 'medical' }
         ],
-        capabilities: ['Acompañamiento a pie o en transporte', 'Vehículo propio disponible', 'Espera en consulta o ventanilla bancaria', 'Enlace GPS Red Familiar™ activo', 'Idiomas: Español e Inglés básico'],
+        capabilities: ['Acompañamiento a pie o en transporte', 'Vehículo propio disponible', 'Espera en consulta o ventanilla bancaria', 'Enlace GPS Red Familiar™ activo'],
         references: [
-            { author: 'Laura G. (Hija / Red Familiar)', date: 'Hace 2 semanas', stars: 5, text: 'Roberto acompañó a mi madre de 74 años al banco y a la notaría. Estuve viéndolos por el GPS todo el rato. Educación de diez y una tranquilidad enorme para toda la familia.' },
+            { author: 'Laura G. (Hija / Red Familiar)', date: 'Hace 2 semanas', stars: 5, text: 'Roberto acompañó a mi madre de 74 años al banco y a la notaría. Estuve viéndolos por el GPS todo el rato. Educación de diez y una tranquilidad enorme.' },
             { author: 'Carmen M.', date: 'Hace 1 mes', stars: 5, text: 'Sumamente puntual, amable y transmite muchísima seguridad. Volveré a contar con él sin dudarlo.' }
+        ]
+    },
+    {
+        id: 'hero-david',
+        name: 'David',
+        age: 34,
+        city: 'Málaga',
+        zone: 'Centro / Teatinos',
+        level: 2,
+        levelLabel: 'Nivel 2 · Presencia Disuasoria',
+        rate: 12,
+        rating: '4,9',
+        reviewsCount: 15,
+        experience: '4+ años de experiencia',
+        online: 'Activo hoy',
+        isOnlineNow: true,
+        photo: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&crop=faces&w=500&q=80',
+        shortBio: 'Deportista federado y socorrista titulado. Acompañamiento preventivo en Málaga para salidas laborales nocturnas, cajeros o mayores.',
+        fullBio: '¡Hola! Soy David, malagueño de 34 años. Soy socorrista titulado y deportista federado. Me encanta ayudar a que la gente de mi ciudad camine tranquila a cualquier hora, ya sea acompañando a una persona mayor al cajero o asegurando la vuelta a casa de noche.',
+        daysAvailable: ['Ma', 'Mi', 'Ju', 'Vi', 'Sa', 'Do'],
+        schedule: {
+            manana: ['Ma', 'Mi', 'Ju', 'Vi'],
+            tarde: ['Ma', 'Mi', 'Ju', 'Vi', 'Sa'],
+            noche: ['Vi', 'Sa', 'Do']
+        },
+        missions: ['Retorno Nocturno', 'Mayores y Médicos', 'Trayectos A-B'],
+        experienceCards: [
+            { title: 'Socorrista Titulado', subtitle: 'Respuesta rápida ante emergencias', icon: 'medical' },
+            { title: 'Presencia Atlética', subtitle: 'Disuasión pasiva en zonas solitarias', icon: 'shield' }
+        ],
+        capabilities: ['Certificado de Penales al día', 'Socorrismo y RCP', 'Moto y coche propios'],
+        references: [
+            { author: 'Rocío G.', date: 'Hace 10 días', stars: 5, text: 'Muy educado y atento en todo el trayecto. Da muchísima confianza.' }
         ]
     },
     {
@@ -49,7 +182,7 @@ const DEFAULT_HEROES = [
         zone: 'Altabix / Centro',
         level: 2,
         levelLabel: 'Nivel 2 · Presencia Disuasoria',
-        rate: 22,
+        rate: 13,
         rating: '4,9',
         reviewsCount: 26,
         experience: '6+ años de experiencia',
@@ -70,113 +203,9 @@ const DEFAULT_HEROES = [
             { title: 'Gestiones de Valor y Bancos', subtitle: 'Retirada de efectivo y notarías', icon: 'bank' },
             { title: 'Cobertura Nocturna', subtitle: 'Parkings, salidas laborales y eventos', icon: 'night' }
         ],
-        capabilities: ['Disuasión preventiva inmediata', 'Acompañamiento hasta la puerta de casa', 'Vehículo propio de alta gama', 'Trazabilidad GPS en tiempo real'],
+        capabilities: ['Disuasión preventiva inmediata', 'Acompañamiento hasta la puerta de casa', 'Vehículo propio disponible', 'Trazabilidad GPS en tiempo real'],
         references: [
-            { author: 'María P. (Directora Comercial)', date: 'Hace 5 días', stars: 5, text: 'Salgo muy tarde del despacho y mi parking está en una calle solitaria. Ir con Carlos me da una paz absoluta. Profesional, discreto y siempre puntual.' },
-            { author: 'Jorge V.', date: 'Hace 3 semanas', stars: 5, text: 'Lo contraté para ir a firmar una compraventa en efectivo. Su sola presencia evita cualquier problema.' }
-        ]
-    },
-    {
-        id: 'hero-javier',
-        name: 'Javier',
-        age: 44,
-        city: 'Madrid',
-        zone: 'Salamanca / Chamberí',
-        level: 3,
-        levelLabel: 'Nivel 3 · Especialista Élite',
-        rate: 30,
-        rating: '5,0',
-        reviewsCount: 39,
-        experience: '12+ años de experiencia',
-        online: 'Online ahora',
-        isOnlineNow: true,
-        photo: './assets/img/karateka.jpg',
-        shortBio: 'Cinturón negro 3º Dan federado y especialista en prevención de crisis y primeros auxilios. Máximo nivel de protección para familias, directivos y gestiones críticas.',
-        fullBio: 'Me llamo Javier, tengo 44 años y cuento con más de 12 años de trayectoria en artes marciales federadas, protocolos de autoprotección y primeros auxilios avanzados (DESA). Trabajo con familias, profesionales y personas mayores en Madrid que requieren el máximo estándar de seguridad preventiva en sus desplazamientos, visitas a entidades bancarias o traslados.',
-        daysAvailable: ['Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sa'],
-        schedule: {
-            manana: ['Lu', 'Ma', 'Mi', 'Ju', 'Vi'],
-            tarde: ['Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sa'],
-            noche: ['Ju', 'Vi', 'Sa']
-        },
-        missions: ['Bancos y Cajeros', 'Retorno Nocturno', 'Mayores y Médicos', 'Trayectos A-B'],
-        experienceCards: [
-            { title: 'Cinturón Negro Federado', subtitle: 'Especialista en control y prevención', icon: 'shield' },
-            { title: 'Primeros Auxilios Oficiales', subtitle: 'Certificación sanitaria de emergencia', icon: 'medical' },
-            { title: 'Custodia Familiar y Bancaria', subtitle: 'Notarías, joyerías y altos patrimonios', icon: 'bank' }
-        ],
-        capabilities: ['Certificación federativa compulsada', 'Primeros auxilios y gestión de crisis', 'Discreción ejecutiva absoluta', 'Conexión directa SOS y Red Familiar™'],
-        references: [
-            { author: 'Alfonso R. (Empresario)', date: 'Hace 1 semana', stars: 5, text: 'Un verdadero profesional. Me acompañó en tres gestiones bancarias en Madrid centro. Impecable en el trato y máxima seguridad.' },
-            { author: 'Beatriz L.', date: 'Hace 1 mes', stars: 5, text: 'Contraté a Javier para acompañar a mis padres mayores. Saber que además tiene primeros auxilios no tiene precio.' }
-        ]
-    },
-    {
-        id: 'hero-alejandro',
-        name: 'Alejandro',
-        age: 35,
-        city: 'Valencia',
-        zone: 'Eixample / Ruzafa',
-        level: 1,
-        levelLabel: 'Nivel 1 · Acompañamiento Cívico',
-        rate: 15,
-        rating: '5,0',
-        reviewsCount: 19,
-        experience: '3+ años de experiencia',
-        online: 'Activo hoy',
-        isOnlineNow: true,
-        photo: './assets/img/normal.jpg',
-        shortBio: 'Graduado en Psicología con amplia experiencia en acompañamiento de personas mayores, visitas médicas, paseos tranquilos y gestiones administrativas.',
-        fullBio: '¡Hola a todos! Soy Alejandro, tengo 35 años y vivo en Valencia. Soy graduado universitario y me apasiona el trato humano, especialmente con nuestros mayores. Si necesitas que alguien de total confianza acompañe a tus padres al hospital, al banco, a dar un paseo matutino o a hacer la compra mientras tú trabajas, puedes contar conmigo con total tranquilidad.',
-        daysAvailable: ['Lu', 'Ma', 'Mi', 'Ju', 'Vi'],
-        schedule: {
-            manana: ['Lu', 'Ma', 'Mi', 'Ju', 'Vi'],
-            tarde: ['Lu', 'Ma', 'Mi', 'Ju', 'Vi'],
-            noche: []
-        },
-        missions: ['Mayores y Médicos', 'Bancos y Cajeros', 'Trayectos A-B'],
-        experienceCards: [
-            { title: 'Especialista en Mayores', subtitle: 'Paciencia, conversación y empatía', icon: 'elderly' },
-            { title: 'Citas Médicas y Hospitales', subtitle: 'Toma de notas médicas para la familia', icon: 'medical' },
-            { title: 'Gestiones Cotidianas', subtitle: 'Compras, farmacia y ayuntamiento', icon: 'bank' }
-        ],
-        capabilities: ['Reporte detallado a los hijos tras la cita médica', 'Ayuda con bolsas de compra o movilidad', 'Puntualidad británica', 'Antecedentes penales verificados'],
-        references: [
-            { author: 'Teresa S.', date: 'Hace 4 días', stars: 5, text: 'Alejandro es un encanto. Acompaña a mi padre todos los martes y jueves al centro médico y a pasear. Mi padre está encantado con él.' }
-        ]
-    },
-    {
-        id: 'hero-elena',
-        name: 'Elena',
-        age: 37,
-        city: 'Barcelona',
-        zone: 'Sarrià / Gràcia',
-        level: 1,
-        levelLabel: 'Nivel 1 · Acompañamiento Cívico',
-        rate: 16,
-        rating: '4,9',
-        reviewsCount: 22,
-        experience: '5+ años de experiencia',
-        online: 'Online ahora',
-        isOnlineNow: true,
-        photo: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&crop=faces&w=500&q=80',
-        shortBio: 'Auxiliar sociosanitaria y acompañante cívica en Barcelona. Ideal para mujeres y personas mayores que buscan compañía cálida y segura en sus desplazamientos.',
-        fullBio: 'Soy Elena, tengo 37 años y vivo en Barcelona. Tengo formación sociosanitaria y 5 años de experiencia acompañando a señoras mayores y jóvenes en sus desplazamientos por la ciudad, visitas a especialistas médicos, gestiones en bancos o regresos a casa al anochecer.',
-        daysAvailable: ['Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sa'],
-        schedule: {
-            manana: ['Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sa'],
-            tarde: ['Lu', 'Ma', 'Mi', 'Ju', 'Vi'],
-            noche: ['Vi', 'Sa']
-        },
-        missions: ['Mayores y Médicos', 'Trayectos A-B', 'Bancos y Cajeros'],
-        experienceCards: [
-            { title: 'Atención Sociosanitaria', subtitle: 'Trato cálido y profesional con mayores', icon: 'elderly' },
-            { title: 'Acompañamiento entre Mujeres', subtitle: 'Confianza y tranquilidad en trayectos', icon: 'shield' },
-            { title: 'Consultas y Rehabilitación', subtitle: 'Seguimiento completo puerta a puerta', icon: 'medical' }
-        ],
-        capabilities: ['Titulación sociosanitaria oficial', 'Idiomas: Castellano, Catalán e Inglés', 'Carnet de conducir B', 'Seguimiento GPS activo'],
-        references: [
-            { author: 'Montserrat P.', date: 'Hace 1 semana', stars: 5, text: 'Elena acompañó a mi tía al oftalmólogo y luego hasta su casa. Nos avisó en todo momento y fue cariñosísima.' }
+            { author: 'María P. (Directora Comercial)', date: 'Hace 5 días', stars: 5, text: 'Salgo muy tarde del despacho y mi parking está en una calle solitaria. Ir con Carlos me da una paz absoluta. Profesional, discreto y siempre puntual.' }
         ]
     },
     {
@@ -187,15 +216,15 @@ const DEFAULT_HEROES = [
         zone: 'Nervión / Los Remedios',
         level: 3,
         levelLabel: 'Nivel 3 · Especialista Élite',
-        rate: 25,
+        rate: 15,
         rating: '5,0',
         reviewsCount: 31,
         experience: '15+ años de experiencia',
         online: 'Online ahora',
         isOnlineNow: true,
         photo: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&crop=faces&w=500&q=80',
-        shortBio: 'Exprofesional de seguridad privada y experto en protección preventiva familiar. Seriedad absoluta para notarías, bancos y retornos nocturnos.',
-        fullBio: 'Me llamo Miguel Ángel, tengo 46 años y resido en Sevilla. He trabajado durante más de 15 años en el ámbito de la seguridad corporativa y protección preventiva. Ofrezco mis servicios a través de MyHero para aquellas familias y ciudadanos que desean la máxima tranquilidad en sus trámites financieros o desplazamientos.',
+        shortBio: 'Especialista certificado en prevención y primeros auxilios. Seriedad absoluta para notarías, gestiones bancarias y retornos nocturnos.',
+        fullBio: 'Me llamo Miguel Ángel, tengo 46 años y resido en Sevilla. He trabajado durante más de 15 años en el ámbito de la prevención y protección familiar. Ofrezco mis servicios como Héroe de Nivel 3 en Heroly para aquellas familias y ciudadanos que desean la máxima tranquilidad en sus trámites financieros o desplazamientos.',
         daysAvailable: ['Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sa', 'Do'],
         schedule: {
             manana: ['Lu', 'Ma', 'Mi', 'Ju', 'Vi'],
@@ -205,84 +234,83 @@ const DEFAULT_HEROES = [
         missions: ['Bancos y Cajeros', 'Retorno Nocturno', 'Trayectos A-B'],
         experienceCards: [
             { title: '15 Años en Prevención', subtitle: 'Temple, protocolo y saber estar', icon: 'shield' },
-            { title: 'Operaciones Bancarias', subtitle: 'Protección en sucursales y firmas', icon: 'bank' },
-            { title: 'Desplazamientos Nocturnos', subtitle: 'Cobertura integral fin de semana', icon: 'night' }
+            { title: 'Operaciones Bancarias', subtitle: 'Protección en sucursales y firmas', icon: 'bank' }
         ],
-        capabilities: ['TIP y certificaciones verificadas', 'Vehículo berlina propio', 'Primeros auxilios avanzados', 'Disponibilidad fines de semana'],
+        capabilities: ['Certificaciones verificadas', 'Vehículo berlina propio', 'Primeros auxilios avanzados', 'Disponibilidad fines de semana'],
         references: [
             { author: 'Fernando D.', date: 'Hace 2 semanas', stars: 5, text: 'Un caballero de los pies a la cabeza. Máxima puntualidad y seguridad en Sevilla.' }
         ]
     },
     {
-        id: 'hero-david',
-        name: 'David',
-        age: 34,
-        city: 'Málaga',
-        zone: 'Centro / Teatinos',
-        level: 2,
-        levelLabel: 'Nivel 2 · Presencia Disuasoria',
-        rate: 19,
-        rating: '4,9',
-        reviewsCount: 15,
-        experience: '4+ años de experiencia',
-        online: 'Activo hoy',
-        isOnlineNow: false,
-        photo: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&crop=faces&w=500&q=80',
-        shortBio: 'Deportista federado en boxeo olímpico y socorrista titulado. Acompañamiento preventivo en Málaga para salidas laborales, compras o mayores.',
-        fullBio: '¡Hola! Soy David, malagueño de 34 años. Soy socorrista titulado y deportista federado. Me encanta ayudar a que la gente de mi ciudad camine tranquila a cualquier hora, ya sea acompañando a una persona mayor al cajero o asegurando la vuelta a casa de noche.',
-        daysAvailable: ['Ma', 'Mi', 'Ju', 'Vi', 'Sa', 'Do'],
-        schedule: {
-            manana: ['Ma', 'Mi', 'Ju', 'Vi'],
-            tarde: ['Ma', 'Mi', 'Ju', 'Vi', 'Sa'],
-            noche: ['Vi', 'Sa', 'Do']
-        },
-        missions: ['Retorno Nocturno', 'Mayores y Médicos', 'Trayectos A-B'],
-        experienceCards: [
-            { title: 'Socorrista Titulado', subtitle: 'Respuesta rápida ante emergencias', icon: 'medical' },
-            { title: 'Presencia Atlética', subtitle: 'Disuasión pasiva en zonas solitarias', icon: 'shield' }
-        ],
-        capabilities: ['Certificado de Penales al día', 'Socorrismo y RCP', 'Moto y coche propios'],
-        references: [
-            { author: 'Rocío G.', date: 'Hace 10 días', stars: 5, text: 'Muy educado y atento en todo el trayecto. Da muchísima confianza.' }
-        ]
-    },
-    {
-        id: 'hero-patricia',
-        name: 'Patricia',
-        age: 40,
-        city: 'Zaragoza',
-        zone: 'Centro / Romareda',
-        level: 1,
-        levelLabel: 'Nivel 1 · Acompañamiento Cívico',
-        rate: 15,
+        id: 'hero-javier',
+        name: 'Javier',
+        age: 44,
+        city: 'Madrid',
+        zone: 'Salamanca / Chamberí',
+        level: 3,
+        levelLabel: 'Nivel 3 · Especialista Élite',
+        rate: 17,
         rating: '5,0',
-        reviewsCount: 11,
-        experience: '5+ años de experiencia',
+        reviewsCount: 39,
+        experience: '12+ años de experiencia',
         online: 'Online ahora',
         isOnlineNow: true,
-        photo: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&crop=faces&w=500&q=80',
-        shortBio: 'Enfermera en excedencia parcial. Especializada en acompañar a personas mayores a consultas médicas, rehabilitación, bancos y paseos seguros.',
-        fullBio: 'Soy Patricia, tengo 40 años y vivo en Zaragoza. Por mi vocación sanitaria sé lo importante que es que nuestros mayores vayan bien acompañados al médico o al banco, enterándose de todo lo que les dice el doctor y sin correr riesgos en la calle.',
-        daysAvailable: ['Lu', 'Ma', 'Mi', 'Ju', 'Vi'],
+        photo: './assets/img/karateka.jpg',
+        shortBio: 'Cinturón negro 3º Dan federado y especialista en prevención de crisis y primeros auxilios. Máximo nivel de protección para familias, mayores y gestiones.',
+        fullBio: 'Me llamo Javier, tengo 44 años y cuento con más de 12 años de trayectoria en artes marciales federadas, protocolos de autoprotección y primeros auxilios avanzados (DESA). Trabajo con familias, profesionales y personas mayores en Madrid que requieren el máximo estándar de seguridad preventiva en sus desplazamientos o visitas a entidades bancarias.',
+        daysAvailable: ['Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sa'],
         schedule: {
             manana: ['Lu', 'Ma', 'Mi', 'Ju', 'Vi'],
-            tarde: ['Lu', 'Mi', 'Vi'],
-            noche: []
+            tarde: ['Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sa'],
+            noche: ['Ju', 'Vi', 'Sa']
         },
-        missions: ['Mayores y Médicos', 'Bancos y Cajeros'],
+        missions: ['Bancos y Cajeros', 'Retorno Nocturno', 'Mayores y Médicos', 'Trayectos A-B'],
         experienceCards: [
-            { title: 'Formación Sanitaria', subtitle: 'Trato experto en visitas médicas', icon: 'medical' },
-            { title: 'Apoyo Familiar Integral', subtitle: 'Comunicación constante con los hijos', icon: 'elderly' }
+            { title: 'Cinturón Negro Federado', subtitle: 'Especialista en control y prevención', icon: 'shield' },
+            { title: 'Primeros Auxilios Oficiales', subtitle: 'Certificación sanitaria de emergencia', icon: 'medical' },
+            { title: 'Custodia Familiar y Bancaria', subtitle: 'Notarías, joyerías y gestiones', icon: 'bank' }
         ],
-        capabilities: ['Conocimientos médicos y farmacológicos', 'Paciencia y cariño con mayores', 'Vehículo adaptado'],
+        capabilities: ['Certificación federativa compulsada', 'Primeros auxilios y gestión de crisis', 'Discreción ejecutiva absoluta', 'Conexión directa SOS y Red Familiar™'],
         references: [
-            { author: 'Ignacio T.', date: 'Hace 6 días', stars: 5, text: 'Patricia llevó a mi madre al especialista en el Hospital Miguel Servet y me llamó al salir para explicarme todo. Un 10.' }
+            { author: 'Alfonso R.', date: 'Hace 1 semana', stars: 5, text: 'Un verdadero profesional. Me acompañó en tres gestiones bancarias en Madrid centro. Impecable en el trato y máxima seguridad.' },
+            { author: 'Beatriz L.', date: 'Hace 1 mes', stars: 5, text: 'Contraté a Javier para acompañar a mis padres mayores. Saber que además tiene primeros auxilios no tiene precio.' }
         ]
     }
 ];
 
-// 2. ANUNCIOS DE FAMILIAS Y CIUDADANOS QUE BUSCAN UN HERO (PARA LA VISTA "TRABAJO COMO HERO")
-const FAMILY_MISSIONS = [
+// 2. ANUNCIOS DE FAMILIAS Y CIUDADANOS QUE BUSCAN UN HÉROE (PRECIOS REALISTAS 8€ - 15€/h)
+const DEFAULT_FAMILY_MISSIONS = [
+    {
+        id: 'mision-familia-gomez',
+        name: 'Familia Gómez',
+        age: 51,
+        city: 'Elche',
+        zone: 'Sector V / Reina Victoria',
+        level: 1,
+        levelLabel: 'Busca Nivel 1 · Cívico',
+        rate: 8,
+        rating: '4,9',
+        reviewsCount: 4,
+        experience: 'Paseos diarios y médico abuelo',
+        online: 'Busca esta semana',
+        isOnlineNow: true,
+        photo: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&crop=faces&w=500&q=80',
+        shortBio: 'Necesitamos un Héroe paciente y conversador en Elche para salir a caminar 1 hora y media por las tardes con nuestro padre de 79 años.',
+        fullBio: 'Nuestro padre tiene 79 años, camina bien pero no queremos que salga solo por temor a caídas o robos al descuido. Buscamos un Héroe de Nivel 1 en Elche que tenga paciencia, buena conversación y le acompañe por las tardes a dar su paseo por el parque.',
+        daysAvailable: ['Lu', 'Ma', 'Mi', 'Ju', 'Vi'],
+        schedule: {
+            manana: [],
+            tarde: ['Lu', 'Ma', 'Mi', 'Ju', 'Vi'],
+            noche: []
+        },
+        missions: ['Mayores y Médicos', 'Trayectos A-B'],
+        experienceCards: [
+            { title: 'Paseo de Tarde Regular', subtitle: 'Lunes a Viernes de 17:30h a 19:00h', icon: 'elderly' },
+            { title: 'Pago directo al terminar', subtitle: '8 €/hora en mano o Bizum', icon: 'bank' }
+        ],
+        capabilities: ['Acompañamiento tranquilo a pie', 'Aviso a los hijos al iniciar y terminar'],
+        references: []
+    },
     {
         id: 'mision-laura',
         name: 'Laura G.',
@@ -291,15 +319,15 @@ const FAMILY_MISSIONS = [
         zone: 'Av. Maisonnave / Centro',
         level: 2,
         levelLabel: 'Busca Nivel 1 o 2',
-        rate: 20,
+        rate: 10,
         rating: '5,0',
         reviewsCount: 6,
         experience: 'Acompañar a madre mayor (74 años)',
         online: 'Busca para esta semana',
         isOnlineNow: true,
         photo: './assets/img/laura.jpg',
-        shortBio: 'Busco un profesional educado y puntual para acompañar a mi madre de 74 años al banco a primeros de mes y a sus revisiones médicas los miércoles por la mañana.',
-        fullBio: 'Hola, soy Laura (42 años). Por motivos de trabajo en mi despacho no siempre puedo acompañar a mi madre de 74 años cuando tiene que ir a la sucursal bancaria o al centro deespecialidades en Alicante centro. Buscamos una persona seria, con certificado de penales verificado y buena presencia que la recoja en su portal, la acompañe durante unas 2 horas y mantenga el GPS activo.',
+        shortBio: 'Busco un Héroe educado y puntual para acompañar a mi madre de 74 años al banco a primeros de mes y a sus revisiones médicas los miércoles por la mañana.',
+        fullBio: 'Hola, soy Laura (42 años). Por motivos de trabajo en mi despacho no siempre puedo acompañar a mi madre de 74 años cuando tiene que ir a la sucursal bancaria o al centro de especialidades en Alicante centro. Buscamos un Héroe serio, con certificado de penales verificado y buena presencia que la recoja en su portal, la acompañe durante unas 2 horas y mantenga el GPS activo.',
         daysAvailable: ['Lu', 'Mi', 'Vi'],
         schedule: {
             manana: ['Lu', 'Mi', 'Vi'],
@@ -309,11 +337,11 @@ const FAMILY_MISSIONS = [
         missions: ['Bancos y Cajeros', 'Mayores y Médicos'],
         experienceCards: [
             { title: 'Duración estimada', subtitle: '2 a 3 horas por mañana (Lu / Mi / Vi)', icon: 'elderly' },
-            { title: 'Pago garantizado al instante', subtitle: '20 €/hora vía Bizum o efectivo', icon: 'bank' }
+            { title: 'Pago garantizado al instante', subtitle: '10 €/hora vía Bizum o efectivo', icon: 'bank' }
         ],
         capabilities: ['Recogida en portal y retorno a casa', 'Acompañamiento a sucursal bancaria', 'Activación de GPS Red Familiar™'],
         references: [
-            { author: 'Roberto S. (Hero Nivel 2)', date: 'Hace 2 semanas', stars: 5, text: 'Laura y su madre son personas encantadoras y muy respetuosas. Pago puntual por Bizum nada más terminar.' }
+            { author: 'Roberto S. (Héroe Nivel 2)', date: 'Hace 2 semanas', stars: 5, text: 'Laura y su madre son personas encantadoras y muy respetuosas. Pago puntual por Bizum nada más terminar.' }
         ]
     },
     {
@@ -324,15 +352,15 @@ const FAMILY_MISSIONS = [
         zone: 'Nuevos Ministerios / Castellana',
         level: 2,
         levelLabel: 'Busca Nivel 2 · Disuasorio',
-        rate: 25,
+        rate: 12,
         rating: '5,0',
         reviewsCount: 9,
         experience: 'Retorno nocturno salida de oficina',
         online: 'Activa ahora',
         isOnlineNow: true,
         photo: './assets/img/maria.jpg',
-        shortBio: 'Salgo de trabajar sobre las 22:00h entre semana. Busco Hero de Nivel 2 para acompañarme desde la oficina hasta mi aparcamiento a 10 minutos a pie.',
-        fullBio: 'Soy María, directora comercial en Madrid. Entre semana suelo salir tarde de reuniones y la zona donde aparco el coche se queda muy solitaria a partir de las diez de la noche. Busco un Hero de Nivel 2 (complexión atlética y presencia firme) para acompañarme en ese trayecto nocturno de forma habitual.',
+        shortBio: 'Salgo de trabajar sobre las 22:00h entre semana. Busco Héroe de Nivel 2 para acompañarme desde la oficina hasta mi aparcamiento a 10 minutos a pie.',
+        fullBio: 'Soy María, directora comercial en Madrid. Entre semana suelo salir tarde de reuniones y la zona donde aparco el coche se queda muy solitaria a partir de las diez de la noche. Busco un Héroe de Nivel 2 (complexión atlética y presencia firme) para acompañarme en ese trayecto nocturno de forma habitual.',
         daysAvailable: ['Ma', 'Mi', 'Ju', 'Vi'],
         schedule: {
             manana: [],
@@ -342,43 +370,12 @@ const FAMILY_MISSIONS = [
         missions: ['Retorno Nocturno', 'Trayectos A-B'],
         experienceCards: [
             { title: 'Horario Nocturno Fijo', subtitle: 'De 21:45h a 22:45h (Martes a Viernes)', icon: 'night' },
-            { title: 'Tarifa cerrada por servicio', subtitle: '25 € abonados en el acto por Bizum', icon: 'bank' }
+            { title: 'Tarifa por hora', subtitle: '12 €/hora abonados en el acto por Bizum', icon: 'bank' }
         ],
         capabilities: ['Puntualidad en la recepción del edificio', 'Acompañamiento preventivo hasta el vehículo', 'Trato profesional y discreto'],
         references: [
-            { author: 'Javier M. (Hero Nivel 3)', date: 'Hace 1 mes', stars: 5, text: 'Cliente 100% recomendable, muy clara con los horarios y pago inmediato.' }
+            { author: 'Javier M. (Héroe Nivel 3)', date: 'Hace 1 mes', stars: 5, text: 'Cliente 100% recomendable, muy clara con los horarios y pago inmediato.' }
         ]
-    },
-    {
-        id: 'mision-familia-gomez',
-        name: 'Familia Gómez',
-        age: 51,
-        city: 'Elche',
-        zone: 'Sector V / Reina Victoria',
-        level: 1,
-        levelLabel: 'Busca Nivel 1 · Cívico',
-        rate: 16,
-        rating: '4,9',
-        reviewsCount: 4,
-        experience: 'Paseos diarios y rehabilitación abuelo',
-        online: 'Busca esta semana',
-        isOnlineNow: true,
-        photo: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&crop=faces&w=500&q=80',
-        shortBio: 'Necesitamos un acompañante paciente y conversador en Elche para salir a caminar 1 hora y media por las tardes con nuestro padre de 79 años.',
-        fullBio: 'Nuestro padre tiene 79 años, camina bien pero no queremos que salga solo por temor a caídas o robos al descuido. Buscamos un Hero de Nivel 1 en Elche que tenga paciencia, buena conversación y le acompañe por las tardes a dar su paseo por el parque y tomar un café.',
-        daysAvailable: ['Lu', 'Ma', 'Mi', 'Ju', 'Vi'],
-        schedule: {
-            manana: [],
-            tarde: ['Lu', 'Ma', 'Mi', 'Ju', 'Vi'],
-            noche: []
-        },
-        missions: ['Mayores y Médicos', 'Trayectos A-B'],
-        experienceCards: [
-            { title: 'Paseo de Tarde Regular', subtitle: 'Lunes a Viernes de 17:30h a 19:00h', icon: 'elderly' },
-            { title: 'Continuidad Mensual', subtitle: 'Ideal para ingresos estables cada semana', icon: 'bank' }
-        ],
-        capabilities: ['Acompañamiento tranquilo a pie', 'Aviso a los hijos al iniciar y terminar'],
-        references: []
     },
     {
         id: 'mision-despacho-valencia',
@@ -388,15 +385,15 @@ const FAMILY_MISSIONS = [
         zone: 'Calle Colón / Centro',
         level: 3,
         levelLabel: 'Busca Nivel 3 · Especialista',
-        rate: 35,
+        rate: 15,
         rating: '5,0',
         reviewsCount: 7,
         experience: 'Gestiones de notaría y banco',
         online: 'Online ahora',
         isOnlineNow: true,
         photo: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&crop=faces&w=500&q=80',
-        shortBio: 'Administrador de fincas en Valencia. Solicito especialista de Nivel 3 para desplazamientos puntuales entre entidades bancarias y notaría.',
-        fullBio: 'Soy Andrés, tengo 48 años y dirijo un despacho profesional en el centro de Valencia. Dos o tres veces por semana realizo gestiones presenciales en bancos y notarías. Busco un perfil de Nivel 3 acreditado, con excelente presencia y máxima discreción.',
+        shortBio: 'Administrador de fincas en Valencia. Solicito Héroe especialista de Nivel 3 para desplazamientos puntuales entre entidades bancarias y notaría.',
+        fullBio: 'Soy Andrés, tengo 48 años y dirijo un despacho profesional en el centro de Valencia. Dos o tres veces por semana realizo gestiones presenciales en bancos y notarías. Busco un Héroe de Nivel 3 acreditado, con excelente presencia y máxima discreción.',
         daysAvailable: ['Ma', 'Ju'],
         schedule: {
             manana: ['Ma', 'Ju'],
@@ -406,43 +403,58 @@ const FAMILY_MISSIONS = [
         missions: ['Bancos y Cajeros'],
         experienceCards: [
             { title: 'Perfil Ejecutivo / Discreto', subtitle: 'Vestimenta formal o smart casual', icon: 'shield' },
-            { title: 'Honorarios Nivel 3', subtitle: '35 €/hora abonados al finalizar', icon: 'bank' }
+            { title: 'Honorarios Nivel 3', subtitle: '15 €/hora abonados al finalizar', icon: 'bank' }
         ],
         capabilities: ['Máxima puntualidad y reserva', 'Acreditación de Nivel 3'],
         references: []
     }
 ];
 
-// Estado global de la interfaz pública
-let currentMode = 'citizen'; // 'citizen' = Buscar un Hero | 'worker' = Trabajo como Hero
+let currentMode = 'citizen'; // 'citizen' = Buscar un Héroe | 'worker' = Trabajo como Héroe
 let activeFilters = {
     city: 'Todas',
     level: 'Todos',
     mission: 'Todas',
-    maxRate: 40
+    maxRate: 25
 };
 let allHeroesList = [...DEFAULT_HEROES];
+let allFamilyMissions = [...DEFAULT_FAMILY_MISSIONS];
 
 document.addEventListener('DOMContentLoaded', () => {
     initMobileMenu();
     initRevealAnimations();
     initFaqAccordion();
+    loadCustomLocalData();
     renderCatalogGrid();
     loadFirebaseHeroes();
 });
 
-// Intentar cargar también Heroes reales desde Firebase Firestore para modo Híbrido
+// Cargar anuncios o perfiles guardados desde los nuevos Dashboards de Heroly
+function loadCustomLocalData() {
+    try {
+        const localHeroes = JSON.parse(localStorage.getItem('heroly_custom_heroes') || '[]');
+        if (Array.isArray(localHeroes) && localHeroes.length > 0) {
+            allHeroesList = [...localHeroes, ...DEFAULT_HEROES];
+        }
+        const localMissions = JSON.parse(localStorage.getItem('heroly_custom_missions') || '[]');
+        if (Array.isArray(localMissions) && localMissions.length > 0) {
+            allFamilyMissions = [...localMissions, ...DEFAULT_FAMILY_MISSIONS];
+        }
+    } catch (e) {}
+}
+
+// Intentar cargar también Héroes reales desde Firebase Firestore cuando el usuario conecte su nueva clave
 async function loadFirebaseHeroes() {
     try {
         const { db, collection, getDocs, query, where } = await import('./firebase.js');
+        if (!db) return;
         const q = query(collection(db, 'users'), where('role', '==', 'hero'));
         const snap = await getDocs(q);
         const fbHeroes = [];
         snap.forEach(docSnap => {
             const d = docSnap.data();
             if (d && d.name && d.name !== 'Nuevo Usuario') {
-                // Extraer tarifa mínima de rates si existe
-                let minRate = 18;
+                let minRate = 10;
                 if (d.rates && typeof d.rates === 'object') {
                     const vals = Object.values(d.rates).map(Number).filter(n => !isNaN(n) && n > 0);
                     if (vals.length > 0) minRate = Math.min(...vals);
@@ -458,21 +470,21 @@ async function loadFirebaseHeroes() {
                     rate: minRate,
                     rating: '5,0',
                     reviewsCount: 5,
-                    experience: 'Perfil Verificado MyHero',
+                    experience: 'Héroe Verificado Heroly',
                     online: 'Online ahora',
                     isOnlineNow: true,
                     photo: d.photoURL || './assets/img/normal.jpg',
-                    shortBio: d.bio || 'Profesional verificado en la red MyHero España. Disponible para acompañamientos preventivos, gestiones y apoyo familiar.',
-                    fullBio: d.bio || 'Profesional verificado en la red MyHero España con documentación e identidad validadas. Disponible para servicios de acompañamiento presencial en tu ciudad.',
-                    daysAvailable: ['Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sa'],
-                    schedule: {
+                    shortBio: d.bio || 'Héroe verificado en la red Heroly España. Disponible para acompañamientos preventivos, gestiones y apoyo familiar.',
+                    fullBio: d.bio || 'Héroe verificado en la red Heroly España con documentación e identidad validadas. Disponible para servicios de acompañamiento presencial en tu ciudad.',
+                    daysAvailable: d.daysAvailable || ['Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sa'],
+                    schedule: d.schedule || {
                         manana: ['Lu', 'Ma', 'Mi', 'Ju', 'Vi'],
                         tarde: ['Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sa'],
                         noche: ['Vi', 'Sa']
                     },
                     missions: ['Bancos y Cajeros', 'Mayores y Médicos', 'Retorno Nocturno'],
                     experienceCards: [
-                        { title: 'Identidad Verificada', subtitle: 'Documentación validada en MyHero', icon: 'shield' },
+                        { title: 'Identidad Verificada', subtitle: 'Documentación validada en Heroly', icon: 'shield' },
                         { title: 'Trato Cercano y Puntual', subtitle: 'Disponible en tu ciudad', icon: 'elderly' }
                     ],
                     capabilities: ['Seguimiento GPS Red Familiar™', 'Pago directo en mano o Bizum'],
@@ -481,20 +493,17 @@ async function loadFirebaseHeroes() {
             }
         });
         if (fbHeroes.length > 0) {
-            allHeroesList = [...fbHeroes, ...DEFAULT_HEROES];
+            allHeroesList = [...fbHeroes, ...allHeroesList];
             renderCatalogGrid();
         }
-    } catch (e) {
-        // Silencioso si Firebase requiere auth para leer o está offline: el catálogo curado siempre responde
-    }
+    } catch (e) {}
 }
 
 // ============================================================================
-// CONMUTADOR SIMÉTRICO ESTILO SITLY: "BUSCAR UN HERO" vs "TRABAJO COMO HERO"
+// CONMUTADOR SIMÉTRICO ESTILO SITLY: "BUSCAR UN HÉROE" vs "TRABAJO COMO HÉROE"
 // ============================================================================
 window.switchAppMode = function(mode) {
     currentMode = mode;
-    // Asegurar que estamos viendo la vista principal y no el detalle de un perfil
     closeProfileDetail(false);
 
     const tabCitizen = document.getElementById('nav-tab-citizen');
@@ -519,37 +528,37 @@ window.switchAppMode = function(mode) {
 
         heroBanner.className = 'hero-banner-citizen rounded-[2rem] p-8 sm:p-12 lg:p-14 transition-colors duration-500';
         heroBadge.innerText = 'Red Nacional de Acompañamiento Preventivo (+30 años y Familias)';
-        heroTitle.innerHTML = 'CONOCE A LOS MEJORES ACOMPAÑANTES Y HEROES <span class="highlight-marker">EN TU CIUDAD</span>';
-        heroBullet1.innerText = 'Busca acompañantes verificados con Certificado de Penales al instante';
+        heroTitle.innerHTML = 'CONOCE A LOS MEJORES ACOMPAÑANTES Y HÉROES <span class="highlight-marker">EN TU CIUDAD</span>';
+        heroBullet1.innerText = 'Busca Héroes verificados con Certificado de Penales desde 8 €/hora';
         heroBullet2.innerText = 'Revisa perfiles, horarios y tarifas cerradas antes de decidir';
         heroBullet3.innerText = 'Seguimiento GPS en vivo con Red Familiar™ y pago directo por Bizum';
         heroPrimaryBtn.innerText = 'Regístrate gratis';
-        heroSwitchLink.innerHTML = '¿Prefieres ganar dinero trabajando como Hero? <span class="underline font-bold text-teal-800">Ver misiones disponibles →</span>';
+        heroSwitchLink.innerHTML = '¿Prefieres ganar dinero trabajando como Héroe? <span class="underline font-bold text-teal-800">Ver misiones disponibles →</span>';
         heroSwitchLink.setAttribute('onclick', "switchAppMode('worker')");
         heroRightImage.src = './assets/img/roberto.jpg';
-        heroFloatingCardTitle.innerText = 'Roberto (38) · Nivel 2 Acreditado';
+        heroFloatingCardTitle.innerText = 'Roberto (38) · Héroe Nivel 2 · 11 €/h';
         heroFloatingCardSub.innerText = '★ 5,0 · Certificado de Penales Verificado';
 
-        catalogHeading.innerText = 'BUSCA HEROES Y ACOMPAÑANTES DISPONIBLES AHORA';
-        catalogCounter.innerText = 'Más de 1.480 profesionales verificados en España';
+        catalogHeading.innerText = 'BUSCA HÉROES Y ACOMPAÑANTES DISPONIBLES AHORA';
+        catalogCounter.innerText = 'Más de 1.480 Héroes verificados en España (Desde 8 €/h)';
     } else {
         tabWorker.className = 'px-4 py-2 rounded-full text-sm font-extrabold bg-amber-600 text-white shadow-sm transition-all';
         tabCitizen.className = 'px-4 py-2 rounded-full text-sm font-bold text-slate-600 hover:text-slate-900 transition-all';
 
         heroBanner.className = 'hero-banner-worker rounded-[2rem] p-8 sm:p-12 lg:p-14 transition-colors duration-500';
-        heroBadge.innerText = 'Bolsa Oficial de Misiones para Heroes Acreditados';
-        heroTitle.innerHTML = 'ESTABLECE TUS PROPIOS TÉRMINOS Y TARIFAS COMO HERO <span class="highlight-marker">EN TU CIUDAD</span>';
+        heroBadge.innerText = 'Bolsa Oficial de Misiones para Héroes Acreditados';
+        heroTitle.innerHTML = 'ESTABLECE TUS PROPIOS HORARIOS Y TARIFAS COMO HÉROE <span class="highlight-marker">EN TU CIUDAD</span>';
         heroBullet1.innerText = 'Accede a solicitudes reales de familias y profesionales en tu zona';
-        heroBullet2.innerText = 'Define tu propia tarifa por hora (€/h) y tus días disponibles';
+        heroBullet2.innerText = 'Define tu propia tarifa por hora (desde 8 €/h hasta 20 €/h) y tus días libres';
         heroBullet3.innerText = 'Cobras el 100% al instante en efectivo o Bizum al terminar cada misión';
-        heroPrimaryBtn.innerText = 'Inscríbete como Hero gratis';
-        heroSwitchLink.innerHTML = '¿Estás buscando contratar un acompañante? <span class="underline font-bold text-amber-900">Ver catálogo de Heroes →</span>';
+        heroPrimaryBtn.innerText = 'Inscríbete como Héroe gratis';
+        heroSwitchLink.innerHTML = '¿Estás buscando contratar un Héroe? <span class="underline font-bold text-amber-900">Ver catálogo de Héroes →</span>';
         heroSwitchLink.setAttribute('onclick', "switchAppMode('citizen')");
         heroRightImage.src = './assets/img/laura.jpg';
-        heroFloatingCardTitle.innerText = 'Laura (42) · Busca Hero en Alicante';
-        heroFloatingCardSub.innerText = '20 € / hora · Pago inmediato por Bizum';
+        heroFloatingCardTitle.innerText = 'Laura (42) · Busca Héroe en Alicante';
+        heroFloatingCardSub.innerText = '10 € / hora · Pago inmediato por Bizum';
 
-        catalogHeading.innerText = 'FAMILIAS Y CIUDADANOS BUSCANDO UN HERO AHORA MISMO';
+        catalogHeading.innerText = 'FAMILIAS Y CIUDADANOS BUSCANDO UN HÉROE AHORA MISMO';
         catalogCounter.innerText = 'Más de 640 solicitudes activas esta semana';
     }
 
@@ -563,7 +572,7 @@ window.renderCatalogGrid = function() {
     const grid = document.getElementById('public-catalog-grid');
     if (!grid) return;
 
-    const sourceList = currentMode === 'citizen' ? allHeroesList : FAMILY_MISSIONS;
+    const sourceList = currentMode === 'citizen' ? allHeroesList : allFamilyMissions;
 
     const filtered = sourceList.filter(item => {
         if (activeFilters.city !== 'Todas' && item.city.toLowerCase() !== activeFilters.city.toLowerCase()) return false;
@@ -573,12 +582,11 @@ window.renderCatalogGrid = function() {
         return true;
     });
 
-    // Actualizar etiquetas de píldoras activas
     const pillCity = document.getElementById('pill-city-label');
     const pillLevel = document.getElementById('pill-level-label');
     const pillMission = document.getElementById('pill-mission-label');
     if (pillCity) pillCity.innerText = activeFilters.city === 'Todas' ? 'Ciudad' : activeFilters.city;
-    if (pillLevel) pillLevel.innerText = activeFilters.level === 'Todos' ? 'Nivel de Hero' : `Nivel ${activeFilters.level}`;
+    if (pillLevel) pillLevel.innerText = activeFilters.level === 'Todos' ? 'Nivel de Héroe' : `Nivel ${activeFilters.level}`;
     if (pillMission) pillMission.innerText = activeFilters.mission === 'Todas' ? 'Tipo de acompañamiento' : activeFilters.mission;
 
     if (filtered.length === 0) {
@@ -586,7 +594,7 @@ window.renderCatalogGrid = function() {
             <div class="col-span-full bg-white border border-stone-200 rounded-3xl p-12 text-center">
                 <div class="w-14 h-14 rounded-full bg-teal-50 text-teal-700 flex items-center justify-center mx-auto mb-4 font-bold text-xl">🔍</div>
                 <h3 class="text-xl font-bold text-slate-900 mb-2">No hay perfiles exactos con esa combinación de filtros</h3>
-                <p class="text-slate-600 mb-6">Prueba a ampliar la ciudad o restablecer los filtros para ver todos los perfiles verificados.</p>
+                <p class="text-slate-600 mb-6">Prueba a ampliar la ciudad o restablecer los filtros para ver todos los Héroes verificados.</p>
                 <button onclick="resetPublicFilters()" class="px-6 py-3 rounded-full bg-teal-700 text-white font-bold text-sm hover:bg-teal-800 transition">
                     Mostrar todos los perfiles
                 </button>
@@ -604,7 +612,7 @@ window.renderCatalogGrid = function() {
         const levelBadgeColor = item.level === 1
             ? 'bg-emerald-50 text-emerald-800 border-emerald-200'
             : item.level === 2
-            ? 'bg-blue-50 text-blue-800 border-blue-200'
+            ? 'bg-teal-50 text-teal-800 border-teal-200'
             : 'bg-amber-50 text-amber-800 border-amber-200';
 
         return `
@@ -619,7 +627,7 @@ window.renderCatalogGrid = function() {
                             <span class="w-2 h-2 rounded-full ${item.isOnlineNow ? 'bg-emerald-500 animate-pulse' : 'bg-teal-500'}"></span>
                             ${item.online}
                         </span>
-                        <span class="absolute bottom-3 right-3 px-3 py-1 rounded-full text-xs font-extrabold bg-slate-900/90 text-white backdrop-blur-sm shadow">
+                        <span class="absolute bottom-3 right-3 px-3 py-1 rounded-full text-xs font-extrabold bg-teal-800 text-white shadow">
                             ${item.rate} € / hora
                         </span>
                     </div>
@@ -663,7 +671,7 @@ window.renderCatalogGrid = function() {
                         ${dayBubblesHtml}
                     </div>
                     <div class="w-full py-2.5 rounded-xl bg-teal-50 group-hover:bg-teal-700 text-teal-800 group-hover:text-white font-bold text-xs text-center transition-colors">
-                        ${currentMode === 'citizen' ? 'Ver ficha completa y horarios →' : 'Ver detalles de la misión →'}
+                        ${currentMode === 'citizen' ? 'Ver perfil del Héroe y horarios →' : 'Ver detalles de la solicitud →'}
                     </div>
                 </div>
             </article>
@@ -675,7 +683,7 @@ window.renderCatalogGrid = function() {
 // VISTA DE PERFIL COMPLETO EN 2 COLUMNAS (ESTILO SITLY CON CANDADO DE REGISTRO)
 // ============================================================================
 window.openProfileDetail = function(profileId) {
-    const allItems = [...allHeroesList, ...FAMILY_MISSIONS];
+    const allItems = [...allHeroesList, ...allFamilyMissions];
     const item = allItems.find(x => x.id === profileId);
     if (!item) return;
 
@@ -683,7 +691,6 @@ window.openProfileDetail = function(profileId) {
     const detailView = document.getElementById('profile-detail-view');
     const detailContainer = document.getElementById('profile-detail-content');
 
-    // Construir matriz 7 días x 3 turnos (Mañana, Tarde, Noche)
     const buildShiftRow = (label, activeDays) => {
         const cells = DAYS.map(d => {
             const has = activeDays && activeDays.includes(d);
@@ -741,7 +748,7 @@ window.openProfileDetail = function(profileId) {
                 <p class="text-slate-700 text-sm leading-relaxed italic">"${ref.text}"</p>
             </div>
         `).join('')
-        : `<p class="text-sm text-slate-500 italic">Perfil verificado por el equipo de admisiones de MyHero España.</p>`;
+        : `<p class="text-sm text-slate-500 italic">Perfil auditado y verificado por el equipo de admisiones de Heroly España.</p>`;
 
     detailContainer.innerHTML = `
         <!-- Barra superior de retorno -->
@@ -750,7 +757,7 @@ window.openProfileDetail = function(profileId) {
                 ← Volver a todos los perfiles en ${activeFilters.city === 'Todas' ? 'España' : activeFilters.city}
             </button>
             <div class="text-xs text-slate-500 font-medium">
-                MyHero España &gt; ${item.city} &gt; <span class="text-slate-800 font-bold">${item.name} (${item.age})</span>
+                Heroly España &gt; ${item.city} &gt; <span class="text-slate-800 font-bold">${item.name} (${item.age})</span>
             </div>
         </div>
 
@@ -806,7 +813,7 @@ window.openProfileDetail = function(profileId) {
                 <div class="bg-white border border-stone-200 rounded-3xl p-6 sm:p-8 shadow-sm">
                     <div class="flex flex-wrap justify-between items-start gap-4 pb-6 border-b border-stone-200">
                         <div>
-                            <span class="inline-block px-3 py-1 rounded-full bg-blue-50 text-blue-800 border border-blue-200 text-xs font-extrabold mb-2">
+                            <span class="inline-block px-3 py-1 rounded-full bg-teal-50 text-teal-800 border border-teal-200 text-xs font-extrabold mb-2">
                                 ${item.levelLabel}
                             </span>
                             <h1 class="font-display text-3xl sm:text-4xl font-extrabold text-slate-900">${item.name} (${item.age})</h1>
@@ -835,7 +842,7 @@ window.openProfileDetail = function(profileId) {
 
                     <!-- Servicios incluidos -->
                     <div class="py-6 border-b border-stone-200">
-                        <h2 class="font-display text-lg font-extrabold text-slate-900 mb-4">Detalles del servicio</h2>
+                        <h2 class="font-display text-lg font-extrabold text-slate-900 mb-4">Detalles del acompañamiento</h2>
                         <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                             ${capabilitiesHtml}
                         </ul>
@@ -854,7 +861,7 @@ window.openProfileDetail = function(profileId) {
                         <h2 class="font-display text-lg font-extrabold text-slate-900 mb-3">Ubicación y zona de cobertura de ${item.name}</h2>
                         <div class="relative w-full h-56 rounded-2xl overflow-hidden border border-stone-200 mb-6">
                             <div class="absolute inset-0 bg-cover bg-center filter blur-[5px] scale-105" style="background-image: url('./assets/img/mapa-elche.jpg');"></div>
-                            <div class="absolute inset-0 bg-slate-900/25 flex items-center justify-center p-4">
+                            <div class="absolute inset-0 bg-teal-950/20 flex items-center justify-center p-4">
                                 <button onclick="openAuthGateModal('${item.name}')" class="bg-white hover:bg-teal-50 text-slate-900 font-extrabold px-6 py-3.5 rounded-full shadow-xl border border-stone-200 flex items-center gap-2.5 text-sm transition transform hover:scale-105">
                                     <span>📍</span>
                                     Mostrar ubicación exacta de ${item.name}
@@ -865,8 +872,8 @@ window.openProfileDetail = function(profileId) {
                         <!-- Aviso de confianza + CTA Principal de Contacto -->
                         <div class="bg-teal-50/70 border border-teal-200 rounded-2xl p-5 flex flex-col sm:flex-row items-center justify-between gap-4">
                             <div class="text-xs text-slate-600 leading-relaxed">
-                                <strong class="text-slate-900 block text-sm mb-0.5">¿Te gustaría contar con ${item.name}?</strong>
-                                El registro es gratuito. Acuerda el horario por chat y abona directamente por Bizum o efectivo al finalizar.
+                                <strong class="text-slate-900 block text-sm mb-0.5">¿Te gustaría contactar con ${item.name}?</strong>
+                                El registro en Heroly es gratuito. Acuerda el horario por chat y abona directamente por Bizum o efectivo al finalizar.
                             </div>
                             <button onclick="openAuthGateModal('${item.name}')" class="w-full sm:w-auto shrink-0 bg-teal-700 hover:bg-teal-800 text-white font-extrabold px-8 py-4 rounded-full shadow-lg text-sm uppercase tracking-wider transition">
                                 Enviar mensaje a ${item.name}
@@ -899,7 +906,7 @@ window.closeProfileDetail = function(scrollToGrid = false) {
 };
 
 // ============================================================================
-// FILTROS RÁPIDOS Y MODAL DE FILTROS (ESTILO SITLY CON SECCIÓN BLOQUEADA)
+// FILTROS RÁPIDOS Y MODAL DE FILTROS (PRECIOS 8€ - 25€/h)
 // ============================================================================
 window.filterByCity = function(cityName) {
     activeFilters.city = cityName;
@@ -918,7 +925,7 @@ window.filterByLevel = function(levelNum) {
 };
 
 window.resetPublicFilters = function() {
-    activeFilters = { city: 'Todas', level: 'Todos', mission: 'Todas', maxRate: 40 };
+    activeFilters = { city: 'Todas', level: 'Todos', mission: 'Todas', maxRate: 25 };
     const citySel = document.getElementById('modal-filter-city');
     const levelSel = document.getElementById('modal-filter-level');
     const missionSel = document.getElementById('modal-filter-mission');
@@ -927,9 +934,9 @@ window.resetPublicFilters = function() {
     if (levelSel) levelSel.value = 'Todos';
     if (missionSel) missionSel.value = 'Todas';
     if (rateInput) {
-        rateInput.value = 40;
+        rateInput.value = 25;
         const lbl = document.getElementById('modal-rate-val');
-        if (lbl) lbl.innerText = 'Hasta 40 €/h';
+        if (lbl) lbl.innerText = 'Hasta 25 €/h';
     }
     renderCatalogGrid();
 };
@@ -960,7 +967,7 @@ window.applyFilterModal = function() {
 };
 
 // ============================================================================
-// MODAL DE REGISTRO / CONVERSIÓN ("BIENVENIDO A MYHERO" AL QUERER CONTACTAR)
+// MODAL DE REGISTRO / CONVERSIÓN ("BIENVENIDO A HEROLY" AL QUERER CONTACTAR)
 // ============================================================================
 window.openAuthGateModal = function(targetPersonName = '') {
     const modal = document.getElementById('sitly-auth-modal');
@@ -968,7 +975,7 @@ window.openAuthGateModal = function(targetPersonName = '') {
     if (titleEl) {
         titleEl.innerText = targetPersonName
             ? `Regístrate gratis para contactar con ${targetPersonName}`
-            : 'Bienvenido a MyHero España';
+            : 'Bienvenido a Heroly España';
     }
     if (modal) modal.classList.remove('hidden');
 };
@@ -978,9 +985,6 @@ window.closeAuthGateModal = function() {
     if (modal) modal.classList.add('hidden');
 };
 
-// ============================================================================
-// UTILIDADES DE NAVEGACIÓN MÓVIL, REVEAL Y FAQS
-// ============================================================================
 function initMobileMenu() {
     const mobileBtn = document.getElementById('mobile-menu-btn');
     const mobileMenu = document.getElementById('mobile-menu');

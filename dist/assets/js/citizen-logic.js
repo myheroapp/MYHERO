@@ -1,619 +1,591 @@
-import { auth, db, onAuthStateChanged, signOut, doc, getDoc, setDoc } from './firebase.js';
-import { collection, addDoc, onSnapshot, deleteDoc, query, where } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+// ============================================================================
+// HEROLY ESPAÑA - LÓGICA COMPLETA DEL PANEL DE PERSONAS Y FAMILIAS (VERSIÓN 1)
+// ============================================================================
 
-let currentUser = null;
-let currentMissionId = null;
-let unsubscribeMission = null;
+const DAYS = ['Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sa', 'Do'];
 
-// Elementos del DOM
-const btnSolicitarMision = document.getElementById('btnSolicitarMision');
-const btnCancelarMision = document.getElementById('btnCancelarMision');
-const searchingState = document.getElementById('searchingState');
-const btnLogout = document.getElementById('btnLogout');
-const userNameDisplay = document.getElementById('userNameDisplay');
-
-// 1. Autenticación y Protección de Ruta
-onAuthStateChanged(auth, async (user) => {
-    if (user) {
-        currentUser = user;
-        
-        try {
-            // Cargar datos del usuario o crearlos si no existen por error previo
-            const userDocRef = doc(db, "users", user.uid);
-            let userDoc = await getDoc(userDocRef);
-            
-            if(!userDoc.exists()) {
-                // Auto-reparación si el perfil no se guardó por el bloqueo anterior
-                await setDoc(userDocRef, {
-                    uid: user.uid,
-                    email: user.email,
-                    name: user.displayName || 'Ciudadano',
-                    role: 'ciudadano',
-                    createdAt: new Date().toISOString()
-                });
-                userDoc = await getDoc(userDocRef);
-            }
-
-            if(userNameDisplay) {
-                userNameDisplay.textContent = userDoc.data().name || user.email;
-            }
-            
-            // Comprobar si ya tiene una misión buscando
-            checkActiveMissions();
-            
-            // Cargar Catálogo (solo si hay conexión exitosa)
-            loadHeroCatalog(); 
-            
-            // Cargar Red Familiar
-            const famQuery = query(collection(db, "family"), where("userId", "==", user.uid));
-            onSnapshot(famQuery, (snapshot) => {
-                const familyList = [];
-                snapshot.forEach(doc => {
-                    familyList.push({id: doc.id, ...doc.data()});
-                });
-                if(typeof renderFamily === 'function') renderFamily(familyList);
-            });
-            
-            
-        } catch (error) {
-            console.error("Error cargando perfil:", error);
-            if (userNameDisplay) userNameDisplay.textContent = "Error de Conexión";
-            alert("⚠️ BLOQUEO DE FIREBASE: No tienes permiso para leer la base de datos. Ve a Firestore -> Reglas y pon: allow read, write: if request.auth != null;");
-        }
-    } else {
-        window.location.href = 'portal.html';
+const CITIZEN_HEROES = [
+    {
+        id: 'hero-alejandro',
+        name: 'Alejandro',
+        age: 35,
+        city: 'Valencia',
+        zone: 'Eixample / Ruzafa',
+        level: 1,
+        levelLabel: 'Nivel 1 · Cívico',
+        rate: 8,
+        rating: '5,0',
+        reviews: 19,
+        photo: './assets/img/normal.jpg',
+        skills: ['Mayores', 'Auxilios'],
+        daysAvailable: ['Lu', 'Ma', 'Mi', 'Ju', 'Vi'],
+        bio: 'Graduado en Psicología. Especialista en acompañar a padres mayores al médico, banco y paseos tranquilos.'
+    },
+    {
+        id: 'hero-patricia',
+        name: 'Patricia',
+        age: 40,
+        city: 'Zaragoza',
+        zone: 'Centro / Romareda',
+        level: 1,
+        levelLabel: 'Nivel 1 · Cívico',
+        rate: 9,
+        rating: '5,0',
+        reviews: 11,
+        photo: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&crop=faces&w=500&q=80',
+        skills: ['Mayores', 'Auxilios', 'Vehículo'],
+        daysAvailable: ['Lu', 'Ma', 'Mi', 'Ju', 'Vi'],
+        bio: 'Auxiliar de enfermería con vehículo propio. Trato cálido para consultas médicas, bancos y rehabilitación.'
+    },
+    {
+        id: 'hero-elena',
+        name: 'Elena',
+        age: 37,
+        city: 'Barcelona',
+        zone: 'Sarrià / Gràcia',
+        level: 1,
+        levelLabel: 'Nivel 1 · Cívico',
+        rate: 10,
+        rating: '4,9',
+        reviews: 22,
+        photo: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&crop=faces&w=500&q=80',
+        skills: ['Mayores', 'Vehículo'],
+        daysAvailable: ['Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sa'],
+        bio: 'Técnica sociosanitaria en Barcelona. Ideal para mujeres y personas mayores que buscan compañía de confianza.'
+    },
+    {
+        id: 'hero-roberto',
+        name: 'Roberto',
+        age: 38,
+        city: 'Alicante',
+        zone: 'Centro / Diputación',
+        level: 2,
+        levelLabel: 'Nivel 2 · Disuasorio',
+        rate: 11,
+        rating: '5,0',
+        reviews: 14,
+        photo: './assets/img/roberto.jpg',
+        skills: ['Mayores', 'Vehículo', 'Auxilios'],
+        daysAvailable: ['Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sa'],
+        bio: 'Deportista y Héroe acreditado en Alicante. Acompañamiento a bancos, citas médicas y retornos nocturnos.'
+    },
+    {
+        id: 'hero-david',
+        name: 'David',
+        age: 34,
+        city: 'Málaga',
+        zone: 'Centro / Teatinos',
+        level: 2,
+        levelLabel: 'Nivel 2 · Disuasorio',
+        rate: 12,
+        rating: '4,9',
+        reviews: 15,
+        photo: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&crop=faces&w=500&q=80',
+        skills: ['Auxilios', 'Vehículo'],
+        daysAvailable: ['Ma', 'Mi', 'Ju', 'Vi', 'Sa', 'Do'],
+        bio: 'Socorrista titulado y deportista federado. Presencia preventiva para salidas laborales nocturnas o cajeros.'
+    },
+    {
+        id: 'hero-carlos',
+        name: 'Carlos',
+        age: 41,
+        city: 'Elche',
+        zone: 'Altabix / Centro',
+        level: 2,
+        levelLabel: 'Nivel 2 · Disuasorio',
+        rate: 13,
+        rating: '4,9',
+        reviews: 26,
+        photo: './assets/img/musculoso.jpg',
+        skills: ['Vehículo'],
+        daysAvailable: ['Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sa', 'Do'],
+        bio: 'Entrenador personal de 1,88m en Elche. Máxima disuasión pasiva para gestiones bancarias y parkings.'
+    },
+    {
+        id: 'hero-miguel',
+        name: 'Miguel Ángel',
+        age: 46,
+        city: 'Sevilla',
+        zone: 'Nervión / Los Remedios',
+        level: 3,
+        levelLabel: 'Nivel 3 · Especialista',
+        rate: 15,
+        rating: '5,0',
+        reviews: 31,
+        photo: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&crop=faces&w=500&q=80',
+        skills: ['Vehículo', 'Auxilios'],
+        daysAvailable: ['Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sa', 'Do'],
+        bio: 'Especialista con 15 años en prevención y primeros auxilios. Seriedad absoluta para notarías y bancos.'
+    },
+    {
+        id: 'hero-javier',
+        name: 'Javier',
+        age: 44,
+        city: 'Madrid',
+        zone: 'Salamanca / Chamberí',
+        level: 3,
+        levelLabel: 'Nivel 3 · Especialista',
+        rate: 17,
+        rating: '5,0',
+        reviews: 39,
+        photo: './assets/img/karateka.jpg',
+        skills: ['Auxilios', 'Mayores', 'Vehículo'],
+        daysAvailable: ['Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sa'],
+        bio: 'Cinturón negro 3º Dan federado y experto en soporte vital básico. El estándar más alto de tranquilidad.'
     }
+];
+
+let activeChatHeroId = 'hero-roberto';
+
+document.addEventListener('DOMContentLoaded', () => {
+    initSessionProfile();
+    renderCitizenCatalog();
+    renderPublishedAnnouncements();
+    renderCitizenMissions();
+    renderChatInbox();
+    renderFamilyMembers();
+    bindCitizenEvents();
 });
 
-// Cerrar sesión
-if(btnLogout) {
-    btnLogout.addEventListener('click', (e) => {
-        e.preventDefault();
-        signOut(auth).then(() => window.location.href = 'portal.html');
-    });
+function initSessionProfile() {
+    const raw = localStorage.getItem('heroly_session');
+    const user = raw ? JSON.parse(raw) : { name: 'Laura G.', email: 'laura@heroly.es', city: 'Alicante', phone: '612 345 678' };
+    const nameEl = document.getElementById('userNameDisplay');
+    const citName = document.getElementById('citNameInput');
+    const citPhone = document.getElementById('citPhoneInput');
+    const citLoc = document.getElementById('citLocationInput');
+
+    if (nameEl) nameEl.innerText = user.name || 'Laura G.';
+    if (citName) citName.value = user.name || 'Laura G.';
+    if (citPhone) citPhone.value = user.phone || '612 345 678';
+    if (citLoc) citLoc.value = user.city || 'Alicante';
 }
 
-// 2. Solicitar Misión
-if(btnSolicitarMision) {
-    btnSolicitarMision.addEventListener('click', async () => {
-        if(!currentUser) return;
-        
-        const reqBeneficiary = document.getElementById('reqBeneficiary').value;
-        const reqType = document.getElementById('reqType').value;
-        const reqLevel = document.getElementById('reqLevel').value;
-
-        // Ocultar botón, mostrar "buscando"
-        btnSolicitarMision.classList.add('hidden');
-        searchingState.classList.remove('hidden');
-
-        try {
-            const missionRef = await addDoc(collection(db, "misiones"), {
-                citizenId: currentUser.uid,
-                citizenName: userNameDisplay ? userNameDisplay.textContent : 'Ciudadano',
-                beneficiary: reqBeneficiary,
-                type: reqType,
-                level: reqLevel,
-                status: 'buscando',
-                createdAt: new Date().toISOString()
-            });
-            
-            currentMissionId = missionRef.id;
-            listenToMission(currentMissionId);
-        } catch (error) {
-            console.error("Error al crear misión:", error);
-            alert("No se pudo crear la solicitud. Revisa las reglas de Firestore.");
-            resetUI();
-        }
+window.switchCitizenTab = function(tabId) {
+    document.querySelectorAll('.nav-link[data-tab]').forEach(link => {
+        if (link.getAttribute('data-tab') === tabId) link.classList.add('active');
+        else link.classList.remove('active');
     });
-}
-
-// 3. Cancelar Misión
-if(btnCancelarMision) {
-    btnCancelarMision.addEventListener('click', async () => {
-        if(!currentMissionId) return;
-        try {
-            await deleteDoc(doc(db, "misiones", currentMissionId));
-            if(unsubscribeMission) unsubscribeMission();
-            currentMissionId = null;
-            resetUI();
-        } catch (error) {
-            console.error("Error al cancelar:", error);
-        }
+    document.querySelectorAll('.tab-content').forEach(sec => {
+        sec.classList.remove('active', ' hidden');
+        if (sec.id === tabId) sec.classList.add('active');
     });
-}
+};
 
-// 4. Escuchar cambios en la misión en tiempo real
-function listenToMission(missionId) {
-    unsubscribeMission = onSnapshot(doc(db, "misiones", missionId), (docSnapshot) => {
-        if (docSnapshot.exists()) {
-            const data = docSnapshot.data();
-            if (data.status === 'asignada') {
-                // Un Hero ha aceptado!
-                searchingState.innerHTML = `
-                    <div class="bg-green-500/20 border border-green-500 p-4 rounded-xl mt-4">
-                        <p class="text-green-400 font-extrabold mb-1">¡HERO ASIGNADO!</p>
-                        <p class="text-white text-sm mb-4">Tu Hero <strong>${data.heroName}</strong> ha aceptado.</p>
-                        <button onclick="window.openChat('${data.citizenId}_${data.heroId}', '${data.heroName}')" class="w-full bg-green-500 hover:bg-green-400 text-obsidian-950 font-extrabold py-2 rounded-xl transition-all shadow-[0_0_15px_rgba(34,197,94,0.3)]">
-                            Abrir Chat
-                        </button>
-                        <button onclick="deleteDoc(doc(db, 'misiones', '${missionId}')).then(() => resetUI())" class="mt-4 text-xs text-red-400 hover:text-red-300 underline block text-center w-full">Finalizar / Borrar</button>
+// 1. RENDERIZAR CATÁLOGO DE HÉROES DESBLOQUEADO
+window.renderCitizenCatalog = function() {
+    const grid = document.getElementById('heroCatalogGrid');
+    if (!grid) return;
+
+    const cityVal = document.getElementById('citFilterCity')?.value || 'Todas';
+    const levelVal = document.getElementById('citFilterLevel')?.value || 'Todos';
+    const maxRate = Number(document.getElementById('citFilterRate')?.value || 20);
+    const skillVal = document.getElementById('citFilterSkill')?.value || 'Todos';
+
+    const customHeroes = JSON.parse(localStorage.getItem('heroly_custom_heroes') || '[]');
+    const fullList = [...customHeroes, ...CITIZEN_HEROES];
+
+    const filtered = fullList.filter(h => {
+        if (cityVal !== 'Todas' && h.city.toLowerCase() !== cityVal.toLowerCase()) return false;
+        if (levelVal !== 'Todos' && String(h.level) !== String(levelVal)) return false;
+        if (h.rate > maxRate) return false;
+        if (skillVal !== 'Todos' && !(h.skills || []).includes(skillVal)) return false;
+        return true;
+    });
+
+    grid.innerHTML = filtered.map(h => {
+        const bubbles = DAYS.map(d => `<span class="day-bubble ${(h.daysAvailable || []).includes(d) ? 'on' : 'off'}">${d}</span>`).join('');
+        return `
+            <div class="dash-card flex flex-col justify-between">
+                <div>
+                    <div class="relative h-52 rounded-2xl overflow-hidden mb-4 bg-stone-100">
+                        <img src="${h.photo}" alt="${h.name}" class="w-full h-full object-cover object-top">
+                        <span class="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-white/95 text-emerald-700 text-xs font-extrabold shadow-sm">● Online ahora</span>
+                        <span class="absolute bottom-3 right-3 px-3 py-1 rounded-full bg-teal-800 text-white text-xs font-extrabold shadow">${h.rate} € / hora</span>
                     </div>
-                `;
-            }
-        } else {
-            resetUI();
+                    <div class="flex justify-between items-start mb-1">
+                        <h3 class="font-display text-lg font-extrabold text-slate-900">${h.name} (${h.age || 36})</h3>
+                        <span class="text-xs font-bold text-amber-500">★ ${h.rating || '5,0'} (${h.reviews || 8})</span>
+                    </div>
+                    <p class="text-xs font-semibold text-slate-500 mb-2">📍 ${h.city} · ${h.zone || 'Centro'}</p>
+                    <span class="inline-block px-2.5 py-0.5 rounded-full bg-teal-50 border border-teal-200 text-teal-800 text-[11px] font-bold mb-3">${h.levelLabel}</span>
+                    <p class="text-sm text-slate-600 leading-relaxed mb-4">${h.bio || h.shortBio}</p>
+                </div>
+                <div class="pt-3 border-t border-stone-100 space-y-3">
+                    <div class="flex justify-between gap-1">${bubbles}</div>
+                    <div class="grid grid-cols-2 gap-2">
+                        <button onclick="openChatWithHero('${h.id}')" class="py-2.5 px-3 rounded-xl border border-teal-700 text-teal-800 hover:bg-teal-50 font-bold text-xs transition">
+                            💬 Mensaje
+                        </button>
+                        <button onclick="bookHeroNow('${h.id}')" class="py-2.5 px-3 rounded-xl bg-teal-700 hover:bg-teal-800 text-white font-extrabold text-xs shadow-sm transition">
+                            🛡️ Contratar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        `;
+    }).join('');
+};
+
+// 2. CONTRATAR HÉROE / CREAR MISIÓN CON SEGUIMIENTO GPS
+window.bookHeroNow = function(heroId) {
+    const customHeroes = JSON.parse(localStorage.getItem('heroly_custom_heroes') || '[]');
+    const hero = [...customHeroes, ...CITIZEN_HEROES].find(x => x.id === heroId) || CITIZEN_HEROES[3];
+
+    const missions = getCitizenMissions();
+    const newMission = {
+        id: 'm-' + Date.now(),
+        heroId: hero.id,
+        heroName: hero.name,
+        heroPhoto: hero.photo,
+        heroLevel: hero.levelLabel,
+        city: hero.city,
+        rate: hero.rate,
+        hours: 2,
+        total: hero.rate * 2,
+        status: 'En curso · GPS Activo',
+        date: 'Hoy · En directo',
+        rated: false
+    };
+    missions.unshift(newMission);
+    localStorage.setItem('heroly_citizen_missions', JSON.stringify(missions));
+    renderCitizenMissions();
+    switchCitizenTab('tab-historial');
+};
+
+function getCitizenMissions() {
+    const raw = localStorage.getItem('heroly_citizen_missions');
+    if (raw) return JSON.parse(raw);
+    const initial = [
+        {
+            id: 'm-default-1',
+            heroId: 'hero-roberto',
+            heroName: 'Roberto',
+            heroPhoto: './assets/img/roberto.jpg',
+            heroLevel: 'Nivel 2 · Disuasorio',
+            city: 'Alicante',
+            rate: 11,
+            hours: 2,
+            total: 22,
+            status: 'En curso · GPS Activo',
+            date: 'Hoy · Acompañamiento Bancario Madre',
+            rated: false
         }
-    });
+    ];
+    localStorage.setItem('heroly_citizen_missions', JSON.stringify(initial));
+    return initial;
 }
 
-// Helper: Comprobar si ya hay misiones activas al cargar la página
-function checkActiveMissions() {
-    const q = query(collection(db, "misiones"), where("citizenId", "==", currentUser.uid));
-    onSnapshot(q, (snapshot) => {
-        // Find if there is any active mission (buscando or asignada)
-        const docSnap = snapshot.docs.find(d => d.data().status === 'buscando' || d.data().status === 'asignada');
-        if (docSnap) {
-            currentMissionId = docSnap.id;
-            btnSolicitarMision.classList.add('hidden');
-            searchingState.classList.remove('hidden');
-            listenToMission(currentMissionId);
-        } else {
-            resetUI();
+window.renderCitizenMissions = function() {
+    const container = document.getElementById('citizenMissionsContainer');
+    const badge = document.getElementById('activeMissionsBadge');
+    if (!container) return;
+
+    const missions = getCitizenMissions();
+    if (badge) badge.innerText = missions.length;
+
+    container.innerHTML = missions.map(m => `
+        <div class="bg-[#FAFAF9] border border-stone-200 rounded-2xl p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+            <div class="flex items-center gap-4">
+                <img src="${m.heroPhoto}" class="w-14 h-14 rounded-2xl object-cover border-2 border-teal-600">
+                <div>
+                    <span class="inline-block px-2.5 py-0.5 rounded-full ${m.rated ? 'bg-stone-200 text-slate-700' : 'bg-emerald-100 text-emerald-800'} text-[11px] font-extrabold mb-1">${m.status}</span>
+                    <h4 class="font-display font-extrabold text-slate-900 text-base">${m.heroName} · ${m.heroLevel}</h4>
+                    <p class="text-xs text-slate-600">${m.date} · ${m.hours}h (${m.rate} €/h) · <strong>Total a abonar por Bizum/Efectivo: ${m.total} €</strong></p>
+                </div>
+            </div>
+            <div class="flex flex-wrap gap-2 w-full sm:w-auto">
+                <button onclick="openChatWithHero('${m.heroId}')" class="px-4 py-2 rounded-full border border-stone-300 bg-white text-slate-700 font-bold text-xs hover:bg-stone-50">
+                    💬 Chat
+                </button>
+                ${!m.rated ? `
+                    <button onclick="completeAndRateMission('${m.id}')" class="px-4 py-2 rounded-full bg-amber-500 hover:bg-amber-600 text-slate-950 font-extrabold text-xs shadow-sm">
+                        ★ Finalizar y Valorar (5★)
+                    </button>
+                ` : `<span class="px-3 py-2 text-xs font-bold text-amber-600">★★★★★ Valorado</span>`}
+            </div>
+        </div>
+    `).join('');
+};
+
+window.completeAndRateMission = function(missionId) {
+    const missions = getCitizenMissions().map(m => {
+        if (m.id === missionId) {
+            m.status = 'Finalizado y abonado por Bizum';
+            m.rated = true;
         }
-    }, (error) => {
-        console.error("Error en checkActiveMissions:", error);
+        return m;
     });
-}
+    localStorage.setItem('heroly_citizen_missions', JSON.stringify(missions));
+    renderCitizenMissions();
+    alert('¡Gracias! Has finalizado el acompañamiento y otorgado 5 estrellas a tu Héroe.');
+};
 
-function resetUI() {
-    btnSolicitarMision.classList.remove('hidden');
-    searchingState.classList.add('hidden');
-    searchingState.innerHTML = `
-        <p class="text-cyan-400 font-bold animate-pulse text-sm">Buscando Hero cercano...</p>
-        <button id="btnCancelarMision" class="mt-2 text-xs text-red-400 hover:text-red-300 underline">Cancelar solicitud</button>
-    `;
-    // Re-bind cancel button since innerHTML overwrote it
-    document.getElementById('btnCancelarMision').addEventListener('click', async () => {
-        if(!currentMissionId) return;
-        await deleteDoc(doc(db, "misiones", currentMissionId));
-        if(unsubscribeMission) unsubscribeMission();
-        currentMissionId = null;
-        resetUI();
-    });
-}
+window.shareFamilyGpsLink = function() {
+    const url = window.location.origin + '/?gps-familiar=activo';
+    if (navigator.clipboard) navigator.clipboard.writeText(url);
+    alert('Enlace de seguimiento en vivo Red Familiar™ copiado al portapapeles:\n' + url);
+};
 
-// 5. CARGAR CATÁLOGO DE HEROES (NUEVA FUNCIONALIDAD)
-const heroCatalogGrid = document.getElementById('heroCatalogGrid');
-const searchHeroInput = document.getElementById('searchHeroInput');
-let allHeroes = []; // Almacenar para poder filtrar localmente
-
-async function loadHeroCatalog() {
-    if (!heroCatalogGrid) return;
-    
-    // Obtenemos todos los usuarios con rol 'hero'
-    const q = query(collection(db, "users"), where("role", "==", "hero"));
-    onSnapshot(q, (snapshot) => {
-        allHeroes = [];
-        snapshot.forEach((doc) => {
-            allHeroes.push({ id: doc.id, ...doc.data() });
-        });
-        renderCatalog(allHeroes);
-    }, (error) => {
-        console.error("Error cargando el catálogo:", error);
-        heroCatalogGrid.innerHTML = `<div class="text-center text-red-400 py-12 col-span-full">Error al cargar: ${error.message}</div>`;
-    });
-}
-
-function renderCatalog(heroes) {
-    if (!heroCatalogGrid) return;
-    if (heroes.length === 0) {
-        heroCatalogGrid.innerHTML = `<div class="text-center text-gray-400 py-12 col-span-full">Aún no hay Heroes registrados en tu zona.</div>`;
+// 3. PUBLICAR SOLICITUD / ANUNCIO (ESTILO SITLY)
+function renderPublishedAnnouncements() {
+    const listEl = document.getElementById('myPublishedMissionsList');
+    if (!listEl) return;
+    const list = JSON.parse(localStorage.getItem('heroly_custom_missions') || '[]');
+    if (list.length === 0) {
+        listEl.innerHTML = `<p class="text-sm text-slate-500 italic">Aún no has publicado ningún anuncio. Usa el formulario superior para que los Héroes de tu zona te contacten.</p>`;
         return;
     }
-
-    let html = '';
-    heroes.forEach((h, index) => {
-        // Avatares aleatorios para que se vea bien el mockup
-        const avatarNum = (index % 50) + 10; 
-        const rating = (Math.random() * (5 - 4.2) + 4.2).toFixed(1); // Estrellas entre 4.2 y 5.0
-        
-        const bioText = h.bio ? h.bio : "Héroe sin descripción todavía.";
-        
-        // Parse skills to tags
-        let skillsHtml = '';
-        if(h.skills) {
-            const skillsArray = h.skills.split(',').map(s => s.trim()).filter(s => s);
-            skillsHtml = skillsArray.map(s => `<span class="bg-obsidian-950 px-2 py-1 rounded text-[10px] uppercase border border-white/5">${s}</span>`).join('');
-        } else {
-            skillsHtml = `<span class="bg-obsidian-950 px-2 py-1 rounded text-[10px] uppercase border border-white/5 text-gray-600">Sin habilidades listadas</span>`;
-        }
-
-        
-        const heroLevelBadge = h.heroLevel ? `<span class="text-xs font-bold text-cyan-400 mt-1 block">${h.heroLevel}</span>` : '';
-        const onlineDot = h.isOnline ? `<div class="absolute bottom-0 right-0 w-4 h-4 bg-green-500 border-2 border-obsidian-950 rounded-full"></div>` : `<div class="absolute bottom-0 right-0 w-4 h-4 bg-gray-500 border-2 border-obsidian-950 rounded-full"></div>`;
-
-        let lowestRate = 0;
-        if (h.rates) {
-            const validRates = Object.values(h.rates).map(r => parseFloat(r)).filter(r => !isNaN(r) && r > 0);
-            if(validRates.length > 0) {
-                lowestRate = Math.min(...validRates);
-            }
-        }
-        
-        const rateHtml = lowestRate > 0 ? `
-            <div class="mt-4 pt-3 border-t border-white/5 flex items-baseline gap-1">
-                <span class="text-xs text-gray-500 uppercase font-bold">Desde</span> 
-                <span class="text-2xl font-extrabold text-white">${lowestRate} Euros</span>
-                <span class="text-xs text-gray-400">/hora</span>
+    listEl.innerHTML = list.map(item => `
+        <div class="p-4 rounded-2xl bg-[#FAFAF9] border border-stone-200 flex justify-between items-center gap-4">
+            <div>
+                <span class="text-xs font-extrabold text-teal-800">${item.city} · ${item.levelLabel} · ${item.rate} €/h</span>
+                <p class="text-sm font-bold text-slate-900 mt-0.5">${item.shortBio}</p>
             </div>
-        ` : `
-            <div class="mt-4 pt-3 border-t border-white/5 flex items-baseline gap-1">
-                <span class="text-xs text-gray-500 uppercase font-bold">Tarifa:</span> 
-                <span class="text-sm font-bold text-gray-400">A consultar</span>
-            </div>
-        `;
-
-        html += `
-        <div class="dash-card border-cyan-500/20 hover:border-cyan-500/60 shadow-lg transition-all group relative overflow-hidden flex flex-col">
-            <div class="absolute inset-0 bg-gradient-to-t from-cyan-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-            
-            <div class="flex items-center gap-4 mb-4 relative z-10">
-                <div class="relative w-16 h-16">
-                    <img src="https://i.pravatar.cc/150?img=${avatarNum}" class="w-full h-full rounded-full border-2 border-cyan-500 shadow-[0_0_10px_rgba(6,182,212,0.4)]">
-                    ${onlineDot}
-                </div>
-                <div>
-                    <h3 class="font-bold text-white text-lg">${h.name}</h3>
-                    <p class="text-xs text-amber-500 font-bold flex items-center gap-1">
-                        ? ${rating} <span class="text-gray-500">| Hero Verificado</span>
-                    </p>
-                    ${heroLevelBadge}
-                </div>
-            </div>
-            
-            <div class="text-sm text-gray-400 mb-6 flex-1 relative z-10 cursor-pointer" onclick="const p = this.querySelector('p.bio-text'); p.classList.toggle('line-clamp-3'); const hint = this.querySelector('.expand-hint'); hint.innerText = p.classList.contains('line-clamp-3') ? 'VER MAS...' : 'VER MENOS';">
-                <p class="bio-text line-clamp-3 transition-all duration-300">${bioText}</p>
-                <div class="expand-hint mt-1 text-[10px] uppercase tracking-wider font-bold text-cyan-500/70 hover:text-cyan-400">VER MAS...</div>
-                <div class="mt-3 flex flex-wrap gap-2">
-                    ${skillsHtml}
-                </div>
-                ${rateHtml}
-            </div>
-            
-            <button onclick="requestSpecificHero('${h.id}', '${h.name}')" class="w-full bg-cyan-500 hover:bg-cyan-400 text-obsidian-950 font-extrabold py-3 rounded-xl transition-all shadow-[0_0_15px_rgba(6,182,212,0.3)] relative z-10">
-                Contactar Ahora
-            </button>
+            <span class="px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 text-xs font-extrabold shrink-0">Publicado</span>
         </div>
-        `;
-
-    });
-    heroCatalogGrid.innerHTML = html;
+    `).join('');
 }
 
-// Filtros combinados
-const searchLocationInput = document.getElementById('searchLocationInput');
-const btnSortGPS = document.getElementById('btnSortGPS');
-
-function applyFilters() {
-    let filtered = [...allHeroes];
-    
-    const nameTerm = searchHeroInput ? searchHeroInput.value.toLowerCase() : '';
-    if(nameTerm) {
-        filtered = filtered.filter(h => (h.name || '').toLowerCase().includes(nameTerm));
-    }
-    
-    const locTerm = searchLocationInput ? searchLocationInput.value.toLowerCase() : '';
-    if(locTerm) {
-        filtered = filtered.filter(h => (h.locationString || '').toLowerCase().includes(locTerm));
-    }
-    
-    renderCatalog(filtered);
-}
-
-if (searchHeroInput) searchHeroInput.addEventListener('input', applyFilters);
-if (searchLocationInput) searchLocationInput.addEventListener('input', applyFilters);
-
-function getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2) {
-  const R = 6371; 
-  const dLat = (lat2-lat1) * (Math.PI/180);
-  const dLon = (lon2-lon1) * (Math.PI/180); 
-  const a = Math.sin(dLat/2) * Math.sin(dLat/2) +
-            Math.cos(lat1 * (Math.PI/180)) * Math.cos(lat2 * (Math.PI/180)) * 
-            Math.sin(dLon/2) * Math.sin(dLon/2); 
-  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
-  return R * c; 
-}
-
-if (btnSortGPS) {
-    btnSortGPS.addEventListener('click', () => {
-        if ("geolocation" in navigator) {
-            btnSortGPS.textContent = "Ubicando...";
-            navigator.geolocation.getCurrentPosition(
-                (position) => {
-                    const myLat = position.coords.latitude;
-                    const myLng = position.coords.longitude;
-                    
-                    let filtered = [...allHeroes];
-                    filtered.forEach(h => {
-                        if(h.lat && h.lng) h.distance = getDistanceFromLatLonInKm(myLat, myLng, h.lat, h.lng);
-                        else h.distance = 999999;
-                    });
-                    
-                    filtered.sort((a,b) => a.distance - b.distance);
-                    renderCatalog(filtered);
-                    
-                    btnSortGPS.textContent = "Ordenado por cercanía";
-                    btnSortGPS.classList.add('text-green-400');
-                    btnSortGPS.classList.remove('text-cyan-400');
-                },
-                (error) => {
-                    alert("No se pudo obtener la ubicación GPS.");
-                    btnSortGPS.innerHTML = `<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path></svg> Cerca de mí`;
-                }
-            );
-        }
-    });
-}
-
-// Lógica del Chat Directo
-const chatModal = document.getElementById('chatModal');
-const chatTitle = document.getElementById('chatTitle');
-const btnColapseChat = document.getElementById('btnColapseChat');
-const chatMessages = document.getElementById('chatMessages');
-const chatInput = document.getElementById('chatInput');
-const btnSendMsg = document.getElementById('btnSendMsg');
-
-let currentChatId = null;
-let unsubscribeChat = null;
-
-window.requestSpecificHero = async (heroId, heroName) => {
-    if(!currentUser) return;
-    
-    const confirmacion = confirm(`¿Quieres enviar una solicitud directa a ${heroName}?`);
-    if(!confirmacion) return;
-
-    try {
-        // Creamos una misión directa
-        const newMisionRef = await addDoc(collection(db, "misiones"), {
-            citizenId: currentUser.uid,
-            citizenName: userNameDisplay ? userNameDisplay.textContent : 'Ciudadano',
-            beneficiary: 'Familiar / Propio', // Hardcoded por ahora
-            type: 'Acompañamiento (Solicitud Directa)',
-            level: 'Nivel 1 (Básico)', // O podríamos leerlo del perfil
-            status: 'buscando',
-            targetHeroId: heroId, // ESTO ES CLAVE: Indica que es directa para él
-            createdAt: new Date().toISOString()
-        });
-        
-        currentMissionId = newMisionRef.id;
-        alert(`¡Solicitud enviada a ${heroName}! Esperando a que acepte...`);
-        
-    } catch(e) {
-        console.error(e);
-        alert("Error al enviar la solicitud.");
-    }
-};
-
-// Global function to open chat (will be called when a mission is accepted)
-window.openChat = async (chatId, otherName) => {
-    currentChatId = chatId;
-    chatTitle.textContent = `Chat con ${otherName}`;
-    chatModal.classList.remove('hidden');
-    chatModal.classList.add('flex');
-    listenToChat(currentChatId);
-};
-
-if(btnColapseChat) {
-    btnColapseChat.addEventListener('click', () => {
-        chatModal.classList.add('hidden');
-        chatModal.classList.remove('flex');
-        if(unsubscribeChat) unsubscribeChat();
-    });
-}
-
-function listenToChat(chatId) {
-    if(unsubscribeChat) unsubscribeChat();
-    
-    const q = query(collection(db, "chats", chatId, "messages"));
-    unsubscribeChat = onSnapshot(q, (snapshot) => {
-        const msgs = [];
-        snapshot.forEach(doc => msgs.push(doc.data()));
-        
-        // Sort por fecha localmente
-        msgs.sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
-        
-        chatMessages.innerHTML = '';
-        msgs.forEach(m => {
-            const isMe = m.senderId === currentUser.uid;
-            const bubble = document.createElement('div');
-            bubble.className = `max-w-[80%] rounded-xl p-3 text-sm flex flex-col ${isMe ? 'bg-cyan-500 text-obsidian-950 self-end ml-auto rounded-tr-sm' : 'bg-obsidian-800 text-white self-start mr-auto rounded-tl-sm'}`;
-            
-            const txt = document.createElement('span');
-            txt.textContent = m.text;
-            bubble.appendChild(txt);
-            
-            chatMessages.appendChild(bubble);
-        });
-        chatMessages.scrollTop = chatMessages.scrollHeight;
-    });
-}
-
-if(btnSendMsg && chatInput) {
-    const sendFn = async () => {
-        const text = chatInput.value.trim();
-        if(!text || !currentChatId) return;
-        
-        chatInput.value = '';
-        await addDoc(collection(db, "chats", currentChatId, "messages"), {
-            senderId: currentUser.uid,
-            text: text,
-            timestamp: new Date().toISOString()
-        });
+// 4. BANDEJA DE MENSAJES / CHAT CON HÉROES
+function getChatStore() {
+    const raw = localStorage.getItem('heroly_chats');
+    if (raw) return JSON.parse(raw);
+    const seed = {
+        'hero-roberto': [
+            { sender: 'hero', text: '¡Hola Laura! Soy Roberto, Héroe Nivel 2 en Alicante. Tengo disponibilidad completa los lunes y miércoles por la mañana para acompañar a tu madre al banco por 11 €/h.' },
+            { sender: 'me', text: '¡Hola Roberto! Genial, nos viene perfecto este miércoles a las 10:00h.' }
+        ],
+        'hero-alejandro': [
+            { sender: 'hero', text: '¡Hola! Soy Alejandro (Nivel 1 · 8 €/h). Estaré encantado de ayudaros en lo que necesitéis.' }
+        ]
     };
-    btnSendMsg.addEventListener('click', sendFn);
-    chatInput.addEventListener('keypress', (e) => {
-        if(e.key === 'Enter') sendFn();
-    });
+    localStorage.setItem('heroly_chats', JSON.stringify(seed));
+    return seed;
 }
 
-// RED FAMILIAR LOGIC
-const btnAddFamily = document.getElementById('btnAddFamily');
-const btnCloseFamilyForm = document.getElementById('btnCloseFamilyForm');
-const familyFormContainer = document.getElementById('familyFormContainer');
-const familyForm = document.getElementById('familyForm');
-const familyGrid = document.getElementById('familyGrid');
-const reqBeneficiary = document.getElementById('reqBeneficiary');
-const familyFormTitle = document.getElementById('familyFormTitle');
+window.openChatWithHero = function(heroId) {
+    activeChatHeroId = heroId;
+    switchCitizenTab('tab-mensajes');
+    renderChatInbox();
+};
 
-let userFamily = [];
+window.quickBookActiveChatHero = function() {
+    bookHeroNow(activeChatHeroId);
+};
 
-if (btnAddFamily) {
-    btnAddFamily.addEventListener('click', () => {
-        familyForm.reset();
-        document.getElementById('famId').value = '';
-        familyFormTitle.innerText = "Añadir Familiar";
-        familyFormContainer.classList.remove('hidden');
-    });
-}
-if (btnCloseFamilyForm) {
-    btnCloseFamilyForm.addEventListener('click', () => {
-        familyFormContainer.classList.add('hidden');
-    });
-}
+function renderChatInbox() {
+    const contactsEl = document.getElementById('chatContactsList');
+    const msgsEl = document.getElementById('inboxMessagesArea');
+    const avatarEl = document.getElementById('activeChatAvatar');
+    const nameEl = document.getElementById('activeChatName');
+    if (!contactsEl || !msgsEl) return;
 
-if (familyForm) {
-    familyForm.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        if(!currentUser) return;
-        
-        const id = document.getElementById('famId').value;
-        const name = document.getElementById('famName').value;
-        const relation = document.getElementById('famRelation').value;
-        const age = document.getElementById('famAge').value;
-        const notes = document.getElementById('famNotes').value;
-        
-        const familyData = {
-            userId: currentUser.uid,
-            name, relation, age, notes,
-            updatedAt: new Date().toISOString()
-        };
-        
-        const btn = familyForm.querySelector('button[type="submit"]');
-        btn.textContent = "Guardando...";
-        btn.disabled = true;
-        
-        try {
-            if (id) {
-                await setDoc(doc(db, "family", id), familyData, { merge: true });
-            } else {
-                familyData.createdAt = new Date().toISOString();
-                await addDoc(collection(db, "family"), familyData);
-            }
-            familyFormContainer.classList.add('hidden');
-            familyForm.reset();
-        } catch(err) {
-            console.error(err);
-            alert("Error al guardar familiar.");
-        } finally {
-            btn.textContent = "Guardar Familiar";
-            btn.disabled = false;
-        }
-    });
-}
+    const store = getChatStore();
+    const hero = CITIZEN_HEROES.find(h => h.id === activeChatHeroId) || CITIZEN_HEROES[3];
 
-window.editFamily = (id) => {
-    const fam = userFamily.find(f => f.id === id);
-    if(fam) {
-        document.getElementById('famId').value = fam.id;
-        document.getElementById('famName').value = fam.name || '';
-        document.getElementById('famRelation').value = fam.relation || 'Otro';
-        document.getElementById('famAge').value = fam.age || '';
-        document.getElementById('famNotes').value = fam.notes || '';
-        familyFormTitle.innerText = "Editar Familiar";
-        familyFormContainer.classList.remove('hidden');
-    }
-}
+    if (avatarEl) avatarEl.src = hero.photo;
+    if (nameEl) nameEl.innerText = `${hero.name} (${hero.age}) · ${hero.rate} €/h`;
 
-window.deleteFamily = async (id) => {
-    if(confirm("¿Seguro que deseas eliminar este perfil familiar?")) {
-        try {
-            await deleteDoc(doc(db, "family", id));
-        } catch(e) {
-            console.error(e);
-            alert("Error eliminando.");
-        }
-    }
-}
-
-window.renderFamily = function(familyList) {
-    userFamily = familyList;
-    if (familyGrid) {
-        if(familyList.length === 0) {
-            familyGrid.innerHTML = `<div class="text-gray-500 col-span-full">Aun no tienes familiares agregados.</div>`;
-        } else {
-            familyGrid.innerHTML = familyList.map(f => `
-                <div class="dash-card relative overflow-hidden group">
-                    <div class="absolute top-0 right-0 p-4 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                        <button onclick="editFamily('${f.id}')" class="text-gray-400 hover:text-cyan-400" title="Editar"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path></svg></button>
-                        <button onclick="deleteFamily('${f.id}')" class="text-gray-400 hover:text-red-400" title="Eliminar"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg></button>
-                    </div>
-                    <div class="flex items-center gap-4 mb-4">
-                        <div class="w-12 h-12 rounded-full bg-cyan-900 flex items-center justify-center text-cyan-400 font-bold text-xl">${f.name.charAt(0).toUpperCase()}</div>
-                        <div>
-                            <h3 class="font-bold text-lg text-white pr-16">${f.name}</h3>
-                            <p class="text-xs text-gray-400">${f.relation} � ${f.age} a�os</p>
-                        </div>
-                    </div>
-                    ${f.notes ? `
-                    <div class="bg-obsidian-950 p-3 rounded-xl border border-white/5">
-                        <p class="text-[10px] text-cyan-500 uppercase font-bold mb-1">Observaciones:</p>
-                        <p class="text-xs text-white">${f.notes}</p>
-                    </div>` : ''}
+    contactsEl.innerHTML = CITIZEN_HEROES.slice(0, 5).map(h => {
+        const isActive = h.id === activeChatHeroId;
+        return `
+            <div onclick="openChatWithHero('${h.id}')" class="p-3 rounded-2xl cursor-pointer flex items-center gap-3 transition ${isActive ? 'bg-teal-700 text-white shadow-sm' : 'hover:bg-stone-100 text-slate-800'}">
+                <img src="${h.photo}" class="w-10 h-10 rounded-full object-cover shrink-0">
+                <div class="overflow-hidden">
+                    <div class="font-bold text-sm truncate">${h.name} · ${h.rate} €/h</div>
+                    <div class="text-xs ${isActive ? 'text-teal-100' : 'text-slate-500'} truncate">${h.city} · ${h.levelLabel}</div>
                 </div>
-            `).join('');
-        }
-    }
-    
-    if (reqBeneficiary) {
-        reqBeneficiary.innerHTML = `<option value="Yo">Para mi</option>` + familyList.map(f => `<option value="${f.id}">Familiar: ${f.name}</option>`).join('');
-    }
+            </div>
+        `;
+    }).join('');
+
+    const msgs = store[activeChatHeroId] || [
+        { sender: 'hero', text: `¡Hola! Soy ${hero.name}, Héroe verificado en ${hero.city} (${hero.rate} €/h). ¿En qué te puedo acompañar?` }
+    ];
+
+    msgsEl.innerHTML = msgs.map(m => `
+        <div class="flex ${m.sender === 'me' ? 'justify-end' : 'justify-start'}">
+            <div class="max-w-[78%] rounded-2xl px-4 py-2.5 text-sm ${m.sender === 'me' ? 'bg-teal-700 text-white' : 'bg-white border border-stone-200 text-slate-800 shadow-sm'}">
+                ${m.text}
+            </div>
+        </div>
+    `).join('');
+    msgsEl.scrollTop = msgsEl.scrollHeight;
 }
 
+// 5. RED FAMILIAR™
+function getFamilyMembers() {
+    const raw = localStorage.getItem('heroly_family_members');
+    if (raw) return JSON.parse(raw);
+    const initial = [
+        { id: 'fam-1', name: 'Carmen G.', relation: 'Madre / Padre', age: 74, notes: 'Acompañar al banco los días 1 y 15 de mes y revisiones médicas.' }
+    ];
+    localStorage.setItem('heroly_family_members', JSON.stringify(initial));
+    return initial;
+}
 
-// CIUDADANO PERFIL LOGIC
-const formCitizenProfile = document.getElementById('formCitizenProfile');
-if(formCitizenProfile) {
-    formCitizenProfile.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        if(!currentUser) return;
-        
-        const newName = document.getElementById('citNameInput').value;
-        const newPhone = document.getElementById('citPhoneInput').value;
-        const newLoc = document.getElementById('citLocationInput').value;
-        
-        const btn = formCitizenProfile.querySelector('button[type="submit"]');
-        btn.textContent = "Guardando...";
-        btn.disabled = true;
-        
-        try {
-            // update doc
-            await setDoc(doc(db, "users", currentUser.uid), {
-                name: newName,
-                phone: newPhone,
-                locationString: newLoc,
-                updatedAt: new Date().toISOString()
-            }, { merge: true });
-            
-            if (document.getElementById('userNameDisplay')) {
-                document.getElementById('userNameDisplay').textContent = newName;
-            }
-            alert("Perfil actualizado correctamente.");
-        } catch(err) {
-            console.error(err);
-            alert("Error al actualizar perfil.");
-        } finally {
-            btn.textContent = "Guardar Cambios";
-            btn.disabled = false;
-        }
-    });
+function renderFamilyMembers() {
+    const grid = document.getElementById('familyGrid');
+    if (!grid) return;
+    const members = getFamilyMembers();
+    grid.innerHTML = members.map(f => `
+        <div class="dash-card flex flex-col justify-between">
+            <div>
+                <div class="flex justify-between items-start mb-2">
+                    <span class="px-3 py-1 rounded-full bg-teal-50 border border-teal-200 text-teal-800 text-xs font-extrabold">${f.relation}</span>
+                    <button onclick="deleteFamilyMember('${f.id}')" class="text-xs text-red-500 hover:underline font-bold">Eliminar</button>
+                </div>
+                <h3 class="font-display text-xl font-extrabold text-slate-900">${f.name} (${f.age} años)</h3>
+                <p class="text-sm text-slate-600 mt-2">${f.notes || 'Sin observaciones especiales.'}</p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-stone-100 flex justify-between items-center">
+                <span class="text-xs font-bold text-emerald-700">● Trazabilidad GPS habilitada</span>
+                <button onclick="switchCitizenTab('tab-catalogo')" class="text-xs font-extrabold text-teal-700 hover:underline">Pedir Héroe para ${f.name.split(' ')[0]} →</button>
+            </div>
+        </div>
+    `).join('');
+}
+
+window.deleteFamilyMember = function(id) {
+    const filtered = getFamilyMembers().filter(x => x.id !== id);
+    localStorage.setItem('heroly_family_members', JSON.stringify(filtered));
+    renderFamilyMembers();
+};
+
+window.openSosModal = function() {
+    const m = document.getElementById('sosModal');
+    if (m) m.classList.remove('hidden');
+};
+
+function bindCitizenEvents() {
+    // Publicar anuncio
+    const pubForm = document.getElementById('formPublishMission');
+    if (pubForm) {
+        pubForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const rawSession = JSON.parse(localStorage.getItem('heroly_session') || '{}');
+            const city = document.getElementById('pubCity').value.trim() || 'Alicante';
+            const level = Number(document.getElementById('pubLevel').value || 2);
+            const rate = Number(document.getElementById('pubRate').value || 10);
+            const bio = document.getElementById('pubBio').value.trim();
+            const target = document.getElementById('pubTarget').value;
+
+            const customList = JSON.parse(localStorage.getItem('heroly_custom_missions') || '[]');
+            customList.unshift({
+                id: 'mision-' + Date.now(),
+                name: rawSession.name || 'Laura G.',
+                age: 42,
+                city: city,
+                zone: 'Zona Centro',
+                level: level,
+                levelLabel: `Busca Nivel ${level}`,
+                rate: rate,
+                rating: '5,0',
+                reviewsCount: 3,
+                experience: target,
+                online: 'Publicado ahora',
+                isOnlineNow: true,
+                photo: './assets/img/laura.jpg',
+                shortBio: bio,
+                fullBio: bio,
+                daysAvailable: ['Lu', 'Mi', 'Vi'],
+                schedule: { manana: ['Lu', 'Mi', 'Vi'], tarde: ['Ma', 'Ju'], noche: [] },
+                missions: ['Bancos y Cajeros', 'Mayores y Médicos'],
+                experienceCards: [{ title: target, subtitle: `${rate} €/hora en ${city}`, icon: 'elderly' }],
+                capabilities: ['Pago inmediato por Bizum o efectivo', 'Seguimiento GPS activo'],
+                references: []
+            });
+            localStorage.setItem('heroly_custom_missions', JSON.stringify(customList));
+            pubForm.reset();
+            renderPublishedAnnouncements();
+            alert('¡Tu anuncio ha sido publicado con éxito! Ya es visible para los Héroes de tu ciudad.');
+        });
+    }
+
+    // Enviar mensaje en el chat
+    const chatForm = document.getElementById('inboxSendForm');
+    if (chatForm) {
+        chatForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const input = document.getElementById('inboxMessageInput');
+            const text = input.value.trim();
+            if (!text) return;
+
+            const store = getChatStore();
+            if (!store[activeChatHeroId]) store[activeChatHeroId] = [];
+            store[activeChatHeroId].push({ sender: 'me', text });
+            localStorage.setItem('heroly_chats', JSON.stringify(store));
+            input.value = '';
+            renderChatInbox();
+
+            const hero = CITIZEN_HEROES.find(h => h.id === activeChatHeroId) || CITIZEN_HEROES[3];
+            setTimeout(() => {
+                const updated = getChatStore();
+                updated[activeChatHeroId].push({
+                    sender: 'hero',
+                    text: `¡Perfecto! Soy ${hero.name}. Quedo disponible para ese horario por ${hero.rate} €/h. Puedes pulsar en "Contratar" arriba cuando quieras dejarlo confirmado.`
+                });
+                localStorage.setItem('heroly_chats', JSON.stringify(updated));
+                renderChatInbox();
+            }, 900);
+        });
+    }
+
+    // Red Familiar
+    const btnAddFam = document.getElementById('btnAddFamily');
+    const btnCloseFam = document.getElementById('btnCloseFamilyForm');
+    const famContainer = document.getElementById('familyFormContainer');
+    const famForm = document.getElementById('familyForm');
+
+    if (btnAddFam && famContainer) {
+        btnAddFam.addEventListener('click', () => famContainer.classList.remove('hidden'));
+    }
+    if (btnCloseFam && famContainer) {
+        btnCloseFam.addEventListener('click', () => famContainer.classList.add('hidden'));
+    }
+    if (famForm) {
+        famForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const members = getFamilyMembers();
+            members.push({
+                id: 'fam-' + Date.now(),
+                name: document.getElementById('famName').value.trim(),
+                relation: document.getElementById('famRelation').value,
+                age: Number(document.getElementById('famAge').value || 70),
+                notes: document.getElementById('famNotes').value.trim()
+            });
+            localStorage.setItem('heroly_family_members', JSON.stringify(members));
+            famForm.reset();
+            famContainer.classList.add('hidden');
+            renderFamilyMembers();
+        });
+    }
+
+    // Guardar perfil ciudadano
+    const profForm = document.getElementById('formCitizenProfile');
+    if (profForm) {
+        profForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const user = {
+                name: document.getElementById('citNameInput').value.trim(),
+                phone: document.getElementById('citPhoneInput').value.trim(),
+                city: document.getElementById('citLocationInput').value.trim(),
+                role: 'ciudadano'
+            };
+            localStorage.setItem('heroly_session', JSON.stringify(user));
+            initSessionProfile();
+            alert('Perfil actualizado correctamente en Heroly.');
+        });
+    }
+
+    // Logout
+    const btnLogout = document.getElementById('btnLogout');
+    if (btnLogout) {
+        btnLogout.addEventListener('click', (e) => {
+            e.preventDefault();
+            localStorage.removeItem('heroly_session');
+            window.location.href = 'index.html';
+        });
+    }
 }
