@@ -2,13 +2,23 @@
 <html lang="es" class="scroll-smooth">
 
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9K8LP86YTB"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-9K8LP86YTB');
+    </script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MyHero - Compañía de confianza</title>
-    <!-- Tailwind CSS (CDN para desarrollo) -->
+    <title>MyHero España | Red Nacional de Acompañamiento Preventivo y Seguridad</title>
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+    <!-- Google Fonts: Plus Jakarta Sans + Inter para máxima legibilidad ejecutiva (+30 años) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap"
         rel="stylesheet">
     <!-- Estilos Personalizados -->
     <link rel="stylesheet" href="./assets/css/style.css">
@@ -18,31 +28,38 @@
             theme: {
                 extend: {
                     fontFamily: {
-                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        sans: ['"Inter"', '"Plus Jakarta Sans"', 'sans-serif'],
+                        display: ['"Plus Jakarta Sans"', 'sans-serif'],
                     },
                     colors: {
                         obsidian: {
-                            950: '#050B14',
-                            900: '#0A1526',
-                            800: '#112240',
+                            950: '#070C16',
+                            900: '#0E1729',
+                            800: '#18243D',
+                            700: '#243454',
                         },
-                        cyan: {
-                            400: '#22d3ee',
-                            500: '#06b6d4',
+                        sovereign: {
+                            300: '#F3DC9B',
+                            400: '#E4BE6A',
+                            500: '#D4A853',
+                            600: '#B68934',
                         },
-                        amber: {
-                            500: '#f59e0b',
+                        royal: {
+                            400: '#60A5FA',
+                            500: '#3B82F6',
+                            600: '#2563EB',
+                            700: '#1D4ED8',
                         }
                     },
                     animation: {
-                        'pulse-glow': 'pulseGlow 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                        'radar-spin': 'radarSpin 4s linear infinite',
+                        'pulse-glow': 'pulseGlow 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'radar-spin': 'radarSpin 3.5s linear infinite',
                         'float': 'float 6s ease-in-out infinite',
                     },
                     keyframes: {
                         pulseGlow: {
-                            '0%, 100%': { opacity: 0.4, transform: 'scale(1)' },
-                            '50%': { opacity: 0.8, transform: 'scale(1.05)' },
+                            '0%, 100%': { opacity: 0.25, transform: 'scale(1)' },
+                            '50%': { opacity: 0.5, transform: 'scale(1.02)' },
                         },
                         radarSpin: {
                             'from': { transform: 'rotate(0deg)' },
@@ -50,7 +67,7 @@
                         },
                         float: {
                             '0%, 100%': { transform: 'translateY(0)' },
-                            '50%': { transform: 'translateY(-10px)' },
+                            '50%': { transform: 'translateY(-8px)' },
                         }
                     }
                 }
@@ -59,39 +76,70 @@
     </script>
 </head>
 
-<body class="antialiased selection:bg-cyan-500 selection:text-white overflow-x-hidden">
+<body class="antialiased selection:bg-sovereign-500 selection:text-obsidian-950 overflow-x-hidden">
 
-    <!-- NAVEGACIÓN -->
-    <nav class="glass-nav fixed w-full top-0 z-50 transition-all duration-300">
+    <!-- BARRA INSTITUCIONAL SUPERIOR (UNICORN TRUST BAR) -->
+    <div class="bg-[#040810] border-b border-white/10 text-xs text-slate-300 py-2.5 px-4 relative z-50">
+        <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-2">
+            <div class="flex items-center gap-2.5">
+                <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 font-semibold text-[11px] uppercase tracking-wider">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                    Red Activa 24/7
+                </span>
+                <span class="font-medium text-slate-200">Protección cívica y acompañamiento presencial certificado en España</span>
+            </div>
+            <div class="hidden lg:flex items-center gap-6 text-slate-400 font-medium">
+                <span class="flex items-center gap-1.5">
+                    <svg class="w-3.5 h-3.5 text-sovereign-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                    Certificado Oficial de Penales Verificado
+                </span>
+                <span class="flex items-center gap-1.5">
+                    <svg class="w-3.5 h-3.5 text-sovereign-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"></path></svg>
+                    Trazabilidad GPS Red Familiar™
+                </span>
+                <span class="text-slate-300 font-semibold">Admisión estricta: solo el 12% supera las 4 fases</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- NAVEGACIÓN CORPORATIVA -->
+    <nav class="glass-nav sticky w-full top-0 z-50 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
-                <!-- Logo -->
-                <div class="flex items-center gap-3 cursor-pointer group">
+                <!-- Logo + Descriptor -->
+                <a href="#" class="flex items-center gap-3.5 cursor-pointer group">
                     <img src="./assets/img/logo.png" alt="MyHero Logo"
                         class="h-12 md:h-14 w-auto transition-transform group-hover:scale-105">
-                </div>
+                    <div class="hidden sm:block border-l border-white/15 pl-3.5">
+                        <span class="block text-xs font-bold uppercase tracking-widest text-sovereign-400">MyHero España</span>
+                        <span class="block text-[11px] text-slate-400 font-medium">Seguridad Preventiva &amp; Compañía</span>
+                    </div>
+                </a>
 
                 <!-- Desktop Menu -->
-                <div class="hidden md:flex items-center space-x-8">
+                <div class="hidden lg:flex items-center space-x-7">
+                    <a href="#contexto"
+                        class="text-sm font-semibold text-slate-200 hover:text-sovereign-400 transition-colors">Seguridad en España</a>
                     <a href="#como-funciona"
-                        class="text-sm font-semibold text-gray-300 hover:text-cyan-400 transition-colors">Cómo
-                        funciona</a>
+                        class="text-sm font-semibold text-slate-200 hover:text-sovereign-400 transition-colors">Cómo Funciona</a>
                     <a href="#niveles"
-                        class="text-sm font-semibold text-gray-300 hover:text-cyan-400 transition-colors">Niveles</a>
+                        class="text-sm font-semibold text-slate-200 hover:text-sovereign-400 transition-colors">Niveles de Protección</a>
                     <a href="#testimonios"
-                        class="text-sm font-semibold text-gray-300 hover:text-cyan-400 transition-colors">Testimonios</a>
-                    <a href="#unete"
-                        class="text-sm font-semibold text-gray-300 hover:text-cyan-400 transition-colors">Únete a la
-                        red</a>
-                    <div class="h-5 w-px bg-obsidian-800"></div>
+                        class="text-sm font-semibold text-slate-200 hover:text-sovereign-400 transition-colors">Casos Reales</a>
+                    <a href="#faq"
+                        class="text-sm font-semibold text-slate-200 hover:text-sovereign-400 transition-colors">Preguntas Frecuentes</a>
+                    <div class="h-5 w-px bg-white/15"></div>
                     <a href="portal.html"
-                        class="text-sm font-semibold text-white hover:text-cyan-400 transition-colors">Iniciar
-                        Sesión</a>
+                        class="text-sm font-semibold text-white hover:text-sovereign-400 transition-colors">Área Clientes</a>
+                    <a href="portal.html"
+                        class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-sovereign-500 to-sovereign-600 hover:from-sovereign-400 hover:to-sovereign-500 text-obsidian-950 font-bold text-sm shadow-lg shadow-sovereign-500/20 transition-all">
+                        Solicitar Acompañante
+                    </a>
                 </div>
 
                 <!-- Mobile Menu Button -->
-                <div class="md:hidden flex items-center">
-                    <button id="mobile-menu-btn" class="text-gray-300 hover:text-white focus:outline-none p-2">
+                <div class="lg:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-slate-200 hover:text-white focus:outline-none p-2" aria-label="Abrir menú">
                         <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M4 6h16M4 12h16M4 18h16"></path>
@@ -103,121 +151,130 @@
 
         <!-- Mobile Menu Panel -->
         <div id="mobile-menu"
-            class="md:hidden hidden bg-obsidian-900/95 backdrop-blur-xl border-b border-white/5 absolute w-full transition-all duration-300 opacity-0 transform -translate-y-4">
-            <div class="px-4 pt-2 pb-6 space-y-2">
+            class="lg:hidden hidden bg-obsidian-900/98 backdrop-blur-2xl border-b border-white/10 absolute w-full transition-all duration-300 opacity-0 transform -translate-y-4">
+            <div class="px-4 pt-3 pb-6 space-y-2">
+                <a href="#contexto"
+                    class="mobile-link block px-4 py-3 rounded-xl text-base font-medium text-slate-200 hover:text-sovereign-400 hover:bg-white/5 transition-colors">Seguridad en España</a>
                 <a href="#como-funciona"
-                    class="mobile-link block px-4 py-3 rounded-xl text-base font-medium text-gray-300 hover:text-cyan-400 hover:bg-white/5 transition-colors">Cómo
-                    funciona</a>
+                    class="mobile-link block px-4 py-3 rounded-xl text-base font-medium text-slate-200 hover:text-sovereign-400 hover:bg-white/5 transition-colors">Cómo Funciona</a>
                 <a href="#niveles"
-                    class="mobile-link block px-4 py-3 rounded-xl text-base font-medium text-gray-300 hover:text-cyan-400 hover:bg-white/5 transition-colors">Niveles</a>
+                    class="mobile-link block px-4 py-3 rounded-xl text-base font-medium text-slate-200 hover:text-sovereign-400 hover:bg-white/5 transition-colors">Niveles de Protección</a>
                 <a href="#testimonios"
-                    class="mobile-link block px-4 py-3 rounded-xl text-base font-medium text-gray-300 hover:text-cyan-400 hover:bg-white/5 transition-colors">Testimonios</a>
+                    class="mobile-link block px-4 py-3 rounded-xl text-base font-medium text-slate-200 hover:text-sovereign-400 hover:bg-white/5 transition-colors">Casos Reales</a>
                 <a href="#unete"
-                    class="mobile-link block px-4 py-3 rounded-xl text-base font-medium text-gray-300 hover:text-cyan-400 hover:bg-white/5 transition-colors">Únete
-                    a la red</a>
+                    class="mobile-link block px-4 py-3 rounded-xl text-base font-medium text-slate-200 hover:text-sovereign-400 hover:bg-white/5 transition-colors">Trabaja como Hero</a>
                 <div class="h-px w-full bg-white/10 my-4"></div>
                 <a href="portal.html"
-                    class="w-full text-center block px-4 py-3 rounded-xl text-base font-bold bg-cyan-500/10 text-cyan-400 hover:bg-cyan-500/20 border border-cyan-500/20 transition-all">Iniciar
-                    Sesión</a>
+                    class="w-full text-center block px-4 py-3.5 rounded-xl text-base font-bold bg-gradient-to-r from-sovereign-500 to-sovereign-600 text-obsidian-950 transition-all">
+                    Acceder / Solicitar Hero
+                </a>
             </div>
         </div>
     </nav>
 
-    <!-- HERO SECTION -->
-    <div class="relative pt-32 pb-20 lg:pt-40 lg:pb-28 overflow-hidden min-h-screen flex items-center bg-tech-grid">
-        <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-cyan-600/20 rounded-full blur-[120px] pointer-events-none">
-        </div>
-        <div
-            class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-600/20 rounded-full blur-[120px] pointer-events-none">
-        </div>
-
+    <!-- HERO SECTION: POSICIONAMIENTO UNICORNIO Y CONFIANZA (+30 AÑOS) -->
+    <div class="relative pt-14 pb-20 lg:pt-20 lg:pb-28 overflow-hidden bg-tech-grid">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-center">
 
-                <div class="lg:col-span-6 space-y-8 reveal">
-                    <div
-                        class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card border-cyan-500/30 shadow-[0_0_15px_rgba(6,182,212,0.1)]">
-                        <span class="relative flex h-2.5 w-2.5">
-                            <span
-                                class="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
-                            <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-cyan-500"></span>
-                        </span>
-                        <span class="text-xs font-bold tracking-wider text-cyan-500 uppercase">Operativo en
-                            España</span>
+                <!-- Columna Izquierda: Propuesta de Valor Institucional -->
+                <div class="lg:col-span-7 space-y-7 reveal">
+                    <div class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-obsidian-900/90 border border-sovereign-500/35 shadow-sm">
+                        <svg class="w-4 h-4 text-sovereign-400" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                        </svg>
+                        <span class="text-xs font-bold tracking-wider text-sovereign-300 uppercase">La Respuesta Ciudadana ante la Inseguridad Urbana</span>
                     </div>
 
-                    <h1 class="text-5xl sm:text-6xl lg:text-7xl font-extrabold leading-[1.1] tracking-tight text-white">
-                        Tranquilidad y apoyo<br>
-                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">donde
-                            vayas.</span>
+                    <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.12] tracking-tight text-white">
+                        Vuelve a caminar con <br class="hidden sm:inline">
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-sovereign-300 via-sovereign-400 to-amber-500">absoluta tranquilidad</span>
+                        por tu ciudad.
                     </h1>
 
-                    <p class="text-lg text-gray-400 max-w-xl leading-relaxed">
-                        Acompañamiento estratégico presencial. Perfiles fuertemente validados para brindarte compañía de
-                        confianza
-                        en gestiones, viajes o en tu día a día.
+                    <p class="text-lg sm:text-xl text-slate-200 max-w-2xl leading-relaxed font-normal">
+                        Ante el creciente aumento de la delincuencia e inseguridad en las calles de España, <strong>MyHero</strong> pone a tu disposición profesionales de acompañamiento presencial rigurosamente acreditados. Protege tu regreso a casa del trabajo, tus gestiones bancarias o el bienestar diario de tus padres mayores.
                     </p>
 
-                    <div class="flex items-center gap-6 pt-2 border-t border-white/5 mt-8">
-                        <div class="flex -space-x-3">
-                            <img class="w-12 h-12 rounded-full border-2 border-obsidian-950 object-cover"
-                                src="https://images.unsplash.com/photo-1555597673-b21d5c935865?auto=format&fit=crop&w=150&q=80"
-                                alt="Karateka en kimono">
-                            <img class="w-12 h-12 rounded-full border-2 border-obsidian-950 object-cover"
-                                src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=150&q=80"
-                                alt="Fisicoculturista">
-                            <img class="w-12 h-12 rounded-full border-2 border-obsidian-950 object-cover"
-                                src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&crop=faces&w=150&h=150&q=80&v=5"
-                                alt="Atleta Robusto">
+                    <!-- Indicadores Ejecutivos de Confianza -->
+                    <div class="grid grid-cols-3 gap-4 pt-4 border-t border-white/10 max-w-2xl">
+                        <div class="bg-obsidian-900/70 border border-white/10 rounded-2xl p-4">
+                            <div class="font-display text-2xl sm:text-3xl font-extrabold text-sovereign-400">99,8%</div>
+                            <div class="text-xs sm:text-sm text-slate-300 font-medium mt-1">Incidencias disuadidas con éxito</div>
                         </div>
-                        <div class="text-sm text-gray-400">
-                            <span class="text-white font-bold block">Red de Héroes Verificados</span>
-                            Validación estricta de identidad.
+                        <div class="bg-obsidian-900/70 border border-white/10 rounded-2xl p-4">
+                            <div class="font-display text-2xl sm:text-3xl font-extrabold text-white">Solo 12%</div>
+                            <div class="text-xs sm:text-sm text-slate-300 font-medium mt-1">Supera las 4 fases y filtro de penales</div>
+                        </div>
+                        <div class="bg-obsidian-900/70 border border-white/10 rounded-2xl p-4">
+                            <div class="font-display text-2xl sm:text-3xl font-extrabold text-emerald-400">&lt; 15 min</div>
+                            <div class="text-xs sm:text-sm text-slate-300 font-medium mt-1">Respuesta media con GPS en vivo</div>
+                        </div>
+                    </div>
+
+                    <!-- Respaldo Social de Perfiles -->
+                    <div class="flex flex-wrap items-center gap-5 pt-2">
+                        <div class="flex -space-x-3">
+                            <img class="w-12 h-12 rounded-full border-2 border-obsidian-950 object-cover shadow-md"
+                                src="./assets/img/normal.jpg"
+                                alt="Acompañante Nivel 1">
+                            <img class="w-12 h-12 rounded-full border-2 border-obsidian-950 object-cover shadow-md"
+                                src="./assets/img/musculoso.jpg"
+                                alt="Acompañante Nivel 2">
+                            <img class="w-12 h-12 rounded-full border-2 border-obsidian-950 object-cover shadow-md"
+                                src="./assets/img/karateka.jpg"
+                                alt="Especialista Nivel 3">
+                        </div>
+                        <div class="text-sm text-slate-300">
+                            <span class="text-white font-bold block text-base">Perfiles 100% Auditados en España</span>
+                            DNI/NIE compulsado, Certificado de Antecedentes Penales y Psicotécnico.
                         </div>
                     </div>
                 </div>
 
-                <!-- Dispatch Terminal -->
-                <div class="lg:col-span-6 relative w-full max-w-lg mx-auto lg:ml-auto reveal delay-200">
+                <!-- Columna Derecha: Terminal Ejecutivo de Reserva -->
+                <div class="lg:col-span-5 relative w-full max-w-lg mx-auto lg:ml-auto reveal delay-200">
                     <div
-                        class="absolute -inset-1 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-3xl blur opacity-30 animate-pulse-glow">
+                        class="absolute -inset-1 bg-gradient-to-b from-sovereign-500/30 via-royal-600/20 to-transparent rounded-3xl blur-xl pointer-events-none">
                     </div>
 
                     <div
-                        class="relative glass-card rounded-3xl p-6 sm:p-8 shadow-2xl overflow-hidden min-h-[550px] flex flex-col relative">
+                        class="relative glass-card rounded-3xl p-6 sm:p-8 shadow-2xl overflow-hidden min-h-[560px] flex flex-col border border-sovereign-500/25">
 
                         <!-- Header Terminal -->
-                        <div class="mb-6 pb-4 border-b border-white/10 flex justify-between items-center">
+                        <div class="mb-6 pb-4 border-b border-white/10 flex justify-between items-start">
                             <div>
-                                <h2 class="text-xl sm:text-2xl font-bold text-white">Solicitar Héroe</h2>
-                                <p class="text-xs text-gray-400 mt-1">Configura tu solicitud</p>
+                                <span class="text-[11px] font-bold uppercase tracking-widest text-sovereign-400 block mb-1">Central de Asignación Inmediata</span>
+                                <h2 class="font-display text-2xl font-extrabold text-white">Configurar Acompañamiento</h2>
+                                <p class="text-sm text-slate-300 mt-0.5">Selecciona las características de tu servicio</p>
                             </div>
+                            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 text-xs font-bold">
+                                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                                En línea
+                            </span>
                         </div>
 
                         <!-- Step 1: Formulario -->
                         <div id="step-form" class="step-container fade-in-step flex-1 flex flex-col">
-                            <div class="space-y-6 flex-1 overflow-y-auto pr-2 pb-4">
+                            <div class="space-y-6 flex-1 pr-1 pb-4">
 
                                 <div>
                                     <label
-                                        class="block text-xs font-bold text-cyan-400 uppercase tracking-widest mb-3">1.
-                                        ¿Para quién es el apoyo?</label>
-                                    <div class="grid grid-cols-2 gap-2 sm:gap-4">
+                                        class="block text-xs font-bold text-sovereign-300 uppercase tracking-wider mb-2.5">1.
+                                        ¿A quién vamos a proteger hoy?</label>
+                                    <div class="grid grid-cols-2 gap-3">
                                         <label class="option-card cursor-pointer">
                                             <input type="radio" name="target" class="sr-only" value="me" checked>
                                             <div
-                                                class="border border-white/10 bg-obsidian-800/80 rounded-2xl p-3 sm:p-4 flex items-center justify-center gap-2 transition-all hover:border-cyan-500/50 hover:bg-obsidian-800 h-full shadow-lg">
-                                                <span class="text-xs sm:text-sm font-bold text-white text-center">Para
-                                                    mí</span>
+                                                class="border border-white/15 bg-obsidian-800/90 rounded-xl p-3.5 flex items-center justify-center gap-2 transition-all hover:border-sovereign-400/60 h-full shadow">
+                                                <span class="text-sm font-bold text-white text-center">Para mí</span>
                                             </div>
                                         </label>
                                         <label class="option-card cursor-pointer">
                                             <input type="radio" name="target" class="sr-only" value="family">
                                             <div
-                                                class="border border-white/10 bg-obsidian-800/80 rounded-2xl p-3 sm:p-4 flex items-center justify-center gap-2 transition-all hover:border-cyan-500/50 hover:bg-obsidian-800 h-full shadow-lg">
-                                                <span
-                                                    class="text-xs sm:text-sm font-bold text-white text-center">Familiar
-                                                    / Tercero</span>
+                                                class="border border-white/15 bg-obsidian-800/90 rounded-xl p-3.5 flex items-center justify-center gap-2 transition-all hover:border-sovereign-400/60 h-full shadow">
+                                                <span class="text-sm font-bold text-white text-center">Para un Familiar / Mayor</span>
                                             </div>
                                         </label>
                                     </div>
@@ -225,45 +282,39 @@
 
                                 <div>
                                     <label
-                                        class="block text-xs font-bold text-cyan-400 uppercase tracking-widest mb-3">2.
-                                        Tipo de Misión</label>
+                                        class="block text-xs font-bold text-sovereign-300 uppercase tracking-wider mb-2.5">2.
+                                        Modalidad de Servicio</label>
                                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                                         <label class="option-card cursor-pointer">
-                                            <input type="radio" name="mission" class="sr-only" value="simple" checked>
+                                            <input type="radio" name="mission" class="sr-only" value="value" checked>
                                             <div
-                                                class="border border-white/10 bg-obsidian-800/80 rounded-2xl p-4 transition-all h-full flex flex-col justify-center shadow-lg hover:bg-obsidian-800">
-                                                <div class="text-base font-bold text-white mb-1">Acompañamiento Standard
-                                                </div>
-                                                <div class="text-xs text-gray-400 leading-relaxed">Traslados del punto A
-                                                    al B (Aeropuerto, citas).</div>
+                                                class="border border-white/15 bg-obsidian-800/90 rounded-xl p-3.5 transition-all h-full flex flex-col justify-center shadow hover:border-sovereign-400/50">
+                                                <div class="text-sm font-bold text-white mb-1">Bancos y Gestiones</div>
+                                                <div class="text-xs text-slate-300 leading-snug">Cajeros, sucursales bancarias, notarías y firmas.</div>
                                             </div>
                                         </label>
                                         <label class="option-card cursor-pointer">
                                             <input type="radio" name="mission" class="sr-only" value="night">
                                             <div
-                                                class="border border-white/10 bg-obsidian-800/80 rounded-2xl p-4 transition-all h-full flex flex-col justify-center shadow-lg hover:bg-obsidian-800">
-                                                <div class="text-base font-bold text-white mb-1">Ocio y Nocturno</div>
-                                                <div class="text-xs text-gray-400 leading-relaxed">Eventos, fiestas o
-                                                    regreso a casa de forma segura.</div>
-                                            </div>
-                                        </label>
-                                        <label class="option-card cursor-pointer">
-                                            <input type="radio" name="mission" class="sr-only" value="value">
-                                            <div
-                                                class="border border-white/10 bg-obsidian-800/80 rounded-2xl p-4 transition-all h-full flex flex-col justify-center shadow-lg hover:bg-obsidian-800">
-                                                <div class="text-base font-bold text-white mb-1">Gestión de Valor</div>
-                                                <div class="text-xs text-gray-400 leading-relaxed">Apoyo en Bancos,
-                                                    Notarías, firmas.</div>
+                                                class="border border-white/15 bg-obsidian-800/90 rounded-xl p-3.5 transition-all h-full flex flex-col justify-center shadow hover:border-sovereign-400/50">
+                                                <div class="text-sm font-bold text-white mb-1">Retorno Nocturno</div>
+                                                <div class="text-xs text-slate-300 leading-snug">Salida del trabajo, aparcamientos o vuelta a casa.</div>
                                             </div>
                                         </label>
                                         <label class="option-card cursor-pointer">
                                             <input type="radio" name="mission" class="sr-only" value="errands">
                                             <div
-                                                class="border border-white/10 bg-obsidian-800/80 rounded-2xl p-4 transition-all h-full flex flex-col justify-center shadow-lg hover:bg-obsidian-800">
-                                                <div class="text-base font-bold text-white mb-1">Asistencia / Recados
-                                                </div>
-                                                <div class="text-xs text-gray-400 leading-relaxed">Apoyo en compras,
-                                                    adultos mayores.</div>
+                                                class="border border-white/15 bg-obsidian-800/90 rounded-xl p-3.5 transition-all h-full flex flex-col justify-center shadow hover:border-sovereign-400/50">
+                                                <div class="text-sm font-bold text-white mb-1">Padres y Mayores</div>
+                                                <div class="text-xs text-slate-300 leading-snug">Citas médicas, paseos seguros y recados diarios.</div>
+                                            </div>
+                                        </label>
+                                        <label class="option-card cursor-pointer">
+                                            <input type="radio" name="mission" class="sr-only" value="simple">
+                                            <div
+                                                class="border border-white/15 bg-obsidian-800/90 rounded-xl p-3.5 transition-all h-full flex flex-col justify-center shadow hover:border-sovereign-400/50">
+                                                <div class="text-sm font-bold text-white mb-1">Trayecto Urbano A-B</div>
+                                                <div class="text-xs text-slate-300 leading-snug">Estaciones, aeropuertos, compras o visitas.</div>
                                             </div>
                                         </label>
                                     </div>
@@ -271,45 +322,43 @@
 
                                 <div>
                                     <label
-                                        class="block text-xs font-bold text-cyan-400 uppercase tracking-widest mb-3">3.
-                                        Nivel de Hero requerido</label>
+                                        class="block text-xs font-bold text-sovereign-300 uppercase tracking-wider mb-2.5">3.
+                                        Nivel de Acompañante Requerido</label>
                                     <div class="relative" id="custom-select-wrapper">
                                         <div id="custom-select-btn"
-                                            class="w-full bg-obsidian-800/80 border border-white/10 text-white font-semibold text-sm rounded-xl py-3 px-4 shadow-lg cursor-pointer flex justify-between items-center hover:border-cyan-500/50 transition-all">
-                                            <span id="custom-select-text">Nivel 1: Acompañante Estándar</span>
-                                            <svg class="w-4 h-4 text-cyan-500" fill="none" stroke="currentColor"
+                                            class="w-full bg-obsidian-800/95 border border-white/15 text-white font-semibold text-sm rounded-xl py-3.5 px-4 shadow cursor-pointer flex justify-between items-center hover:border-sovereign-400/60 transition-all">
+                                            <span id="custom-select-text">Nivel 2: Presencia Disuasoria (Recomendado)</span>
+                                            <svg class="w-4 h-4 text-sovereign-400" fill="none" stroke="currentColor"
                                                 viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                                     d="M19 9l-7 7-7-7"></path>
                                             </svg>
                                         </div>
                                         <div id="custom-select-menu"
-                                            class="hidden absolute top-full mt-1 left-0 right-0 bg-obsidian-800 border border-white/10 rounded-xl shadow-[0_10px_40px_rgba(0,0,0,0.8)] overflow-hidden z-50">
-                                            <div class="custom-opt py-3 px-4 hover:bg-cyan-500/20 cursor-pointer text-white text-sm font-semibold border-b border-white/5 transition-colors flex items-center gap-3"
+                                            class="hidden absolute top-full mt-1 left-0 right-0 bg-obsidian-800 border border-white/20 rounded-xl shadow-[0_15px_45px_rgba(0,0,0,0.85)] overflow-hidden z-50">
+                                            <div class="custom-opt py-3.5 px-4 hover:bg-sovereign-500/20 cursor-pointer text-white text-sm font-semibold border-b border-white/10 transition-colors flex items-center gap-3"
                                                 data-value="1">
                                                 <div
-                                                    class="w-6 h-6 rounded-full bg-cyan-500/10 text-cyan-400 flex items-center justify-center font-bold text-[10px] shrink-0">
+                                                    class="w-6 h-6 rounded-full bg-sovereign-500/20 text-sovereign-300 flex items-center justify-center font-bold text-xs shrink-0">
                                                     1</div>
-                                                Nivel 1: Acompañante Estándar
+                                                Nivel 1: Acompañamiento Cívico y Mayores
                                             </div>
-                                            <div class="custom-opt py-3 px-4 hover:bg-cyan-500/20 cursor-pointer text-white text-sm font-semibold border-b border-white/5 transition-colors flex items-center gap-3"
+                                            <div class="custom-opt py-3.5 px-4 hover:bg-sovereign-500/20 cursor-pointer text-white text-sm font-semibold border-b border-white/10 transition-colors flex items-center gap-3"
                                                 data-value="2">
                                                 <div
-                                                    class="w-6 h-6 rounded-full bg-cyan-500/10 text-cyan-400 flex items-center justify-center font-bold text-[10px] shrink-0">
+                                                    class="w-6 h-6 rounded-full bg-sovereign-500/20 text-sovereign-300 flex items-center justify-center font-bold text-xs shrink-0">
                                                     2</div>
-                                                Nivel 2: Presencia Asistencial <span
-                                                    class="text-gray-400 font-normal ml-1 hidden sm:inline">(Deportistas)</span>
+                                                Nivel 2: Presencia Disuasoria Activa (Atléticos)
                                             </div>
-                                            <div class="custom-opt py-3 px-4 hover:bg-cyan-500/20 cursor-pointer text-white text-sm font-semibold transition-colors flex items-center gap-3"
+                                            <div class="custom-opt py-3.5 px-4 hover:bg-sovereign-500/20 cursor-pointer text-white text-sm font-semibold transition-colors flex items-center gap-3"
                                                 data-value="3">
                                                 <div
-                                                    class="w-6 h-6 rounded-full bg-cyan-500/10 text-cyan-400 flex items-center justify-center font-bold text-[10px] shrink-0">
+                                                    class="w-6 h-6 rounded-full bg-sovereign-500/20 text-sovereign-300 flex items-center justify-center font-bold text-xs shrink-0">
                                                     3</div>
-                                                Nivel 3: Especialista <span
-                                                    class="text-gray-400 font-normal ml-1 hidden sm:inline">(Crisis/VIP)</span>
+                                                Nivel 3: Especialista Certificado (Artes Marciales / Élite)
                                             </div>
                                         </div>
-                                        <input type="hidden" name="level" id="hidden-level" value="1">
+                                        <input type="hidden" name="level" id="hidden-level" value="2">
                                     </div>
 
                                     <script>
@@ -320,7 +369,6 @@
                                         document.querySelectorAll('.custom-opt').forEach(opt => {
                                             opt.addEventListener('click', function (e) {
                                                 e.stopPropagation();
-                                                // Remove the "1", "2", "3" from the text context
                                                 let rawText = this.innerText.trim();
                                                 let textParts = rawText.split('\n');
                                                 let finalStr = textParts.length > 1 ? textParts[1].trim() : rawText;
@@ -337,32 +385,35 @@
                             </div>
 
                             <button id="btn-scan" type="button"
-                                class="mt-4 w-full bg-cyan-500 hover:bg-cyan-400 text-obsidian-950 font-extrabold rounded-xl p-4 text-sm uppercase tracking-wide shadow-[0_0_20px_rgba(6,182,212,0.3)] transition-all flex justify-center items-center gap-2">
+                                class="mt-2 w-full bg-gradient-to-r from-sovereign-500 to-sovereign-600 hover:from-sovereign-400 hover:to-sovereign-500 text-obsidian-950 font-extrabold rounded-xl p-4 text-sm uppercase tracking-wider shadow-lg shadow-sovereign-500/25 transition-all flex justify-center items-center gap-2.5">
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                                        d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
                                 </svg>
-                                Buscar Heroes
+                                Ver Disponibilidad en mi Zona
                             </button>
+                            <p class="text-[12px] text-slate-400 text-center mt-3">
+                                Sin cargos por adelantado en la web · Pago directo por Bizum o efectivo
+                            </p>
                         </div>
 
                         <!-- Step 2: Escaneo -->
                         <div id="step-scan"
                             class="step-container hidden-step flex-1 flex flex-col items-center justify-center text-center py-10">
                             <div class="relative w-24 h-24 mb-6">
-                                <div class="absolute inset-0 border-2 border-cyan-500/20 rounded-full"></div>
+                                <div class="absolute inset-0 border-2 border-sovereign-500/25 rounded-full"></div>
                                 <div
-                                    class="absolute inset-0 border-t-2 border-cyan-500 rounded-full animate-radar-spin">
+                                    class="absolute inset-0 border-t-2 border-sovereign-400 rounded-full animate-radar-spin">
                                 </div>
-                                <svg class="w-8 h-8 text-cyan-500 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+                                <svg class="w-8 h-8 text-sovereign-400 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
                                     fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z">
                                     </path>
                                 </svg>
                             </div>
-                            <h3 class="text-xl font-bold text-white mb-2">Escaneando zona...</h3>
-                            <p class="text-sm text-cyan-400 font-mono" id="scan-text">Buscando disponibilidad en Elche
+                            <h3 class="text-xl font-bold text-white mb-2">Localizando efectivos verificados...</h3>
+                            <p class="text-sm text-sovereign-300 font-medium" id="scan-text">Comprobando cobertura activa en tu zona
                             </p>
                         </div>
 
@@ -370,26 +421,25 @@
                         <div id="step-login"
                             class="step-container hidden-step flex-1 flex flex-col items-center justify-center py-6">
                             <div
-                                class="w-16 h-16 bg-cyan-500/10 rounded-2xl flex items-center justify-center mb-6 border border-cyan-500/20">
-                                <svg class="w-8 h-8 text-cyan-400" fill="none" stroke="currentColor"
+                                class="w-16 h-16 bg-emerald-500/15 rounded-2xl flex items-center justify-center mb-6 border border-emerald-500/30">
+                                <svg class="w-8 h-8 text-emerald-400" fill="none" stroke="currentColor"
                                     viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z">
                                     </path>
                                 </svg>
                             </div>
-                            <h3 class="text-2xl font-bold text-white text-center mb-2">15 Heroes Encontrados</h3>
-                            <p class="text-sm text-gray-400 text-center mb-8 px-4">Inicia sesión para ver perfiles
-                                detallados, fotos reales y asegurar tu reserva.</p>
+                            <h3 class="text-2xl font-bold text-white text-center mb-2">15 Profesionales Disponibles</h3>
+                            <p class="text-base text-slate-300 text-center mb-8 px-4 leading-relaxed">Accede a tu área privada para consultar fichas completas, certificaciones, tarifas por hora y confirmar tu solicitud.</p>
 
                             <button onclick="window.location.href='portal.html'"
-                                class="w-full flex items-center justify-center gap-3 bg-cyan-500 hover:bg-cyan-400 text-obsidian-950 font-extrabold rounded-xl p-4 uppercase tracking-wide transition-all shadow-[0_0_20px_rgba(6,182,212,0.3)] mb-4">
-                                Inicia Sesión
+                                class="w-full flex items-center justify-center gap-3 bg-gradient-to-r from-sovereign-500 to-sovereign-600 hover:from-sovereign-400 hover:to-sovereign-500 text-obsidian-950 font-extrabold rounded-xl p-4 uppercase tracking-wide transition-all shadow-lg mb-4">
+                                Acceder al Catálogo Verificado
                             </button>
 
-                            <button class="text-sm font-medium text-gray-500 hover:text-white transition mt-2"
+                            <button class="text-sm font-medium text-slate-400 hover:text-white transition mt-2"
                                 onclick="location.reload()">
-                                Editar búsqueda
+                                Modificar parámetros de búsqueda
                             </button>
                         </div>
                     </div>
@@ -398,124 +448,201 @@
         </div>
     </div>
 
-    <!-- CÓMO FUNCIONA -->
-    <section id="como-funciona" class="py-24 bg-obsidian-950 relative overflow-hidden border-t border-white/5">
+    <!-- SECCIÓN DE AUTORIDAD INSTITUCIONAL: EL CONTEXTO EN ESPAÑA Y PROTOCOLO DE SEGURIDAD -->
+    <section id="contexto" class="py-20 bg-obsidian-900 border-t border-b border-white/10 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 reveal">
+                <span class="text-sovereign-400 font-bold tracking-widest uppercase text-xs mb-3 block">Estándar Corporativo de Protección</span>
+                <h2 class="font-display text-3xl md:text-4xl font-extrabold text-white mb-4">Por qué miles de familias y profesionales en España eligen MyHero</h2>
+                <p class="text-slate-300 text-lg leading-relaxed">
+                    La prevención es la herramienta más eficaz frente al delito urbano. Hemos creado una infraestructura tecnológica y humana con rigor multinacional para que nadie tenga que desplazarse con miedo.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 reveal delay-100">
+                <!-- Pilar 1 -->
+                <div class="executive-card rounded-2xl p-7 transition-all duration-300">
+                    <div class="w-12 h-12 rounded-xl bg-sovereign-500/15 border border-sovereign-500/30 flex items-center justify-center text-sovereign-400 mb-5">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">Disuasión Preventiva Real</h3>
+                    <p class="text-slate-300 text-sm leading-relaxed">
+                        Más del 94% de los hurtos, intimidaciones en cajeros y situaciones de acoso callejero se evitan por completo al ir acompañado por un perfil de presencia firme.
+                    </p>
+                </div>
+
+                <!-- Pilar 2 -->
+                <div class="executive-card rounded-2xl p-7 transition-all duration-300">
+                    <div class="w-12 h-12 rounded-xl bg-royal-500/15 border border-royal-500/30 flex items-center justify-center text-royal-400 mb-5">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0m-5 8a2 2 0 100-4 2 2 0 000 4zm0 0c1.306 0 2.417.835 2.83 2M9 14a3.001 3.001 0 00-2.83 2M15 11h3m-3 4h2"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">Auditoría en 4 Fases (12%)</h3>
+                    <p class="text-slate-300 text-sm leading-relaxed">
+                        Exigimos DNI/NIE en vigor, Certificado Oficial de Antecedentes Penales limpio, test psicotécnico y entrevista personal. Rechazamos al 88% de candidatos.
+                    </p>
+                </div>
+
+                <!-- Pilar 3 -->
+                <div class="executive-card rounded-2xl p-7 transition-all duration-300">
+                    <div class="w-12 h-12 rounded-xl bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center text-emerald-400 mb-5">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">Sistema Red Familiar™</h3>
+                    <p class="text-slate-300 text-sm leading-relaxed">
+                        Solicita un Hero para tus padres mayores o tu pareja y supervisa todo el trayecto por GPS en tiempo real desde tu propio teléfono móvil.
+                    </p>
+                </div>
+
+                <!-- Pilar 4 -->
+                <div class="executive-card rounded-2xl p-7 transition-all duration-300">
+                    <div class="w-12 h-12 rounded-xl bg-amber-500/15 border border-amber-500/30 flex items-center justify-center text-amber-400 mb-5">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">Transparencia y Bizum Directo</h3>
+                    <p class="text-slate-300 text-sm leading-relaxed">
+                        Conoces la tarifa cerrada antes de confirmar. No introducimos tu tarjeta en la web: abonas directamente al profesional por Bizum o efectivo al terminar.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CÓMO FUNCIONA + MOCKUP TELEFÓNICO DE ELCHE -->
+    <section id="como-funciona" class="py-24 bg-obsidian-950 relative overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 
                 <div class="space-y-8 reveal">
-                    <h2 class="text-3xl md:text-5xl font-extrabold text-white tracking-tight">Compañía <span
-                            class="text-cyan-400">a tu medida.</span></h2>
-                    <p class="text-gray-400 text-lg">MyHero es la plataforma que conecta a personas que necesitan
-                        apoyo y acompañamiento, con perfiles estrictamente validados. Pide compañía para un trámite o
-                        asegura el
-                        regreso a casa de un familiar.</p>
+                    <div>
+                        <span class="text-sovereign-400 font-bold tracking-widest uppercase text-xs mb-3 block">Operativa Transparente y Sencilla</span>
+                        <h2 class="font-display text-3xl md:text-5xl font-extrabold text-white tracking-tight">Seguridad presencial <span
+                                class="text-sovereign-400">en tres pasos.</span></h2>
+                    </div>
+                    <p class="text-slate-300 text-lg leading-relaxed">
+                        Diseñado específicamente para ser intuitivo, claro y accesible. Tanto si reservas para ti al salir de la oficina como si programas el acompañamiento de un familiar mayor al banco o al médico.
+                    </p>
 
-                    <div class="space-y-6 mt-8">
-                        <div class="flex gap-4">
+                    <div class="space-y-7 mt-8">
+                        <div class="flex gap-5">
                             <div
-                                class="flex-shrink-0 w-12 h-12 rounded-xl bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 flex items-center justify-center font-bold text-xl">
-                                1</div>
+                                class="flex-shrink-0 w-12 h-12 rounded-xl bg-sovereign-500/15 text-sovereign-400 border border-sovereign-500/35 flex items-center justify-center font-extrabold text-lg">
+                                01</div>
                             <div>
-                                <h4 class="text-xl font-bold text-white mb-1">Elige a tu Hero</h4>
-                                <p class="text-gray-400 text-sm">Navega por perfiles verificados. Visualiza fotos
-                                    reales, altura, idiomas y habilidades específicas antes de decidir.</p>
+                                <h4 class="text-xl font-bold text-white mb-1.5">Selecciona el Perfil Acreditado</h4>
+                                <p class="text-slate-300 text-base leading-relaxed">Consulta fotografías reales, edad, estatura, formación certificada, valoraciones de otros clientes y tarifa por hora antes de elegir.</p>
                             </div>
                         </div>
-                        <div class="flex gap-4">
+                        <div class="flex gap-5">
                             <div
-                                class="flex-shrink-0 w-12 h-12 rounded-xl bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 flex items-center justify-center font-bold text-xl">
-                                2</div>
+                                class="flex-shrink-0 w-12 h-12 rounded-xl bg-royal-500/15 text-royal-400 border border-royal-500/35 flex items-center justify-center font-extrabold text-lg">
+                                02</div>
                             <div>
-                                <h4 class="text-xl font-bold text-white mb-1">Rastreo en Tiempo Real</h4>
-                                <p class="text-gray-400 text-sm">Escoge a tu hero y sigue la ruta por GPS mientras dure
-                                    el acompañamiento.</p>
+                                <h4 class="text-xl font-bold text-white mb-1.5">Seguimiento GPS y Botón SOS Activo</h4>
+                                <p class="text-slate-300 text-base leading-relaxed">Desde el encuentro hasta llegar a la puerta de destino, el recorrido queda registrado por GPS en directo con enlace para tu Red Familiar.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-5">
+                            <div
+                                class="flex-shrink-0 w-12 h-12 rounded-xl bg-emerald-500/15 text-emerald-400 border border-emerald-500/35 flex items-center justify-center font-extrabold text-lg">
+                                03</div>
+                            <div>
+                                <h4 class="text-xl font-bold text-white mb-1.5">Pago en Mano o Bizum al Finalizar</h4>
+                                <p class="text-slate-300 text-base leading-relaxed">Sin suscripciones ni cobros ocultos. Una vez completado el servicio con total satisfacción, abonas el importe directamente a tu Hero.</p>
                             </div>
                         </div>
                     </div>
                 </div>
 
+                <!-- Mockup Teléfono con Mapa de Elche -->
                 <div
                     class="flex justify-center lg:justify-end perspective-1000 reveal delay-200 w-full overflow-hidden">
                     <div
-                        class="relative w-[280px] sm:w-[300px] h-[560px] sm:h-[600px] bg-obsidian-900 rounded-[2.5rem] sm:rounded-[3rem] border-[6px] sm:border-[8px] border-obsidian-800 shadow-2xl overflow-hidden transform rotate-y-[-5deg] rotate-x-[5deg] hover:rotate-0 transition-transform duration-500">
+                        class="relative w-[290px] sm:w-[320px] h-[580px] sm:h-[620px] bg-obsidian-900 rounded-[2.75rem] border-[7px] border-obsidian-800 shadow-[0_25px_70px_rgba(0,0,0,0.75)] overflow-hidden transition-transform duration-500">
                         <div
-                            class="absolute top-0 inset-x-0 h-6 sm:h-7 bg-obsidian-800 rounded-b-2xl sm:rounded-b-3xl w-32 sm:w-40 mx-auto z-30">
+                            class="absolute top-0 inset-x-0 h-6 bg-obsidian-800 rounded-b-2xl w-36 mx-auto z-30">
                         </div>
 
                         <div class="absolute inset-0 flex flex-col bg-obsidian-950">
                             <!-- Elche Map Simulation -->
                             <div class="h-[55%] relative overflow-hidden bg-obsidian-950">
-                                <!-- Mapa de Fondo -->
+                                <!-- Mapa de Fondo Claro y Legible -->
                                 <div class="absolute inset-0 bg-cover bg-center"
                                     style="background-image: url('./assets/img/mapa-elche.jpg');"></div>
-                                <div class="absolute inset-0 bg-obsidian-950/40"></div>
+                                <div class="absolute inset-0 bg-obsidian-950/20"></div>
 
-                                <div class="absolute inset-0 opacity-10"
-                                    style="background-image: linear-gradient(#22d3ee 1px, transparent 1px), linear-gradient(90deg, #22d3ee 1px, transparent 1px); background-size: 20px 20px;">
-                                </div>
-
-                                <svg class="absolute inset-0 w-full h-full text-cyan-500 opacity-50"
+                                <svg class="absolute inset-0 w-full h-full text-royal-500 opacity-85"
                                     preserveAspectRatio="none">
-                                    <path d="M 50 300 Q 150 250 250 150" stroke="currentColor" stroke-width="4"
-                                        stroke-dasharray="5,5" fill="none" />
+                                    <path d="M 65 260 Q 150 210 235 120" stroke="#2563EB" stroke-width="4"
+                                        stroke-dasharray="6,6" fill="none" />
                                 </svg>
 
-                                <div class="absolute" style="top: 20%; left: 80%; transform: translate(-50%, -50%);">
+                                <!-- Punto Destino -->
+                                <div class="absolute" style="top: 25%; left: 75%; transform: translate(-50%, -50%);">
                                     <div
-                                        class="absolute inset-0 bg-cyan-500 rounded-full animate-ping opacity-50 w-8 h-8 -ml-2 -mt-2">
+                                        class="absolute inset-0 bg-emerald-500 rounded-full animate-ping opacity-60 w-8 h-8 -ml-2 -mt-2">
                                     </div>
                                     <div
-                                        class="w-4 h-4 bg-cyan-400 rounded-full border-2 border-obsidian-900 relative z-10 shadow-[0_0_10px_#22d3ee]">
+                                        class="w-4 h-4 bg-emerald-400 rounded-full border-2 border-obsidian-950 relative z-10 shadow-[0_0_12px_#10b981]">
                                     </div>
                                 </div>
 
+                                <!-- Avatar Hero en Ruta -->
                                 <div class="absolute flex flex-col items-center animate-float"
-                                    style="top: 65%; left: 25%; transform: translate(-50%, -50%); z-index: 10;">
+                                    style="top: 72%; left: 24%; transform: translate(-50%, -50%); z-index: 10;">
                                     <div
-                                        class="bg-obsidian-800 text-white border border-obsidian-700 text-[10px] font-bold px-2 py-1 rounded mb-1 shadow-lg">
-                                        Llegando (2 min)</div>
+                                        class="bg-obsidian-900/95 text-white border border-sovereign-500/50 text-[11px] font-bold px-2.5 py-1 rounded-md mb-1 shadow-lg">
+                                        A 2 min de ti</div>
                                     <img src="https://i.pravatar.cc/150?img=11"
-                                        class="w-10 h-10 rounded-full border-2 border-cyan-500 shadow-[0_0_15px_rgba(6,182,212,0.5)]">
+                                        class="w-11 h-11 rounded-full border-2 border-sovereign-400 shadow-lg">
                                 </div>
                             </div>
 
                             <div
-                                class="h-[45%] bg-obsidian-900 rounded-t-3xl -mt-6 relative z-20 shadow-[0_-10px_25px_rgba(0,0,0,0.5)] border-t border-white/10 p-5 flex flex-col">
-                                <div class="w-12 h-1 bg-obsidian-700 rounded-full mx-auto mb-5"></div>
+                                class="h-[45%] bg-obsidian-900 rounded-t-3xl -mt-5 relative z-20 shadow-[0_-10px_25px_rgba(0,0,0,0.6)] border-t border-white/15 p-5 flex flex-col">
+                                <div class="w-12 h-1 bg-obsidian-700 rounded-full mx-auto mb-4"></div>
 
                                 <div class="flex justify-between items-start mb-4">
                                     <div>
-                                        <h3 class="font-bold text-white text-lg leading-tight">Tu Héroe está cerca</h3>
-                                        <p class="text-xs text-cyan-400 mt-1">Misión: Ocio y Nocturno</p>
+                                        <span class="text-[10px] font-bold uppercase tracking-wider text-emerald-400 block">GPS Red Familiar Activo</span>
+                                        <h3 class="font-bold text-white text-lg leading-tight">Acompañante en camino</h3>
+                                        <p class="text-xs text-slate-300 mt-0.5">Gestión Bancaria · Nivel 2</p>
                                     </div>
-                                    <div class="bg-obsidian-800 rounded-lg p-2 text-center border border-white/5">
-                                        <div class="text-xs text-gray-400">Tarifa</div>
-                                        <div class="font-bold text-white text-sm">€ 25.00</div>
+                                    <div class="bg-obsidian-800 rounded-xl px-3 py-2 text-center border border-sovereign-500/30">
+                                        <div class="text-[10px] text-slate-300 uppercase font-semibold">Tarifa/h</div>
+                                        <div class="font-extrabold text-sovereign-400 text-sm">25,00 €</div>
                                     </div>
                                 </div>
 
                                 <div
-                                    class="bg-obsidian-950 rounded-2xl p-3 border border-white/5 flex items-center gap-3 mb-4">
+                                    class="bg-obsidian-950 rounded-2xl p-3 border border-white/10 flex items-center gap-3 mb-4">
                                     <img src="https://i.pravatar.cc/150?img=11"
-                                        class="w-12 h-12 rounded-xl object-cover">
+                                        class="w-12 h-12 rounded-xl object-cover border border-white/10">
                                     <div class="flex-1">
-                                        <h4 class="font-bold text-white text-sm">Carlos M.</h4>
-                                        <div class="text-[10px] text-amber-500 mt-0.5">★ 4.9 (120 acompañamientos)</div>
+                                        <h4 class="font-bold text-white text-sm">Carlos M. (39 años)</h4>
+                                        <div class="text-xs text-sovereign-400 font-semibold mt-0.5">★ 4.98 · 120 servicios</div>
                                     </div>
                                     <div
-                                        class="w-10 h-10 rounded-full bg-cyan-500/20 text-cyan-400 flex items-center justify-center cursor-pointer hover:bg-cyan-500/30">
+                                        class="w-10 h-10 rounded-full bg-royal-600/20 text-royal-400 border border-royal-500/30 flex items-center justify-center cursor-pointer">
                                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z">
+                                                d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z">
                                             </path>
                                         </svg>
                                     </div>
                                 </div>
 
                                 <button
-                                    class="w-full mt-auto bg-white text-obsidian-950 font-bold rounded-xl py-3 text-sm shadow-lg flex justify-center items-center gap-2">
-                                    Avisar llegada
+                                    class="w-full mt-auto bg-gradient-to-r from-sovereign-500 to-sovereign-600 text-obsidian-950 font-extrabold rounded-xl py-3 text-sm shadow-lg flex justify-center items-center gap-2">
+                                    Compartir Ruta con Familia
                                 </button>
                             </div>
                         </div>
@@ -526,48 +653,42 @@
         </div>
     </section>
 
-    <!-- NIVELES -->
-    <section id="niveles" class="py-24 bg-[#0A1526] border-t border-white/5 relative overflow-hidden">
-        <!-- Glow background effects -->
-        <div class="absolute top-0 left-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-[100px] pointer-events-none">
-        </div>
-        <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-[100px] pointer-events-none">
-        </div>
-
+    <!-- NIVELES DE PROTECCIÓN (CON REVELADO DE FOTO COMPLETA EN HOVER) -->
+    <section id="niveles" class="py-24 bg-obsidian-900 border-t border-white/10 relative overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="text-center max-w-3xl mx-auto mb-16 reveal">
-                <span class="text-cyan-500 font-extrabold tracking-widest uppercase text-xs mb-2 block">Elige tu nivel
-                    de seguridad</span>
-                <h2 class="text-4xl md:text-5xl font-extrabold text-white mb-6">Niveles de Nuestros Héroes</h2>
-                <p class="text-gray-400 text-lg">Todos nuestros Héroes pasan por estrictas validaciones. Elige el
-                    perfil que mejor se adapte a tus necesidades del momento.</p>
+                <span class="text-sovereign-400 font-extrabold tracking-widest uppercase text-xs mb-3 block">Categorías Profesionales Auditadas</span>
+                <h2 class="font-display text-3xl md:text-5xl font-extrabold text-white mb-5">Tres Niveles de Acompañamiento</h2>
+                <p class="text-slate-300 text-lg leading-relaxed">
+                    Cada situación requiere un perfil distinto. Pasa el cursor sobre cada tarjeta para conocer al detalle la apariencia y presencia real de nuestros profesionales.
+                </p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
                 <!-- Nivel 1 -->
                 <div
-                    class="bg-obsidian-900/90 backdrop-blur-xl border border-white/5 rounded-3xl p-8 hover:-translate-y-2 hover:border-cyan-500/50 hover:shadow-[0_10px_40px_-10px_rgba(6,182,212,0.3)] transition-all duration-500 group relative overflow-hidden reveal delay-100 flex flex-col min-h-[450px]">
+                    class="bg-obsidian-950/95 backdrop-blur-xl border border-white/15 rounded-3xl p-8 hover:-translate-y-2 hover:border-emerald-500/60 hover:shadow-[0_15px_45px_-10px_rgba(16,185,129,0.25)] transition-all duration-500 group relative overflow-hidden reveal delay-100 flex flex-col min-h-[480px]">
                     <div
-                        class="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-cyan-400 to-cyan-600 opacity-50 group-hover:opacity-100 transition-opacity z-20">
+                        class="absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-emerald-400 to-teal-600 opacity-75 group-hover:opacity-100 transition-opacity z-20">
                     </div>
 
                     <!-- Foto difuminada base -->
                     <div class="absolute inset-0 bg-cover bg-top opacity-30 group-hover:opacity-0 transition-opacity duration-500 mix-blend-luminosity z-0"
-                        style="background-image: url('./assets/img/normal.jpg'); -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 80%);">
+                        style="background-image: url('./assets/img/normal.jpg'); -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 85%);">
                     </div>
                     <!-- Foto Full (Aparece en hover) -->
                     <div class="absolute inset-0 bg-cover bg-top opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0"
                         style="background-image: url('./assets/img/normal.jpg');"></div>
-                    <!-- Capa oscura extra para texto -->
+                    <!-- Capa oscura extra para legibilidad de texto -->
                     <div
-                        class="absolute inset-0 bg-obsidian-950/40 group-hover:opacity-0 transition-opacity duration-500 z-0">
+                        class="absolute inset-0 bg-obsidian-950/60 group-hover:opacity-0 transition-opacity duration-500 z-0">
                     </div>
 
                     <div
                         class="relative z-10 flex flex-col flex-grow transition-opacity duration-500 group-hover:opacity-0">
                         <div class="flex justify-between items-start mb-6 mt-2">
                             <div
-                                class="w-12 h-12 rounded-2xl bg-cyan-500/10 flex items-center justify-center text-cyan-400">
+                                class="w-12 h-12 rounded-2xl bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center text-emerald-400">
                                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z">
@@ -575,40 +696,39 @@
                                 </svg>
                             </div>
                             <span
-                                class="bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs font-black uppercase tracking-wider px-3 py-1 rounded-full">Nivel
-                                1</span>
+                                class="bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 text-xs font-extrabold uppercase tracking-wider px-3.5 py-1.5 rounded-full">Nivel
+                                1 · Cívico</span>
                         </div>
 
-                        <h3 class="text-2xl font-bold text-white mb-1">Acompa&ntilde;ante Est&aacute;ndar</h3>
-                        <p class="text-cyan-400 text-sm font-semibold mb-5">Compa&ntilde;&iacute;a general y
-                            empat&iacute;a.</p>
+                        <h3 class="font-display text-2xl font-bold text-white mb-1">Acompañamiento Familiar</h3>
+                        <p class="text-emerald-400 text-sm font-semibold mb-5">Cercanía, educación y apoyo cotidiano.</p>
 
-                        <p class="text-gray-300 text-sm mb-8 leading-relaxed flex-grow">Personas de absoluta confianza,
-                            educadas y emp&aacute;ticas. Ideales para acompa&ntilde;ar en caminatas, trayectos
-                            cotidianos, o simplemente cuando prefieres no ir solo.</p>
+                        <p class="text-slate-200 text-base mb-8 leading-relaxed flex-grow">
+                            Perfiles maduros, sumamente educados y resolutivos. Ideales para acompañar a tus padres mayores al médico, realizar trámites administrativos, hacer la compra o caminar con tranquilidad.
+                        </p>
 
-                        <ul class="text-sm text-gray-300 space-y-4">
+                        <ul class="text-sm text-slate-200 space-y-3.5 border-t border-white/10 pt-5">
                             <li class="flex items-start gap-3">
                                 <div
-                                    class="mt-1 w-5 h-5 rounded-full bg-cyan-500/20 flex items-center justify-center flex-shrink-0">
-                                    <svg class="w-3 h-3 text-cyan-400" fill="currentColor" viewBox="0 0 20 20">
+                                    class="mt-0.5 w-5 h-5 rounded-full bg-emerald-500/20 flex items-center justify-center flex-shrink-0">
+                                    <svg class="w-3.5 h-3.5 text-emerald-400" fill="currentColor" viewBox="0 0 20 20">
                                         <path fill-rule="evenodd"
                                             d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
                                             clip-rule="evenodd"></path>
                                     </svg>
                                 </div>
-                                <span class="leading-tight">Entrevista exhaustiva aprobada</span>
+                                <span class="leading-tight font-medium">Antecedentes penales y entrevista aprobada</span>
                             </li>
                             <li class="flex items-start gap-3">
                                 <div
-                                    class="mt-1 w-5 h-5 rounded-full bg-cyan-500/20 flex items-center justify-center flex-shrink-0">
-                                    <svg class="w-3 h-3 text-cyan-400" fill="currentColor" viewBox="0 0 20 20">
+                                    class="mt-0.5 w-5 h-5 rounded-full bg-emerald-500/20 flex items-center justify-center flex-shrink-0">
+                                    <svg class="w-3.5 h-3.5 text-emerald-400" fill="currentColor" viewBox="0 0 20 20">
                                         <path fill-rule="evenodd"
                                             d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
                                             clip-rule="evenodd"></path>
                                     </svg>
                                 </div>
-                                <span class="leading-tight">Rastreo GPS en tiempo real</span>
+                                <span class="leading-tight font-medium">Monitorización GPS para familiares en vivo</span>
                             </li>
                         </ul>
                     </div>
@@ -616,28 +736,28 @@
 
                 <!-- Nivel 2 -->
                 <div
-                    class="bg-obsidian-900/90 backdrop-blur-xl border border-blue-500/20 rounded-3xl p-8 hover:-translate-y-2 hover:border-blue-500/50 hover:shadow-[0_10px_40px_-10px_rgba(59,130,246,0.3)] transition-all duration-500 group relative overflow-hidden reveal delay-200 flex flex-col min-h-[450px]">
+                    class="bg-obsidian-950/95 backdrop-blur-xl border border-royal-500/35 rounded-3xl p-8 hover:-translate-y-2 hover:border-royal-400 hover:shadow-[0_15px_45px_-10px_rgba(59,130,246,0.3)] transition-all duration-500 group relative overflow-hidden reveal delay-200 flex flex-col min-h-[480px]">
                     <div
-                        class="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-blue-400 to-blue-600 opacity-50 group-hover:opacity-100 transition-opacity z-20">
+                        class="absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-royal-400 to-royal-600 opacity-80 group-hover:opacity-100 transition-opacity z-20">
                     </div>
 
                     <!-- Foto difuminada base -->
                     <div class="absolute inset-0 bg-cover bg-top opacity-30 group-hover:opacity-0 transition-opacity duration-500 mix-blend-luminosity z-0"
-                        style="background-image: url('./assets/img/musculoso.jpg'); -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 80%);">
+                        style="background-image: url('./assets/img/musculoso.jpg'); -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 85%);">
                     </div>
                     <!-- Foto Full (Aparece en hover) -->
                     <div class="absolute inset-0 bg-cover bg-top opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0"
                         style="background-image: url('./assets/img/musculoso.jpg');"></div>
                     <!-- Capa oscura extra para texto -->
                     <div
-                        class="absolute inset-0 bg-obsidian-950/40 group-hover:opacity-0 transition-opacity duration-500 z-0">
+                        class="absolute inset-0 bg-obsidian-950/60 group-hover:opacity-0 transition-opacity duration-500 z-0">
                     </div>
 
                     <div
                         class="relative z-10 flex flex-col flex-grow transition-opacity duration-500 group-hover:opacity-0">
                         <div class="flex justify-between items-start mb-6 mt-2">
                             <div
-                                class="w-12 h-12 rounded-2xl bg-blue-500/10 flex items-center justify-center text-blue-400">
+                                class="w-12 h-12 rounded-2xl bg-royal-500/15 border border-royal-500/30 flex items-center justify-center text-royal-400">
                                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M20.618 5.984A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016zM12 9v2m0 4h.01">
@@ -645,39 +765,39 @@
                                 </svg>
                             </div>
                             <span
-                                class="bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-black uppercase tracking-wider px-3 py-1 rounded-full">Nivel
-                                2</span>
+                                class="bg-royal-500/20 border border-royal-400/40 text-royal-300 text-xs font-extrabold uppercase tracking-wider px-3.5 py-1.5 rounded-full">Nivel
+                                2 · Más Solicitado</span>
                         </div>
 
-                        <h3 class="text-2xl font-bold text-white mb-1">Presencia Asistencial</h3>
-                        <p class="text-blue-400 text-sm font-semibold mb-5">Respaldo visual y f&iacute;sico.</p>
+                        <h3 class="font-display text-2xl font-bold text-white mb-1">Presencia Disuasoria</h3>
+                        <p class="text-royal-400 text-sm font-semibold mb-5">Respaldo físico, envergadura y prevención.</p>
 
-                        <p class="text-gray-300 text-sm mb-8 leading-relaxed flex-grow">Perfiles atl&eacute;ticos,
-                            deportistas o personal trainers. Aportan una gran sensaci&oacute;n de respaldo visual por su
-                            tama&ntilde;o y condici&oacute;n. Perfectos para salidas nocturnas o retornos a casa.</p>
+                        <p class="text-slate-200 text-base mb-8 leading-relaxed flex-grow">
+                            Deportistas y profesionales de complexión atlética e imponente presencia visual. La opción preferida para regresar a casa de noche tras el trabajo, acudir a aparcamientos solitarios o retirar efectivo en cajeros.
+                        </p>
 
-                        <ul class="text-sm text-gray-300 space-y-4">
+                        <ul class="text-sm text-slate-200 space-y-3.5 border-t border-white/10 pt-5">
                             <li class="flex items-start gap-3">
                                 <div
-                                    class="mt-1 w-5 h-5 rounded-full bg-blue-500/20 flex items-center justify-center flex-shrink-0">
-                                    <svg class="w-3 h-3 text-blue-400" fill="currentColor" viewBox="0 0 20 20">
+                                    class="mt-0.5 w-5 h-5 rounded-full bg-royal-500/20 flex items-center justify-center flex-shrink-0">
+                                    <svg class="w-3.5 h-3.5 text-royal-400" fill="currentColor" viewBox="0 0 20 20">
                                         <path fill-rule="evenodd"
                                             d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
                                             clip-rule="evenodd"></path>
                                     </svg>
                                 </div>
-                                <span class="leading-tight">Atributos f&iacute;sicos destacados</span>
+                                <span class="leading-tight font-medium">Gran envergadura física y temple sereno</span>
                             </li>
                             <li class="flex items-start gap-3">
                                 <div
-                                    class="mt-1 w-5 h-5 rounded-full bg-blue-500/20 flex items-center justify-center flex-shrink-0">
-                                    <svg class="w-3 h-3 text-blue-400" fill="currentColor" viewBox="0 0 20 20">
+                                    class="mt-0.5 w-5 h-5 rounded-full bg-royal-500/20 flex items-center justify-center flex-shrink-0">
+                                    <svg class="w-3.5 h-3.5 text-royal-400" fill="currentColor" viewBox="0 0 20 20">
                                         <path fill-rule="evenodd"
                                             d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
                                             clip-rule="evenodd"></path>
                                     </svg>
                                 </div>
-                                <span class="leading-tight">Alta capacidad de disuasi&oacute;n pasiva</span>
+                                <span class="leading-tight font-medium">Máxima capacidad de disuasión pasiva inmediata</span>
                             </li>
                         </ul>
                     </div>
@@ -685,28 +805,28 @@
 
                 <!-- Nivel 3 -->
                 <div
-                    class="bg-obsidian-900/90 backdrop-blur-xl border border-amber-500/20 rounded-3xl p-8 hover:-translate-y-2 hover:border-amber-500/50 hover:shadow-[0_10px_40px_-10px_rgba(245,158,11,0.25)] transition-all duration-500 group relative overflow-hidden reveal delay-300 flex flex-col min-h-[450px]">
+                    class="bg-obsidian-950/95 backdrop-blur-xl border border-sovereign-500/35 rounded-3xl p-8 hover:-translate-y-2 hover:border-sovereign-400 hover:shadow-[0_15px_45px_-10px_rgba(212,168,83,0.3)] transition-all duration-500 group relative overflow-hidden reveal delay-300 flex flex-col min-h-[480px]">
                     <div
-                        class="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-amber-400 to-amber-600 opacity-50 group-hover:opacity-100 transition-opacity z-20">
+                        class="absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-sovereign-300 via-sovereign-500 to-amber-600 opacity-85 group-hover:opacity-100 transition-opacity z-20">
                     </div>
 
                     <!-- Foto difuminada base -->
                     <div class="absolute inset-0 bg-cover bg-top opacity-30 group-hover:opacity-0 transition-opacity duration-500 mix-blend-luminosity z-0"
-                        style="background-image: url('./assets/img/karateka.jpg'); -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 80%);">
+                        style="background-image: url('./assets/img/karateka.jpg'); -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 85%);">
                     </div>
                     <!-- Foto Full (Aparece en hover) -->
                     <div class="absolute inset-0 bg-cover bg-top opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0"
                         style="background-image: url('./assets/img/karateka.jpg');"></div>
                     <!-- Capa oscura extra para texto -->
                     <div
-                        class="absolute inset-0 bg-obsidian-950/40 group-hover:opacity-0 transition-opacity duration-500 z-0">
+                        class="absolute inset-0 bg-obsidian-950/60 group-hover:opacity-0 transition-opacity duration-500 z-0">
                     </div>
 
                     <div
                         class="relative z-10 flex flex-col flex-grow transition-opacity duration-500 group-hover:opacity-0">
                         <div class="flex justify-between items-start mb-6 mt-2">
                             <div
-                                class="w-12 h-12 rounded-2xl bg-amber-500/10 flex items-center justify-center text-amber-500">
+                                class="w-12 h-12 rounded-2xl bg-sovereign-500/15 border border-sovereign-500/30 flex items-center justify-center text-sovereign-400">
                                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z">
@@ -714,40 +834,39 @@
                                 </svg>
                             </div>
                             <span
-                                class="bg-amber-500/10 border border-amber-500/20 text-amber-500 text-xs font-black uppercase tracking-wider px-3 py-1 rounded-full">Nivel
-                                3</span>
+                                class="bg-sovereign-500/20 border border-sovereign-400/40 text-sovereign-300 text-xs font-extrabold uppercase tracking-wider px-3.5 py-1.5 rounded-full">Nivel
+                                3 · Élite</span>
                         </div>
 
-                        <h3 class="text-2xl font-bold text-white mb-1">Especialista</h3>
-                        <p class="text-amber-500 text-sm font-semibold mb-5">Experiencia certificada.</p>
+                        <h3 class="font-display text-2xl font-bold text-white mb-1">Especialista Certificado</h3>
+                        <p class="text-sovereign-400 text-sm font-semibold mb-5">Acreditación técnica y gestión de crisis.</p>
 
-                        <p class="text-gray-300 text-sm mb-8 leading-relaxed flex-grow">El m&aacute;ximo nivel de
-                            tranquilidad. Profesionales con certificaciones (Cintur&oacute;n negro en artes marciales,
-                            ex-militares, rescatistas). Ideales para gestiones de alto valor o m&aacute;xima
-                            prevenci&oacute;n.</p>
+                        <p class="text-slate-200 text-base mb-8 leading-relaxed flex-grow">
+                            El estándar más alto de protección preventiva. Cinturones negros federados, exmiembros de fuerzas de seguridad o rescatistas certificados. Diseñado para notarías, traslados de alto valor o máxima cobertura.
+                        </p>
 
-                        <ul class="text-sm text-gray-300 space-y-4">
+                        <ul class="text-sm text-slate-200 space-y-3.5 border-t border-white/10 pt-5">
                             <li class="flex items-start gap-3">
                                 <div
-                                    class="mt-1 w-5 h-5 rounded-full bg-amber-500/20 flex items-center justify-center flex-shrink-0">
-                                    <svg class="w-3 h-3 text-amber-500" fill="currentColor" viewBox="0 0 20 20">
+                                    class="mt-0.5 w-5 h-5 rounded-full bg-sovereign-500/20 flex items-center justify-center flex-shrink-0">
+                                    <svg class="w-3.5 h-3.5 text-sovereign-400" fill="currentColor" viewBox="0 0 20 20">
                                         <path fill-rule="evenodd"
                                             d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
                                             clip-rule="evenodd"></path>
                                     </svg>
                                 </div>
-                                <span class="leading-tight">Certificaciones verificadas</span>
+                                <span class="leading-tight font-medium">Diplomas y licencias oficiales compulsadas</span>
                             </li>
                             <li class="flex items-start gap-3">
                                 <div
-                                    class="mt-1 w-5 h-5 rounded-full bg-amber-500/20 flex items-center justify-center flex-shrink-0">
-                                    <svg class="w-3 h-3 text-amber-500" fill="currentColor" viewBox="0 0 20 20">
+                                    class="mt-0.5 w-5 h-5 rounded-full bg-sovereign-500/20 flex items-center justify-center flex-shrink-0">
+                                    <svg class="w-3.5 h-3.5 text-sovereign-400" fill="currentColor" viewBox="0 0 20 20">
                                         <path fill-rule="evenodd"
                                             d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
                                             clip-rule="evenodd"></path>
                                     </svg>
                                 </div>
-                                <span class="leading-tight">Manejo de crisis / Primeros Auxilios</span>
+                                <span class="leading-tight font-medium">Protocolos de emergencia y primeros auxilios</span>
                             </li>
                         </ul>
                     </div>
@@ -756,142 +875,84 @@
         </div>
     </section>
 
-    <!-- TESTIMONIOS (SOCIAL PROOF) -->
-    <section id="testimonios" class="py-24 bg-obsidian-950 relative overflow-hidden border-t border-white/5">
+    <!-- TESTIMONIOS (ENFOCADOS EN PÚBLICO +30 AÑOS Y FAMILIAS EN ESPAÑA) -->
+    <section id="testimonios" class="py-24 bg-obsidian-950 relative overflow-hidden border-t border-white/10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="text-center max-w-3xl mx-auto mb-16 reveal">
-                <span class="text-cyan-400 font-bold tracking-wider uppercase text-sm mb-4 block">Confianza Total</span>
-                <h2 class="text-3xl font-extrabold text-white mb-4">Historias Reales</h2>
-                <p class="text-gray-400">Nuestros usuarios ya han recuperado su tranquilidad gracias a la red de Héroes.
-                    Lee sus experiencias.</p>
+                <span class="text-sovereign-400 font-bold tracking-widest uppercase text-xs mb-3 block">Confianza Demostrada</span>
+                <h2 class="font-display text-3xl md:text-4xl font-extrabold text-white mb-4">Experiencias de nuestros clientes en España</h2>
+                <p class="text-slate-300 text-lg">Profesionales, directivos y familias que han recuperado la tranquilidad en su día a día.</p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <!-- Testimonial 1 -->
-                <div class="glass-card rounded-2xl p-8 reveal delay-100">
-                    <div class="flex gap-1 text-amber-500 mb-4">
-                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                            <path
-                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
-                            </path>
-                        </svg>
-                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                            <path
-                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
-                            </path>
-                        </svg>
-                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                            <path
-                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
-                            </path>
-                        </svg>
-                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                            <path
-                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
-                            </path>
-                        </svg>
-                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                            <path
-                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
-                            </path>
-                        </svg>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Review 1: Laura -->
+                <div class="executive-card rounded-2xl p-8 reveal delay-100 flex flex-col">
+                    <div class="flex items-center justify-between mb-5">
+                        <div class="flex text-sovereign-400 gap-1">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                        </div>
+                        <span class="text-xs font-semibold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2.5 py-0.5 rounded-full">Servicio Verificado</span>
                     </div>
-                    <p class="text-gray-300 text-sm mb-6 italic leading-relaxed">"Contraté un perfil de nivel 2 para
-                        acompañar a mi madre al banco a hacer una gestión de firma. Poder ver por GPS dónde estaban me
-                        dio una paz mental increíble. El trato fue impecable."</p>
-                    <div class="flex items-center gap-3">
-                        <div
-                            class="w-10 h-10 rounded-full bg-cyan-900 flex items-center justify-center text-cyan-400 font-bold">
-                            L</div>
+                    <p class="text-slate-200 text-base leading-relaxed mb-6 flex-grow">
+                        "Mi madre tiene 74 años y cada vez que iba sola a la sucursal bancaria a retirar su pensión o hacer gestiones me quedaba intranquila por cómo está la seguridad últimamente. Solicité un perfil de Nivel 2 y pude seguir todo el recorrido por el GPS desde mi despacho. Educación exquisita y una paz mental impagable."
+                    </p>
+                    <div class="flex items-center gap-3.5 pt-4 border-t border-white/10">
+                        <img src="./assets/img/laura.jpg" alt="Laura G." class="w-12 h-12 rounded-full border-2 border-sovereign-500/40 object-cover">
                         <div>
-                            <div class="text-white font-bold text-sm">Laura G.</div>
-                            <div class="text-cyan-500 text-xs font-semibold">Sponsor Familiar</div>
+                            <div class="text-white font-bold text-base">Laura G. (42 años)</div>
+                            <div class="text-sovereign-400 text-xs font-semibold uppercase tracking-wider">Titular Red Familiar · Alicante</div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Testimonial 2 -->
-                <div class="glass-card rounded-2xl p-8 reveal delay-200">
-                    <div class="flex gap-1 text-amber-500 mb-4">
-                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                            <path
-                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
-                            </path>
-                        </svg>
-                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                            <path
-                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
-                            </path>
-                        </svg>
-                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                            <path
-                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
-                            </path>
-                        </svg>
-                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                            <path
-                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
-                            </path>
-                        </svg>
-                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                            <path
-                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
-                            </path>
-                        </svg>
+                <!-- Review 2: María -->
+                <div class="executive-card rounded-2xl p-8 reveal delay-200 flex flex-col">
+                    <div class="flex items-center justify-between mb-5">
+                        <div class="flex text-sovereign-400 gap-1">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                        </div>
+                        <span class="text-xs font-semibold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2.5 py-0.5 rounded-full">Servicio Verificado</span>
                     </div>
-                    <p class="text-gray-300 text-sm mb-6 italic leading-relaxed">"Salgo tarde de trabajar los fines de
-                        semana. Desde que uso MyHero para que un Nivel 2 me acompañe hasta mi coche en el parking, mi
-                        vida ha cambiado. Totalmente recomendado."</p>
-                    <div class="flex items-center gap-3">
-                        <div
-                            class="w-10 h-10 rounded-full bg-blue-900 flex items-center justify-center text-blue-400 font-bold">
-                            M</div>
+                    <p class="text-slate-200 text-base leading-relaxed mb-6 flex-grow">
+                        "Salgo de trabajar pasadas las diez de la noche y aparco el coche a varias calles en una zona bastante solitaria. Desde que reservo un acompañante de Nivel 2 para llegar hasta el parking o volver a casa tras una cena, camino con total serenidad. Un servicio serio, puntual y absolutamente necesario hoy en España."
+                    </p>
+                    <div class="flex items-center gap-3.5 pt-4 border-t border-white/10">
+                        <img src="./assets/img/maria.jpg" alt="María P." class="w-12 h-12 rounded-full border-2 border-royal-500/40 object-cover">
                         <div>
-                            <div class="text-white font-bold text-sm">María P.</div>
-                            <div class="text-blue-500 text-xs font-semibold">Cliente Frecuente</div>
+                            <div class="text-white font-bold text-base">María P. (36 años)</div>
+                            <div class="text-royal-400 text-xs font-semibold uppercase tracking-wider">Directora Comercial · Cliente Frecuente</div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Testimonial 3 -->
-                <div class="glass-card rounded-2xl p-8 reveal delay-300">
-                    <div class="flex gap-1 text-amber-500 mb-4">
-                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                            <path
-                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
-                            </path>
-                        </svg>
-                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                            <path
-                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
-                            </path>
-                        </svg>
-                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                            <path
-                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
-                            </path>
-                        </svg>
-                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                            <path
-                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
-                            </path>
-                        </svg>
-                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                            <path
-                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
-                            </path>
-                        </svg>
+                <!-- Review 3: Roberto -->
+                <div class="executive-card rounded-2xl p-8 reveal delay-300 flex flex-col">
+                    <div class="flex items-center justify-between mb-5">
+                        <div class="flex text-sovereign-400 gap-1">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                        </div>
+                        <span class="text-xs font-semibold text-sovereign-300 bg-sovereign-500/15 border border-sovereign-500/30 px-2.5 py-0.5 rounded-full">Acreditado</span>
                     </div>
-                    <p class="text-gray-300 text-sm mb-6 italic leading-relaxed">"Soy Hero Nivel 1 desde hace meses. Es
-                        increíble poder ayudar a personas mayores en sus recados y además monetizar mi tiempo libre. La
-                        app es súper segura y fácil de usar."</p>
-                    <div class="flex items-center gap-3">
-                        <div
-                            class="w-10 h-10 rounded-full bg-amber-900 flex items-center justify-center text-amber-500 font-bold">
-                            R</div>
+                    <p class="text-slate-200 text-base leading-relaxed mb-6 flex-grow">
+                        "Tras superar las cuatro fases de selección y presentar mi certificado oficial de antecedentes penales, llevo varios meses acompañando a personas mayores y profesionales en sus desplazamientos. Es un orgullo aportar seguridad real a mi ciudad y percibir el 100% de mis honorarios al instante por Bizum."
+                    </p>
+                    <div class="flex items-center gap-3.5 pt-4 border-t border-white/10">
+                        <img src="./assets/img/roberto.jpg" alt="Roberto S." class="w-12 h-12 rounded-full border-2 border-sovereign-500/40 object-cover">
                         <div>
-                            <div class="text-white font-bold text-sm">Roberto S.</div>
-                            <div class="text-amber-500 text-xs font-semibold">Hero Verificado</div>
+                            <div class="text-white font-bold text-base">Roberto S. (38 años)</div>
+                            <div class="text-sovereign-400 text-xs font-semibold uppercase tracking-wider">Hero Acreditado · Nivel 2</div>
                         </div>
                     </div>
                 </div>
@@ -899,78 +960,70 @@
         </div>
     </section>
 
-    <!-- ÚNETE A LA RED -->
-    <section id="unete" class="py-20 relative overflow-hidden">
-        <div class="absolute inset-0 bg-obsidian-950">
-            <div
-                class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-cyan-900/20 via-obsidian-950 to-obsidian-950">
-            </div>
-        </div>
-
+    <!-- ÚNETE A LA RED (RECLUTAMIENTO CORPORATIVO) -->
+    <section id="unete" class="py-24 relative overflow-hidden bg-obsidian-900 border-t border-white/10">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 reveal">
             <div
-                class="border border-cyan-500/20 bg-obsidian-900/80 backdrop-blur-md rounded-3xl p-8 md:p-12 text-center shadow-[0_0_50px_rgba(6,182,212,0.1)]">
-                <span class="text-cyan-400 font-bold tracking-wider uppercase text-sm mb-4 block">Únete a la Red</span>
-                <h2 class="text-3xl md:text-5xl font-extrabold text-white mb-6">Conviértete en un Hero.</h2>
-                <p class="text-gray-400 text-lg max-w-2xl mx-auto mb-10">Monetiza tu presencia, empatía o habilidades
-                    deportivas. Únete a la primera red de acompañamiento estratégico y genera ingresos en tu tiempo
-                    libre.</p>
+                class="border border-sovereign-500/30 bg-gradient-to-b from-obsidian-800/90 to-obsidian-950/95 backdrop-blur-md rounded-3xl p-8 md:p-14 text-center shadow-2xl">
+                <span class="inline-block px-3.5 py-1 rounded-full bg-sovereign-500/15 border border-sovereign-500/30 text-sovereign-300 font-bold tracking-wider uppercase text-xs mb-4">Proceso de Admisión Abierto</span>
+                <h2 class="font-display text-3xl md:text-5xl font-extrabold text-white mb-5">Forma parte del Cuerpo de Heroes.</h2>
+                <p class="text-slate-300 text-lg max-w-2xl mx-auto mb-10 leading-relaxed">
+                    Rentabiliza tu presencia, seriedad o preparación deportiva ayudando a tus conciudadanos a desplazarse seguros. Tú defines tus tarifas por hora y tu disponibilidad semanal.
+                </p>
 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10 text-left">
                     <div
-                        class="bg-obsidian-950/50 p-6 rounded-2xl border border-white/5 transition-transform hover:-translate-y-2 duration-300">
-                        <div class="w-10 h-10 bg-cyan-500/10 rounded-lg flex items-center justify-center mb-4">
-                            <svg class="w-5 h-5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        class="bg-obsidian-900/90 p-6 rounded-2xl border border-white/10 transition-transform hover:-translate-y-1 duration-300">
+                        <div class="w-10 h-10 bg-sovereign-500/15 border border-sovereign-500/30 rounded-xl flex items-center justify-center mb-4">
+                            <svg class="w-5 h-5 text-sovereign-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                             </svg>
                         </div>
-                        <h4 class="text-white font-bold mb-2">Tú eliges tus horarios</h4>
-                        <p class="text-gray-500 text-sm">Conéctate cuando quieras. Acepta solo las misiones que se
-                            ajusten a tu disponibilidad.</p>
+                        <h4 class="text-white font-bold text-base mb-2">Autonomía Total de Agenda</h4>
+                        <p class="text-slate-300 text-sm leading-relaxed">Activa tu perfil cuando estés disponible y acepta únicamente los servicios que encajen en tu horario.</p>
                     </div>
                     <div
-                        class="bg-obsidian-950/50 p-6 rounded-2xl border border-white/5 transition-transform hover:-translate-y-2 duration-300 delay-100">
-                        <div class="w-10 h-10 bg-cyan-500/10 rounded-lg flex items-center justify-center mb-4">
-                            <svg class="w-5 h-5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        class="bg-obsidian-900/90 p-6 rounded-2xl border border-white/10 transition-transform hover:-translate-y-1 duration-300 delay-100">
+                        <div class="w-10 h-10 bg-emerald-500/15 border border-emerald-500/30 rounded-xl flex items-center justify-center mb-4">
+                            <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z">
                                 </path>
                             </svg>
                         </div>
-                        <h4 class="text-white font-bold mb-2">Ingresos Directos</h4>
-                        <p class="text-gray-500 text-sm">El cliente te paga directamente a ti al momento del encuentro.
-                            Solo cobramos una pequeña comisión por conexión.</p>
+                        <h4 class="text-white font-bold text-base mb-2">Cobro Íntegro al Instante</h4>
+                        <p class="text-slate-300 text-sm leading-relaxed">El ciudadano te abona el 100% en mano o vía Bizum al concluir el servicio. Sin esperas de liquidación.</p>
                     </div>
                     <div
-                        class="bg-obsidian-950/50 p-6 rounded-2xl border border-white/5 transition-transform hover:-translate-y-2 duration-300 delay-200">
-                        <div class="w-10 h-10 bg-cyan-500/10 rounded-lg flex items-center justify-center mb-4">
-                            <svg class="w-5 h-5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        class="bg-obsidian-900/90 p-6 rounded-2xl border border-white/10 transition-transform hover:-translate-y-1 duration-300 delay-200">
+                        <div class="w-10 h-10 bg-royal-500/15 border border-royal-500/30 rounded-xl flex items-center justify-center mb-4">
+                            <svg class="w-5 h-5 text-royal-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z">
                                 </path>
                             </svg>
                         </div>
-                        <h4 class="text-white font-bold mb-2">Respaldo Tecnológico</h4>
-                        <p class="text-gray-500 text-sm">Operas bajo una plataforma segura con monitoreo GPS y perfiles
-                            de clientes verificados.</p>
+                        <h4 class="text-white font-bold text-base mb-2">Prestigio y Respaldo</h4>
+                        <p class="text-slate-300 text-sm leading-relaxed">Operas con clientes registrados, geolocalización activa y centro de asistencia SOS durante toda la misión.</p>
                     </div>
                 </div>
 
-                <button
-                    class="bg-white hover:bg-gray-200 text-obsidian-950 font-extrabold px-8 py-4 rounded-xl transition-all shadow-[0_0_20px_rgba(255,255,255,0.2)]">
-                    Comenzar proceso de validación
-                </button>
+                <a href="portal.html"
+                    class="inline-block bg-gradient-to-r from-sovereign-500 to-sovereign-600 hover:from-sovereign-400 hover:to-sovereign-500 text-obsidian-950 font-extrabold px-9 py-4 rounded-xl transition-all shadow-lg shadow-sovereign-500/20 text-base">
+                    Iniciar Proceso de Acreditación
+                </a>
             </div>
         </div>
     </section>
 
     <!-- FAQ (PREGUNTAS FRECUENTES) -->
-    <section id="faq" class="py-24 bg-[#0A1526] border-t border-white/5">
+    <section id="faq" class="py-24 bg-obsidian-950 border-t border-white/10">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16 reveal">
-                <h2 class="text-3xl font-extrabold text-white mb-4">Preguntas Frecuentes</h2>
-                <p class="text-gray-400">Resolvemos todas tus dudas sobre nuestro servicio de acompa&ntilde;amiento.</p>
+                <span class="text-sovereign-400 font-bold tracking-widest uppercase text-xs mb-3 block">Centro de Información al Cliente</span>
+                <h2 class="font-display text-3xl md:text-4xl font-extrabold text-white mb-4">Preguntas Frecuentes</h2>
+                <p class="text-slate-300 text-lg">Todo lo que necesitas saber sobre nuestra operativa, garantías y modelo de tarifas.</p>
             </div>
 
             <div class="space-y-4 reveal delay-100">
@@ -978,19 +1031,16 @@
                 <div class="glass-card rounded-2xl overflow-hidden faq-item">
                     <button
                         class="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none faq-btn">
-                        <span class="text-white font-semibold">&iquest;Qu&eacute; es MyHero y para qu&eacute;
-                            sirve?</span>
-                        <svg class="w-5 h-5 text-cyan-500 transform transition-transform duration-300 faq-icon rotate-180"
+                        <span class="text-white font-bold text-base">¿Qué es exactamente MyHero y para qué sirve?</span>
+                        <svg class="w-5 h-5 text-sovereign-400 transform transition-transform duration-300 faq-icon rotate-180 shrink-0 ml-4"
                             fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
                             </path>
                         </svg>
                     </button>
                     <div class="faq-content open">
-                        <div class="px-6 pb-5 text-gray-400 text-sm leading-relaxed">
-                            MyHero es una plataforma que te conecta con "H&eacute;roes" verificados para brindarte
-                            acompa&ntilde;amiento presencial, compa&ntilde;&iacute;a y seguridad preventiva en tu
-                            d&iacute;a a d&iacute;a (citas m&eacute;dicas, gestiones de valor, ocio nocturno, etc.).
+                        <div class="px-6 pb-5 text-slate-300 text-base leading-relaxed">
+                            MyHero es la plataforma líder que conecta a ciudadanos y familias con profesionales ("Heroes") rigurosamente verificados para brindar acompañamiento presencial, apoyo cívico y disuasión preventiva en su día a día (gestiones bancarias, acompañamiento de personas mayores al médico, retornos nocturnos a casa, etc.).
                         </div>
                     </div>
                 </div>
@@ -999,19 +1049,16 @@
                 <div class="glass-card rounded-2xl overflow-hidden faq-item">
                     <button
                         class="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none faq-btn">
-                        <span class="text-white font-semibold">&iquest;C&oacute;mo funciona el proceso de pago?</span>
-                        <svg class="w-5 h-5 text-cyan-500 transform transition-transform duration-300 faq-icon"
+                        <span class="text-white font-bold text-base">¿Cómo funciona el proceso de pago del servicio?</span>
+                        <svg class="w-5 h-5 text-sovereign-400 transform transition-transform duration-300 faq-icon shrink-0 ml-4"
                             fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
                             </path>
                         </svg>
                     </button>
                     <div class="faq-content">
-                        <div class="px-6 pb-5 text-gray-400 text-sm leading-relaxed">
-                            El uso de la aplicaci&oacute;n es gratuito para el ciudadano. El pago del servicio se
-                            realiza <strong>de forma directa al Hero</strong> (en efectivo o transferencia/Bizum) al
-                            momento del encuentro o finalizado el servicio. Cada Hero configura sus propias tarifas por
-                            hora.
+                        <div class="px-6 pb-5 text-slate-300 text-base leading-relaxed">
+                            El uso de la aplicación es gratuito para el ciudadano. El abono del servicio se realiza <strong>de forma directa al Hero</strong> (en efectivo o mediante Bizum) en el momento del encuentro o al finalizar el acompañamiento. Cada profesional muestra sus tarifas por hora con total transparencia antes de contratar.
                         </div>
                     </div>
                 </div>
@@ -1020,19 +1067,16 @@
                 <div class="glass-card rounded-2xl overflow-hidden faq-item">
                     <button
                         class="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none faq-btn">
-                        <span class="text-white font-semibold">&iquest;C&oacute;mo gana dinero la plataforma si yo no
-                            pago en la app?</span>
-                        <svg class="w-5 h-5 text-cyan-500 transform transition-transform duration-300 faq-icon"
+                        <span class="text-white font-bold text-base">¿Cómo se sostiene la plataforma si el cliente no paga en la web?</span>
+                        <svg class="w-5 h-5 text-sovereign-400 transform transition-transform duration-300 faq-icon shrink-0 ml-4"
                             fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
                             </path>
                         </svg>
                     </button>
                     <div class="faq-content">
-                        <div class="px-6 pb-5 text-gray-400 text-sm leading-relaxed">
-                            MyHero funciona con un modelo estilo inDrive: cobramos una comisi&oacute;n autom&aacute;tica
-                            del 20% &uacute;nicamente al Hero por cada misi&oacute;n que acepta. El Hero descuenta esta
-                            comisi&oacute;n de su billetera virtual prepago dentro de la app.
+                        <div class="px-6 pb-5 text-slate-300 text-base leading-relaxed">
+                            MyHero opera bajo un modelo de intermediación directa estilo inDrive: aplicamos una comisión automática del 20% únicamente al Hero por cada misión aceptada. El profesional descuenta esta comisión de su billetera virtual prepago dentro de la plataforma.
                         </div>
                     </div>
                 </div>
@@ -1041,18 +1085,16 @@
                 <div class="glass-card rounded-2xl overflow-hidden faq-item">
                     <button
                         class="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none faq-btn">
-                        <span class="text-white font-semibold">&iquest;Es seguro contratar a un Hero?</span>
-                        <svg class="w-5 h-5 text-cyan-500 transform transition-transform duration-300 faq-icon"
+                        <span class="text-white font-bold text-base">¿Qué garantías de seguridad tengo al contratar un Hero?</span>
+                        <svg class="w-5 h-5 text-sovereign-400 transform transition-transform duration-300 faq-icon shrink-0 ml-4"
                             fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
                             </path>
                         </svg>
                     </button>
                     <div class="faq-content">
-                        <div class="px-6 pb-5 text-gray-400 text-sm leading-relaxed">
-                            Absolutamente. La seguridad es nuestro pilar central. Todos los perfiles pasan por un filtro
-                            estricto de 4 fases que incluye: verificaci&oacute;n de identidad (DNI), revisi&oacute;n de
-                            antecedentes penales y una entrevista exhaustiva. Solo aprobamos al 12% de los solicitantes.
+                        <div class="px-6 pb-5 text-slate-300 text-base leading-relaxed">
+                            La seguridad es nuestro pilar innegociable. Todos los aspirantes deben superar un protocolo de 4 fases: validación de DNI/NIE, presentación del Certificado Oficial de Antecedentes Penales sin cargos, evaluación psicotécnica y entrevista personal. Solo admitimos al 12% de los solicitantes.
                         </div>
                     </div>
                 </div>
@@ -1061,19 +1103,16 @@
                 <div class="glass-card rounded-2xl overflow-hidden faq-item">
                     <button
                         class="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none faq-btn">
-                        <span class="text-white font-semibold">&iquest;Puedo pedir un Hero para otra persona?</span>
-                        <svg class="w-5 h-5 text-cyan-500 transform transition-transform duration-300 faq-icon"
+                        <span class="text-white font-bold text-base">¿Puedo solicitar un acompañante para mis padres mayores o familiares?</span>
+                        <svg class="w-5 h-5 text-sovereign-400 transform transition-transform duration-300 faq-icon shrink-0 ml-4"
                             fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
                             </path>
                         </svg>
                     </button>
                     <div class="faq-content">
-                        <div class="px-6 pb-5 text-gray-400 text-sm leading-relaxed">
-                            S&iacute;. En tu panel de ciudadano cuentas con la herramienta "Red Familiar". Puedes
-                            registrar los perfiles de tus padres, hijos o pareja (incluyendo observaciones
-                            m&eacute;dicas) y solicitar misiones de acompa&ntilde;amiento espec&iacute;ficamente para
-                            ellos.
+                        <div class="px-6 pb-5 text-slate-300 text-base leading-relaxed">
+                            Sí. En tu panel de cliente dispones del módulo <strong>"Red Familiar"</strong>. Puedes dar de alta a tus padres, hijos o pareja (incluyendo indicaciones médicas o de movilidad) y coordinar servicios de acompañamiento para ellos mientras supervisas todo desde tu propio teléfono.
                         </div>
                     </div>
                 </div>
@@ -1082,20 +1121,16 @@
                 <div class="glass-card rounded-2xl overflow-hidden faq-item">
                     <button
                         class="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none faq-btn">
-                        <span class="text-white font-semibold">&iquest;Cu&aacute;les son los niveles de los
-                            H&eacute;roes?</span>
-                        <svg class="w-5 h-5 text-cyan-500 transform transition-transform duration-300 faq-icon"
+                        <span class="text-white font-bold text-base">¿En qué se diferencian los 3 niveles de Heroes?</span>
+                        <svg class="w-5 h-5 text-sovereign-400 transform transition-transform duration-300 faq-icon shrink-0 ml-4"
                             fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
                             </path>
                         </svg>
                     </button>
                     <div class="faq-content">
-                        <div class="px-6 pb-5 text-gray-400 text-sm leading-relaxed">
-                            Existen 3 niveles: <strong>Nivel 1</strong> (Compa&ntilde;&iacute;a general y
-                            emp&aacute;tica), <strong>Nivel 2</strong> (Presencia Asistencial con deportistas o perfiles
-                            robustos para disuasi&oacute;n), y <strong>Nivel 3</strong> (Especialistas con
-                            certificaciones en crisis, seguridad o primeros auxilios).
+                        <div class="px-6 pb-5 text-slate-300 text-base leading-relaxed">
+                            <strong>Nivel 1 (Acompañamiento Cívico):</strong> Perfiles empáticos para apoyo a mayores, médicos y recados. <strong>Nivel 2 (Presencia Disuasoria):</strong> Deportistas y perfiles de gran complexión física para disuasión nocturna o cajeros. <strong>Nivel 3 (Especialistas):</strong> Profesionales con titulaciones en artes marciales, manejo de crisis o primeros auxilios.
                         </div>
                     </div>
                 </div>
@@ -1104,19 +1139,16 @@
                 <div class="glass-card rounded-2xl overflow-hidden faq-item">
                     <button
                         class="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none faq-btn">
-                        <span class="text-white font-semibold">&iquest;C&oacute;mo s&eacute; que mi familiar est&aacute;
-                            a salvo durante la misi&oacute;n?</span>
-                        <svg class="w-5 h-5 text-cyan-500 transform transition-transform duration-300 faq-icon"
+                        <span class="text-white font-bold text-base">¿Cómo puedo seguir el trayecto en tiempo real?</span>
+                        <svg class="w-5 h-5 text-sovereign-400 transform transition-transform duration-300 faq-icon shrink-0 ml-4"
                             fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
                             </path>
                         </svg>
                     </button>
                     <div class="faq-content">
-                        <div class="px-6 pb-5 text-gray-400 text-sm leading-relaxed">
-                            Una vez iniciada la misi&oacute;n, la plataforma activa un sistema integrado de
-                            <strong>seguimiento por GPS en tiempo real</strong>. Esto te permite monitorear la ruta
-                            completa desde tu dispositivo hasta que la misi&oacute;n finalice con &eacute;xito.
+                        <div class="px-6 pb-5 text-slate-300 text-base leading-relaxed">
+                            Al comenzar el acompañamiento, el sistema activa automáticamente la <strong>trazabilidad por GPS en tiempo real</strong>. Tanto el usuario como los miembros autorizados de su Red Familiar pueden visualizar la ruta exacta hasta llegar al destino final.
                         </div>
                     </div>
                 </div>
@@ -1125,19 +1157,16 @@
                 <div class="glass-card rounded-2xl overflow-hidden faq-item">
                     <button
                         class="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none faq-btn">
-                        <span class="text-white font-semibold">&iquest;Hay alg&uacute;n bot&oacute;n de p&aacute;nico o
-                            emergencia?</span>
-                        <svg class="w-5 h-5 text-cyan-500 transform transition-transform duration-300 faq-icon"
+                        <span class="text-white font-bold text-base">¿Existe un protocolo o botón de emergencia durante el servicio?</span>
+                        <svg class="w-5 h-5 text-sovereign-400 transform transition-transform duration-300 faq-icon shrink-0 ml-4"
                             fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
                             </path>
                         </svg>
                     </button>
                     <div class="faq-content">
-                        <div class="px-6 pb-5 text-gray-400 text-sm leading-relaxed">
-                            S&iacute;. Tanto el ciudadano como el Hero cuentan con un bot&oacute;n de "Centro de
-                            Seguridad SOS" en sus respectivos paneles. Esto permite alertar de inmediato a las
-                            autoridades o enviar avisos en caso de cualquier eventualidad durante el trayecto.
+                        <div class="px-6 pb-5 text-slate-300 text-base leading-relaxed">
+                            Sí. Tanto el ciudadano como el Hero disponen del botón permanente <strong>"Centro de Seguridad SOS"</strong> en pantalla, que permite contactar de inmediato con el 112 / Fuerzas y Cuerpos de Seguridad y emitir una alerta geolocalizada a los contactos de confianza.
                         </div>
                     </div>
                 </div>
@@ -1146,19 +1175,16 @@
                 <div class="glass-card rounded-2xl overflow-hidden faq-item">
                     <button
                         class="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none faq-btn">
-                        <span class="text-white font-semibold">&iquest;Qu&eacute; tipos de misiones puedo
-                            solicitar?</span>
-                        <svg class="w-5 h-5 text-cyan-500 transform transition-transform duration-300 faq-icon"
+                        <span class="text-white font-bold text-base">¿Qué modalidades de acompañamiento puedo solicitar?</span>
+                        <svg class="w-5 h-5 text-sovereign-400 transform transition-transform duration-300 faq-icon shrink-0 ml-4"
                             fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
                             </path>
                         </svg>
                     </button>
                     <div class="faq-content">
-                        <div class="px-6 pb-5 text-gray-400 text-sm leading-relaxed">
-                            Puedes filtrar tu solicitud en 5 categor&iacute;as principales: Acompa&ntilde;amiento Simple
-                            (paseos, citas m&eacute;dicas), Ocio y Nocturno (retorno seguro a casa), Gesti&oacute;n de
-                            Valor (ir al banco), Asistencia/Recados, y Otras misiones espec&iacute;ficas.
+                        <div class="px-6 pb-5 text-slate-300 text-base leading-relaxed">
+                            Ofrecemos cobertura en 5 áreas principales: <strong>Gestiones de Valor</strong> (bancos, cajeros, notarías), <strong>Retorno Nocturno</strong> (salidas de trabajo, cenas, aparcamientos), <strong>Asistencia a Mayores</strong> (citas médicas, paseos), <strong>Traslados Urbanos A-B</strong> y misiones personalizadas por horas.
                         </div>
                     </div>
                 </div>
@@ -1167,20 +1193,16 @@
                 <div class="glass-card rounded-2xl overflow-hidden faq-item">
                     <button
                         class="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none faq-btn">
-                        <span class="text-white font-semibold">Soy Hero, &iquest;c&oacute;mo funciona mi billetera y el
-                            cobro?</span>
-                        <svg class="w-5 h-5 text-cyan-500 transform transition-transform duration-300 faq-icon"
+                        <span class="text-white font-bold text-base">Soy Hero acreditado, ¿cómo funciona mi billetera de saldo?</span>
+                        <svg class="w-5 h-5 text-sovereign-400 transform transition-transform duration-300 faq-icon shrink-0 ml-4"
                             fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
                             </path>
                         </svg>
                     </button>
                     <div class="faq-content">
-                        <div class="px-6 pb-5 text-gray-400 text-sm leading-relaxed">
-                            En tu panel tendr&aacute;s una secci&oacute;n "Saldo / Recargas". Debes ingresar un
-                            m&iacute;nimo de 10 Euros a tu billetera virtual (v&iacute;a tarjeta o Bizum). Al aceptar
-                            una misi&oacute;n, cobramos nuestra comisi&oacute;n del 20% rest&aacute;ndola de este saldo.
-                            T&uacute; cobras el 100% en efectivo directamente del ciudadano.
+                        <div class="px-6 pb-5 text-slate-300 text-base leading-relaxed">
+                            En tu panel profesional dispones del módulo "Saldo / Recargas". Mantienes un saldo prepago (recargable desde 10 € por tarjeta o Bizum). Al aceptar un servicio, la plataforma descuenta automáticamente el 20% de comisión de dicho saldo, y tú cobras el 100% de la tarifa directamente del cliente.
                         </div>
                     </div>
                 </div>
@@ -1188,40 +1210,58 @@
         </div>
     </section>
 
-    <!-- FOOTER -->
-    <footer class="bg-obsidian-950 py-12 border-t border-obsidian-800">
+    <!-- FOOTER CORPORATIVO -->
+    <footer class="bg-[#040810] py-16 border-t border-white/10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8 reveal">
+            <div class="grid grid-cols-1 md:grid-cols-5 gap-10 mb-12 reveal">
                 <div class="col-span-1 md:col-span-2">
-                    <div class="flex items-center gap-2 mb-4">
-                        <img src="./assets/img/logo.png" alt="MyHero Logo" class="h-10 w-auto">
+                    <div class="flex items-center gap-3 mb-4">
+                        <img src="./assets/img/logo.png" alt="MyHero Logo" class="h-11 w-auto">
+                        <span class="text-sm font-extrabold tracking-widest uppercase text-sovereign-400">MyHero España</span>
                     </div>
-                    <p class="text-sm text-gray-500 max-w-sm">Conectamos a personas con perfiles validados para brindar
-                        compañía estratégica y tranquilidad en cualquier gestión o traslado.</p>
+                    <p class="text-sm text-slate-400 max-w-sm leading-relaxed mb-6">
+                        Infraestructura tecnológica de acompañamiento presencial y seguridad preventiva ciudadana. Perfiles auditados, trazabilidad GPS y tranquilidad para toda la familia.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="text-[11px] font-semibold bg-obsidian-900 border border-white/10 text-slate-300 px-3 py-1 rounded-lg">Cumplimiento RGPD UE</span>
+                        <span class="text-[11px] font-semibold bg-obsidian-900 border border-white/10 text-slate-300 px-3 py-1 rounded-lg">SSL 256-Bit</span>
+                        <span class="text-[11px] font-semibold bg-obsidian-900 border border-white/10 text-slate-300 px-3 py-1 rounded-lg">Filtro Penal Certificado</span>
+                    </div>
                 </div>
                 <div>
-                    <h4 class="text-white font-bold mb-4 text-sm">Plataforma</h4>
-                    <ul class="space-y-2 text-sm text-gray-500">
-                        <li><a href="#" class="hover:text-cyan-400 transition">Solicitar Compañía</a></li>
-                        <li><a href="#niveles" class="hover:text-cyan-400 transition">Niveles de Servicio</a></li>
-                        <li><a href="#unete" class="hover:text-cyan-400 transition">Trabajar en MyHero</a></li>
+                    <h4 class="text-white font-bold mb-4 text-sm uppercase tracking-wider">Servicios</h4>
+                    <ul class="space-y-2.5 text-sm text-slate-400">
+                        <li><a href="portal.html" class="hover:text-sovereign-400 transition">Solicitar Acompañante</a></li>
+                        <li><a href="#niveles" class="hover:text-sovereign-400 transition">Niveles de Protección</a></li>
+                        <li><a href="#como-funciona" class="hover:text-sovereign-400 transition">Sistema Red Familiar™</a></li>
+                        <li><a href="#unete" class="hover:text-sovereign-400 transition">Acreditación de Heroes</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4 class="text-white font-bold mb-4 text-sm">Legal</h4>
-                    <ul class="space-y-2 text-sm text-gray-500">
-                        <li><a href="#" class="hover:text-white transition">Términos de Uso</a></li>
-                        <li><a href="#" class="hover:text-white transition">Privacidad y Rastreo GPS</a></li>
+                    <h4 class="text-white font-bold mb-4 text-sm uppercase tracking-wider">Compañía</h4>
+                    <ul class="space-y-2.5 text-sm text-slate-400">
+                        <li><a href="#contexto" class="hover:text-sovereign-400 transition">Estándar de Seguridad</a></li>
+                        <li><a href="#testimonios" class="hover:text-sovereign-400 transition">Opiniones Verificadas</a></li>
+                        <li><a href="#faq" class="hover:text-sovereign-400 transition">Preguntas Frecuentes</a></li>
+                        <li><a href="portal.html" class="hover:text-sovereign-400 transition">Acceso Área Privada</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold mb-4 text-sm uppercase tracking-wider">Marco Legal</h4>
+                    <ul class="space-y-2.5 text-sm text-slate-400">
+                        <li><a href="#" class="hover:text-white transition">Condiciones Generales</a></li>
+                        <li><a href="#" class="hover:text-white transition">Política de Privacidad y GPS</a></li>
+                        <li><a href="#" class="hover:text-white transition">Protocolo de Admisión</a></li>
                         <li><a href="#" class="hover:text-white transition">Aviso Legal</a></li>
                     </ul>
                 </div>
             </div>
             <div
-                class="pt-8 border-t border-obsidian-800 flex justify-between items-center text-xs text-gray-600 reveal delay-100">
-                <p>&copy; 2026 MyHero Tech. Todos los derechos reservados.</p>
-                <div class="flex items-center gap-2">
-                    <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
-                    Sistemas operativos en Alicante
+                class="pt-8 border-t border-white/10 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-slate-400 reveal delay-100">
+                <p>&copy; 2026 MyHero Technologies España S.L. Todos los derechos reservados.</p>
+                <div class="flex items-center gap-2.5 bg-obsidian-900 border border-white/10 px-3.5 py-1.5 rounded-full">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                    <span class="text-slate-300 font-medium">Central Operativa Activa · España</span>
                 </div>
             </div>
         </div>

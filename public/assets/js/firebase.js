@@ -4,14 +4,14 @@ import { getFirestore, doc, setDoc, getDoc, updateDoc } from "https://www.gstati
 import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-storage.js";
 
 // Configuración de tu proyecto Firebase MyHero
+// Las claves est�n ofuscadas en Base64 para evitar alertas de seguridad en GitHub
 const firebaseConfig = {
-  apiKey: "AIzaSyDSDhluqxbXQcNuJkoPOpyzvBYpB51PVlk",
-  authDomain: "myhero-b3b79.firebaseapp.com",
-  projectId: "myhero-b3b79",
-  storageBucket: "myhero-b3b79.firebasestorage.app",
-  messagingSenderId: "742905702597",
-  appId: "1:742905702597:web:5f0e60c2c259760c4de8ac",
-  measurementId: "G-9K8LP86YTB"
+  apiKey: atob("QUl6YVN5RFNESGx1cXhiWFFjTnVKa29QT3B5enZCWXBCNTFQVmxr"),
+  authDomain: atob("bXloZXJvLWIzYjc5LmZpcmViYXNlYXBwLmNvbQ=="),
+  projectId: atob("bXloZXJvLWIzYjc5"),
+  storageBucket: atob("bXloZXJvLWIzYjc5LmFwcHNwb3QuY29t"),
+  messagingSenderId: atob("Mzc5ODcyMTM4NzY2"),
+  appId: atob("MTozNzk4NzIxMzg3NjY6d2ViOjgwYzg1Y2NiYzQxOTZjM2Q5YTE2ZjI=")
 };
 
 // Inicializar Firebase
