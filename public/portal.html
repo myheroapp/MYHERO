@@ -2,13 +2,13 @@
 <html lang="es">
 <head>
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9K8LP86YTB"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4E61QEX942"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
 
-      gtag('config', 'G-9K8LP86YTB');
+      gtag('config', 'G-4E61QEX942');
     </script>
 
     <meta charset="UTF-8">
@@ -132,10 +132,29 @@
         </div>
     </div>
 
-    <!-- Script de Autenticación Híbrida (Firebase + Respaldo Local Instantáneo) -->
+    <!-- Script de Autenticación Firebase Oficial Heroly -->
     <script type="module">
+        import { auth, googleProvider, signInWithPopup, createUserWithEmailAndPassword, signInWithEmailAndPassword, db, doc, getDoc, setDoc } from './assets/js/firebase.js';
+
+        // Asegurar dominio autorizado 'localhost' en caso de abrir desde 127.0.0.1
+        if (window.location.hostname === '127.0.0.1') {
+            window.location.replace(window.location.href.replace('127.0.0.1', 'localhost'));
+        }
+
         let currentMode = 'login';
         let selectedRole = 'ciudadano';
+
+        const errorBox = document.getElementById('errorMsg');
+        function showMessage(msg, isSuccess = false) {
+            errorBox.textContent = msg;
+            errorBox.className = isSuccess
+                ? 'mt-4 text-emerald-800 text-xs font-bold text-center bg-emerald-50 py-3 px-3 rounded-xl border border-emerald-200'
+                : 'mt-4 text-red-700 text-xs font-bold text-center bg-red-50 py-3 px-3 rounded-xl border border-red-200';
+            errorBox.classList.remove('hidden');
+        }
+        function hideMessage() {
+            errorBox.classList.add('hidden');
+        }
 
         window.selectRole = function(role) {
             selectedRole = role;
@@ -152,6 +171,7 @@
 
         window.switchAuthTab = function(mode) {
             currentMode = mode;
+            hideMessage();
             const tabLogin = document.getElementById('tabLogin');
             const tabRegister = document.getElementById('tabRegister');
             const btnSubmit = document.getElementById('btnSubmit');
@@ -170,88 +190,149 @@
             }
         };
 
-        function enterLocalSession(email, customName) {
-            const cleanName = customName || (email ? email.split('@')[0] : (selectedRole === 'hero' ? 'Roberto S.' : 'Laura G.'));
-            const formattedName = cleanName.charAt(0).toUpperCase() + cleanName.slice(1);
-            const sessionUser = {
-                uid: 'heroly-' + Date.now(),
-                email: email || 'usuario@heroly.es',
-                name: formattedName,
-                role: selectedRole,
-                city: 'Alicante',
-                phone: '600 123 456'
-            };
-            localStorage.setItem('heroly_session', JSON.stringify(sessionUser));
-            if (selectedRole === 'hero') {
-                window.location.href = 'dashboard-hero.html';
-            } else {
-                window.location.href = 'dashboard-ciudadano.html';
-            }
-        }
+        async function syncUserToFirestoreAndRedirect(firebaseUser, customName) {
+            let finalRole = selectedRole;
+            let finalName = customName || firebaseUser.displayName || (firebaseUser.email ? firebaseUser.email.split('@')[0] : 'Usuario Heroly');
+            finalName = finalName.charAt(0).toUpperCase() + finalName.slice(1);
 
-        // Botón Google
-        document.getElementById('btnGoogle').addEventListener('click', async () => {
+            // Sincronizar con Cloud Firestore (aislado para que reglas de permisos nunca bloqueen el acceso)
             try {
-                const { auth, googleProvider, signInWithPopup, db, doc, getDoc, setDoc } = await import('./assets/js/firebase.js');
-                const result = await signInWithPopup(auth, googleProvider);
-                const user = result.user;
-                const userDocRef = doc(db, 'users', user.uid);
+                const userDocRef = doc(db, 'users', firebaseUser.uid);
                 const userDoc = await getDoc(userDocRef);
-                let finalRole = selectedRole;
-                if (userDoc.exists() && userDoc.data().role) {
-                    finalRole = userDoc.data().role;
+                if (userDoc.exists()) {
+                    const data = userDoc.data();
+                    if (data.name && !customName) finalName = data.name;
+                    await setDoc(userDocRef, {
+                        uid: firebaseUser.uid,
+                        email: firebaseUser.email,
+                        name: finalName,
+                        role: selectedRole,
+                        lastLoginAt: new Date().toISOString()
+                    }, { merge: true });
                 } else {
                     await setDoc(userDocRef, {
-                        uid: user.uid,
-                        email: user.email,
-                        name: user.displayName || 'Usuario Heroly',
+                        uid: firebaseUser.uid,
+                        email: firebaseUser.email,
+                        name: finalName,
                         role: selectedRole,
+                        city: 'Alicante',
                         createdAt: new Date().toISOString()
                     });
                 }
-                localStorage.setItem('heroly_session', JSON.stringify({
-                    uid: user.uid,
-                    email: user.email,
-                    name: user.displayName || 'Usuario Heroly',
-                    role: finalRole
-                }));
-                window.location.href = finalRole === 'hero' ? 'dashboard-hero.html' : 'dashboard-ciudadano.html';
+            } catch (fsErr) {
+                console.warn('Aviso Firestore:', fsErr.message);
+            }
+
+            localStorage.setItem('heroly_session', JSON.stringify({
+                uid: firebaseUser.uid,
+                email: firebaseUser.email,
+                name: finalName,
+                photoURL: firebaseUser.photoURL || '',
+                role: finalRole,
+                city: 'Alicante',
+                phone: '600 123 456'
+            }));
+
+            window.location.href = finalRole === 'hero' ? 'dashboard-hero.html' : 'dashboard-ciudadano.html';
+        }
+
+        // Botón Oficial de Google (Abre popup real de Google OAuth)
+        const btnGoogle = document.getElementById('btnGoogle');
+        const originalGoogleHtml = btnGoogle.innerHTML;
+
+        btnGoogle.addEventListener('click', async () => {
+            hideMessage();
+            btnGoogle.disabled = true;
+            btnGoogle.innerHTML = '<span>Conectando con Google...</span>';
+            try {
+                const result = await signInWithPopup(auth, googleProvider);
+                showMessage('¡Cuenta de Google verificada! Entrando a tu panel...', true);
+                await syncUserToFirestoreAndRedirect(result.user);
             } catch (error) {
-                // Si la clave de Firebase aún no se ha actualizado, iniciar sesión instantáneamente en modo local Heroly
-                enterLocalSession(selectedRole === 'hero' ? 'roberto.heroe@gmail.com' : 'laura.familia@gmail.com', selectedRole === 'hero' ? 'Roberto S.' : 'Laura G.');
+                btnGoogle.disabled = false;
+                btnGoogle.innerHTML = originalGoogleHtml;
+                if (error.code === 'auth/popup-closed-by-user' || error.code === 'auth/cancelled-popup-request') {
+                    showMessage('Has cerrado la ventana emergente de Google antes de terminar. Pulsa de nuevo para entrar.');
+                } else if (error.code === 'auth/popup-blocked') {
+                    showMessage('Tu navegador bloqueó la ventana emergente de Google. Permite las ventanas emergentes en la barra de direcciones.');
+                } else if (error.code === 'auth/operation-not-allowed') {
+                    showMessage('Falta activar el botón "Google" en tu consola Firebase (Authentication ➔ Sign-in method ➔ Google ➔ Habilitar).');
+                } else {
+                    showMessage('Error de acceso con Google (' + (error.code || error.message) + ').');
+                }
             }
         });
 
-        // Formulario Email y Contraseña
+        // Formulario Email y Contraseña (Firebase Auth + Auto-migración en el nuevo proyecto)
         document.getElementById('authForm').addEventListener('submit', async (e) => {
             e.preventDefault();
+            hideMessage();
             const email = document.getElementById('emailInput').value.trim();
             const password = document.getElementById('passwordInput').value;
             const customName = document.getElementById('nameInput').value.trim();
+            const btnSubmit = document.getElementById('btnSubmit');
+
+            if (password.length < 6) {
+                showMessage('La contraseña debe tener al menos 6 caracteres.');
+                return;
+            }
+
+            btnSubmit.disabled = true;
+            const prevText = btnSubmit.textContent;
+            btnSubmit.textContent = 'Verificando credenciales...';
 
             try {
-                const { auth, createUserWithEmailAndPassword, signInWithEmailAndPassword, db, doc, getDoc, setDoc } = await import('./assets/js/firebase.js');
                 if (currentMode === 'register') {
-                    const cred = await createUserWithEmailAndPassword(auth, email, password);
-                    await setDoc(doc(db, 'users', cred.user.uid), {
-                        uid: cred.user.uid,
-                        email: email,
-                        name: customName || email.split('@')[0],
-                        role: selectedRole,
-                        createdAt: new Date().toISOString()
-                    });
-                    enterLocalSession(email, customName);
-                } else {
-                    const cred = await signInWithEmailAndPassword(auth, email, password);
-                    const snap = await getDoc(doc(db, 'users', cred.user.uid));
-                    if (snap.exists() && snap.data().role) {
-                        selectedRole = snap.data().role;
+                    try {
+                        const cred = await createUserWithEmailAndPassword(auth, email, password);
+                        showMessage('¡Cuenta creada con éxito! Entrando...', true);
+                        await syncUserToFirestoreAndRedirect(cred.user, customName);
+                    } catch (regErr) {
+                        if (regErr.code === 'auth/email-already-in-use') {
+                            const cred = await signInWithEmailAndPassword(auth, email, password);
+                            await syncUserToFirestoreAndRedirect(cred.user, customName);
+                        } else {
+                            throw regErr;
+                        }
                     }
-                    enterLocalSession(email, snap.exists() ? snap.data().name : customName);
+                } else {
+                    try {
+                        const cred = await signInWithEmailAndPassword(auth, email, password);
+                        showMessage('¡Sesión iniciada! Entrando a tu panel...', true);
+                        await syncUserToFirestoreAndRedirect(cred.user, customName);
+                    } catch (loginErr) {
+                        // Si el usuario era del proyecto anterior y aún no existe en esta nueva base de datos Firebase, lo damos de alta automáticamente
+                        if (loginErr.code === 'auth/invalid-credential' || loginErr.code === 'auth/user-not-found') {
+                            try {
+                                const newCred = await createUserWithEmailAndPassword(auth, email, password);
+                                showMessage('¡Usuario sincronizado en el nuevo servidor Heroly! Entrando...', true);
+                                await syncUserToFirestoreAndRedirect(newCred.user, customName);
+                                return;
+                            } catch (createErr) {
+                                if (createErr.code === 'auth/email-already-in-use') {
+                                    showMessage('La contraseña introducida es incorrecta para este correo electrónico.');
+                                    btnSubmit.disabled = false;
+                                    btnSubmit.textContent = prevText;
+                                    return;
+                                }
+                                throw createErr;
+                            }
+                        }
+                        throw loginErr;
+                    }
                 }
             } catch (error) {
-                // Respaldo inmediato para que puedas entrar con tu usuario y clave sin bloqueos mientras creas el nuevo proyecto de Firebase
-                enterLocalSession(email, customName);
+                btnSubmit.disabled = false;
+                btnSubmit.textContent = prevText;
+                if (error.code === 'auth/operation-not-allowed') {
+                    showMessage('Falta habilitar "Correo electrónico/contraseña" en Firebase Console (Authentication ➔ Sign-in method).');
+                } else if (error.code === 'auth/invalid-email') {
+                    showMessage('El formato del correo electrónico no es válido.');
+                } else if (error.code === 'auth/wrong-password' || error.code === 'auth/invalid-credential') {
+                    showMessage('Correo o contraseña incorrectos.');
+                } else {
+                    showMessage('No se pudo iniciar sesión (' + (error.code || error.message) + ').');
+                }
             }
         });
     </script>

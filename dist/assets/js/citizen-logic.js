@@ -472,8 +472,9 @@ function bindCitizenEvents() {
             const target = document.getElementById('pubTarget').value;
 
             const customList = JSON.parse(localStorage.getItem('heroly_custom_missions') || '[]');
-            customList.unshift({
+            const newMissionDoc = {
                 id: 'mision-' + Date.now(),
+                uid: rawSession.uid || 'local-user',
                 name: rawSession.name || 'Laura G.',
                 age: 42,
                 city: city,
@@ -494,9 +495,14 @@ function bindCitizenEvents() {
                 missions: ['Bancos y Cajeros', 'Mayores y Médicos'],
                 experienceCards: [{ title: target, subtitle: `${rate} €/hora en ${city}`, icon: 'elderly' }],
                 capabilities: ['Pago inmediato por Bizum o efectivo', 'Seguimiento GPS activo'],
-                references: []
-            });
+                references: [],
+                createdAt: new Date().toISOString()
+            };
+            customList.unshift(newMissionDoc);
             localStorage.setItem('heroly_custom_missions', JSON.stringify(customList));
+            import('./firebase.js').then(({ db, doc, setDoc }) => {
+                setDoc(doc(db, 'missions', newMissionDoc.id), newMissionDoc).catch(() => {});
+            }).catch(() => {});
             pubForm.reset();
             renderPublishedAnnouncements();
             alert('¡Tu anuncio ha sido publicado con éxito! Ya es visible para los Héroes de tu ciudad.');
@@ -567,13 +573,20 @@ function bindCitizenEvents() {
     if (profForm) {
         profForm.addEventListener('submit', (e) => {
             e.preventDefault();
+            const prev = JSON.parse(localStorage.getItem('heroly_session') || '{}');
             const user = {
+                ...prev,
                 name: document.getElementById('citNameInput').value.trim(),
                 phone: document.getElementById('citPhoneInput').value.trim(),
                 city: document.getElementById('citLocationInput').value.trim(),
                 role: 'ciudadano'
             };
             localStorage.setItem('heroly_session', JSON.stringify(user));
+            if (user.uid) {
+                import('./firebase.js').then(({ db, doc, setDoc }) => {
+                    setDoc(doc(db, 'users', user.uid), user, { merge: true }).catch(() => {});
+                }).catch(() => {});
+            }
             initSessionProfile();
             alert('Perfil actualizado correctamente en Heroly.');
         });
@@ -582,8 +595,12 @@ function bindCitizenEvents() {
     // Logout
     const btnLogout = document.getElementById('btnLogout');
     if (btnLogout) {
-        btnLogout.addEventListener('click', (e) => {
+        btnLogout.addEventListener('click', async (e) => {
             e.preventDefault();
+            try {
+                const { auth, signOut } = await import('./firebase.js');
+                await signOut(auth);
+            } catch (_) {}
             localStorage.removeItem('heroly_session');
             window.location.href = 'index.html';
         });

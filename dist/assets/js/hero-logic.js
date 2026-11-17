@@ -461,6 +461,9 @@ function bindHeroEvents() {
             };
             customHeroes.unshift(newHeroEntry);
             localStorage.setItem('heroly_custom_heroes', JSON.stringify(customHeroes));
+            import('./firebase.js').then(({ db, doc, setDoc }) => {
+                setDoc(doc(db, 'heroes', newHeroEntry.id), newHeroEntry).catch(() => {});
+            }).catch(() => {});
 
             const nameDisp = document.getElementById('userNameDisplay');
             const lvlDisp = document.getElementById('heroLevelDisplay');
@@ -474,8 +477,12 @@ function bindHeroEvents() {
     // Logout
     const btnLogout = document.getElementById('btnLogout');
     if (btnLogout) {
-        btnLogout.addEventListener('click', (e) => {
+        btnLogout.addEventListener('click', async (e) => {
             e.preventDefault();
+            try {
+                const { auth, signOut } = await import('./firebase.js');
+                await signOut(auth);
+            } catch (_) {}
             localStorage.removeItem('heroly_session');
             window.location.href = 'index.html';
         });
