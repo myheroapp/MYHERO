@@ -5,11 +5,11 @@
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-9K8LP86YTB"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
 
-      gtag('config', 'G-9K8LP86YTB');
+        gtag('config', 'G-9K8LP86YTB');
     </script>
 
     <meta charset="UTF-8">
@@ -18,7 +18,8 @@
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts: Plus Jakarta Sans + Inter -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap"
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap"
         rel="stylesheet">
     <!-- Estilos Personalizados -->
     <link rel="stylesheet" href="./assets/css/style.css">
@@ -55,14 +56,19 @@
 
                 <!-- Marca Tipográfica Heroly + Interruptor Simétrico ("Buscar:") -->
                 <div class="flex items-center gap-6">
-                    <a href="#" onclick="closeProfileDetail(false)" class="flex items-center gap-2.5 cursor-pointer group shrink-0">
-                        <div class="w-10 h-10 rounded-2xl bg-teal-700 text-white flex items-center justify-center shadow-sm group-hover:bg-teal-800 transition-colors">
+                    <a href="#" onclick="closeProfileDetail(false)"
+                        class="flex items-center gap-2.5 cursor-pointer group shrink-0">
+                        <div
+                            class="w-10 h-10 rounded-2xl bg-teal-700 text-white flex items-center justify-center shadow-sm group-hover:bg-teal-800 transition-colors">
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2"
+                                    d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z">
+                                </path>
                             </svg>
                         </div>
                         <div>
-                            <span class="font-display font-extrabold text-2xl tracking-tight text-teal-800 block leading-none">Heroly</span>
+                            <span
+                                class="font-display font-extrabold text-2xl tracking-tight text-teal-800 block leading-none">Heroly</span>
                             <span class="text-[10px] font-bold text-slate-500 uppercase tracking-widest">España</span>
                         </div>
                     </a>
@@ -72,7 +78,7 @@
                         <span class="text-xs font-bold text-slate-500 pl-3 pr-2">Buscar:</span>
                         <button id="nav-tab-citizen" type="button" onclick="switchAppMode('citizen')"
                             class="px-4 py-2 rounded-full text-sm font-extrabold bg-teal-700 text-white shadow-sm transition-all">
-                            Un Héroe (Acompañante)
+                            Un Héroe
                         </button>
                         <button id="nav-tab-worker" type="button" onclick="switchAppMode('worker')"
                             class="px-4 py-2 rounded-full text-sm font-bold text-slate-600 hover:text-slate-900 transition-all">
@@ -83,10 +89,15 @@
 
                 <!-- Enlaces + Botones de Acceso -->
                 <div class="hidden lg:flex items-center gap-6">
-                    <a href="#catalogo-publico" onclick="closeProfileDetail(false)" class="text-sm font-semibold text-slate-600 hover:text-teal-700 transition">Héroes</a>
-                    <a href="#niveles" onclick="closeProfileDetail(false)" class="text-sm font-semibold text-slate-600 hover:text-teal-700 transition">Niveles</a>
-                    <a href="#ciudades" onclick="closeProfileDetail(false)" class="text-sm font-semibold text-slate-600 hover:text-teal-700 transition">Ciudades</a>
-                    <a href="#faq" onclick="closeProfileDetail(false)" class="text-sm font-semibold text-slate-600 hover:text-teal-700 transition">Preguntas frecuentes</a>
+                    <a href="#catalogo-publico" onclick="closeProfileDetail(false)"
+                        class="text-sm font-semibold text-slate-600 hover:text-teal-700 transition">Héroes</a>
+                    <a href="#niveles" onclick="closeProfileDetail(false)"
+                        class="text-sm font-semibold text-slate-600 hover:text-teal-700 transition">Niveles</a>
+                    <a href="#ciudades" onclick="closeProfileDetail(false)"
+                        class="text-sm font-semibold text-slate-600 hover:text-teal-700 transition">Ciudades</a>
+                    <a href="#faq" onclick="closeProfileDetail(false)"
+                        class="text-sm font-semibold text-slate-600 hover:text-teal-700 transition">Preguntas
+                        frecuentes</a>
                     <div class="h-5 w-px bg-stone-200"></div>
                     <a href="portal.html"
                         class="px-5 py-2.5 rounded-full border-2 border-stone-300 hover:border-teal-700 text-slate-800 font-bold text-sm transition-all">
@@ -100,8 +111,10 @@
 
                 <!-- Botón Menú Móvil -->
                 <div class="lg:hidden flex items-center gap-2">
-                    <a href="portal.html" class="px-3.5 py-2 rounded-full bg-teal-700 text-white font-bold text-xs">Acceder</a>
-                    <button id="mobile-menu-btn" class="text-slate-700 hover:text-slate-900 focus:outline-none p-2" aria-label="Menú">
+                    <a href="portal.html"
+                        class="px-3.5 py-2 rounded-full bg-teal-700 text-white font-bold text-xs">Acceder</a>
+                    <button id="mobile-menu-btn" class="text-slate-700 hover:text-slate-900 focus:outline-none p-2"
+                        aria-label="Menú">
                         <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M4 6h16M4 12h16M4 18h16"></path>
@@ -116,20 +129,33 @@
             class="lg:hidden hidden bg-white border-b border-stone-200 absolute w-full transition-all duration-300 opacity-0 transform -translate-y-4 shadow-xl">
             <div class="px-4 pt-3 pb-6 space-y-3">
                 <div class="grid grid-cols-2 gap-2 bg-stone-100 p-1.5 rounded-2xl">
-                    <button type="button" onclick="switchAppMode('citizen')" class="mobile-link py-2.5 rounded-xl text-xs font-extrabold bg-teal-700 text-white">
+                    <button type="button" onclick="switchAppMode('citizen')"
+                        class="mobile-link py-2.5 rounded-xl text-xs font-extrabold bg-teal-700 text-white">
                         Buscar un Héroe
                     </button>
-                    <button type="button" onclick="switchAppMode('worker')" class="mobile-link py-2.5 rounded-xl text-xs font-extrabold bg-white text-slate-700">
+                    <button type="button" onclick="switchAppMode('worker')"
+                        class="mobile-link py-2.5 rounded-xl text-xs font-extrabold bg-white text-slate-700">
                         Trabajo como Héroe
                     </button>
                 </div>
-                <a href="#catalogo-publico" onclick="closeProfileDetail(false)" class="mobile-link block px-4 py-2.5 rounded-xl text-base font-semibold text-slate-700 hover:bg-stone-100">Ver Héroes Disponibles</a>
-                <a href="#niveles" onclick="closeProfileDetail(false)" class="mobile-link block px-4 py-2.5 rounded-xl text-base font-semibold text-slate-700 hover:bg-stone-100">Los 3 Niveles de Héroe</a>
-                <a href="#ciudades" onclick="closeProfileDetail(false)" class="mobile-link block px-4 py-2.5 rounded-xl text-base font-semibold text-slate-700 hover:bg-stone-100">Heroly en tu Ciudad</a>
-                <a href="#faq" onclick="closeProfileDetail(false)" class="mobile-link block px-4 py-2.5 rounded-xl text-base font-semibold text-slate-700 hover:bg-stone-100">Preguntas Frecuentes</a>
+                <a href="#catalogo-publico" onclick="closeProfileDetail(false)"
+                    class="mobile-link block px-4 py-2.5 rounded-xl text-base font-semibold text-slate-700 hover:bg-stone-100">Ver
+                    Héroes Disponibles</a>
+                <a href="#niveles" onclick="closeProfileDetail(false)"
+                    class="mobile-link block px-4 py-2.5 rounded-xl text-base font-semibold text-slate-700 hover:bg-stone-100">Los
+                    3 Niveles de Héroe</a>
+                <a href="#ciudades" onclick="closeProfileDetail(false)"
+                    class="mobile-link block px-4 py-2.5 rounded-xl text-base font-semibold text-slate-700 hover:bg-stone-100">Heroly
+                    en tu Ciudad</a>
+                <a href="#faq" onclick="closeProfileDetail(false)"
+                    class="mobile-link block px-4 py-2.5 rounded-xl text-base font-semibold text-slate-700 hover:bg-stone-100">Preguntas
+                    Frecuentes</a>
                 <div class="pt-2 flex gap-3">
-                    <a href="portal.html" class="flex-1 text-center py-3 rounded-full border-2 border-stone-300 font-bold text-sm text-slate-800">Acceder</a>
-                    <a href="portal.html" class="flex-1 text-center py-3 rounded-full bg-teal-700 font-bold text-sm text-white">Regístrate gratis</a>
+                    <a href="portal.html"
+                        class="flex-1 text-center py-3 rounded-full border-2 border-stone-300 font-bold text-sm text-slate-800">Acceder</a>
+                    <a href="portal.html"
+                        class="flex-1 text-center py-3 rounded-full bg-teal-700 font-bold text-sm text-white">Regístrate
+                        gratis</a>
                 </div>
             </div>
         </div>
@@ -151,33 +177,44 @@
 
         <!-- 1. HERO BANNER CURVO CÁLIDO (ESTILO SITLY + LIFE360 / CUIDEO) -->
         <section class="pt-6 pb-10 sm:pt-8 sm:pb-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-            <div id="hero-banner-box" class="hero-banner-citizen rounded-[2rem] p-8 sm:p-12 lg:p-14 transition-colors duration-500">
+            <div id="hero-banner-box"
+                class="hero-banner-citizen rounded-[2rem] p-8 sm:p-12 lg:p-14 transition-colors duration-500">
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
 
                     <!-- Texto y Propuesta de Valor Directa -->
                     <div class="lg:col-span-7 space-y-6">
-                        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/85 border border-teal-200 text-teal-900 text-xs font-extrabold uppercase tracking-wider shadow-sm">
+                        <div
+                            class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/85 border border-teal-200 text-teal-900 text-xs font-extrabold uppercase tracking-wider shadow-sm">
                             <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                            <span id="hero-badge-text">Red Nacional de Acompañamiento Preventivo (+30 años y Familias)</span>
+                            <span id="hero-badge-text">Red Nacional de Acompañamiento Preventivo (+30 años y
+                                Familias)</span>
                         </div>
 
-                        <h1 id="hero-title" class="font-display text-3xl sm:text-5xl font-extrabold text-slate-900 leading-[1.15] tracking-tight">
-                            CONOCE A LOS MEJORES ACOMPAÑANTES Y HÉROES <span class="highlight-marker">EN TU CIUDAD</span>
+                        <h1 id="hero-title"
+                            class="font-display text-3xl sm:text-5xl font-extrabold text-slate-900 leading-[1.15] tracking-tight">
+                            CONOCE A LOS MEJORES ACOMPAÑANTES Y HÉROES <span class="highlight-marker">EN TU
+                                CIUDAD</span>
                         </h1>
 
                         <!-- 3 Puntos Clave estilo Sitly -->
                         <ul class="space-y-3.5 pt-1">
                             <li class="flex items-start gap-3 text-base sm:text-lg text-slate-800 font-medium">
-                                <span class="mt-1 w-6 h-6 rounded-full bg-teal-700 text-white flex items-center justify-center text-xs font-bold shrink-0">✓</span>
-                                <span id="hero-bullet-1">Busca Héroes verificados con Certificado de Penales desde 8 €/hora</span>
+                                <span
+                                    class="mt-1 w-6 h-6 rounded-full bg-teal-700 text-white flex items-center justify-center text-xs font-bold shrink-0">✓</span>
+                                <span id="hero-bullet-1">Busca Héroes verificados con Certificado de Penales desde 8
+                                    €/hora</span>
                             </li>
                             <li class="flex items-start gap-3 text-base sm:text-lg text-slate-800 font-medium">
-                                <span class="mt-1 w-6 h-6 rounded-full bg-teal-700 text-white flex items-center justify-center text-xs font-bold shrink-0">✓</span>
-                                <span id="hero-bullet-2">Revisa perfiles, horarios y tarifas cerradas antes de decidir</span>
+                                <span
+                                    class="mt-1 w-6 h-6 rounded-full bg-teal-700 text-white flex items-center justify-center text-xs font-bold shrink-0">✓</span>
+                                <span id="hero-bullet-2">Revisa perfiles, horarios y tarifas cerradas antes de
+                                    decidir</span>
                             </li>
                             <li class="flex items-start gap-3 text-base sm:text-lg text-slate-800 font-medium">
-                                <span class="mt-1 w-6 h-6 rounded-full bg-teal-700 text-white flex items-center justify-center text-xs font-bold shrink-0">✓</span>
-                                <span id="hero-bullet-3">Seguimiento GPS en vivo con Red Familiar™ y pago directo por Bizum</span>
+                                <span
+                                    class="mt-1 w-6 h-6 rounded-full bg-teal-700 text-white flex items-center justify-center text-xs font-bold shrink-0">✓</span>
+                                <span id="hero-bullet-3">Seguimiento GPS en vivo con Red Familiar™ y pago directo por
+                                    Bizum</span>
                             </li>
                         </ul>
 
@@ -194,8 +231,10 @@
                                 </a>
                             </div>
                             <div>
-                                <button id="hero-switch-link" type="button" onclick="switchAppMode('worker')" class="text-sm text-slate-700 font-medium hover:text-teal-900 transition">
-                                    ¿Prefieres ganar dinero trabajando como Héroe? <span class="underline font-bold text-teal-800">Ver misiones disponibles →</span>
+                                <button id="hero-switch-link" type="button" onclick="switchAppMode('worker')"
+                                    class="text-sm text-slate-700 font-medium hover:text-teal-900 transition">
+                                    ¿Prefieres ganar dinero trabajando como Héroe? <span
+                                        class="underline font-bold text-teal-800">Ver misiones disponibles →</span>
                                 </button>
                             </div>
                         </div>
@@ -204,16 +243,22 @@
                     <!-- Imagen Humana Cálida a la Derecha -->
                     <div class="lg:col-span-5 flex justify-center lg:justify-end">
                         <div class="relative w-full max-w-md">
-                            <div class="rounded-[2rem] overflow-hidden border-4 border-white shadow-2xl h-[360px] sm:h-[400px] bg-stone-200">
-                                <img id="hero-right-image" src="./assets/img/roberto.jpg" alt="Héroe Verificado en España" class="w-full h-full object-cover object-top">
+                            <div
+                                class="rounded-[2rem] overflow-hidden border-4 border-white shadow-2xl h-[360px] sm:h-[400px] bg-stone-200">
+                                <img id="hero-right-image" src="./assets/img/roberto.jpg"
+                                    alt="Héroe Verificado en España" class="w-full h-full object-cover object-top">
                             </div>
                             <!-- Tarjeta flotante de confianza -->
-                            <div class="absolute -bottom-4 left-4 right-4 sm:left-6 sm:right-6 bg-white/95 backdrop-blur-md border border-stone-200 rounded-2xl p-4 shadow-xl flex items-center justify-between gap-3">
+                            <div
+                                class="absolute -bottom-4 left-4 right-4 sm:left-6 sm:right-6 bg-white/95 backdrop-blur-md border border-stone-200 rounded-2xl p-4 shadow-xl flex items-center justify-between gap-3">
                                 <div>
-                                    <div id="hero-floating-title" class="font-bold text-slate-900 text-sm">Roberto (38) · Héroe Nivel 2 · 11 €/h</div>
-                                    <div id="hero-floating-sub" class="text-xs font-semibold text-emerald-700 mt-0.5">★ 5,0 · Certificado de Penales Verificado</div>
+                                    <div id="hero-floating-title" class="font-bold text-slate-900 text-sm">Roberto (38)
+                                        · Héroe Nivel 2 · 11 €/h</div>
+                                    <div id="hero-floating-sub" class="text-xs font-semibold text-emerald-700 mt-0.5">★
+                                        5,0 · Certificado de Penales Verificado</div>
                                 </div>
-                                <span class="px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 text-xs font-extrabold shrink-0">
+                                <span
+                                    class="px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 text-xs font-extrabold shrink-0">
                                     GPS Activo
                                 </span>
                             </div>
@@ -229,48 +274,56 @@
         <!-- ================================================================= -->
         <section id="catalogo-publico" class="py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="mb-6">
-                <h2 id="catalog-heading" class="font-display text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight mb-4">
+                <h2 id="catalog-heading"
+                    class="font-display text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight mb-4">
                     BUSCA HÉROES Y ACOMPAÑANTES DISPONIBLES AHORA
                 </h2>
 
                 <!-- Barra Horizontal de Píldoras de Filtro (Estilo Sitly) -->
                 <div class="flex flex-wrap items-center justify-between gap-4 pb-4 border-b border-stone-200">
                     <div class="flex flex-wrap items-center gap-2.5">
-                        <button type="button" onclick="openFilterModal()" class="filter-pill px-4 py-2.5 rounded-full text-sm font-bold flex items-center gap-2 shadow-sm">
+                        <button type="button" onclick="openFilterModal()"
+                            class="filter-pill px-4 py-2.5 rounded-full text-sm font-bold flex items-center gap-2 shadow-sm">
                             <span>📍</span>
                             <span id="pill-city-label">Ciudad</span>
                             <span class="text-xs text-slate-400">▼</span>
                         </button>
 
-                        <button type="button" onclick="openFilterModal()" class="filter-pill px-4 py-2.5 rounded-full text-sm font-bold flex items-center gap-2 shadow-sm">
+                        <button type="button" onclick="openFilterModal()"
+                            class="filter-pill px-4 py-2.5 rounded-full text-sm font-bold flex items-center gap-2 shadow-sm">
                             <span>🛡️</span>
                             <span id="pill-level-label">Nivel de Héroe</span>
                             <span class="text-xs text-slate-400">▼</span>
                         </button>
 
-                        <button type="button" onclick="openFilterModal()" class="filter-pill px-4 py-2.5 rounded-full text-sm font-bold flex items-center gap-2 shadow-sm">
+                        <button type="button" onclick="openFilterModal()"
+                            class="filter-pill px-4 py-2.5 rounded-full text-sm font-bold flex items-center gap-2 shadow-sm">
                             <span>🤝</span>
                             <span id="pill-mission-label">Tipo de acompañamiento</span>
                             <span class="text-xs text-slate-400">▼</span>
                         </button>
 
-                        <button type="button" onclick="openFilterModal()" class="filter-pill px-4 py-2.5 rounded-full text-sm font-bold flex items-center gap-2 shadow-sm">
+                        <button type="button" onclick="openFilterModal()"
+                            class="filter-pill px-4 py-2.5 rounded-full text-sm font-bold flex items-center gap-2 shadow-sm">
                             <span>📅</span>
                             <span>Disponibilidad</span>
                             <span class="text-xs text-slate-400">▼</span>
                         </button>
 
-                        <button type="button" onclick="openFilterModal()" class="filter-pill px-4 py-2.5 rounded-full text-sm font-bold flex items-center gap-2 shadow-sm">
+                        <button type="button" onclick="openFilterModal()"
+                            class="filter-pill px-4 py-2.5 rounded-full text-sm font-bold flex items-center gap-2 shadow-sm">
                             <span>💶</span>
                             <span>Tarifa (Desde 8 €/h)</span>
                             <span class="text-xs text-slate-400">▼</span>
                         </button>
 
-                        <button type="button" onclick="openFilterModal()" class="filter-pill px-4 py-2.5 rounded-full text-sm font-bold flex items-center gap-2 shadow-sm bg-stone-100">
+                        <button type="button" onclick="openFilterModal()"
+                            class="filter-pill px-4 py-2.5 rounded-full text-sm font-bold flex items-center gap-2 shadow-sm bg-stone-100">
                             <span>Más filtros ⁝</span>
                         </button>
 
-                        <button type="button" onclick="resetPublicFilters()" class="text-xs font-bold text-teal-700 hover:underline px-2 py-1">
+                        <button type="button" onclick="resetPublicFilters()"
+                            class="text-xs font-bold text-teal-700 hover:underline px-2 py-1">
                             Ver todos
                         </button>
                     </div>
@@ -283,15 +336,24 @@
                 <!-- Filtros rápidos de Ciudad en un clic -->
                 <div class="flex items-center gap-2 overflow-x-auto py-3 text-xs font-bold text-slate-600">
                     <span class="text-slate-400 shrink-0">Ciudades rápidas:</span>
-                    <button onclick="filterByCity('Todas')" class="px-3 py-1 rounded-full bg-white border border-stone-200 hover:border-teal-600 shrink-0">Todas</button>
-                    <button onclick="filterByCity('Alicante')" class="px-3 py-1 rounded-full bg-white border border-stone-200 hover:border-teal-600 shrink-0">Alicante</button>
-                    <button onclick="filterByCity('Elche')" class="px-3 py-1 rounded-full bg-white border border-stone-200 hover:border-teal-600 shrink-0">Elche</button>
-                    <button onclick="filterByCity('Madrid')" class="px-3 py-1 rounded-full bg-white border border-stone-200 hover:border-teal-600 shrink-0">Madrid</button>
-                    <button onclick="filterByCity('Barcelona')" class="px-3 py-1 rounded-full bg-white border border-stone-200 hover:border-teal-600 shrink-0">Barcelona</button>
-                    <button onclick="filterByCity('Valencia')" class="px-3 py-1 rounded-full bg-white border border-stone-200 hover:border-teal-600 shrink-0">Valencia</button>
-                    <button onclick="filterByCity('Sevilla')" class="px-3 py-1 rounded-full bg-white border border-stone-200 hover:border-teal-600 shrink-0">Sevilla</button>
-                    <button onclick="filterByCity('Málaga')" class="px-3 py-1 rounded-full bg-white border border-stone-200 hover:border-teal-600 shrink-0">Málaga</button>
-                    <button onclick="filterByCity('Zaragoza')" class="px-3 py-1 rounded-full bg-white border border-stone-200 hover:border-teal-600 shrink-0">Zaragoza</button>
+                    <button onclick="filterByCity('Todas')"
+                        class="px-3 py-1 rounded-full bg-white border border-stone-200 hover:border-teal-600 shrink-0">Todas</button>
+                    <button onclick="filterByCity('Alicante')"
+                        class="px-3 py-1 rounded-full bg-white border border-stone-200 hover:border-teal-600 shrink-0">Alicante</button>
+                    <button onclick="filterByCity('Elche')"
+                        class="px-3 py-1 rounded-full bg-white border border-stone-200 hover:border-teal-600 shrink-0">Elche</button>
+                    <button onclick="filterByCity('Madrid')"
+                        class="px-3 py-1 rounded-full bg-white border border-stone-200 hover:border-teal-600 shrink-0">Madrid</button>
+                    <button onclick="filterByCity('Barcelona')"
+                        class="px-3 py-1 rounded-full bg-white border border-stone-200 hover:border-teal-600 shrink-0">Barcelona</button>
+                    <button onclick="filterByCity('Valencia')"
+                        class="px-3 py-1 rounded-full bg-white border border-stone-200 hover:border-teal-600 shrink-0">Valencia</button>
+                    <button onclick="filterByCity('Sevilla')"
+                        class="px-3 py-1 rounded-full bg-white border border-stone-200 hover:border-teal-600 shrink-0">Sevilla</button>
+                    <button onclick="filterByCity('Málaga')"
+                        class="px-3 py-1 rounded-full bg-white border border-stone-200 hover:border-teal-600 shrink-0">Málaga</button>
+                    <button onclick="filterByCity('Zaragoza')"
+                        class="px-3 py-1 rounded-full bg-white border border-stone-200 hover:border-teal-600 shrink-0">Zaragoza</button>
                 </div>
             </div>
 
@@ -315,48 +377,60 @@
         <section id="como-funciona" class="py-20 bg-white border-t border-b border-stone-200">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center max-w-3xl mx-auto mb-14 reveal">
-                    <span class="inline-block px-3.5 py-1 rounded-full bg-teal-50 border border-teal-200 text-teal-800 font-bold uppercase tracking-widest text-xs mb-3">
+                    <span
+                        class="inline-block px-3.5 py-1 rounded-full bg-teal-50 border border-teal-200 text-teal-800 font-bold uppercase tracking-widest text-xs mb-3">
                         Seguridad Preventiva sin Complicaciones
                     </span>
                     <h2 class="font-display text-3xl sm:text-4xl font-extrabold text-slate-900">
                         HEROLY APOYA TU TRANQUILIDAD Y LA DE TU FAMILIA
                     </h2>
                     <p class="text-slate-600 text-lg mt-3">
-                        Explora libremente, revisa las acreditaciones de cada Héroe y contacta solo cuando hayas encontrado al acompañante ideal.
+                        Explora libremente, revisa las acreditaciones de cada Héroe y contacta solo cuando hayas
+                        encontrado al acompañante ideal.
                     </p>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8 reveal delay-100">
                     <!-- Pilar 1 -->
                     <div class="bg-[#FAFAF9] border border-stone-200 rounded-3xl p-8 text-center">
-                        <div class="w-16 h-16 rounded-2xl bg-teal-100 text-teal-800 flex items-center justify-center mx-auto mb-5 text-3xl shadow-sm">
+                        <div
+                            class="w-16 h-16 rounded-2xl bg-teal-100 text-teal-800 flex items-center justify-center mx-auto mb-5 text-3xl shadow-sm">
                             🔎
                         </div>
-                        <h3 class="font-display text-xl font-extrabold text-slate-900 mb-3">1. Libertad Total de Búsqueda</h3>
+                        <h3 class="font-display text-xl font-extrabold text-slate-900 mb-3">1. Libertad Total de
+                            Búsqueda</h3>
                         <p class="text-slate-600 text-base leading-relaxed">
-                            Consulta Héroes reales en tu ciudad desde 8 €/h, filtra por nivel de preparación (Nivel 1, 2 o 3), revisa sus horarios de mañana, tarde o noche y lee las referencias de otras familias antes de registrarte.
+                            Consulta Héroes reales en tu ciudad desde 8 €/h, filtra por nivel de preparación (Nivel 1, 2
+                            o 3), revisa sus horarios de mañana, tarde o noche y lee las referencias de otras familias
+                            antes de registrarte.
                         </p>
                     </div>
 
                     <!-- Pilar 2 -->
                     <div class="bg-[#FAFAF9] border border-stone-200 rounded-3xl p-8 text-center">
-                        <div class="w-16 h-16 rounded-2xl bg-blue-100 text-blue-800 flex items-center justify-center mx-auto mb-5 text-3xl shadow-sm">
+                        <div
+                            class="w-16 h-16 rounded-2xl bg-blue-100 text-blue-800 flex items-center justify-center mx-auto mb-5 text-3xl shadow-sm">
                             🛡️
                         </div>
-                        <h3 class="font-display text-xl font-extrabold text-slate-900 mb-3">2. Filtro Riguroso (Solo el 12%)</h3>
+                        <h3 class="font-display text-xl font-extrabold text-slate-900 mb-3">2. Filtro Riguroso (Solo el
+                            12%)</h3>
                         <p class="text-slate-600 text-base leading-relaxed">
-                            Todos los Héroes pasan por 4 fases obligatorias: validación de DNI/NIE, Certificado Oficial de Antecedentes Penales libre de cargos, prueba psicotécnica y entrevista personal.
+                            Todos los Héroes pasan por 4 fases obligatorias: validación de DNI/NIE, Certificado Oficial
+                            de Antecedentes Penales libre de cargos, prueba psicotécnica y entrevista personal.
                         </p>
                     </div>
 
                     <!-- Pilar 3 -->
                     <div class="bg-[#FAFAF9] border border-stone-200 rounded-3xl p-8 text-center">
-                        <div class="w-16 h-16 rounded-2xl bg-emerald-100 text-emerald-800 flex items-center justify-center mx-auto mb-5 text-3xl shadow-sm">
+                        <div
+                            class="w-16 h-16 rounded-2xl bg-emerald-100 text-emerald-800 flex items-center justify-center mx-auto mb-5 text-3xl shadow-sm">
                             📍
                         </div>
-                        <h3 class="font-display text-xl font-extrabold text-slate-900 mb-3">3. GPS Red Familiar™ y Bizum Directo</h3>
+                        <h3 class="font-display text-xl font-extrabold text-slate-900 mb-3">3. GPS Red Familiar™ y Bizum
+                            Directo</h3>
                         <p class="text-slate-600 text-base leading-relaxed">
-                            Durante el acompañamiento, tu familia sigue la ruta por GPS en directo y cuentas con botón SOS. No metes tu tarjeta en la web: pagas en mano o por Bizum al finalizar.
+                            Durante el acompañamiento, tu familia sigue la ruta por GPS en directo y cuentas con botón
+                            SOS. No metes tu tarjeta en la web: pagas en mano o por Bizum al finalizar.
                         </p>
                     </div>
                 </div>
@@ -376,14 +450,16 @@
         <section id="niveles" class="py-20 bg-[#FAFAF9] border-b border-stone-200">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center max-w-3xl mx-auto mb-14 reveal">
-                    <span class="inline-block px-3.5 py-1 rounded-full bg-teal-50 border border-teal-200 text-teal-800 font-bold uppercase tracking-widest text-xs mb-3">
+                    <span
+                        class="inline-block px-3.5 py-1 rounded-full bg-teal-50 border border-teal-200 text-teal-800 font-bold uppercase tracking-widest text-xs mb-3">
                         Elige según tu necesidad
                     </span>
                     <h2 class="font-display text-3xl sm:text-4xl font-extrabold text-slate-900 mb-4">
                         TRES NIVELES DE HÉROES VERIFICADOS
                     </h2>
                     <p class="text-slate-600 text-lg">
-                        Pasa el cursor sobre cada tarjeta para ver la fotografía completa del Héroe o haz clic para filtrar el catálogo por ese nivel.
+                        Pasa el cursor sobre cada tarjeta para ver la fotografía completa del Héroe o haz clic para
+                        filtrar el catálogo por ese nivel.
                     </p>
                 </div>
 
@@ -396,31 +472,44 @@
                         <!-- Foto Completa que se revela al hacer Hover -->
                         <div class="absolute inset-0 bg-cover bg-top opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-30 flex items-end p-6"
                             style="background-image: url('./assets/img/normal.jpg');">
-                            <div class="w-full bg-white/95 backdrop-blur-md border border-emerald-200 rounded-2xl p-4 shadow-lg flex items-center justify-between">
+                            <div
+                                class="w-full bg-white/95 backdrop-blur-md border border-emerald-200 rounded-2xl p-4 shadow-lg flex items-center justify-between">
                                 <div>
-                                    <span class="text-xs font-extrabold text-emerald-700 uppercase block">Nivel 1 · Cívico</span>
+                                    <span class="text-xs font-extrabold text-emerald-700 uppercase block">Nivel 1 ·
+                                        Cívico</span>
                                     <span class="text-sm font-bold text-slate-900">Ver Héroes desde 8 €/h</span>
                                 </div>
-                                <span class="w-8 h-8 rounded-full bg-emerald-600 text-white flex items-center justify-center font-bold">→</span>
+                                <span
+                                    class="w-8 h-8 rounded-full bg-emerald-600 text-white flex items-center justify-center font-bold">→</span>
                             </div>
                         </div>
 
                         <!-- Contenido Normal en Tema Claro Cálido -->
-                        <div class="relative z-10 flex flex-col flex-grow transition-opacity duration-300 group-hover:opacity-0">
+                        <div
+                            class="relative z-10 flex flex-col flex-grow transition-opacity duration-300 group-hover:opacity-0">
                             <div class="flex justify-between items-center mb-4">
-                                <span class="bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-extrabold uppercase tracking-wider px-3.5 py-1.5 rounded-full">Nivel 1 · Cívico</span>
-                                <span class="text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full text-xs font-extrabold">Desde 8 € / h</span>
+                                <span
+                                    class="bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-extrabold uppercase tracking-wider px-3.5 py-1.5 rounded-full">Nivel
+                                    1 · Cívico</span>
+                                <span
+                                    class="text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full text-xs font-extrabold">Desde
+                                    8 € / h</span>
                             </div>
 
-                            <div class="w-full h-44 rounded-2xl overflow-hidden mb-5 bg-stone-100 border border-stone-200">
-                                <img src="./assets/img/normal.jpg" alt="Héroe Nivel 1" class="w-full h-full object-cover object-top">
+                            <div
+                                class="w-full h-44 rounded-2xl overflow-hidden mb-5 bg-stone-100 border border-stone-200">
+                                <img src="./assets/img/normal.jpg" alt="Héroe Nivel 1"
+                                    class="w-full h-full object-cover object-top">
                             </div>
 
-                            <h3 class="font-display text-2xl font-extrabold text-slate-900 mb-2">Acompañamiento Familiar y Mayores</h3>
+                            <h3 class="font-display text-2xl font-extrabold text-slate-900 mb-2">Acompañamiento Familiar
+                                y Mayores</h3>
                             <p class="text-slate-600 text-sm mb-6 leading-relaxed flex-grow">
-                                Héroes cercanos, pacientes y muy educados. Perfectos para acompañar a tus padres mayores al médico, ir al banco, hacer la compra o salir a caminar con tranquilidad.
+                                Héroes cercanos, pacientes y muy educados. Perfectos para acompañar a tus padres mayores
+                                al médico, ir al banco, hacer la compra o salir a caminar con tranquilidad.
                             </p>
-                            <div class="pt-4 border-t border-stone-200 text-emerald-700 text-sm font-extrabold flex items-center justify-between">
+                            <div
+                                class="pt-4 border-t border-stone-200 text-emerald-700 text-sm font-extrabold flex items-center justify-between">
                                 <span>Filtrar Héroes de Nivel 1</span>
                                 <span>→</span>
                             </div>
@@ -435,31 +524,45 @@
                         <!-- Foto Completa que se revela al hacer Hover -->
                         <div class="absolute inset-0 bg-cover bg-top opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-30 flex items-end p-6"
                             style="background-image: url('./assets/img/musculoso.jpg');">
-                            <div class="w-full bg-white/95 backdrop-blur-md border border-teal-200 rounded-2xl p-4 shadow-lg flex items-center justify-between">
+                            <div
+                                class="w-full bg-white/95 backdrop-blur-md border border-teal-200 rounded-2xl p-4 shadow-lg flex items-center justify-between">
                                 <div>
-                                    <span class="text-xs font-extrabold text-teal-700 uppercase block">Nivel 2 · Presencia Disuasoria</span>
+                                    <span class="text-xs font-extrabold text-teal-700 uppercase block">Nivel 2 ·
+                                        Presencia Disuasoria</span>
                                     <span class="text-sm font-bold text-slate-900">Ver Héroes desde 11 €/h</span>
                                 </div>
-                                <span class="w-8 h-8 rounded-full bg-teal-700 text-white flex items-center justify-center font-bold">→</span>
+                                <span
+                                    class="w-8 h-8 rounded-full bg-teal-700 text-white flex items-center justify-center font-bold">→</span>
                             </div>
                         </div>
 
                         <!-- Contenido Normal en Tema Claro Cálido -->
-                        <div class="relative z-10 flex flex-col flex-grow transition-opacity duration-300 group-hover:opacity-0">
+                        <div
+                            class="relative z-10 flex flex-col flex-grow transition-opacity duration-300 group-hover:opacity-0">
                             <div class="flex justify-between items-center mb-4">
-                                <span class="bg-teal-700 text-white text-xs font-extrabold uppercase tracking-wider px-3.5 py-1.5 rounded-full">Nivel 2 · Más Solicitado</span>
-                                <span class="text-teal-800 bg-teal-50 border border-teal-200 px-3 py-1 rounded-full text-xs font-extrabold">Desde 11 € / h</span>
+                                <span
+                                    class="bg-teal-700 text-white text-xs font-extrabold uppercase tracking-wider px-3.5 py-1.5 rounded-full">Nivel
+                                    2 · Más Solicitado</span>
+                                <span
+                                    class="text-teal-800 bg-teal-50 border border-teal-200 px-3 py-1 rounded-full text-xs font-extrabold">Desde
+                                    11 € / h</span>
                             </div>
 
-                            <div class="w-full h-44 rounded-2xl overflow-hidden mb-5 bg-stone-100 border border-stone-200">
-                                <img src="./assets/img/musculoso.jpg" alt="Héroe Nivel 2" class="w-full h-full object-cover object-top">
+                            <div
+                                class="w-full h-44 rounded-2xl overflow-hidden mb-5 bg-stone-100 border border-stone-200">
+                                <img src="./assets/img/musculoso.jpg" alt="Héroe Nivel 2"
+                                    class="w-full h-full object-cover object-top">
                             </div>
 
-                            <h3 class="font-display text-2xl font-extrabold text-slate-900 mb-2">Presencia Disuasoria Activa</h3>
+                            <h3 class="font-display text-2xl font-extrabold text-slate-900 mb-2">Presencia Disuasoria
+                                Activa</h3>
                             <p class="text-slate-600 text-sm mb-6 leading-relaxed flex-grow">
-                                Deportistas y Héroes atléticos de gran envergadura visual. Ideales para salidas nocturnas del trabajo, aparcamientos solitarios, cajeros automáticos y prevención urbana.
+                                Deportistas y Héroes atléticos de gran envergadura visual. Ideales para salidas
+                                nocturnas del trabajo, aparcamientos solitarios, cajeros automáticos y prevención
+                                urbana.
                             </p>
-                            <div class="pt-4 border-t border-stone-200 text-teal-700 text-sm font-extrabold flex items-center justify-between">
+                            <div
+                                class="pt-4 border-t border-stone-200 text-teal-700 text-sm font-extrabold flex items-center justify-between">
                                 <span>Filtrar Héroes de Nivel 2</span>
                                 <span>→</span>
                             </div>
@@ -474,31 +577,44 @@
                         <!-- Foto Completa que se revela al hacer Hover -->
                         <div class="absolute inset-0 bg-cover bg-top opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-30 flex items-end p-6"
                             style="background-image: url('./assets/img/karateka.jpg');">
-                            <div class="w-full bg-white/95 backdrop-blur-md border border-amber-200 rounded-2xl p-4 shadow-lg flex items-center justify-between">
+                            <div
+                                class="w-full bg-white/95 backdrop-blur-md border border-amber-200 rounded-2xl p-4 shadow-lg flex items-center justify-between">
                                 <div>
-                                    <span class="text-xs font-extrabold text-amber-700 uppercase block">Nivel 3 · Especialista</span>
+                                    <span class="text-xs font-extrabold text-amber-700 uppercase block">Nivel 3 ·
+                                        Especialista</span>
                                     <span class="text-sm font-bold text-slate-900">Ver Héroes desde 15 €/h</span>
                                 </div>
-                                <span class="w-8 h-8 rounded-full bg-amber-500 text-slate-950 flex items-center justify-center font-bold">→</span>
+                                <span
+                                    class="w-8 h-8 rounded-full bg-amber-500 text-slate-950 flex items-center justify-center font-bold">→</span>
                             </div>
                         </div>
 
                         <!-- Contenido Normal en Tema Claro Cálido -->
-                        <div class="relative z-10 flex flex-col flex-grow transition-opacity duration-300 group-hover:opacity-0">
+                        <div
+                            class="relative z-10 flex flex-col flex-grow transition-opacity duration-300 group-hover:opacity-0">
                             <div class="flex justify-between items-center mb-4">
-                                <span class="bg-amber-100 border border-amber-300 text-amber-900 text-xs font-extrabold uppercase tracking-wider px-3.5 py-1.5 rounded-full">Nivel 3 · Especialista</span>
-                                <span class="text-amber-900 bg-amber-50 border border-amber-200 px-3 py-1 rounded-full text-xs font-extrabold">Desde 15 € / h</span>
+                                <span
+                                    class="bg-amber-100 border border-amber-300 text-amber-900 text-xs font-extrabold uppercase tracking-wider px-3.5 py-1.5 rounded-full">Nivel
+                                    3 · Especialista</span>
+                                <span
+                                    class="text-amber-900 bg-amber-50 border border-amber-200 px-3 py-1 rounded-full text-xs font-extrabold">Desde
+                                    15 € / h</span>
                             </div>
 
-                            <div class="w-full h-44 rounded-2xl overflow-hidden mb-5 bg-stone-100 border border-stone-200">
-                                <img src="./assets/img/karateka.jpg" alt="Héroe Nivel 3" class="w-full h-full object-cover object-top">
+                            <div
+                                class="w-full h-44 rounded-2xl overflow-hidden mb-5 bg-stone-100 border border-stone-200">
+                                <img src="./assets/img/karateka.jpg" alt="Héroe Nivel 3"
+                                    class="w-full h-full object-cover object-top">
                             </div>
 
-                            <h3 class="font-display text-2xl font-extrabold text-slate-900 mb-2">Especialista Certificado (Élite)</h3>
+                            <h3 class="font-display text-2xl font-extrabold text-slate-900 mb-2">Especialista
+                                Certificado (Élite)</h3>
                             <p class="text-slate-600 text-sm mb-6 leading-relaxed flex-grow">
-                                Cinturones negros federados, expertos en autoprotección y primeros auxilios certificados. Pensado para notarías, gestiones de alto valor o máxima protección.
+                                Cinturones negros federados, expertos en autoprotección y primeros auxilios
+                                certificados. Pensado para notarías, gestiones de alto valor o máxima protección.
                             </p>
-                            <div class="pt-4 border-t border-stone-200 text-amber-800 text-sm font-extrabold flex items-center justify-between">
+                            <div
+                                class="pt-4 border-t border-stone-200 text-amber-800 text-sm font-extrabold flex items-center justify-between">
                                 <span>Filtrar Héroes de Nivel 3</span>
                                 <span>→</span>
                             </div>
@@ -514,7 +630,8 @@
         <section id="testimonios" class="py-20 bg-white border-b border-stone-200">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center max-w-3xl mx-auto mb-14 reveal">
-                    <span class="inline-block px-3.5 py-1 rounded-full bg-amber-50 border border-amber-200 text-amber-800 font-bold uppercase tracking-widest text-xs mb-3">
+                    <span
+                        class="inline-block px-3.5 py-1 rounded-full bg-amber-50 border border-amber-200 text-amber-800 font-bold uppercase tracking-widest text-xs mb-3">
                         Historias Reales en España
                     </span>
                     <h2 class="font-display text-3xl sm:text-4xl font-extrabold text-slate-900 mb-3">
@@ -527,18 +644,24 @@
 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                     <!-- Laura -->
-                    <div class="bg-[#FAFAF9] border border-stone-200 rounded-3xl p-8 flex flex-col justify-between reveal delay-100">
+                    <div
+                        class="bg-[#FAFAF9] border border-stone-200 rounded-3xl p-8 flex flex-col justify-between reveal delay-100">
                         <div>
                             <div class="flex items-center justify-between mb-4">
                                 <span class="text-amber-500 text-lg font-bold">★★★★★</span>
-                                <span class="text-xs font-bold text-emerald-700 bg-emerald-50 border border-emerald-200 px-3 py-1 rounded-full">Red Familiar™</span>
+                                <span
+                                    class="text-xs font-bold text-emerald-700 bg-emerald-50 border border-emerald-200 px-3 py-1 rounded-full">Red
+                                    Familiar™</span>
                             </div>
                             <p class="text-slate-700 text-base leading-relaxed mb-6">
-                                "Mi madre tiene 74 años y cada vez que iba sola al banco a sacar su pensión me quedaba intranquila por la inseguridad actual. Contacté con Roberto (Héroe Nivel 2) y pude ver su recorrido por el GPS desde mi trabajo. Educación de diez y una paz mental impagable."
+                                "Mi madre tiene 74 años y cada vez que iba sola al banco a sacar su pensión me quedaba
+                                intranquila por la inseguridad actual. Contacté con Roberto (Héroe Nivel 2) y pude ver
+                                su recorrido por el GPS desde mi trabajo. Educación de diez y una paz mental impagable."
                             </p>
                         </div>
                         <div class="flex items-center gap-3.5 pt-4 border-t border-stone-200">
-                            <img src="./assets/img/laura.jpg" alt="Laura G." class="w-12 h-12 rounded-full object-cover border-2 border-teal-600">
+                            <img src="./assets/img/laura.jpg" alt="Laura G."
+                                class="w-12 h-12 rounded-full object-cover border-2 border-teal-600">
                             <div>
                                 <div class="font-bold text-slate-900 text-base">Laura G. (42 años)</div>
                                 <div class="text-xs font-semibold text-teal-800">Contrató a un Héroe en Alicante</div>
@@ -547,38 +670,51 @@
                     </div>
 
                     <!-- María -->
-                    <div class="bg-[#FAFAF9] border border-stone-200 rounded-3xl p-8 flex flex-col justify-between reveal delay-200">
+                    <div
+                        class="bg-[#FAFAF9] border border-stone-200 rounded-3xl p-8 flex flex-col justify-between reveal delay-200">
                         <div>
                             <div class="flex items-center justify-between mb-4">
                                 <span class="text-amber-500 text-lg font-bold">★★★★★</span>
-                                <span class="text-xs font-bold text-teal-800 bg-teal-50 border border-teal-200 px-3 py-1 rounded-full">Retorno Nocturno</span>
+                                <span
+                                    class="text-xs font-bold text-teal-800 bg-teal-50 border border-teal-200 px-3 py-1 rounded-full">Retorno
+                                    Nocturno</span>
                             </div>
                             <p class="text-slate-700 text-base leading-relaxed mb-6">
-                                "Salgo del despacho pasadas las diez de la noche y aparco el coche a varias calles en una zona solitaria. Desde que reservo un Héroe de Nivel 2 para ir al parking o volver a casa tras una cena, camino con total tranquilidad."
+                                "Salgo del despacho pasadas las diez de la noche y aparco el coche a varias calles en
+                                una zona solitaria. Desde que reservo un Héroe de Nivel 2 para ir al parking o volver a
+                                casa tras una cena, camino con total tranquilidad."
                             </p>
                         </div>
                         <div class="flex items-center gap-3.5 pt-4 border-t border-stone-200">
-                            <img src="./assets/img/maria.jpg" alt="María P." class="w-12 h-12 rounded-full object-cover border-2 border-teal-600">
+                            <img src="./assets/img/maria.jpg" alt="María P."
+                                class="w-12 h-12 rounded-full object-cover border-2 border-teal-600">
                             <div>
                                 <div class="font-bold text-slate-900 text-base">María P. (36 años)</div>
-                                <div class="text-xs font-semibold text-teal-800">Directora Comercial · Cliente Frecuente</div>
+                                <div class="text-xs font-semibold text-teal-800">Directora Comercial · Cliente Frecuente
+                                </div>
                             </div>
                         </div>
                     </div>
 
                     <!-- Roberto -->
-                    <div class="bg-[#FAFAF9] border border-stone-200 rounded-3xl p-8 flex flex-col justify-between reveal delay-300">
+                    <div
+                        class="bg-[#FAFAF9] border border-stone-200 rounded-3xl p-8 flex flex-col justify-between reveal delay-300">
                         <div>
                             <div class="flex items-center justify-between mb-4">
                                 <span class="text-amber-500 text-lg font-bold">★★★★★</span>
-                                <span class="text-xs font-bold text-amber-800 bg-amber-50 border border-amber-200 px-3 py-1 rounded-full">Héroe Verificado</span>
+                                <span
+                                    class="text-xs font-bold text-amber-800 bg-amber-50 border border-amber-200 px-3 py-1 rounded-full">Héroe
+                                    Verificado</span>
                             </div>
                             <p class="text-slate-700 text-base leading-relaxed mb-6">
-                                "Tras presentar mi certificado oficial de antecedentes penales y superar la entrevista en Heroly, llevo meses acompañando a mayores y profesionales. Es gratificante aportar seguridad real a mi ciudad y cobrar el 100% al instante por Bizum."
+                                "Tras presentar mi certificado oficial de antecedentes penales y superar la entrevista
+                                en Heroly, llevo meses acompañando a mayores y profesionales. Es gratificante aportar
+                                seguridad real a mi ciudad y cobrar el 100% al instante por Bizum."
                             </p>
                         </div>
                         <div class="flex items-center gap-3.5 pt-4 border-t border-stone-200">
-                            <img src="./assets/img/roberto.jpg" alt="Roberto S." class="w-12 h-12 rounded-full object-cover border-2 border-teal-600">
+                            <img src="./assets/img/roberto.jpg" alt="Roberto S."
+                                class="w-12 h-12 rounded-full object-cover border-2 border-teal-600">
                             <div>
                                 <div class="font-bold text-slate-900 text-base">Roberto S. (38 años)</div>
                                 <div class="text-xs font-semibold text-teal-800">Héroe Nivel 2 · Alicante y Elche</div>
@@ -595,7 +731,8 @@
         <section id="ciudades" class="py-20 bg-[#E6F4F1]/60 border-b border-stone-200">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center max-w-3xl mx-auto mb-12 reveal">
-                    <span class="inline-block px-3.5 py-1 rounded-full bg-white border border-teal-200 text-teal-800 font-bold uppercase tracking-widest text-xs mb-3">
+                    <span
+                        class="inline-block px-3.5 py-1 rounded-full bg-white border border-teal-200 text-teal-800 font-bold uppercase tracking-widest text-xs mb-3">
                         Cobertura Nacional
                     </span>
                     <h2 class="font-display text-3xl sm:text-4xl font-extrabold text-slate-900 mb-3">
@@ -607,36 +744,52 @@
                 </div>
 
                 <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 reveal delay-100">
-                    <button onclick="filterByCity('Madrid')" class="bg-white hover:bg-teal-50 border border-stone-200 hover:border-teal-600 rounded-2xl p-5 text-left shadow-sm transition group">
-                        <div class="font-display text-lg font-extrabold text-slate-900 group-hover:text-teal-800">Madrid</div>
+                    <button onclick="filterByCity('Madrid')"
+                        class="bg-white hover:bg-teal-50 border border-stone-200 hover:border-teal-600 rounded-2xl p-5 text-left shadow-sm transition group">
+                        <div class="font-display text-lg font-extrabold text-slate-900 group-hover:text-teal-800">Madrid
+                        </div>
                         <div class="text-xs font-semibold text-teal-700 mt-1">&gt; 420 Héroes activos</div>
                     </button>
-                    <button onclick="filterByCity('Barcelona')" class="bg-white hover:bg-teal-50 border border-stone-200 hover:border-teal-600 rounded-2xl p-5 text-left shadow-sm transition group">
-                        <div class="font-display text-lg font-extrabold text-slate-900 group-hover:text-teal-800">Barcelona</div>
+                    <button onclick="filterByCity('Barcelona')"
+                        class="bg-white hover:bg-teal-50 border border-stone-200 hover:border-teal-600 rounded-2xl p-5 text-left shadow-sm transition group">
+                        <div class="font-display text-lg font-extrabold text-slate-900 group-hover:text-teal-800">
+                            Barcelona</div>
                         <div class="text-xs font-semibold text-teal-700 mt-1">&gt; 380 Héroes activos</div>
                     </button>
-                    <button onclick="filterByCity('Valencia')" class="bg-white hover:bg-teal-50 border border-stone-200 hover:border-teal-600 rounded-2xl p-5 text-left shadow-sm transition group">
-                        <div class="font-display text-lg font-extrabold text-slate-900 group-hover:text-teal-800">Valencia</div>
+                    <button onclick="filterByCity('Valencia')"
+                        class="bg-white hover:bg-teal-50 border border-stone-200 hover:border-teal-600 rounded-2xl p-5 text-left shadow-sm transition group">
+                        <div class="font-display text-lg font-extrabold text-slate-900 group-hover:text-teal-800">
+                            Valencia</div>
                         <div class="text-xs font-semibold text-teal-700 mt-1">&gt; 215 Héroes activos</div>
                     </button>
-                    <button onclick="filterByCity('Alicante')" class="bg-white hover:bg-teal-50 border border-stone-200 hover:border-teal-600 rounded-2xl p-5 text-left shadow-sm transition group">
-                        <div class="font-display text-lg font-extrabold text-slate-900 group-hover:text-teal-800">Alicante</div>
+                    <button onclick="filterByCity('Alicante')"
+                        class="bg-white hover:bg-teal-50 border border-stone-200 hover:border-teal-600 rounded-2xl p-5 text-left shadow-sm transition group">
+                        <div class="font-display text-lg font-extrabold text-slate-900 group-hover:text-teal-800">
+                            Alicante</div>
                         <div class="text-xs font-semibold text-teal-700 mt-1">&gt; 165 Héroes activos</div>
                     </button>
-                    <button onclick="filterByCity('Elche')" class="bg-white hover:bg-teal-50 border border-stone-200 hover:border-teal-600 rounded-2xl p-5 text-left shadow-sm transition group">
-                        <div class="font-display text-lg font-extrabold text-slate-900 group-hover:text-teal-800">Elche</div>
+                    <button onclick="filterByCity('Elche')"
+                        class="bg-white hover:bg-teal-50 border border-stone-200 hover:border-teal-600 rounded-2xl p-5 text-left shadow-sm transition group">
+                        <div class="font-display text-lg font-extrabold text-slate-900 group-hover:text-teal-800">Elche
+                        </div>
                         <div class="text-xs font-semibold text-teal-700 mt-1">&gt; 95 Héroes activos</div>
                     </button>
-                    <button onclick="filterByCity('Sevilla')" class="bg-white hover:bg-teal-50 border border-stone-200 hover:border-teal-600 rounded-2xl p-5 text-left shadow-sm transition group">
-                        <div class="font-display text-lg font-extrabold text-slate-900 group-hover:text-teal-800">Sevilla</div>
+                    <button onclick="filterByCity('Sevilla')"
+                        class="bg-white hover:bg-teal-50 border border-stone-200 hover:border-teal-600 rounded-2xl p-5 text-left shadow-sm transition group">
+                        <div class="font-display text-lg font-extrabold text-slate-900 group-hover:text-teal-800">
+                            Sevilla</div>
                         <div class="text-xs font-semibold text-teal-700 mt-1">&gt; 140 Héroes activos</div>
                     </button>
-                    <button onclick="filterByCity('Málaga')" class="bg-white hover:bg-teal-50 border border-stone-200 hover:border-teal-600 rounded-2xl p-5 text-left shadow-sm transition group">
-                        <div class="font-display text-lg font-extrabold text-slate-900 group-hover:text-teal-800">Málaga</div>
+                    <button onclick="filterByCity('Málaga')"
+                        class="bg-white hover:bg-teal-50 border border-stone-200 hover:border-teal-600 rounded-2xl p-5 text-left shadow-sm transition group">
+                        <div class="font-display text-lg font-extrabold text-slate-900 group-hover:text-teal-800">Málaga
+                        </div>
                         <div class="text-xs font-semibold text-teal-700 mt-1">&gt; 130 Héroes activos</div>
                     </button>
-                    <button onclick="filterByCity('Zaragoza')" class="bg-white hover:bg-teal-50 border border-stone-200 hover:border-teal-600 rounded-2xl p-5 text-left shadow-sm transition group">
-                        <div class="font-display text-lg font-extrabold text-slate-900 group-hover:text-teal-800">Zaragoza</div>
+                    <button onclick="filterByCity('Zaragoza')"
+                        class="bg-white hover:bg-teal-50 border border-stone-200 hover:border-teal-600 rounded-2xl p-5 text-left shadow-sm transition group">
+                        <div class="font-display text-lg font-extrabold text-slate-900 group-hover:text-teal-800">
+                            Zaragoza</div>
                         <div class="text-xs font-semibold text-teal-700 mt-1">&gt; 85 Héroes activos</div>
                     </button>
                 </div>
@@ -649,7 +802,8 @@
         <section id="faq" class="py-20 bg-[#FAFAF9]">
             <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-14 reveal">
-                    <span class="inline-block px-3.5 py-1 rounded-full bg-teal-50 border border-teal-200 text-teal-800 font-bold uppercase tracking-widest text-xs mb-3">
+                    <span
+                        class="inline-block px-3.5 py-1 rounded-full bg-teal-50 border border-teal-200 text-teal-800 font-bold uppercase tracking-widest text-xs mb-3">
                         Centro de Ayuda Heroly
                     </span>
                     <h2 class="font-display text-3xl sm:text-4xl font-extrabold text-slate-900 mb-3">
@@ -663,104 +817,171 @@
                 <div class="space-y-3.5 reveal delay-100">
                     <!-- FAQ 1 -->
                     <div class="bg-white border border-stone-200 rounded-2xl overflow-hidden faq-item shadow-sm">
-                        <button class="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none faq-btn">
-                            <span class="text-slate-900 font-bold text-base">¿Qué es exactamente Heroly y para qué sirve?</span>
-                            <svg class="w-5 h-5 text-teal-700 transform transition-transform duration-300 faq-icon rotate-180 shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        <button
+                            class="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none faq-btn">
+                            <span class="text-slate-900 font-bold text-base">¿Qué es exactamente Heroly y para qué
+                                sirve?</span>
+                            <svg class="w-5 h-5 text-teal-700 transform transition-transform duration-300 faq-icon rotate-180 shrink-0 ml-4"
+                                fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 9l-7 7-7-7"></path>
+                            </svg>
                         </button>
                         <div class="faq-content open">
                             <div class="px-6 pb-5 text-slate-600 text-base leading-relaxed">
-                                Heroly es la plataforma que conecta a personas mayores de 30 años y familias con acompañantes verificados ("Héroes") para brindar apoyo presencial y seguridad preventiva en su día a día (ir al banco, acompañar a padres mayores al médico, volver a casa de noche tras el trabajo, etc.).
+                                Heroly es la plataforma que conecta a personas mayores de 30 años y familias con
+                                acompañantes verificados ("Héroes") para brindar apoyo presencial y seguridad preventiva
+                                en su día a día (ir al banco, acompañar a padres mayores al médico, volver a casa de
+                                noche tras el trabajo, etc.).
                             </div>
                         </div>
                     </div>
 
                     <!-- FAQ 2 -->
                     <div class="bg-white border border-stone-200 rounded-2xl overflow-hidden faq-item shadow-sm">
-                        <button class="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none faq-btn">
-                            <span class="text-slate-900 font-bold text-base">¿Cuánto cuesta contratar a un Héroe y cómo se paga?</span>
-                            <svg class="w-5 h-5 text-teal-700 transform transition-transform duration-300 faq-icon shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        <button
+                            class="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none faq-btn">
+                            <span class="text-slate-900 font-bold text-base">¿Cuánto cuesta contratar a un Héroe y cómo
+                                se paga?</span>
+                            <svg class="w-5 h-5 text-teal-700 transform transition-transform duration-300 faq-icon shrink-0 ml-4"
+                                fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 9l-7 7-7-7"></path>
+                            </svg>
                         </button>
                         <div class="faq-content">
                             <div class="px-6 pb-5 text-slate-600 text-base leading-relaxed">
-                                Las tarifas son muy accesibles y reales: van <strong>desde los 8 € y 10 € la hora</strong> para acompañamiento cívico (Nivel 1), desde 11 €/h para presencia disuasoria (Nivel 2) y desde 15 €/h para especialistas (Nivel 3). El pago se realiza <strong>directamente al Héroe en efectivo o por Bizum</strong> al finalizar.
+                                Las tarifas son muy accesibles y reales: van <strong>desde los 8 € y 10 € la
+                                    hora</strong> para acompañamiento cívico (Nivel 1), desde 11 €/h para presencia
+                                disuasoria (Nivel 2) y desde 15 €/h para especialistas (Nivel 3). El pago se realiza
+                                <strong>directamente al Héroe en efectivo o por Bizum</strong> al finalizar.
                             </div>
                         </div>
                     </div>
 
                     <!-- FAQ 3 -->
                     <div class="bg-white border border-stone-200 rounded-2xl overflow-hidden faq-item shadow-sm">
-                        <button class="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none faq-btn">
-                            <span class="text-slate-900 font-bold text-base">¿Cómo gana dinero Heroly si yo le pago directamente al Héroe?</span>
-                            <svg class="w-5 h-5 text-teal-700 transform transition-transform duration-300 faq-icon shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        <button
+                            class="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none faq-btn">
+                            <span class="text-slate-900 font-bold text-base">¿Cómo gana dinero Heroly si yo le pago
+                                directamente al Héroe?</span>
+                            <svg class="w-5 h-5 text-teal-700 transform transition-transform duration-300 faq-icon shrink-0 ml-4"
+                                fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 9l-7 7-7-7"></path>
+                            </svg>
                         </button>
                         <div class="faq-content">
                             <div class="px-6 pb-5 text-slate-600 text-base leading-relaxed">
-                                Funcionamos con un modelo transparente estilo inDrive: cobramos únicamente una comisión automática del 20% al Héroe cuando acepta una misión, descontándola de su saldo prepago en la plataforma. Así el ciudadano nunca tiene que meter su tarjeta bancaria en la web.
+                                Funcionamos con un modelo transparente estilo inDrive: cobramos únicamente una comisión
+                                automática del 20% al Héroe cuando acepta una misión, descontándola de su saldo prepago
+                                en la plataforma. Así el ciudadano nunca tiene que meter su tarjeta bancaria en la web.
                             </div>
                         </div>
                     </div>
 
                     <!-- FAQ 4 -->
                     <div class="bg-white border border-stone-200 rounded-2xl overflow-hidden faq-item shadow-sm">
-                        <button class="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none faq-btn">
-                            <span class="text-slate-900 font-bold text-base">¿Qué controles de seguridad pasan los Héroes?</span>
-                            <svg class="w-5 h-5 text-teal-700 transform transition-transform duration-300 faq-icon shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        <button
+                            class="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none faq-btn">
+                            <span class="text-slate-900 font-bold text-base">¿Qué controles de seguridad pasan los
+                                Héroes?</span>
+                            <svg class="w-5 h-5 text-teal-700 transform transition-transform duration-300 faq-icon shrink-0 ml-4"
+                                fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 9l-7 7-7-7"></path>
+                            </svg>
                         </button>
                         <div class="faq-content">
                             <div class="px-6 pb-5 text-slate-600 text-base leading-relaxed">
-                                Todos los candidatos pasan por un filtro estricto de 4 fases: verificación de DNI/NIE, Certificado Oficial de Antecedentes Penales sin delitos, evaluación psicotécnica y entrevista personal. Solo aprobamos al 12% de los solicitantes.
+                                Todos los candidatos pasan por un filtro estricto de 4 fases: verificación de DNI/NIE,
+                                Certificado Oficial de Antecedentes Penales sin delitos, evaluación psicotécnica y
+                                entrevista personal. Solo aprobamos al 12% de los solicitantes.
                             </div>
                         </div>
                     </div>
 
                     <!-- FAQ 5 -->
                     <div class="bg-white border border-stone-200 rounded-2xl overflow-hidden faq-item shadow-sm">
-                        <button class="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none faq-btn">
-                            <span class="text-slate-900 font-bold text-base">¿Puedo pedir un Héroe para mis padres mayores u otro familiar?</span>
-                            <svg class="w-5 h-5 text-teal-700 transform transition-transform duration-300 faq-icon shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        <button
+                            class="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none faq-btn">
+                            <span class="text-slate-900 font-bold text-base">¿Puedo pedir un Héroe para mis padres
+                                mayores u otro familiar?</span>
+                            <svg class="w-5 h-5 text-teal-700 transform transition-transform duration-300 faq-icon shrink-0 ml-4"
+                                fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 9l-7 7-7-7"></path>
+                            </svg>
                         </button>
                         <div class="faq-content">
                             <div class="px-6 pb-5 text-slate-600 text-base leading-relaxed">
-                                Sí, gracias a nuestra función <strong>Red Familiar™</strong>. Puedes registrar a tus padres, pareja o familiares y solicitar el acompañamiento para ellos mientras sigues todo el recorrido por GPS desde tu propio teléfono móvil.
+                                Sí, gracias a nuestra función <strong>Red Familiar™</strong>. Puedes registrar a tus
+                                padres, pareja o familiares y solicitar el acompañamiento para ellos mientras sigues
+                                todo el recorrido por GPS desde tu propio teléfono móvil.
                             </div>
                         </div>
                     </div>
 
                     <!-- FAQ 6 -->
                     <div class="bg-white border border-stone-200 rounded-2xl overflow-hidden faq-item shadow-sm">
-                        <button class="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none faq-btn">
+                        <button
+                            class="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none faq-btn">
                             <span class="text-slate-900 font-bold text-base">¿Cuáles son los 3 niveles de Héroes?</span>
-                            <svg class="w-5 h-5 text-teal-700 transform transition-transform duration-300 faq-icon shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                            <svg class="w-5 h-5 text-teal-700 transform transition-transform duration-300 faq-icon shrink-0 ml-4"
+                                fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 9l-7 7-7-7"></path>
+                            </svg>
                         </button>
                         <div class="faq-content">
                             <div class="px-6 pb-5 text-slate-600 text-base leading-relaxed">
-                                <strong>Nivel 1 (Acompañamiento Cívico · Desde 8 €/h):</strong> Compañía cercana para mayores, médicos y recados. <strong>Nivel 2 (Presencia Disuasoria · Desde 11 €/h):</strong> Deportistas y perfiles atléticos para salidas nocturnas o bancos. <strong>Nivel 3 (Especialista Élite · Desde 15 €/h):</strong> Profesionales con cinturón negro en artes marciales, seguridad o primeros auxilios certificados.
+                                <strong>Nivel 1 (Acompañamiento Cívico · Desde 8 €/h):</strong> Compañía cercana para
+                                mayores, médicos y recados. <strong>Nivel 2 (Presencia Disuasoria · Desde 11
+                                    €/h):</strong> Deportistas y perfiles atléticos para salidas nocturnas o bancos.
+                                <strong>Nivel 3 (Especialista Élite · Desde 15 €/h):</strong> Profesionales con cinturón
+                                negro en artes marciales, seguridad o primeros auxilios certificados.
                             </div>
                         </div>
                     </div>
 
                     <!-- FAQ 7 -->
                     <div class="bg-white border border-stone-200 rounded-2xl overflow-hidden faq-item shadow-sm">
-                        <button class="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none faq-btn">
-                            <span class="text-slate-900 font-bold text-base">¿Existe seguimiento GPS y botón de emergencia SOS?</span>
-                            <svg class="w-5 h-5 text-teal-700 transform transition-transform duration-300 faq-icon shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        <button
+                            class="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none faq-btn">
+                            <span class="text-slate-900 font-bold text-base">¿Existe seguimiento GPS y botón de
+                                emergencia SOS?</span>
+                            <svg class="w-5 h-5 text-teal-700 transform transition-transform duration-300 faq-icon shrink-0 ml-4"
+                                fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 9l-7 7-7-7"></path>
+                            </svg>
                         </button>
                         <div class="faq-content">
                             <div class="px-6 pb-5 text-slate-600 text-base leading-relaxed">
-                                Sí. Cada misión cuenta con geolocalización GPS en tiempo real compartible con tu familia y un botón permanente de "Centro de Seguridad SOS" conectado para alertar de inmediato ante cualquier eventualidad.
+                                Sí. Cada misión cuenta con geolocalización GPS en tiempo real compartible con tu familia
+                                y un botón permanente de "Centro de Seguridad SOS" conectado para alertar de inmediato
+                                ante cualquier eventualidad.
                             </div>
                         </div>
                     </div>
 
                     <!-- FAQ 8 -->
                     <div class="bg-white border border-stone-200 rounded-2xl overflow-hidden faq-item shadow-sm">
-                        <button class="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none faq-btn">
-                            <span class="text-slate-900 font-bold text-base">Quiero trabajar como Héroe, ¿cómo funciona mi saldo y mis cobros?</span>
-                            <svg class="w-5 h-5 text-teal-700 transform transition-transform duration-300 faq-icon shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        <button
+                            class="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none faq-btn">
+                            <span class="text-slate-900 font-bold text-base">Quiero trabajar como Héroe, ¿cómo funciona
+                                mi saldo y mis cobros?</span>
+                            <svg class="w-5 h-5 text-teal-700 transform transition-transform duration-300 faq-icon shrink-0 ml-4"
+                                fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 9l-7 7-7-7"></path>
+                            </svg>
                         </button>
                         <div class="faq-content">
                             <div class="px-6 pb-5 text-slate-600 text-base leading-relaxed">
-                                En tu panel de Héroe cuentas con una billetera "Saldo / Recargas" (recarga mínima de 10 € por tarjeta o Bizum). Al aceptar una misión, se descuenta el 20% de comisión de ese saldo y tú cobras el 100% del servicio directamente en mano o por Bizum del ciudadano.
+                                En tu panel de Héroe cuentas con una billetera "Saldo / Recargas" (recarga mínima de 10
+                                € por tarjeta o Bizum). Al aceptar una misión, se descuenta el 20% de comisión de ese
+                                saldo y tú cobras el 100% del servicio directamente en mano o por Bizum del ciudadano.
                             </div>
                         </div>
                     </div>
@@ -778,17 +999,22 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 mb-10">
                 <div>
                     <div class="flex items-center gap-2.5 mb-4">
-                        <div class="w-9 h-9 rounded-xl bg-teal-700 text-white flex items-center justify-center shadow-sm">
+                        <div
+                            class="w-9 h-9 rounded-xl bg-teal-700 text-white flex items-center justify-center shadow-sm">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2"
+                                    d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z">
+                                </path>
                             </svg>
                         </div>
                         <span class="font-display font-extrabold text-xl text-teal-900">Heroly España</span>
                     </div>
                     <p class="text-sm text-slate-600 leading-relaxed mb-4">
-                        La plataforma de referencia en España para el acompañamiento preventivo, apoyo a personas mayores y tranquilidad familiar.
+                        La plataforma de referencia en España para el acompañamiento preventivo, apoyo a personas
+                        mayores y tranquilidad familiar.
                     </p>
-                    <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white border border-teal-200 text-xs text-emerald-700 font-bold shadow-sm">
+                    <div
+                        class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white border border-teal-200 text-xs text-emerald-700 font-bold shadow-sm">
                         <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
                         Verificación Oficial de Penales
                     </div>
@@ -797,19 +1023,26 @@
                 <div>
                     <h4 class="font-extrabold text-slate-900 text-sm uppercase tracking-wider mb-4">Buscar un Héroe</h4>
                     <ul class="space-y-2.5 text-sm text-slate-600 font-medium">
-                        <li><a href="#catalogo-publico" onclick="filterByCity('Madrid')" class="hover:text-teal-800 transition">Héroes en Madrid</a></li>
-                        <li><a href="#catalogo-publico" onclick="filterByCity('Barcelona')" class="hover:text-teal-800 transition">Héroes en Barcelona</a></li>
-                        <li><a href="#catalogo-publico" onclick="filterByCity('Valencia')" class="hover:text-teal-800 transition">Héroes en Valencia</a></li>
-                        <li><a href="#catalogo-publico" onclick="filterByCity('Alicante')" class="hover:text-teal-800 transition">Héroes en Alicante y Elche</a></li>
+                        <li><a href="#catalogo-publico" onclick="filterByCity('Madrid')"
+                                class="hover:text-teal-800 transition">Héroes en Madrid</a></li>
+                        <li><a href="#catalogo-publico" onclick="filterByCity('Barcelona')"
+                                class="hover:text-teal-800 transition">Héroes en Barcelona</a></li>
+                        <li><a href="#catalogo-publico" onclick="filterByCity('Valencia')"
+                                class="hover:text-teal-800 transition">Héroes en Valencia</a></li>
+                        <li><a href="#catalogo-publico" onclick="filterByCity('Alicante')"
+                                class="hover:text-teal-800 transition">Héroes en Alicante y Elche</a></li>
                     </ul>
                 </div>
 
                 <div>
-                    <h4 class="font-extrabold text-slate-900 text-sm uppercase tracking-wider mb-4">Trabajo como Héroe</h4>
+                    <h4 class="font-extrabold text-slate-900 text-sm uppercase tracking-wider mb-4">Trabajo como Héroe
+                    </h4>
                     <ul class="space-y-2.5 text-sm text-slate-600 font-medium">
-                        <li><button onclick="switchAppMode('worker')" class="hover:text-teal-800 transition">Ver solicitudes de familias</button></li>
+                        <li><button onclick="switchAppMode('worker')" class="hover:text-teal-800 transition">Ver
+                                solicitudes de familias</button></li>
                         <li><a href="portal.html" class="hover:text-teal-800 transition">Inscribirse como Héroe</a></li>
-                        <li><a href="#niveles" class="hover:text-teal-800 transition">Requisitos de los 3 Niveles</a></li>
+                        <li><a href="#niveles" class="hover:text-teal-800 transition">Requisitos de los 3 Niveles</a>
+                        </li>
                         <li><a href="#faq" class="hover:text-teal-800 transition">Comisiones y cobro por Bizum</a></li>
                     </ul>
                 </div>
@@ -818,16 +1051,20 @@
                     <h4 class="font-extrabold text-slate-900 text-sm uppercase tracking-wider mb-4">Sobre Heroly</h4>
                     <ul class="space-y-2.5 text-sm text-slate-600 font-medium">
                         <li><a href="#como-funciona" class="hover:text-teal-800 transition">Cómo funciona</a></li>
-                        <li><a href="#testimonios" class="hover:text-teal-800 transition">Experiencias de familias</a></li>
-                        <li><a href="portal.html" class="hover:text-teal-800 transition">Acceso Clientes / Héroes</a></li>
+                        <li><a href="#testimonios" class="hover:text-teal-800 transition">Experiencias de familias</a>
+                        </li>
+                        <li><a href="portal.html" class="hover:text-teal-800 transition">Acceso Clientes / Héroes</a>
+                        </li>
                         <li><a href="#" class="hover:text-teal-800 transition">Privacidad RGPD y Aviso Legal</a></li>
                     </ul>
                 </div>
             </div>
 
-            <div class="pt-8 border-t border-teal-200/80 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-slate-600 font-medium">
+            <div
+                class="pt-8 border-t border-teal-200/80 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-slate-600 font-medium">
                 <p>&copy; 2026 Heroly España. Todos los derechos reservados.</p>
-                <div class="flex items-center gap-2 bg-white px-3.5 py-1.5 rounded-full border border-teal-200 shadow-sm">
+                <div
+                    class="flex items-center gap-2 bg-white px-3.5 py-1.5 rounded-full border border-teal-200 shadow-sm">
                     <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
                     <span class="text-slate-700 font-bold">Servicio activo en toda España</span>
                 </div>
@@ -838,18 +1075,23 @@
     <!-- ===================================================================== -->
     <!-- MODAL DE FILTROS ESTILO SITLY (CON SECCIÓN ABIERTA + SECCIÓN PREMIUM) -->
     <!-- ===================================================================== -->
-    <div id="sitly-filter-modal" class="hidden fixed inset-0 z-50 bg-slate-900/50 backdrop-blur-sm flex items-center justify-center p-4">
-        <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl border border-stone-200 max-h-[90vh] overflow-y-auto">
+    <div id="sitly-filter-modal"
+        class="hidden fixed inset-0 z-50 bg-slate-900/50 backdrop-blur-sm flex items-center justify-center p-4">
+        <div
+            class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl border border-stone-200 max-h-[90vh] overflow-y-auto">
             <div class="flex justify-between items-center pb-4 border-b border-stone-200 mb-6">
                 <h3 class="font-display text-xl font-extrabold text-slate-900">FILTROS DE BÚSQUEDA</h3>
-                <button onclick="closeFilterModal()" class="w-9 h-9 rounded-full bg-stone-100 hover:bg-stone-200 flex items-center justify-center font-bold text-slate-600">✕</button>
+                <button onclick="closeFilterModal()"
+                    class="w-9 h-9 rounded-full bg-stone-100 hover:bg-stone-200 flex items-center justify-center font-bold text-slate-600">✕</button>
             </div>
 
             <div class="space-y-5">
                 <!-- Ciudad -->
                 <div>
-                    <label class="block text-xs font-extrabold uppercase tracking-wider text-slate-700 mb-2">Ciudad</label>
-                    <select id="modal-filter-city" class="w-full rounded-xl border border-stone-300 bg-stone-50 px-4 py-3 text-sm font-semibold text-slate-900 focus:outline-none focus:border-teal-700">
+                    <label
+                        class="block text-xs font-extrabold uppercase tracking-wider text-slate-700 mb-2">Ciudad</label>
+                    <select id="modal-filter-city"
+                        class="w-full rounded-xl border border-stone-300 bg-stone-50 px-4 py-3 text-sm font-semibold text-slate-900 focus:outline-none focus:border-teal-700">
                         <option value="Todas">Toda España (Todas las ciudades)</option>
                         <option value="Alicante">Alicante</option>
                         <option value="Elche">Elche</option>
@@ -864,8 +1106,10 @@
 
                 <!-- Nivel de Héroe -->
                 <div>
-                    <label class="block text-xs font-extrabold uppercase tracking-wider text-slate-700 mb-2">Nivel de Héroe</label>
-                    <select id="modal-filter-level" class="w-full rounded-xl border border-stone-300 bg-stone-50 px-4 py-3 text-sm font-semibold text-slate-900 focus:outline-none focus:border-teal-700">
+                    <label class="block text-xs font-extrabold uppercase tracking-wider text-slate-700 mb-2">Nivel de
+                        Héroe</label>
+                    <select id="modal-filter-level"
+                        class="w-full rounded-xl border border-stone-300 bg-stone-50 px-4 py-3 text-sm font-semibold text-slate-900 focus:outline-none focus:border-teal-700">
                         <option value="Todos">Todos los niveles (1, 2 y 3)</option>
                         <option value="1">Nivel 1 · Acompañamiento Cívico (Desde 8 €/h)</option>
                         <option value="2">Nivel 2 · Presencia Disuasoria (Desde 11 €/h)</option>
@@ -875,8 +1119,10 @@
 
                 <!-- Tipo de Misión -->
                 <div>
-                    <label class="block text-xs font-extrabold uppercase tracking-wider text-slate-700 mb-2">Modalidad de acompañamiento</label>
-                    <select id="modal-filter-mission" class="w-full rounded-xl border border-stone-300 bg-stone-50 px-4 py-3 text-sm font-semibold text-slate-900 focus:outline-none focus:border-teal-700">
+                    <label class="block text-xs font-extrabold uppercase tracking-wider text-slate-700 mb-2">Modalidad
+                        de acompañamiento</label>
+                    <select id="modal-filter-mission"
+                        class="w-full rounded-xl border border-stone-300 bg-stone-50 px-4 py-3 text-sm font-semibold text-slate-900 focus:outline-none focus:border-teal-700">
                         <option value="Todas">Cualquier modalidad</option>
                         <option value="Bancos">Bancos, Cajeros y Notarías</option>
                         <option value="Mayores">Personas Mayores y Citas Médicas</option>
@@ -887,7 +1133,8 @@
 
                 <!-- Tarifa Máxima por Hora -->
                 <div>
-                    <div class="flex justify-between text-xs font-extrabold uppercase tracking-wider text-slate-700 mb-2">
+                    <div
+                        class="flex justify-between text-xs font-extrabold uppercase tracking-wider text-slate-700 mb-2">
                         <span>Tarifa máxima por hora</span>
                         <span id="modal-rate-val" class="text-teal-700">Hasta 25 €/h</span>
                     </div>
@@ -899,23 +1146,32 @@
                 <!-- Filtros Exclusivos para Usuarios Registrados (Candado estilo Sitly) -->
                 <div class="bg-stone-50 border border-stone-200 rounded-2xl p-4">
                     <div class="flex items-center justify-between mb-2">
-                        <span class="text-xs font-extrabold uppercase tracking-wider text-slate-800">🔒 Filtros Avanzados</span>
-                        <span class="text-[11px] font-bold bg-amber-100 text-amber-900 px-2.5 py-0.5 rounded-full">Usuarios registrados</span>
+                        <span class="text-xs font-extrabold uppercase tracking-wider text-slate-800">🔒 Filtros
+                            Avanzados</span>
+                        <span
+                            class="text-[11px] font-bold bg-amber-100 text-amber-900 px-2.5 py-0.5 rounded-full">Usuarios
+                            registrados</span>
                     </div>
-                    <p class="text-xs text-slate-500 mb-3">Regístrate gratis en Heroly para filtrar por vehículo propio, idiomas, primeros auxilios o titulación deportiva específica.</p>
+                    <p class="text-xs text-slate-500 mb-3">Regístrate gratis en Heroly para filtrar por vehículo propio,
+                        idiomas, primeros auxilios o titulación deportiva específica.</p>
                     <div class="flex flex-wrap gap-2 opacity-60 pointer-events-none">
-                        <span class="px-3 py-1 rounded-full bg-white border border-stone-300 text-xs font-semibold">🚗 Vehículo propio</span>
-                        <span class="px-3 py-1 rounded-full bg-white border border-stone-300 text-xs font-semibold">🩺 Primeros auxilios</span>
-                        <span class="px-3 py-1 rounded-full bg-white border border-stone-300 text-xs font-semibold">🥋 Artes marciales</span>
+                        <span class="px-3 py-1 rounded-full bg-white border border-stone-300 text-xs font-semibold">🚗
+                            Vehículo propio</span>
+                        <span class="px-3 py-1 rounded-full bg-white border border-stone-300 text-xs font-semibold">🩺
+                            Primeros auxilios</span>
+                        <span class="px-3 py-1 rounded-full bg-white border border-stone-300 text-xs font-semibold">🥋
+                            Artes marciales</span>
                     </div>
                 </div>
             </div>
 
             <div class="mt-7 flex gap-3">
-                <button onclick="resetPublicFilters(); closeFilterModal();" class="flex-1 py-3.5 rounded-full border border-stone-300 font-bold text-sm text-slate-700 hover:bg-stone-100">
+                <button onclick="resetPublicFilters(); closeFilterModal();"
+                    class="flex-1 py-3.5 rounded-full border border-stone-300 font-bold text-sm text-slate-700 hover:bg-stone-100">
                     Limpiar
                 </button>
-                <button onclick="applyFilterModal()" class="flex-1 py-3.5 rounded-full bg-teal-700 hover:bg-teal-800 text-white font-extrabold text-sm shadow-lg">
+                <button onclick="applyFilterModal()"
+                    class="flex-1 py-3.5 rounded-full bg-teal-700 hover:bg-teal-800 text-white font-extrabold text-sm shadow-lg">
                     Ver resultados
                 </button>
             </div>
@@ -925,18 +1181,23 @@
     <!-- ===================================================================== -->
     <!-- MODAL DE REGISTRO / CONTACTO ("BIENVENIDO A HEROLY" ESTILO SITLY)     -->
     <!-- ===================================================================== -->
-    <div id="sitly-auth-modal" class="hidden fixed inset-0 z-50 bg-slate-900/50 backdrop-blur-sm flex items-center justify-center p-4">
-        <div class="bg-white rounded-3xl max-w-md w-full p-6 sm:p-8 shadow-2xl border border-stone-200 text-center relative">
-            <button onclick="closeAuthGateModal()" class="absolute top-5 right-5 w-9 h-9 rounded-full bg-stone-100 hover:bg-stone-200 flex items-center justify-center font-bold text-slate-600">✕</button>
+    <div id="sitly-auth-modal"
+        class="hidden fixed inset-0 z-50 bg-slate-900/50 backdrop-blur-sm flex items-center justify-center p-4">
+        <div
+            class="bg-white rounded-3xl max-w-md w-full p-6 sm:p-8 shadow-2xl border border-stone-200 text-center relative">
+            <button onclick="closeAuthGateModal()"
+                class="absolute top-5 right-5 w-9 h-9 rounded-full bg-stone-100 hover:bg-stone-200 flex items-center justify-center font-bold text-slate-600">✕</button>
 
-            <div class="w-14 h-14 rounded-2xl bg-teal-50 border border-teal-200 text-teal-700 flex items-center justify-center mx-auto mb-4 text-2xl">
+            <div
+                class="w-14 h-14 rounded-2xl bg-teal-50 border border-teal-200 text-teal-700 flex items-center justify-center mx-auto mb-4 text-2xl">
                 🛡️
             </div>
             <h3 id="auth-modal-title" class="font-display text-2xl font-extrabold text-slate-900 mb-2">
                 Regístrate gratis para contactar
             </h3>
             <p class="text-sm text-slate-600 mb-6 leading-relaxed">
-                Por seguridad y privacidad de nuestra comunidad en Heroly, crea tu cuenta gratuita en menos de 30 segundos para ver ubicaciones exactas y enviar mensajes directos.
+                Por seguridad y privacidad de nuestra comunidad en Heroly, crea tu cuenta gratuita en menos de 30
+                segundos para ver ubicaciones exactas y enviar mensajes directos.
             </p>
 
             <div class="space-y-3">
