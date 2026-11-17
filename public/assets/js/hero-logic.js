@@ -386,12 +386,12 @@ function bindHeroEvents() {
         });
     }
 
-    // Subida de las 3 Fotos de Perfil
+    // Subida de las 3 Fotos de Perfil (Previsualización instantánea + Subida a Firebase Storage)
     const bindPhotoPreview = (inputId, imgId, updateSidebar = false) => {
         const inp = document.getElementById(inputId);
         const img = document.getElementById(imgId);
         if (inp && img) {
-            inp.addEventListener('change', (e) => {
+            inp.addEventListener('change', async (e) => {
                 const file = e.target.files[0];
                 if (!file) return;
                 const reader = new FileReader();
@@ -403,6 +403,23 @@ function bindHeroEvents() {
                     }
                 };
                 reader.readAsDataURL(file);
+
+                // Subir a Firebase Storage en segundo plano si el usuario está autenticado
+                try {
+                    const { auth, storage, ref, uploadBytes, getDownloadURL } = await import('./firebase.js');
+                    const rawSession = JSON.parse(localStorage.getItem('heroly_session') || '{}');
+                    const uid = auth.currentUser?.uid || rawSession.uid;
+                    if (uid && auth.currentUser) {
+                        const storageRef = ref(storage, `heroes/${uid}/${inputId}_${Date.now()}`);
+                        await uploadBytes(storageRef, file);
+                        const cloudUrl = await getDownloadURL(storageRef);
+                        img.src = cloudUrl;
+                        if (updateSidebar) {
+                            const sideImg = document.getElementById('sidebarHeroAvatar');
+                            if (sideImg) sideImg.src = cloudUrl;
+                        }
+                    }
+                } catch (_) {}
             });
         }
     };
