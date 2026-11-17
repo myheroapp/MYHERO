@@ -428,9 +428,12 @@ function bindHeroEvents() {
 
             const checkedDays = Array.from(document.querySelectorAll('#heroDaysCheckboxes input:checked')).map(c => c.value);
 
+            const rawSession = JSON.parse(localStorage.getItem('heroly_session') || '{}');
             const customHeroes = JSON.parse(localStorage.getItem('heroly_custom_heroes') || '[]');
+            const heroId = rawSession.uid || ('hero-custom-' + Date.now());
             const newHeroEntry = {
-                id: 'hero-custom-' + Date.now(),
+                id: heroId,
+                uid: rawSession.uid || heroId,
                 name,
                 age,
                 city,
@@ -457,12 +460,29 @@ function bindHeroEvents() {
                     { title: 'Héroe Acreditado', subtitle: `Disponible desde ${minRate} €/h en ${city}`, icon: 'shield' }
                 ],
                 capabilities: ['Certificado de Penales Verificado', 'Seguimiento GPS Red Familiar™'],
-                references: []
+                references: [],
+                updatedAt: new Date().toISOString()
             };
-            customHeroes.unshift(newHeroEntry);
-            localStorage.setItem('heroly_custom_heroes', JSON.stringify(customHeroes));
-            import('./firebase.js').then(({ db, doc, setDoc }) => {
-                setDoc(doc(db, 'heroes', newHeroEntry.id), newHeroEntry).catch(() => {});
+            const filtered = customHeroes.filter(h => h.id !== newHeroEntry.id);
+            filtered.unshift(newHeroEntry);
+            localStorage.setItem('heroly_custom_heroes', JSON.stringify(filtered));
+            import('./firebase.js').then(({ auth, db, doc, setDoc }) => {
+                const authUid = auth.currentUser?.uid || newHeroEntry.uid;
+                newHeroEntry.uid = authUid;
+                setDoc(doc(db, 'heroes', authUid), { ...newHeroEntry, id: authUid }, { merge: true }).catch(() => {});
+                if (auth.currentUser?.uid) {
+                    setDoc(doc(db, 'users', auth.currentUser.uid), {
+                        uid: auth.currentUser.uid,
+                        name,
+                        city,
+                        age,
+                        level,
+                        bio,
+                        rate: minRate,
+                        role: 'hero',
+                        updatedAt: new Date().toISOString()
+                    }, { merge: true }).catch(() => {});
+                }
             }).catch(() => {});
 
             const nameDisp = document.getElementById('userNameDisplay');

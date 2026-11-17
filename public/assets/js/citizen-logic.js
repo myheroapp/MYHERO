@@ -500,8 +500,9 @@ function bindCitizenEvents() {
             };
             customList.unshift(newMissionDoc);
             localStorage.setItem('heroly_custom_missions', JSON.stringify(customList));
-            import('./firebase.js').then(({ db, doc, setDoc }) => {
-                setDoc(doc(db, 'missions', newMissionDoc.id), newMissionDoc).catch(() => {});
+            import('./firebase.js').then(({ auth, db, doc, setDoc }) => {
+                const authUid = auth.currentUser?.uid || newMissionDoc.uid;
+                setDoc(doc(db, 'missions', newMissionDoc.id), { ...newMissionDoc, uid: authUid }).catch(() => {});
             }).catch(() => {});
             pubForm.reset();
             renderPublishedAnnouncements();
@@ -582,11 +583,12 @@ function bindCitizenEvents() {
                 role: 'ciudadano'
             };
             localStorage.setItem('heroly_session', JSON.stringify(user));
-            if (user.uid) {
-                import('./firebase.js').then(({ db, doc, setDoc }) => {
-                    setDoc(doc(db, 'users', user.uid), user, { merge: true }).catch(() => {});
-                }).catch(() => {});
-            }
+            import('./firebase.js').then(({ auth, db, doc, setDoc }) => {
+                const targetUid = auth.currentUser?.uid || user.uid;
+                if (targetUid) {
+                    setDoc(doc(db, 'users', targetUid), { ...user, uid: targetUid, updatedAt: new Date().toISOString() }, { merge: true }).catch(() => {});
+                }
+            }).catch(() => {});
             initSessionProfile();
             alert('Perfil actualizado correctamente en Heroly.');
         });

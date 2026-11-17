@@ -446,49 +446,44 @@ function loadCustomLocalData() {
 // Intentar cargar también Héroes reales desde Firebase Firestore cuando el usuario conecte su nueva clave
 async function loadFirebaseHeroes() {
     try {
-        const { db, collection, getDocs, query, where } = await import('./firebase.js');
+        const { db, collection, getDocs } = await import('./firebase.js');
         if (!db) return;
-        const q = query(collection(db, 'users'), where('role', '==', 'hero'));
-        const snap = await getDocs(q);
+        const snap = await getDocs(collection(db, 'heroes'));
         const fbHeroes = [];
         snap.forEach(docSnap => {
             const d = docSnap.data();
             if (d && d.name && d.name !== 'Nuevo Usuario') {
-                let minRate = 10;
-                if (d.rates && typeof d.rates === 'object') {
-                    const vals = Object.values(d.rates).map(Number).filter(n => !isNaN(n) && n > 0);
-                    if (vals.length > 0) minRate = Math.min(...vals);
-                }
+                const minRate = Number(d.rate) || 10;
                 fbHeroes.push({
-                    id: 'fb-' + docSnap.id,
+                    id: d.id || ('fb-' + docSnap.id),
                     name: d.name.split(' ')[0],
                     age: d.age || 36,
                     city: d.city || 'Alicante',
                     zone: d.zone || 'Zona verificada',
                     level: Number(d.level) || 2,
-                    levelLabel: `Nivel ${d.level || 2} · Verificado`,
+                    levelLabel: d.levelLabel || `Nivel ${d.level || 2} · Verificado`,
                     rate: minRate,
-                    rating: '5,0',
-                    reviewsCount: 5,
-                    experience: 'Héroe Verificado Heroly',
-                    online: 'Online ahora',
+                    rating: d.rating || '5,0',
+                    reviewsCount: d.reviewsCount || 5,
+                    experience: d.experience || 'Héroe Verificado Heroly',
+                    online: d.online || 'Online ahora',
                     isOnlineNow: true,
-                    photo: d.photoURL || './assets/img/normal.jpg',
-                    shortBio: d.bio || 'Héroe verificado en la red Heroly España. Disponible para acompañamientos preventivos, gestiones y apoyo familiar.',
-                    fullBio: d.bio || 'Héroe verificado en la red Heroly España con documentación e identidad validadas. Disponible para servicios de acompañamiento presencial en tu ciudad.',
+                    photo: d.photo || d.photoURL || './assets/img/normal.jpg',
+                    shortBio: d.shortBio || d.bio || 'Héroe verificado en la red Heroly España. Disponible para acompañamientos preventivos, gestiones y apoyo familiar.',
+                    fullBio: d.fullBio || d.bio || 'Héroe verificado en la red Heroly España con documentación e identidad validadas. Disponible para servicios de acompañamiento presencial en tu ciudad.',
                     daysAvailable: d.daysAvailable || ['Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sa'],
                     schedule: d.schedule || {
                         manana: ['Lu', 'Ma', 'Mi', 'Ju', 'Vi'],
                         tarde: ['Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sa'],
                         noche: ['Vi', 'Sa']
                     },
-                    missions: ['Bancos y Cajeros', 'Mayores y Médicos', 'Retorno Nocturno'],
-                    experienceCards: [
+                    missions: d.missions || ['Bancos y Cajeros', 'Mayores y Médicos', 'Retorno Nocturno'],
+                    experienceCards: d.experienceCards || [
                         { title: 'Identidad Verificada', subtitle: 'Documentación validada en Heroly', icon: 'shield' },
                         { title: 'Trato Cercano y Puntual', subtitle: 'Disponible en tu ciudad', icon: 'elderly' }
                     ],
-                    capabilities: ['Seguimiento GPS Red Familiar™', 'Pago directo en mano o Bizum'],
-                    references: []
+                    capabilities: d.capabilities || ['Seguimiento GPS Red Familiar™', 'Pago directo en mano o Bizum'],
+                    references: d.references || []
                 });
             }
         });
